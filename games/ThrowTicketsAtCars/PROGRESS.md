@@ -1,0 +1,17 @@
+# Stan — THROW TICKETS AT CARS!
+- VERIFIED — 02.11.2026: test techniczny, 1 gracz, Studio MCP.
+- Telefon główny: iPhone 13 Pro, poziomo, viewport 749×388.
+- Dodatkowo mały iPhone 7, poziomo, 666×374; PC 1406×761.
+- Działa: przycisk THROW, celowanie przeciąganiem, klik auta myszą na PC.
+- Serwer weryfikuje cel, zasięg, łuk, cooldown, limit parkingu i rezerwacje.
+- Potwierdzono 2 lawety jednocześnie, odrodzenie aut, 6 dostaw i odmowę przy pełnym parkingu.
+- Cash rośnie dopiero po dostawie. Trening TRAIN i płytka +1/s, bez podwajania.
+- Trening naturalny 24→44 odblokował strefę 40; strefy 60/80/100 sprawdzone z mocą QA 120.
+- Błędne typy, NaN, infinity i spam nie przyznają aut; testy reguł 10/10.
+- Bieżące logi serwera i klienta: 0 błędów gry; historyczne komunikaty narzędzia opisane w raporcie.
+- Rojo build PASS; 5/5 źródeł w Studio identycznych z buildem.
+- Studio zostawione w Edit z podglądem mapy; emulator i HTTP wyłączone.
+- Kod i narzędzia w folderze gry; brak DataStore, metagry i publikacji.
+- Wygląd i balans: NOT FINAL. Zabawa z ludźmi: NEEDS VERIFICATION.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_prototype]].
+- Następny krok: użytkownik ocenia tę próbkę i gra 2 minuty; potem test z 3 osobami na telefonie.

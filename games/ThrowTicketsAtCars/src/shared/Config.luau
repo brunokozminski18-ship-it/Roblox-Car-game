@@ -1,0 +1,33 @@
+--!strict
+-- All prototype gameplay and geometry numbers live here. Balance: NOT FINAL.
+return table.freeze({
+	StartPower = 24, TrainGain = 1, TickSeconds = 1,
+	ThrowCooldown = 0.65, RequestInterval = 0.12, TrainRequestInterval = 0.3,
+	TowApproachSeconds = 1.4, TowLoadSeconds = 0.35, TowReturnSeconds = 2.3,
+	RespawnSeconds = 3, TicketFlightSeconds = 0.42, TicketArcHeight = 8, TicketArcSegments = 12,
+	TicketSize = Vector3.new(0.8, 0.08, 1.2), MessageSeconds = 2,
+	AimConeDot = 0.985, AimMaxDistance = 180,
+	ParkingSlots = 6, ParkingColumns = 2,
+	ParkingSpacing = Vector3.new(11, 0, 12), ParkingOrigin = Vector3.new(-26, 0, -6),
+	PlayerPlotSpacing = 54,
+	CarSize = Vector3.new(7, 2.5, 9), RoofSize = Vector3.new(5.5, 1.4, 4.5),
+	CarHeight = 1.75, RoofOffset = 1.85, CarLanes = {-5, 5},
+	RoadSize = Vector3.new(24, 1, 122), RoadCenter = Vector3.new(0, -0.5, -53),
+	GroundSize = Vector3.new(160, 1, 170), GroundCenter = Vector3.new(-25, -1.05, -45),
+	LaunchCenter = Vector3.new(0, 0.08, 0), LaunchSize = Vector3.new(21, 0.16, 8),
+	LaunchHalfX = 10.5, LaunchHalfZ = 4, LaunchHeightTolerance = 7,
+	TrainingPosition = Vector3.new(-16, 0.2, 7), TrainingSize = Vector3.new(8, 0.4, 8),
+	TrainingRadius = 4, TrainingHeightTolerance = 7,
+	SpawnPosition = Vector3.new(0, 0.15, 3), SpawnSize = Vector3.new(5, 0.3, 5), SpawnLift = 4,
+	TowSize = Vector3.new(8, 1, 14), TowStartOffset = Vector3.new(0, 0, -18),
+	TowApproachOffset = Vector3.new(0, 0, -1), TowLoadHeight = 1,
+	LabelDistance = 180, CameraOffset = Vector3.new(12, 17, 20), CameraLookAt = Vector3.new(-5, 0, -20),
+	CameraSensitivity = 0.004, CameraPitchMin = -1.25, CameraPitchMax = 0.2,
+	Tiers = {
+		{Distance = 20, Income = 1, Color = Color3.fromRGB(135, 135, 135)},
+		{Distance = 40, Income = 3, Color = Color3.fromRGB(64, 180, 85)},
+		{Distance = 60, Income = 7, Color = Color3.fromRGB(60, 125, 225)},
+		{Distance = 80, Income = 15, Color = Color3.fromRGB(158, 80, 205)},
+		{Distance = 100, Income = 30, Color = Color3.fromRGB(230, 180, 40)},
+	},
+})

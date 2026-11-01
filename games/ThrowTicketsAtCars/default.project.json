@@ -1,0 +1,13 @@
+{
+  "name": "ThrowTicketsAtCars",
+  "servePlaceIds": [74773184167716],
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": { "ThrowTickets": { "$path": "src/shared" } },
+    "ServerScriptService": { "ThrowTickets": { "$path": "src/server" } },
+    "StarterPlayer": {
+      "$properties": { "LoadCharacterAppearance": false },
+      "StarterPlayerScripts": { "ThrowTickets": { "$path": "src/client" } }
+    }
+  }
+}
