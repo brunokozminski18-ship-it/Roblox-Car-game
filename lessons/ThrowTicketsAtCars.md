@@ -15,3 +15,5 @@
 - Iteracja 3: daleki model może nie być gotowy przy nadejściu eventu nawet z Persistent. Serwerowe metadane i lokalny podgląd utrzymują czytelny wynik.
 - Iteracja 3: pojedynczy napis bramy także może wejść pod HUD. Trzeba sprawdzać przecięcie projekcji, nie tylko liczbę widocznych bram.
 - Iteracja 3: podgląd Edit może trzymać stary require(World) po zmianie Source; wymiana tożsamości ModuleScript przy imporcie odświeżyła cache.
+- Iteracja 3, końcowy smoke: VirtualInput rozwiązał test kamery — telefon zamienia przytrzymanie i ruch LMB w Touch; PC wymaga RMB, potem SendMouseDelta przy LockCurrentPosition. Potwierdzono 96°/59,57°, bez zmian w grze.
+- VirtualInput może odrzucić klik pod nakładką CoreGui CaptureControls; sprawdzaj rzeczywiste zdarzenia i alternatywny punkt przycisku. Samo odrzucenie testowej komendy nie oznacza błędu gry.

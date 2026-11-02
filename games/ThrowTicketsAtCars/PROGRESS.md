@@ -1,5 +1,5 @@
 # Stan — THROW TICKETS AT CARS!
-- IMPLEMENTED — 02.11.2026, iteracja 3; WSTRZYMANE na prośbę użytkownika.
+- VERIFIED — 02.11.2026, iteracja 3; Studio, iPhone 7 poziomo 666×374 + PC 1406×761, jeden gracz.
 - Rzut bez celowania: klient nie podaje argumentów, serwer ustala dystans, biom, auto i rzadkość.
 - Power ograniczony do końca mapy 3200. Sześć biomów według Config.
 - Common/Rare/Epic/Legendary: wagi 70/22/7/1; osobne pule nazw aut, dochód biom × rzadkość.
@@ -11,8 +11,9 @@
 - Potwierdzone: progi 0/50/150/400/1000/2500 i clamp 3200, 6 podmian, sprzedaż dokładnie raz.
 - Maksymalnie 3 lawety naraz; transport ok. 2,55 s; odtworzone 24 auta widokowe.
 - Próbka Junkyard zaakceptowana jako układ dalszych biomów. Wygląd i balans NOT FINAL.
-- Ostatnia korekta napisów i Active=false wymaga końcowego smoke po wznowieniu.
-- Kamera: Custom, zoom PC 12,5→5,26; gesty obrotu niepotwierdzone jednoznacznie przez automat.
+- Końcowy smoke: pasywne SurfaceGui i HUD, rzuty 24/2500, trening przyciskiem +1, dochód i laweta 2,57 s.
+- Kamera: obrót Touch 96°, PC RMB+MouseDelta 59,57°, zoom 12,5→3,80; powrót myszy do Default.
+- Ponownie 36/36 asercji; zgodność wszystkich sześciu źródeł Studio z src. Brak błędów gry.
 - Zapis z mapą: assets/SavedStudio_2026-11-02.rbxlx; kopia mapy .rbxm; źródła w src/.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
-- Następny krok po wznowieniu: końcowa kontrola kamery/UI i raport; bez rozszerzania zakresu.
+- Następny krok: ocena zabawy przez użytkownika i późniejsze strojenie tempa; fizyczny telefon/multiplayer niebadane.

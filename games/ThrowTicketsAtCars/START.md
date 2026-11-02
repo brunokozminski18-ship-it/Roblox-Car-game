@@ -1,9 +1,9 @@
 # Start — THROW TICKETS AT CARS!
 
-## Po wznowieniu
+## Otwieranie
 - Pełny lokalny zapis Studio: assets/SavedStudio_2026-11-02.rbxlx.
 - Źródłem prawdy pozostaje src/ i Config; mapa generowana z World.luau.
-- Najpierw sprawdź CURRENT_TASK i raport roboczy iteracji 3.
+- Najpierw sprawdź CURRENT_TASK i raport iteracji 3.
 
 ## Test pętli
 1. Play, stań na białej linii. THROW zawsze rzuca wzdłuż drogi; celowanie nie jest potrzebne.

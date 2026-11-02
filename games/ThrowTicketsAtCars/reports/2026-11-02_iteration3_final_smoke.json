@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-02",
+  "phone": {
+    "highBiome": 6,
+    "nextHUD": "MAX BIOME | Road limit: 3200 studs",
+    "biomeHUD": "HYPERCAR ISLAND | 2500 STUDS",
+    "throws": 2,
+    "camera": {
+      "before": "1.2696679645152198e-11, -0.2588180601596832, -0.9659260511398315",
+      "camera": "Custom",
+      "after": "0.9944477677345276, 0.01468112226575613, 0.10420278459787369",
+      "input": {
+        "1": {
+          "kind": "began",
+          "type": "Touch",
+          "processed": false
+        },
+        "2": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "3": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "4": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "5": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "6": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "7": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "8": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "9": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "10": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "11": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "12": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "13": {
+          "type": "Touch",
+          "kind": "changed",
+          "delta": "8, -2, 0",
+          "processed": false
+        },
+        "14": {
+          "kind": "began",
+          "type": "Touch",
+          "processed": true
+        },
+        "15": {
+          "kind": "began",
+          "type": "Touch",
+          "processed": false
+        },
+        "16": {
+          "kind": "began",
+          "type": "Touch",
+          "processed": true
+        },
+        "17": {
+          "kind": "began",
+          "type": "Touch",
+          "processed": true
+        }
+      },
+      "angle": 95.99559008811232
+    },
+    "landing": -2500,
+    "errors": {
+      "1": "VirtualInput::SendMousePosition: position (599.0, 182.0) hits CoreGUI."
+    },
+    "passiveSurfaces": true,
+    "viewport": "666, 374"
+  },
+  "pc": {
+    "zoomAfter": 3.804838180541992,
+    "after": "0.8616747260093689, -0.10035369545221329, -0.49743932485580444",
+    "errors": [],
+    "released": "Default",
+    "visibleGates": 1,
+    "zoomBefore": 12.500000953674316,
+    "before": "1.263760710662476e-11, -0.2588224411010742, -0.9659249186515808",
+    "camera": "Custom",
+    "biome": 1,
+    "viewport": "1406, 761",
+    "locked": "LockCurrentPosition",
+    "angle": 59.57149465909098,
+    "landing": -24,
+    "throws": 1
+  },
+  "pcServer": {
+    "errors": [],
+    "cash": 63,
+    "income": 3,
+    "parked": 1
+  },
+  "training": {
+    "phoneButtonLeftEdge": true,
+    "powerBefore": 2500,
+    "powerAfter": 2501,
+    "stopped": true
+  },
+  "pureTests": {
+    "base": 7,
+    "iteration3": 29
+  },
+  "sourceParity": 6
+}

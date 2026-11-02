@@ -1,14 +1,15 @@
-# Current Task — iteracja 3: praca wstrzymana
-- Właściciel: Codex; 02.11.2026. Wstrzymano na wyraźną prośbę użytkownika.
-- Status: IMPLEMENTED; końcowa weryfikacja i podsumowanie nie są zakończone.
+# Current Task — iteracja 3 zakończona
+- Właściciel: Codex; 02.11.2026. Wznowiono na wyraźną prośbę użytkownika.
+- Status: VERIFIED — 02.11.2026, Studio: emulator iPhone 7 poziomo + PC, jeden gracz.
 - Decyzja zatwierdzona: rzut bez celowania, dystans=Power, biom wybiera pulę aut.
 - Próbka Junkyard zaakceptowana przez użytkownika; zbudowano 6 biomów, 24 auta widokowe i bramy.
 - Serwer losuje, pilnuje cooldownu, wymienia najsłabsze auto lub płaci za sprzedaż.
 - Testy wykonane: 14/14 scenariuszy serwera, 36/36 asercji, 47 pakietów efektów, objazd 6 bram.
-- Ostatnie zmiany: ukrycie napisów pod HUD i pasywne SurfaceGui; ostatnia flaga Active=false nie była ponownie testowana w Play.
-- Kamera Custom i zoom sprawdzone; odpowiedź użytkownika brzmi „nie zablokowana” — nie dopisywać na tej podstawie jednoznacznego PASS.
+- Końcowy smoke: pasywne SurfaceGui, czytelny HUD, rzuty 24/2500, trening +1, dochód i laweta 2,57 s.
+- Kamera: rzeczywiste zdarzenia Touch zmieniły kierunek o 96°; PC RMB+MouseDelta o 59,57°, zoom 12,5→3,80.
+- Skrypty Studio zgodne z sześcioma plikami src; ponownie 36/36 asercji. Brak błędów gry.
 - Zapis Studio: assets/SavedStudio_2026-11-02.rbxlx (mapa z aktualnego Studio + kod).
 - Dodatkowo: assets/StudioMapSnapshot_2026-11-02.rbxm i assets/Prototype.rbxlx; poza gitem.
-- Raport roboczy: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
-- Po wznowieniu: otworzyć zapis, dokończyć kontrolę kamery i napisów, końcowy smoke telefonu/PC, uaktualnić raport.
-- Nie wznawiać pracy automatycznie. Wygląd i balans: NOT FINAL. Bez publikacji.
+- Raport i zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
+- Studio pozostawione w Edit, emulator/HTTP wyłączone. Bez publikacji.
+- Następny krok: użytkownik ocenia zabawę; tempo treningu i wygląd NOT FINAL. Fizyczny telefon/multiplayer niebadane.
