@@ -29,7 +29,7 @@ return table.freeze({
 	SpawnPosition=Vector3.new(0,0.15,3), SpawnSize=Vector3.new(5,0.3,5), SpawnLift=4,
 	TowSize=Vector3.new(8,1,14), TowStartOffset=Vector3.new(0,0,-18), TowApproachOffset=Vector3.new(0,0,-1), TowLoadHeight=1,
 	SoldTowExit=Vector3.new(26,0,-28),
-	LabelDistance=100, GateLabelDistance=130, GateHeight=13, GatePostX=18, GateBeamSize=Vector3.new(39,5,2),
+	LabelDistance=100, GateLabelDistance=130, GateHeight=4.5, GateSignX=23, GatePostSpacing=7, GateBeamSize=Vector3.new(18,3,0.6),
 	ViewCarsPerBiome=4, DecorationCount=6, ViewCarX=9, DecorX=29,
 	CameraMinZoom=0.5, CameraMaxZoom=64, CameraStartOffset=Vector3.new(0,7,14), CameraFocusOffset=Vector3.new(2.25,1.25,0),
 	HitBounceHeight=0.8, HitBounceSeconds=0.26,

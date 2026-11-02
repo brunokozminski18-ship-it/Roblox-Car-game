@@ -50,10 +50,10 @@ end
 local function gate(root: Folder,index: number)
 	local b=Config.Biomes[index]
 	local model=Instance.new("Model");model.Name="Gate"..index;model.ModelStreamingMode=Enum.ModelStreamingMode.Persistent;model:SetAttribute("Biome",index)
-	for _,x in {-Config.GatePostX,Config.GatePostX} do
-		World.part(model,"Post",Vector3.new(2,Config.GateHeight,2),Vector3.new(x,Config.GateHeight/2,-b.MinPower),Color3.fromRGB(85,85,85))
+	for _,offset in {-Config.GatePostSpacing,Config.GatePostSpacing} do
+		World.part(model,"Post",Vector3.new(0.8,Config.GateHeight,0.8),Vector3.new(Config.GateSignX+offset,Config.GateHeight/2,-b.MinPower),Color3.fromRGB(125,133,143))
 	end
-	local beam=World.part(model,"Sign",Config.GateBeamSize,Vector3.new(0,Config.GateHeight,-b.MinPower),Color3.fromRGB(45,48,52))
+	local beam=World.part(model,"Sign",Config.GateBeamSize,Vector3.new(Config.GateSignX,Config.GateHeight,-b.MinPower),Color3.fromRGB(52,74,109))
 	for _,face in {Enum.NormalId.Back,Enum.NormalId.Front} do
 		local gui=Instance.new("SurfaceGui");gui.Name="BiomeSign";gui.Face=face
 		gui.Active=false
@@ -62,7 +62,7 @@ local function gate(root: Folder,index: number)
 		gui.Enabled=index==1
 		local t=Instance.new("TextLabel");t.Size=UDim2.fromScale(1,1);t.BackgroundTransparency=1
 		t.Text=string.format("%s  |  %d+ RANGE",b.Name:upper(),b.MinPower)
-		t.Font,t.TextSize,t.TextColor3=Enum.Font.GothamBlack,40,Color3.new(1,1,1)
+		t.Font,t.TextSize,t.TextColor3=Enum.Font.FredokaOne,58,Color3.new(1,1,1)
 		t.Parent,gui.Parent=gui,beam
 	end
 	model.Parent=root.Gates
@@ -97,7 +97,6 @@ function World.build(biomeCount: number?): Folder
 	end
 	World.part(root,"StartApron",Vector3.new(Config.GroundWidth,1,Config.MapPadding),Vector3.new(0,-0.55,Config.MapPadding/2),Config.Biomes[1].Color)
 	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(225,225,225))
-	World.label(line,"POWER x TICKET",1)
 	local train=World.part(root,"TrainingPad",Config.TrainingSize,Config.TrainingPosition,Color3.fromRGB(120,135,120))
 	World.label(train,string.format("TRAIN +%d POWER / s",Config.TrainGain),1)
 	local spawn=Instance.new("SpawnLocation");spawn.Name="PrototypeSpawn";spawn.Anchored,spawn.Neutral=true,true

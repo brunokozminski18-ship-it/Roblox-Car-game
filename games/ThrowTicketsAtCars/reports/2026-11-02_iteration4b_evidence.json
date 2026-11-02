@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-02",
+  "platform": "iPhone 7 landscape 666x374",
+  "uiNoCash": {
+    "assertions": 22,
+    "states": {
+      "Owned": true,
+      "Locked": true,
+      "Unaffordable": true,
+      "Equipped": true
+    }
+  },
+  "uiAffordable": {
+    "assertions": 22,
+    "states": {
+      "Owned": true,
+      "Locked": true,
+      "Affordable": true,
+      "Equipped": true
+    }
+  },
+  "uiEquipped": {
+    "assertions": 21,
+    "states": {
+      "Owned": true,
+      "Locked": true,
+      "Unaffordable": true,
+      "Equipped": true
+    }
+  },
+  "uiAssertions": 65,
+  "server": {
+    "carParts": 36,
+    "sample": "Rusty Sedan v2 — NOT FINAL",
+    "errors": []
+  },
+  "clientErrors": [],
+  "geometry": {
+    "hudHeight": 34,
+    "hudWithMarginStroke": 41,
+    "viewportHeight": 374,
+    "shop": [
+      88,
+      52
+    ],
+    "train": [
+      88,
+      52
+    ],
+    "throw": [
+      132,
+      76
+    ],
+    "gaps": 12,
+    "signMaxY": 6,
+    "roadCorridorClearTo": 500
+  },
+  "input": {
+    "trainGain": 1,
+    "throwDistance": 67.5,
+    "towSeconds": 2.5676,
+    "cameraDragDegrees": 25.3429
+  },
+  "note": "UI capture with stationary QA character: emulator generated movement before UI clicks; movement itself not signed off."
+}

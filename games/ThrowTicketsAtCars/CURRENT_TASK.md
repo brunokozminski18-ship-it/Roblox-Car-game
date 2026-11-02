@@ -1,14 +1,14 @@
-# Current Task — iteracja 4 zakończona
+# Current Task — iteracja 4b zakończona
 - Właściciel: Codex; 02.11.2026.
-- VERIFIED: Studio, iPhone 7 poziomo 666×374 + PC 1406×761, jeden gracz.
-- Sklep: 6 mandatów, BUY/EQUIP/EQUIPPED/LOCKED, serwerowa kolejność i ceny, wskazówka SHOP!.
-- Dystans Power×mandat; mały bonus wag Rare+, limit 3200. Wszystkie liczby w Config.
-- Zapis Schema 1: Cash, Power, Owned, Equipped, Parking. Jeden writer Profiles, UpdateAsync+lease/token.
-- Autosave 25 s, zwolnienie sesji przy wyjściu/shutdown; błąd load nie zapisuje domyślnych danych.
-- Studio API włączone przez użytkownika; osobny magazyn _STUDIO. Klucz QA po testach usunięty.
-- Testy: 72/72 asercje, 14/14 scenariuszy; realny Stop/Play odtworzył wszystkie pola i dochód.
-- Próbka UI w stylu D oraz TYLKO Rusty Sedan (29 części, 0 meshes): NOT FINAL, oczekują oceny.
-- Reszta aut pozostaje z szarych klocków. Bez petów, Rebirth, Robux i publikacji.
-- Źródła Studio zgodne z 10 plikami src; zapis miejsca assets/SavedStudio_2026-11-02.rbxlx.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4]].
-- Studio Edit, emulator/HTTP wyłączone. Następny krok: ocena sklepu i auta przez użytkownika.
+- VERIFIED: emulator iPhone 7 poziomo 666×374, 3 przebiegi stanów sklepu / 65 asercji UI.
+- Sklep: tylko EQUIPPED zielony; dostępny zakup jasny+puls BUY; brak Cash normalny/czerwona cena.
+- Locked: przyciemnienie, kłódka i Buy <previous> first. Duża cena BUY zielona/czerwona, bez +0% luck.
+- HUD: jedna linia Cash/Power/biom + pasek 4 px, całość z marginesem/obrysem 41/374 px (<12%).
+- Przyciski: SHOP/TRAIN/THROW w rzędzie, odstępy 12 px, THROW 132×76, pozostałe 88×52.
+- Niskie tablice przy poboczu; wolny środek drogi potwierdzony do 500 studów.
+- Rusty Sedan v2: 36 części, większa rdza, żółte drzwi, wgnieciony błotnik, krzywy zderzak, mat.
+- Test: zakup/equip, puls, TRAIN +1, THROW 67,5, laweta 2,57 s, obrót kamery 25,34°, 0 błędów gry.
+- Wygląd sklepu/HUD/auta i balans NOT FINAL. Następny krok: ocena użytkownika; brak nowych modeli.
+- Zapis/ekonomia iteracji 4 zachowane; Studio QA key usunięty, emulator/HTTP off, Edit.
+- Lokalna kopia: assets/SavedStudio_2026-11-02.rbxlx; 12 źródeł Rojo.
+- Raport i zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4b]].

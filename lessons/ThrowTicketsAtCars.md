@@ -22,3 +22,6 @@
 - Iteracja 4: shutdown czeka także na rozpoczęte loady, nie tylko finalne save; inaczej normalne zamknięcie może zostawić lease do 90 s.
 - Iteracja 4: UIGradient na TextButton barwi także jego litery, a UIStroke Contextual obrysowuje tekst. Osobny podpis i ApplyStrokeMode.Border usunęły nieczytelne BUY/X.
 - Iteracja 4: x1/2,5/7/18/45/110 daje sześć biomów przy Power 24; to sprawdzony skok zasięgu, nie dowód dobrego tempa zakupów. Próbki UI/auta i balans NOT FINAL.
+- Iteracja 4b: zielony powinien jednoznacznie znaczyć EQUIPPED, nie wszystkie posiadane rzeczy; kolor ceny i jawny poprzednik wyjaśniają zakup bez samouczka.
+- Iteracja 4b: puls zakupu animuje kolor, naciskanie skalę; dwie animacje tej samej skali mogłyby się anulować. Wspólny Style utrzymuje zgodność HUD i sklepu.
+- Iteracja 4b: liczymy wysokość HUD z marginesem i obrysem (41/374 px), nie same etykiety; boczne tablice otwierają widok dalszych biomów.

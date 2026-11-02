@@ -5,4 +5,5 @@
 - Błędy backendu, utrata lease i niejednoznaczny zapis testowane przez wstrzyknięty magazyn.
 - Przy awarii serwera lub nieudanym finalnym zapisie może obowiązywać lease do 90 s; gracz dostaje jasny komunikat.
 - Studio VirtualInput może odrzucić klik w nakładkę CaptureControls; klik lewej części przycisku działał.
+- NEEDS VERIFICATION: w emulatorze występował ruch postaci przed klikami UI; pomiary/zrzuty 4b robiono z nieruchomą postacią QA. Fizyczny telefon niebadany.
 - Studio zgłaszało ostrzeżenia pluginu i systemowego assetu avatara 203785492; brak MessageError gry.

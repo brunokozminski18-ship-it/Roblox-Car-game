@@ -16,10 +16,11 @@
 - rojo serve default.project.json --port 34873; połącz plugin.
 - Alternatywa MCP: python tools/rojo_snapshot.py → tools/SyncStudio.luau w Edit, tymczasowo HTTP on.
 - Build: python tools/rojo_snapshot.py --build-only.
-- PreviewStudio odtwarza Edit z World; wszystkie 10 źródeł synchronizowane z folderu.
+- PreviewStudio odtwarza Edit z World; wszystkie 12 źródeł synchronizowane z folderu.
 - Świeże QA: ServerStorage.TestProfileKey przed Play; klucz jest czytany tylko w Studio.
 - Regresja: ClientScenarios w Client, ServerScenarios w Server; świeży profil, Paper Ticket.
 - Asercje: rules/iteration3/iteration4/profiles.spec; ostatnie dwa wymagają ProfileSchema/Profiles.
 - Studio-only ServerStorage.ThrowTicketsQA: Inspect, SetCash, SetPower, Save, Exit (ścieżka leave).
 - Po teście usuń TestProfileKey, wyłącz emulator i HTTP, zostaw Edit. Bez publikacji.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4]].
+- Próbki 4b: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4b]]; kontrola UI w Client: tests/iteration4b.client.luau.
