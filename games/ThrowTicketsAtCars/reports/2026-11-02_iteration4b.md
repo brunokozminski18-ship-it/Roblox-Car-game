@@ -31,6 +31,15 @@ Sklep/HUD/Rusty Sedan v2 i balans: NOT FINAL, oczekują oceny użytkownika.
 - Rojo build PASS. Lokalna kopia miejsca obejmuje aktualne 12 źródeł i mapę.
 - Dowody: 2026-11-02_iteration4b_evidence.json; powtarzalna kontrola: tests/iteration4b.client.luau.
 
+## Powtórna weryfikacja po ponowieniu zlecenia, 02.11.2026
+- Potwierdzono 12/12 skryptów Studio zgodnych z folderem; poprawki z commit d32d82e były już obecne.
+- Świeży, osobny profil QA: 68 kontroli UI (23+23+22), wszystkie PASS. Postęp użytkownika pozostawiono z jego ostatniej sesji.
+- BUY/EQUIP Pink: Cash 100→0, Power 24, dystans 60. Kolor BUY pulsuje przy pokryciu, po zakupie puls gaśnie.
+- Wszystkie cztery wymagane stany oraz owned potwierdzone; po zamknięciu sklepu kamera obraca się o 38,57°, Custom.
+- Rusty Sedan v2: 36 części, Concrete, inne drzwi, zderzak -10°. Końcowe logi klient/serwer bez MessageError.
+- Cztery główne zrzuty telefonu poniżej odświeżono z nowego przebiegu; pozostałe zdjęcia pokazują tę samą próbkę 4b.
+- Wyniki dopisano do sekcji recheck w pliku evidence.json. Wygląd nadal NOT FINAL.
+
 ## Zrzuty do oceny
 ![HUD i widok drogi ze startu](2026-11-02_iteration4b_hud.jpg)
 ![Brak gotówki i blokada kolejności](2026-11-02_iteration4b_shop_no_cash.jpg)

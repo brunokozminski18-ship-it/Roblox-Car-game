@@ -61,5 +61,54 @@
     "towSeconds": 2.5676,
     "cameraDragDegrees": 25.3429
   },
-  "note": "UI capture with stationary QA character: emulator generated movement before UI clicks; movement itself not signed off."
+  "note": "UI capture with stationary QA character: emulator generated movement before UI clicks; movement itself not signed off.",
+  "recheck": {
+    "date": "2026-11-02",
+    "sourceMatches": 12,
+    "assertions": 68,
+    "passes": [
+      {
+        "assertions": 23,
+        "states": {
+          "Locked": true,
+          "Unaffordable": true,
+          "Equipped": true
+        }
+      },
+      {
+        "assertions": 23,
+        "states": {
+          "Locked": true,
+          "Affordable": true,
+          "Equipped": true
+        }
+      },
+      {
+        "assertions": 22,
+        "states": {
+          "Owned": true,
+          "Locked": true,
+          "Unaffordable": true,
+          "Equipped": true
+        }
+      }
+    ],
+    "buyEquip": {
+      "ticket": "pink",
+      "cashBefore": 100,
+      "cashAfter": 0,
+      "power": 24,
+      "range": 60
+    },
+    "pulseColorChanges": true,
+    "orbitDegrees": 38.57473491428479,
+    "errors": [],
+    "car": {
+      "parts": 36,
+      "paint": "Concrete",
+      "doorDifferent": true,
+      "bumperTilt": -10
+    },
+    "profileScope": "Separate QA profile; existing user progress preserved"
+  }
 }

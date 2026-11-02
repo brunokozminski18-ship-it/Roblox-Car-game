@@ -1,5 +1,6 @@
 # Current Task — iteracja 4b zakończona
 - Właściciel: Codex; 02.11.2026.
+- Ponowione zlecenie VERIFIED: 12/12 źródeł zgodnych ze Studio, 68 kontroli UI (23+23+22) na osobnym profilu QA; postęp użytkownika zachowany.
 - VERIFIED: emulator iPhone 7 poziomo 666×374, 3 przebiegi stanów sklepu / 65 asercji UI.
 - Sklep: tylko EQUIPPED zielony; dostępny zakup jasny+puls BUY; brak Cash normalny/czerwona cena.
 - Locked: przyciemnienie, kłódka i Buy <previous> first. Duża cena BUY zielona/czerwona, bez +0% luck.

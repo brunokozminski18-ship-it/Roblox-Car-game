@@ -8,6 +8,7 @@
 - Rusty Sedan v2: 36 prymitywów, 0 meshes, duża rdza, inne drzwi, wgniecenie, krzywy zderzak, matowy lakier.
 - Tylko jeden projekt auta. Sklep/HUD/auto NOT FINAL, czekają na ocenę użytkownika.
 - Testy 4b: 65 asercji UI w 3 przebiegach, BUY/EQUIP, puls, TRAIN +1, THROW, laweta 2,57 s, kamera Touch 25,34°.
+- Ponowione zlecenie 02.11: 12/12 źródeł zgodnych, 68 kontroli UI na świeżym QA, BUY/EQUIP Pink 24→60, kamera 38,57°, 0 błędów; zrzuty telefonu odświeżone.
 - Logi końcowego przebiegu klient/serwer bez błędów gry. Zrzuty UI i auta blisko/daleko w raporcie.
 - Próba UI nie obejmuje swobodnego ruchu: zrzuty z nieruchomą postacią QA; obserwowano ruch emulatora przed klikami UI.
 - Poprzedni VERIFIED 4: 72 asercje i 14 scenariuszy; zapis Cash/Power/mandatów/parkingu z lease/token i osobnym _STUDIO.
