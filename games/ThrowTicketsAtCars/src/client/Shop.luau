@@ -43,7 +43,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   local stripes=Instance.new("Frame");stripes.Name="Stripe";stripes.Size=UDim2.fromOffset(42,180);stripes.Position=UDim2.new(.55,0,.5,-90);stripes.Rotation=30;stripes.BackgroundColor3=Color3.new(1,1,1);stripes.BackgroundTransparency=.9;stripes.BorderSizePixel=0;stripes.Parent=row
   local icon=ticketIcon(row,t.Color,52,UDim2.fromOffset(20,15))
   local name=text(row,"Name",t.Name,23,UDim2.fromOffset(76,9),UDim2.new(1,-220,0,28))
-  local perk=text(row,"Perk",(if t.Luck>0 then string.format("x%g distance  |  +%d%% luck",t.Multiplier,math.round(t.Luck*100))else string.format("x%g distance",t.Multiplier)),17,UDim2.fromOffset(76,40),UDim2.new(1,-220,0,26))
+  local perk=text(row,"Perk",(if t.Luck>0 then string.format("+%d%% luck",math.round(t.Luck*100))else "Standard odds"),17,UDim2.fromOffset(76,40),UDim2.new(1,-220,0,26))
   local action=button(row,"Action","",UDim2.fromOffset(130,56),UDim2.new(1,-8,.5,0));action.AnchorPoint=Vector2.new(1,.5);action.TextSize=17
   local price=text(action,"Price","",22,UDim2.new(0,0,1,-29),UDim2.new(1,0,0,26));price.TextXAlignment=Enum.TextXAlignment.Center;price.TextStrokeTransparency=1;price.TextColor3=INK
   local lock=Instance.new("Frame");lock.Name="Lock";lock.Size=UDim2.fromOffset(20,24);lock.Position=UDim2.new(0,8,.5,-12);lock.BackgroundTransparency=1;lock.Parent=action
@@ -94,7 +94,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
    row.name.TextColor3=if unlocked then Color3.new(1,1,1)else Color3.fromHex("BFCBE1")
    row.icon.BackgroundColor3=if unlocked then t.Color else t.Color:Lerp(INK,.55)
    row.stripes.BackgroundTransparency=if unlocked then .9 else .97
-   row.perk.Text=if not unlocked then "Buy "..Config.Tickets[i-1].Name.." first"elseif t.Luck>0 then string.format("x%g distance  |  +%d%% luck",t.Multiplier,math.round(t.Luck*100))else string.format("x%g distance",t.Multiplier)
+   row.perk.Text=if not unlocked then "Buy "..Config.Tickets[i-1].Name.." first"elseif t.Luck>0 then string.format("+%d%% luck",math.round(t.Luck*100))else "Standard odds"
 
   end
   updatePulse()

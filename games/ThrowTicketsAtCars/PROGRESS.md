@@ -1,18 +1,21 @@
 # Stan — THROW TICKETS AT CARS!
-- VERIFIED — 02.11.2026, iteracja 4b: emulator iPhone 7 poziomo, 666×374, jeden gracz.
-- Sklep: EQUIPPED zielony; affordable jasny+puls BUY; unaffordable normalny/cena czerwona; locked ciemny+kłódka+warunek.
-- Cena BUY 22 px, zielona przy pokryciu; +0% luck ukryte. Posiadany niewyposażony mandat ma normalny kolor.
-- HUD jedna linia Cash/Power/biom + cienki pasek; 41 px z marginesem i obrysem, poniżej 12%.
-- SHOP/TRAIN/THROW w spójnym stylu D i jednym rzędzie; THROW największy; cele ≥44 px, odstępy 12 px.
-- Tablice biomów obok drogi, wysokość maks. 6 studów; brak wiaduktów, widok kolejnych biomów.
-- Rusty Sedan v2: 36 prymitywów, 0 meshes, duża rdza, inne drzwi, wgniecenie, krzywy zderzak, matowy lakier.
-- Tylko jeden projekt auta. Sklep/HUD/auto NOT FINAL, czekają na ocenę użytkownika.
-- Testy 4b: 65 asercji UI w 3 przebiegach, BUY/EQUIP, puls, TRAIN +1, THROW, laweta 2,57 s, kamera Touch 25,34°.
-- Ponowione zlecenie 02.11: 12/12 źródeł zgodnych, 68 kontroli UI na świeżym QA, BUY/EQUIP Pink 24→60, kamera 38,57°, 0 błędów; zrzuty telefonu odświeżone.
-- Logi końcowego przebiegu klient/serwer bez błędów gry. Zrzuty UI i auta blisko/daleko w raporcie.
-- Próba UI nie obejmuje swobodnego ruchu: zrzuty z nieruchomą postacią QA; obserwowano ruch emulatora przed klikami UI.
-- Poprzedni VERIFIED 4: 72 asercje i 14 scenariuszy; zapis Cash/Power/mandatów/parkingu z lease/token i osobnym _STUDIO.
-- Ceny/mnożniki/rzadkości w Config; serwer kupuje, wyposaża i losuje. Bez zmian zapisu w 4b.
-- 12 plików źródłowych w Rojo; pełna lokalna kopia assets/SavedStudio_2026-11-02.rbxlx.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4b]].
-- Następny krok: ocena próbek, fizyczny telefon i test zabawy. Bez publikacji.
+- VERIFIED — 02.11.2026, iteracja 6: Studio, 1 gracz; telefon poziomo (666×374) oraz PC (1406×761).
+- Power jest jedynym źródłem zasięgu; wszystkie 6 mandatów daje tylko luck. Sklep bez mnożników dystansu.
+- Iteracja 5 nie występowała w folderze/gicie/Studio; zastana 4b nadal miała mnożniki w Config, Rules i Shop.
+- TRAIN: ćwiczenie ramion i +1 Power/s; samo stanie na płytce nie trenuje.
+- Zamach 0,45 s + lot 2 s z kamerą; trafienie dokładnie wylosowanego jadącego auta; laweta 2 s.
+- Serwer blokuje spam do końca transportu; zmierzona sekwencja po akceptacji 4,43–4,47 s; potem teleport na własną działkę.
+- Ruch aut na pasach bez fizyki, klient 30 Hz z ograniczeniem odległości renderowania.
+- Własna działka 6 miejsc; ekwipunek 20 aut. Hotbar, PLACE/REMOVE/SELL, BACK TO ROAD i MY PLOT.
+- Tylko postawione auta zarabiają; brak automatycznej podmiany i sprzedaży.
+- Zapis Schema 2: stabilne ID i Slot; migracja starego parkingu zachowuje Cash/Power/mandaty/auta.
+- Przyznanie łupu zapisane przed animacją. Rezerwacja limitu, walidacja własności i odległości po stronie serwera.
+- 78 asercji: 62 pętla/migracja/limity, 9 bezpieczeństwo profilu, 7 podstawowe reguły.
+- Telefon: przyciski, spam, Power 24 z Paper/Diamond, PLACE/REMOVE/SELL, dochód, pełny ekwipunek i powrót.
+- PC: Power 150 → Downtown, jeden wynik mimo spamu, śmierć w locie przywraca kamerę i zachowuje łup, operacje na aucie.
+- Dwa save/rejoin: zachowane ID/typy/rarity/sloty, Power i wyposażenie. Końcowy świeży klient/serwer bez błędów gry.
+- QA osobno; postęp użytkownika nieresetowany. Emulator i QA wyłączone, Studio Edit, HTTP off.
+- 18 źródeł przez Rojo; pełna kopia lokalna assets/SavedStudio_2026-11-02.rbxlx.
+- Sklep/HUD/hotbar/Rusty Sedan i balans NOT FINAL. Nowy hotbar to jedna próbka do oceny użytkownika.
+- Ograniczenia: fizyczny telefon i wielu graczy niebadane; zapis przed rzutem może wydłużyć oczekiwanie.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration6]].

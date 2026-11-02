@@ -8,6 +8,7 @@ local SoundService = game:GetService("SoundService")
 local ContentProvider = game:GetService("ContentProvider")
 local Config = require(RS.ThrowTickets.Config)
 local Rules = require(RS.ThrowTickets.Rules)
+local CarBuilder = require(RS.ThrowTickets.CarBuilder)
 local Effects = {}
 local overlay = Instance.new("ScreenGui")
 overlay.Name, overlay.ResetOnSpawn, overlay.DisplayOrder = "TicketFXOverlay", false, 20
@@ -71,13 +72,13 @@ function Effects.popup(part: BasePart, text: string, color: Color3, name: string
 	end, function() label:Destroy() end)
 end
 
-local function impact(car: Model, income: number, mine: boolean?)
+local function impact(car: Model, income: number, mine: boolean?, metadata: any)
 	if not car.Parent or not car.PrimaryPart then return end
 	local glass = car:FindFirstChild("Windshield") :: BasePart?
 	local body = car.PrimaryPart
-	local rarity=Config.Rarities[car:GetAttribute("Rarity")or 1]
-	local payoff=if car:GetAttribute("Outcome")=="Sell"then string.format("SOLD $%d",car:GetAttribute("SaleValue")or 0)else string.format("+$%d/s",income)
-	Effects.popup(body,string.format("TICKETED!\n%s\n%s | %s",car:GetAttribute("CarName")or"Car",rarity.Name,payoff),rarity.Color,"TicketedPopup",mine)
+	local rarity=Config.Rarities[if metadata then metadata.Rarity else car:GetAttribute("Rarity")or 1] or Config.Rarities[1]
+	local carName=if metadata then metadata.Name else car:GetAttribute("CarName")or "Car"
+	Effects.popup(body,string.format("TICKETED!\n%s\n%s | $%d/s on plot",carName,rarity.Name,income),rarity.Color,"TicketedPopup",mine)
 	local ping = sound:Clone()
 	ping.Name, ping.Parent = "TicketImpact", SoundService
 	ping:Play()
@@ -102,48 +103,108 @@ local function impact(car: Model, income: number, mine: boolean?)
 			sticker.CFrame = anchor * CFrame.new(0, 0, 0.1) * CFrame.Angles(math.pi / 2, 0, 0)
 		end
 	end, function() sticker:Destroy() end)
-	local start = car:GetPivot()
-	local originalParent = car.Parent
+	-- Bounce a visual copy: the server remains the sole owner of result/tow motion.
+	local visual = car:Clone()
+	visual.Name = "HitBounce"
+	local hidden: {[BasePart]: number} = {}
+	for _, part in car:GetDescendants() do
+		if part:IsA("BasePart") then hidden[part]=part.LocalTransparencyModifier; part.LocalTransparencyModifier=1 end
+	end
+	for _, part in visual:GetDescendants() do
+		if part:IsA("BasePart") then part.Anchored,part.CanCollide,part.CanTouch,part.CanQuery=true,false,false,false end
+	end
+	visual.Parent=folder
 	animate(Config.HitBounceSeconds, function(t)
-		if car.Parent == originalParent then car:PivotTo(start + Vector3.new(0, math.sin(t * math.pi) * Config.HitBounceHeight, 0)) end
-	end, function() if car.Parent == originalParent then car:PivotTo(start) end end)
+		if car.Parent and visual.Parent then visual:PivotTo(car:GetPivot() + Vector3.new(0, math.sin(t * math.pi) * Config.HitBounceHeight, 0)) end
+	end, function()
+		visual:Destroy()
+		for part, value in hidden do if part.Parent then part.LocalTransparencyModifier=value end end
+	end)
 end
 
-function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, income: number, mine: boolean?, metadata: any)
+local impacted: {[string]: boolean} = {}
+-- Returns a cancellation function. Callbacks are isolated so a failed camera cannot leak FX.
+function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, income: number, mine: boolean?, metadata: any, onStep: ((Vector3, number) -> ())?, onComplete: (() -> ())?): () -> ()
 	local world=workspace:FindFirstChild("TicketPrototype")
+	local cars=world and world:FindFirstChild("Cars")
+	local id=if metadata and typeof(metadata.Id)=="string" then metadata.Id else nil
+	local seconds=if metadata and typeof(metadata.FlightSeconds)=="number" then metadata.FlightSeconds else Config.TicketFlightSeconds
+	seconds=math.max(seconds,0.01)
+	local flightStart=if metadata and typeof(metadata.StartTime)=="number" then metadata.StartTime+(metadata.WindupSeconds or Config.ThrowWindupSeconds) else workspace:GetServerTimeNow()
 	local function resolve(): Model?
 		if car and car.Parent and car.PrimaryPart then return car end
-		local found=world and metadata and world:FindFirstChild("Ticketed_"..metadata.Id,true)
+		local found=cars and id and cars:FindFirstChild("Ticketed_"..id)
 		return if found and found:IsA("Model")and found.PrimaryPart then found else nil
 	end
 	local proxy: Model?=nil
-	if not resolve()and metadata and world then
-		for _,template in world.Cars:GetChildren()do
-			if template:IsA("Model")and template.PrimaryPart then
-				proxy=template:Clone();proxy.Name="LandingPreview_"..metadata.Id
-				for _,part in proxy:GetDescendants()do if part:IsA("BasePart")then part.CanCollide,part.CanTouch,part.CanQuery=false,false,false end end
-				proxy:SetAttribute("TicketId",metadata.TicketId);proxy:SetAttribute("CarName",metadata.Name);proxy:SetAttribute("Rarity",metadata.Rarity);proxy:SetAttribute("Outcome",metadata.Outcome);proxy:SetAttribute("SaleValue",metadata.SaleValue)
-				local roof=proxy:FindFirstChild("Roof")::BasePart?;if roof then roof.Color=Config.Rarities[metadata.Rarity].Color end
-				proxy:PivotTo(CFrame.new(metadata.Position));proxy.Parent=folder
-				Debris:AddItem(proxy,Config.TicketFlightSeconds+Config.TowApproachSeconds+Config.TowLoadSeconds+0.1)
-				break
-			end
-		end
-	end
 	local ticket = paper("FlyingTicket",metadata and metadata.TicketId)
-	Debris:AddItem(ticket, Config.TicketFlightSeconds + 0.2)
-	animate(Config.TicketFlightSeconds, function(t)
-		if ticket.Parent then
-			ticket.CFrame = CFrame.new(Rules.arcPoint(origin, destination, t, Rules.arcHeight((destination-origin).Magnitude))) * CFrame.Angles(t * math.pi * 4, t * math.pi * 2, 0)
-		end
-	end, function()
+	Debris:AddItem(ticket,seconds+0.5)
+	local finished=false
+	local connection: RBXScriptConnection?=nil
+	local replicaConnection: RBXScriptConnection?=nil
+	local function clearReplicaWatch()
+		if replicaConnection then replicaConnection:Disconnect();replicaConnection=nil end
+	end
+	local function cancel()
+		if finished then return end
+		finished=true
+		if connection then connection:Disconnect();connection=nil end
+		clearReplicaWatch()
+		ticket:Destroy()
+		if proxy then proxy:Destroy();proxy=nil end
+	end
+	local function complete()
+		if finished then return end
+		finished=true
+		if connection then connection:Disconnect();connection=nil end
 		ticket:Destroy()
 		local target=resolve()
-		if target then
-			if proxy then proxy:Destroy()end
-			impact(target,income,mine)
-		elseif proxy and proxy.Parent then impact(proxy,income,mine)end
+		if target and proxy then proxy:Destroy();proxy=nil end
+		target=target or proxy
+		local ok,err=pcall(function()
+			if target and (not id or not impacted[id]) then
+				if id then impacted[id]=true;task.delay(15,function()impacted[id]=nil end)end
+				impact(target,income,mine,metadata)
+			end
+		end)
+		if not ok then warn("Ticket impact failed: "..tostring(err))end
+		if proxy then
+			-- The fallback only bridges streaming until tow loading, never invents a second reward.
+			local preview=proxy
+			if cars then replicaConnection=cars.ChildAdded:Connect(function(node)
+				if node.Name=="Ticketed_"..tostring(id)then preview:Destroy();clearReplicaWatch()end
+			end)end
+			Debris:AddItem(preview,Config.TowApproachSeconds+Config.TowLoadSeconds+0.1)
+			task.delay(Config.TowApproachSeconds+Config.TowLoadSeconds+0.2,clearReplicaWatch)
+		end
+		if onComplete then local success,message=pcall(onComplete);if not success then warn(message)end end
+	end
+	local function step()
+		if finished then return end
+		local t=math.clamp((workspace:GetServerTimeNow()-flightStart)/seconds,0,1)
+		local target=resolve()
+		if target and proxy then proxy:Destroy();proxy=nil end
+		if not target and not proxy and metadata and typeof(metadata.Position)=="Vector3" then
+			proxy=CarBuilder.create(folder,"LandingPreview_"..tostring(id),metadata,metadata.Position)
+			proxy:SetAttribute("TicketId",metadata.TicketId)
+			for _,part in proxy:GetDescendants()do
+				if part:IsA("BasePart")then part.Anchored,part.CanCollide,part.CanTouch,part.CanQuery=true,false,false,false end
+			end
+		end
+		if proxy and metadata and typeof(metadata.ApproachFrom)=="Vector3" then
+			proxy:PivotTo(CFrame.new(metadata.ApproachFrom:Lerp(metadata.Position,t)))
+		end
+		local point=Rules.arcPoint(origin,destination,t,Rules.arcHeight((destination-origin).Magnitude))
+		ticket.CFrame=CFrame.new(point)*CFrame.Angles(t*math.pi*4,t*math.pi*2,0)
+		if onStep then onStep(point,t)end
+		if t>=1 then complete()end
+	end
+	connection=RunService.PreRender:Connect(function()
+		local ok,err=pcall(step)
+		if not ok then cancel();warn("Ticket flight failed: "..tostring(err));if onComplete then pcall(onComplete)end end
 	end)
+	task.delay(seconds+1,function()if not finished then cancel();if onComplete then pcall(onComplete)end end end)
+	return cancel
 end
 
 local popped = setmetatable({}, {__mode = "k"})

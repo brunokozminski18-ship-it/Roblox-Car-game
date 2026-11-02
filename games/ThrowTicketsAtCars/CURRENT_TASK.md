@@ -1,15 +1,15 @@
-# Current Task — iteracja 4b zakończona
-- Właściciel: Codex; 02.11.2026.
-- Ponowione zlecenie VERIFIED: 12/12 źródeł zgodnych ze Studio, 68 kontroli UI (23+23+22) na osobnym profilu QA; postęp użytkownika zachowany.
-- VERIFIED: emulator iPhone 7 poziomo 666×374, 3 przebiegi stanów sklepu / 65 asercji UI.
-- Sklep: tylko EQUIPPED zielony; dostępny zakup jasny+puls BUY; brak Cash normalny/czerwona cena.
-- Locked: przyciemnienie, kłódka i Buy <previous> first. Duża cena BUY zielona/czerwona, bez +0% luck.
-- HUD: jedna linia Cash/Power/biom + pasek 4 px, całość z marginesem/obrysem 41/374 px (<12%).
-- Przyciski: SHOP/TRAIN/THROW w rzędzie, odstępy 12 px, THROW 132×76, pozostałe 88×52.
-- Niskie tablice przy poboczu; wolny środek drogi potwierdzony do 500 studów.
-- Rusty Sedan v2: 36 części, większa rdza, żółte drzwi, wgnieciony błotnik, krzywy zderzak, mat.
-- Test: zakup/equip, puls, TRAIN +1, THROW 67,5, laweta 2,57 s, obrót kamery 25,34°, 0 błędów gry.
-- Wygląd sklepu/HUD/auta i balans NOT FINAL. Następny krok: ocena użytkownika; brak nowych modeli.
-- Zapis/ekonomia iteracji 4 zachowane; Studio QA key usunięty, emulator/HTTP off, Edit.
-- Lokalna kopia: assets/SavedStudio_2026-11-02.rbxlx; 12 źródeł Rojo.
-- Raport i zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4b]].
+# Current Task — iteracja 6: pełna pętla
+- Właściciel: Codex; 02.11.2026. Status: VERIFIED (Studio, 1 gracz, telefon poziomo + PC).
+- Przyczyna punktu 0: folder, git i Studio nadal miały 4b. Brak implementacji/raportu/commitu iteracji 5; stare Tickets.Multiplier → Rules.distance → opis Shop nadal mnożyły zasięg.
+- Zrobione: [x] reguły/schemat; [x] serwer; [x] ruch/animacja/kamera; [x] hotbar/PLACE/REMOVE/SELL/BACK; [x] telefon+PC/save/rejoin; [x] raport.
+- Zasięg wyłącznie Power; mandaty tylko luck. TRAIN uruchamia ćwiczenie i +1/s, samo stanie nie daje Power.
+- Zamach+lot 2,45 s, laweta 2 s, potem własna działka i auto w ekwipunku. Serwer blokuje rzuty do końca transportu.
+- Schema 2: stare Parking migruje do Cars ze stabilnym ID i Slot; Cash/Power/mandaty zachowane.
+- Zatwierdzony łup zapisywany przed animacją; po przerwaniu sesji zostaje jeden egzemplarz.
+- Limit 20 w ekwipunku + 6 postawionych. Serwer waliduje własność, slot, odległość i pojemność.
+- MY PLOT umożliwia powrót po zapełnieniu ekwipunku; BACK TO ROAD wraca na linię rzutu.
+- Test: 78 asercji reguł/profili; rzeczywiste przyciski, spam, limit, dochód, śmierć w locie i dwa save/rejoin. Końcowy klient/serwer: 0 błędów gry.
+- Profil użytkownika nieresetowany; QA w osobnym kluczu. Kopia przed migracją w assets/PreIteration6_*.json.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration6]].
+- Następny krok: ocena jednej próbki hotbara, fizyczny telefon i test wieloosobowy. Wygląd/balans NOT FINAL.
+- Bez petów, Rebirth, Robux, kradzieży i publikacji.

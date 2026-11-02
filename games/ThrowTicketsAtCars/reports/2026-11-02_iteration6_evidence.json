@@ -1,0 +1,665 @@
+{
+  "date": "2026-11-02",
+  "scope": "Studio single player, phone landscape + PC, isolated QA profile",
+  "specs": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"profile\":\"9 profile safety assertions passed\",\"rules\":\"7 basic assertions passed\",\"loop\":\"62 iteration-6 assertions passed\"}"
+      }
+    ],
+    "isError": false
+  },
+  "serverFinal": {
+    "saved": "saved",
+    "data": {
+      "Cars": {
+        "1": {
+          "Rarity": 2,
+          "Slot": 1,
+          "Id": "e3fc3b3e-6cae-484b-989f-90db22d06750",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "2": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1ff058a2-1049-4ed4-94ac-e6f03fe786c0",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "3": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "7b6e4a5d-6020-4559-a050-f7838024b473",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "4": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "e6ce358c-f9d2-4a81-8eb7-576837394b03",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "5": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "3e6390a8-0671-4e3f-8f2a-cbe610ca4741",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "6": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ef82c6ee-76f1-48b6-bf1d-765031579bad",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "7": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "020e37f7-7b82-4894-b662-ea2b8ea7acb3",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "8": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "bc711959-61dd-4bc4-913f-8db4433b022b",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "9": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "fd7b4073-bc60-4af1-9ff1-7aa8339b2697",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "10": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ea60baac-d83f-4974-b4a8-fa7d515522b4",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "11": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "17b4a58b-7aa5-4b2a-bcb4-f21a45267f42",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "12": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "d2d2e75a-8793-4149-a9fe-eb55d0cd35ff",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "13": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "9f8d6e55-fb8b-4dd5-bd8c-f6760de1a485",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "14": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "50bbd85a-c96a-408b-93d6-a4b7c71b42dd",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "15": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "81c6302b-599e-471e-865e-7b5b766aa20d",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "16": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "943360ef-6763-4d4f-b5dc-b8672ef334da",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "17": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "90928cea-5ee4-4cc2-9038-8d69fb842fb2",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "18": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1f70f086-21d0-4d1d-a5a9-71b022616f73",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "19": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "21407722-37a8-41af-a7cb-d520184dd508",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "20": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "b410d6e3-acce-4abd-bae4-295fd8a5bff9",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        }
+      },
+      "Power": 150,
+      "Owned": {
+        "diamond": true,
+        "gold": true,
+        "parking": true,
+        "paper": true,
+        "court": true,
+        "pink": true
+      },
+      "Equipped": "diamond",
+      "Cash": 298739
+    },
+    "errors": []
+  },
+  "clientFinalErrors": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[]"
+      }
+    ],
+    "isError": false
+  },
+  "beforeRejoin": {
+    "data": {
+      "Cars": {
+        "1": {
+          "Rarity": 2,
+          "Slot": 1,
+          "Id": "e3fc3b3e-6cae-484b-989f-90db22d06750",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "2": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1ff058a2-1049-4ed4-94ac-e6f03fe786c0",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "3": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "7b6e4a5d-6020-4559-a050-f7838024b473",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "4": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "e6ce358c-f9d2-4a81-8eb7-576837394b03",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "5": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "3e6390a8-0671-4e3f-8f2a-cbe610ca4741",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "6": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ef82c6ee-76f1-48b6-bf1d-765031579bad",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "7": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "020e37f7-7b82-4894-b662-ea2b8ea7acb3",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "8": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "bc711959-61dd-4bc4-913f-8db4433b022b",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "9": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "fd7b4073-bc60-4af1-9ff1-7aa8339b2697",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "10": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ea60baac-d83f-4974-b4a8-fa7d515522b4",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "11": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "17b4a58b-7aa5-4b2a-bcb4-f21a45267f42",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "12": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "d2d2e75a-8793-4149-a9fe-eb55d0cd35ff",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "13": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "9f8d6e55-fb8b-4dd5-bd8c-f6760de1a485",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "14": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "50bbd85a-c96a-408b-93d6-a4b7c71b42dd",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "15": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "81c6302b-599e-471e-865e-7b5b766aa20d",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "16": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "943360ef-6763-4d4f-b5dc-b8672ef334da",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "17": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "90928cea-5ee4-4cc2-9038-8d69fb842fb2",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "18": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1f70f086-21d0-4d1d-a5a9-71b022616f73",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "19": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "21407722-37a8-41af-a7cb-d520184dd508",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "20": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "b410d6e3-acce-4abd-bae4-295fd8a5bff9",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        }
+      },
+      "Power": 24,
+      "Owned": {
+        "diamond": true,
+        "gold": true,
+        "parking": true,
+        "paper": true,
+        "court": true,
+        "pink": true
+      },
+      "Equipped": "diamond",
+      "Cash": 296716
+    },
+    "saved": "saved"
+  },
+  "afterRejoin": {
+    "inventory": 19,
+    "placed": 1,
+    "income": 3,
+    "data": {
+      "Cars": {
+        "1": {
+          "Rarity": 2,
+          "Slot": 1,
+          "Id": "e3fc3b3e-6cae-484b-989f-90db22d06750",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "2": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1ff058a2-1049-4ed4-94ac-e6f03fe786c0",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "3": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "7b6e4a5d-6020-4559-a050-f7838024b473",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "4": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "e6ce358c-f9d2-4a81-8eb7-576837394b03",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "5": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "3e6390a8-0671-4e3f-8f2a-cbe610ca4741",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "6": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ef82c6ee-76f1-48b6-bf1d-765031579bad",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "7": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "020e37f7-7b82-4894-b662-ea2b8ea7acb3",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "8": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "bc711959-61dd-4bc4-913f-8db4433b022b",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "9": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "fd7b4073-bc60-4af1-9ff1-7aa8339b2697",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "10": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ea60baac-d83f-4974-b4a8-fa7d515522b4",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "11": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "17b4a58b-7aa5-4b2a-bcb4-f21a45267f42",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "12": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "d2d2e75a-8793-4149-a9fe-eb55d0cd35ff",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "13": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "9f8d6e55-fb8b-4dd5-bd8c-f6760de1a485",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "14": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "50bbd85a-c96a-408b-93d6-a4b7c71b42dd",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "15": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "81c6302b-599e-471e-865e-7b5b766aa20d",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "16": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "943360ef-6763-4d4f-b5dc-b8672ef334da",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "17": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "90928cea-5ee4-4cc2-9038-8d69fb842fb2",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "18": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1f70f086-21d0-4d1d-a5a9-71b022616f73",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "19": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "21407722-37a8-41af-a7cb-d520184dd508",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "20": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "b410d6e3-acce-4abd-bae4-295fd8a5bff9",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        }
+      },
+      "Power": 24,
+      "Owned": {
+        "diamond": true,
+        "gold": true,
+        "parking": true,
+        "paper": true,
+        "court": true,
+        "pink": true
+      },
+      "Equipped": "diamond",
+      "Cash": 297502
+    }
+  },
+  "finalRejoin": {
+    "placed": 1,
+    "income": 3,
+    "inventory": 19,
+    "data": {
+      "Cars": {
+        "1": {
+          "Rarity": 2,
+          "Slot": 1,
+          "Id": "e3fc3b3e-6cae-484b-989f-90db22d06750",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "2": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1ff058a2-1049-4ed4-94ac-e6f03fe786c0",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "3": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "7b6e4a5d-6020-4559-a050-f7838024b473",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "4": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "e6ce358c-f9d2-4a81-8eb7-576837394b03",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "5": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "3e6390a8-0671-4e3f-8f2a-cbe610ca4741",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "6": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ef82c6ee-76f1-48b6-bf1d-765031579bad",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "7": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "020e37f7-7b82-4894-b662-ea2b8ea7acb3",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "8": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "bc711959-61dd-4bc4-913f-8db4433b022b",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "9": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "fd7b4073-bc60-4af1-9ff1-7aa8339b2697",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "10": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "ea60baac-d83f-4974-b4a8-fa7d515522b4",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "11": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "17b4a58b-7aa5-4b2a-bcb4-f21a45267f42",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "12": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "d2d2e75a-8793-4149-a9fe-eb55d0cd35ff",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "13": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "9f8d6e55-fb8b-4dd5-bd8c-f6760de1a485",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "14": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "50bbd85a-c96a-408b-93d6-a4b7c71b42dd",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "15": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "81c6302b-599e-471e-865e-7b5b766aa20d",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "16": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "943360ef-6763-4d4f-b5dc-b8672ef334da",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "17": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "90928cea-5ee4-4cc2-9038-8d69fb842fb2",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "18": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "1f70f086-21d0-4d1d-a5a9-71b022616f73",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "19": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "21407722-37a8-41af-a7cb-d520184dd508",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "20": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "b410d6e3-acce-4abd-bae4-295fd8a5bff9",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        }
+      },
+      "Power": 150,
+      "Owned": {
+        "diamond": true,
+        "gold": true,
+        "parking": true,
+        "paper": true,
+        "court": true,
+        "pink": true
+      },
+      "Equipped": "diamond",
+      "Cash": 299210
+    },
+    "ready": true
+  },
+  "exactFinalCars": true,
+  "limitations": [
+    "No physical phone or multiplayer test",
+    "Visuals and balance NOT FINAL"
+  ]
+}

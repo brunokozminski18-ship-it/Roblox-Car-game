@@ -1,6 +1,6 @@
 --!strict
 local Config = require(game:GetService("ReplicatedStorage").ThrowTickets.Config)
-local RustySedan=require(script.Parent.RustySedan)
+local CarBuilder=require(game.ReplicatedStorage.ThrowTickets.CarBuilder)
 local World = {}
 function World.part(parent: Instance,name: string,size: Vector3,position: Vector3,color: Color3): Part
 	local p=Instance.new("Part")
@@ -21,19 +21,7 @@ function World.label(parent: BasePart,text: string,offset: number?)
 	t.Parent,gui.Parent=gui,parent
 	return gui
 end
-function World.car(parent: Instance,name: string,reward: any,position: Vector3): Model
-	local m=Instance.new("Model");m.Name=name;m.ModelStreamingMode=Enum.ModelStreamingMode.Persistent
-	local body=World.part(m,"Body",Config.CarSize,position,Color3.fromRGB(145,145,145))
-	World.part(m,"Roof",Config.RoofSize,position+Vector3.new(0,Config.RoofOffset,0),Config.Rarities[reward.Rarity].Color)
-	local glass=World.part(m,"Windshield",Config.WindshieldSize,position+Vector3.new(0,Config.RoofOffset,Config.WindshieldFront),Color3.fromRGB(135,157,170))
-	glass.Material=Enum.Material.Glass
-	if reward.Name=="Rusty Sedan"then RustySedan.decorate(m,World.part,position)end
-	for _,p in m:GetChildren() do if p:IsA("BasePart") then p.CanCollide=false end end
-	m.PrimaryPart=body
-	m:SetAttribute("CarName",reward.Name);m:SetAttribute("Rarity",reward.Rarity);m:SetAttribute("Biome",reward.Biome);m:SetAttribute("Income",reward.Income)
-	m.Parent=parent
-	return m
-end
+World.car=CarBuilder.create
 function World.viewPosition(biome: number,slot: number): Vector3
 	local start=Config.Biomes[biome].MinPower
 	local finish=if Config.Biomes[biome+1] then Config.Biomes[biome+1].MinPower else Config.MapEnd
@@ -98,14 +86,14 @@ function World.build(biomeCount: number?): Folder
 	World.part(root,"StartApron",Vector3.new(Config.GroundWidth,1,Config.MapPadding),Vector3.new(0,-0.55,Config.MapPadding/2),Config.Biomes[1].Color)
 	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(225,225,225))
 	local train=World.part(root,"TrainingPad",Config.TrainingSize,Config.TrainingPosition,Color3.fromRGB(120,135,120))
-	World.label(train,string.format("TRAIN +%d POWER / s",Config.TrainGain),1)
+	World.label(train,string.format("TRAIN: ARM RAISES +%d / s",Config.TrainGain),1)
 	local spawn=Instance.new("SpawnLocation");spawn.Name="PrototypeSpawn";spawn.Anchored,spawn.Neutral=true,true
 	spawn.Size,spawn.Position=Config.SpawnSize,Config.SpawnPosition;spawn.Transparency,spawn.CanCollide,spawn.Duration=1,false,0;spawn.Parent=root
 	root.Parent=workspace
 	return root
 end
 function World.parking(root: Folder,plot: number,ownerId: number,displayName: string): (Folder,{Vector3})
-	local f=Instance.new("Folder");f.Name=tostring(ownerId);f.Parent=root.Parking
+	local f=Instance.new("Folder");f.Name=tostring(ownerId);f:SetAttribute("OwnerId",ownerId);f.Parent=root.Parking
 	local origin=Config.ParkingOrigin-Vector3.new((plot-1)*Config.PlayerPlotSpacing,0,0)
 	World.part(f,"ParkingGround",Vector3.new(27,1,40),origin-Vector3.new(5.5,0.55,12),Color3.fromRGB(130,130,130))
 	local positions={}
@@ -113,7 +101,7 @@ function World.parking(root: Folder,plot: number,ownerId: number,displayName: st
 		local pos=origin-Vector3.new((i-1)%Config.ParkingColumns*Config.ParkingSpacing.X,0,math.floor((i-1)/Config.ParkingColumns)*Config.ParkingSpacing.Z)
 		positions[i]=pos+Vector3.new(0,Config.CarHeight,0)
 		local part=World.part(f,"Slot"..i,Vector3.new(9,0.2,10),pos,Color3.fromRGB(178,178,178))
-		part:SetAttribute("PromisedIncome",0);part:SetAttribute("ActiveIncome",0)
+		part:SetAttribute("OwnerId",ownerId);part:SetAttribute("ActiveIncome",0)
 	end
 	World.label(f.Slot1,displayName.."'s parking",7).MaxDistance=45
 	return f,positions

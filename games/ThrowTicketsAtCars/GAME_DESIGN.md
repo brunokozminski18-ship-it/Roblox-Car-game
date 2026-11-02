@@ -1,47 +1,24 @@
-# THROW TICKETS AT CARS! — obecny design
-- Pętla: THROW → losowanie auta w biomie → mandat/laweta → parking lub sprzedaż → TRAIN / ticket upgrade → dalszy biom.
-- Rzut z białej linii, wzdłuż drogi; kierunek kamery i postaci nie zmienia wyniku.
-- Serwer liczy dystans = min(Power × equipped ticket, 3200), biom, losowanie, waluty i własność.
-
-## Mandaty — Config, balans NOT FINAL
-| Mandat | Cena Cash | Zasięg × | Bonus wag Rare+ |
-| --- | --- | --- | --- |
-| Paper Ticket | 0 | 1 | 0% |
-| Pink Slip | 100 | 2,5 | 5% |
-| Parking Fine | 1200 | 7 | 10% |
-| Court Summons | 12000 | 18 | 15% |
-| Golden Ticket | 90000 | 45 | 20% |
-| Diamond Ticket | 600000 | 110 | 25% |
-- Zakupy po kolei, raz; wyposażanie dowolnego posiadanego. BUY nie wyposaża automatycznie.
-- Luck mnoży wyłącznie wagi Rare/Epic/Legendary przez 1+bonus, potem normalizacja.
-- SHOP pulsuje, gdy stać na następny mandat; menu otwiera listę przy następnym celu.
-- Stany wierszy: tylko EQUIPPED zielony; affordable jasny/puls BUY; unaffordable niebieski/cena czerwona; locked ciemny/kłódka/warunek.
-- SHOP, TRAIN i największy THROW w rzędzie pod kciukiem; pasek HUD poniżej 12% wysokości telefonu.
-
-## Biomy i auta
-| Biom | Minimalny dystans | Pula |
-| --- | --- | --- |
-| Junkyard | 0 | Rusty Sedan, Old Van, Broken Pickup |
-| Suburbs | 50 | Family Car, Minivan, Hatchback |
-| Downtown | 150 | Taxi, Police Cruiser, Limo |
-| Sports Track | 400 | Sports Coupe, Rally Car, Muscle Car |
-| Luxury Classics | 1000 | Vintage Roadster, Gold-Trim Classic |
-| Hypercar Island | 2500 | Hypercar, Golden Hypercar, Rocket Car |
-- 4 auta widokowe na biom, odnawiane; niskie tablice przy poboczu, jeden najbliższy napis, chowany pod HUD.
-- Jedyna próbka modelu: Rusty Sedan v2 z 36 części; pozostałe auta szare. Próbka NOT FINAL.
-- Rzadkości bazowe Common/Rare/Epic/Legendary: wagi 70/22/7/1; mnożniki dochodu 1/3/8/20.
-- Dochód = BaseIncome biomu × rzadkość; nazwa auta z puli wybranego biomu.
-
-## Parking i zapis
-- 6 miejsc. Lepsze wymienia najsłabsze; stare zarabia do dostawy. Token odrzuca starą dostawę.
-- Słabsze/równe sprzedawane za 10 sekund dochodu; Cash zapisany od razu, laweta kosmetyczna w tle.
-- Cash, Power, Owned, Equipped i Parking zapisane w jednym profilu Schema 1 z blokadą sesji.
-- Pending auto zapisane jako obiecany stan miejsca i odtwarzane jako zaparkowane.
-- Bez dochodu offline. Studio używa osobnego magazynu _STUDIO, nie magazynu live.
-
-## Prezentacja i granice
-- HUD: jedna linia Cash/Power/biom i cienki pasek postępu; kamera standardowa, rzuty jej nie przejmują.
-- Mandat w kolorze wyposażonego typu, łuk/obrót, TICKETED, dźwięk, pop i +1 Power.
-- Próbka sklepu styl D i Rusty Sedan: NOT FINAL, czekają na ocenę.
-- Bez petów, Rebirth, Robux, innych modeli i publikacji.
-Źródła: LihFolk Vault V2 (CC BY 4.0), playbook/ARCHITECTURE, ECONOMY, UI_STYLE, MOBILE_UI.
+# THROW TICKETS AT CARS! — iteracja 6
+- USER APPROVED 02.11.2026: Mandaty NIE zmieniają zasięgu; dają tylko szansę na lepsze auto w biomie.
+- USER APPROVED 02.11.2026: Pętla: rzut z animacją → trafienie w jadące auto → laweta → teleport na działkę → auto w ekwipunku (postaw / sprzedaj / zostaw).
+- Power rośnie tylko podczas ćwiczeń TRAIN (+1/s w Config). Dystans=min(Power,koniec mapy).
+- Serwer ustala biom i losuje rzadkość + nazwę z jego puli. Mandaty modyfikują tylko wagi Rare+.
+- 6 mandatów i ceny zachowane: Paper/Pink/Parking/Court/Golden/Diamond. Sklep pokazuje tylko odds/luck.
+- Rzut: 0,45 s zamachu + 2 s lotu łukiem; kamera podąża, potem wraca do standardowej.
+- Serwer ma stan throwing do końca transportu. GUI wyszarza THROW; spam nie tworzy drugiego łupu.
+- Auta pokazowe jadą po stałych pasach bez fizyki; wynik jest osobnym autem dokładnie wylosowanego typu.
+- Trafienie: mandat na szybie, TICKETED!, nazwa/kolor rzadkości; laweta ok. 2 s.
+- Po transporcie teleport na własną działkę, auto trafia do własnego hotbara.
+- Działka: 6 miejsc. Wybierz auto, podejdź do miejsca, PLACE; postawione daje dochód co sekundę.
+- REMOVE oddaje auto do ekwipunku; SELL sprzedaje niepostawione. Bez automatycznej podmiany/sprzedaży.
+- Limit ekwipunku 20 (postawione auta poza limitem); pełny blokuje rzut/zdjęcie auta. Wszystkie limity w Config.
+- BACK TO ROAD teleportuje z własnej działki na linię rzutu; MY PLOT umożliwia powrót bez łapania auta. Auto można zostawić w hotbarze.
+- Serwer trzyma ID/typ/rarity/slot każdego auta; klient nie decyduje o własności, wypłacie i stawianiu.
+- Schema 2 migruje stare zaparkowane auta do tej samej własności/slotu; zachowuje Cash, Power i mandaty.
+- Zatwierdzony łup rezerwowany i trwale zapisywany przed animacją; po przerwaniu sesji pozostaje jeden egzemplarz w ekwipunku.
+- Jeden writer Profiles, lease+token, autosave/leave/shutdown; osobny magazyn Studio. Bez dochodu offline.
+- Biomy: Junkyard 0, Suburbs 50, Downtown 150, Sports Track 400, Luxury Classics 1000, Hypercar Island 2500.
+- Klockowa mapa, boczne tablice, tylko Rusty Sedan v2 jako model-próbka; inne auta proste.
+- Nowy hotbar i istniejący sklep/HUD: NOT FINAL. Balans cen i tempa treningu NOT FINAL.
+- Bez petów, Rebirth, Robux, kradzieży i publikacji.
+Źródło zasad implementacji: LihFolk Vault V2 (CC BY 4.0), playbook/ARCHITECTURE.

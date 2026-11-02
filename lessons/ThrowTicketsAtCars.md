@@ -25,3 +25,10 @@
 - Iteracja 4b: zielony powinien jednoznacznie znaczyć EQUIPPED, nie wszystkie posiadane rzeczy; kolor ceny i jawny poprzednik wyjaśniają zakup bez samouczka.
 - Iteracja 4b: puls zakupu animuje kolor, naciskanie skalę; dwie animacje tej samej skali mogłyby się anulować. Wspólny Style utrzymuje zgodność HUD i sklepu.
 - Iteracja 4b: liczymy wysokość HUD z marginesem i obrysem (41/374 px), nie same etykiety; boczne tablice otwierają widok dalszych biomów.
+
+- Iteracja 6: najpierw porównaj folder, git i Studio; napis x2.5 wynikał z braku całej iteracji 5, nie tylko starego UI.
+- Iteracja 6: stabilne ID i jeden rekord auta z Slot=0 lub numerem miejsca upraszczają własność, zapis i odporność na powtórzoną sprzedaż.
+- Iteracja 6: rezerwacja pojemności i trwały zapis przed animacją utrzymują jeden łup po przerwaniu sesji; kosztem jest opóźnienie backendu przed rzutem.
+- Iteracja 6: pełny ekwipunek wymaga niezależnego powrotu na działkę (MY PLOT), inaczej blokada rzutu odcina jedyną drogę do sprzedaży.
+- Iteracja 6: kamera filmowa potrzebuje ścieżki anulowania przy śmierci/odrodzeniu. W PC zabicie w locie przywróciło Custom i nowy Humanoid bez utraty łupu.
+- Iteracja 6: 78 asercji i Studio telefon/PC potwierdzają mechanikę; nie dowodzą zabawy, działania na urządzeniu ani izolacji działek wielu graczy.

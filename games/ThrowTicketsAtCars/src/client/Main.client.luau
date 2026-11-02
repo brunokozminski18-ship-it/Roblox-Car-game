@@ -8,6 +8,8 @@ local Config=require(RS.ThrowTickets.Config)
 local Rules=require(RS.ThrowTickets.Rules)
 local Effects=require(script.Parent.Effects)
 local ShopUI=require(script.Parent.Shop)
+local Cinematics=require(script.Parent.Cinematics)
+local Exercises=require(script.Parent.Exercises)
 local p=Players.LocalPlayer
 local remotes=RS.ThrowTickets:WaitForChild("Remotes")
 local Throw=remotes:WaitForChild("Throw")::RemoteEvent
@@ -20,11 +22,12 @@ local cash=p:WaitForChild("leaderstats"):WaitForChild("Cash")::IntValue
 local hud=require(script.Parent.HUD).mount(p:WaitForChild("PlayerGui"))
 local gui,throwButton,trainButton,message=hud.gui,hud.throw,hud.train,hud.message
 local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedback,hud.shop)
+local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("Travel")::RemoteEvent)
+Exercises.mount();require(script.Parent.Traffic).mount(world)
 local lastThrow=-math.huge
 local function throw()
-	if shop.isOpen()or not p:GetAttribute("DataReady")or os.clock()-lastThrow<Config.ThrowCooldown then return end
-	lastThrow=os.clock();throwButton.Text="THROW!"
-	task.delay(Config.RequestInterval,function()throwButton.Text="THROW"end)
+	if shop.isOpen()or p:GetAttribute("Throwing")or p:GetAttribute("Location")=="Plot"or not p:GetAttribute("DataReady")or os.clock()-lastThrow<Config.ThrowCooldown then return end
+	lastThrow=os.clock()
 	-- No direction, power, biome or reward is supplied by this client.
 	Throw:FireServer()
 end
@@ -39,23 +42,25 @@ Feedback.OnClientEvent:Connect(function(text: string)
 	task.delay(Config.MessageSeconds,function()if version==current then message.Text="";message.Visible=false end end)
 end)
 Ticket.OnClientEvent:Connect(function(origin: Vector3,destination: Vector3,car: Model?,owner: number,income: number,metadata: any)
-	Effects.flight(origin,destination,car,income,owner==p.UserId,metadata)
+	Cinematics.play(origin,destination,car,owner,income,metadata)
 end)
 Effects.watchParking(world:WaitForChild("Parking"));Effects.watchTows(world:WaitForChild("Tows"))
 local previousPower=p:GetAttribute("ThrowPower")or Config.StartPower
 local function updateStats()
  hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("Training")==true)
+ hud.mode(p:GetAttribute("Location")or "Road",p:GetAttribute("Throwing")==true,p:GetAttribute("ThrowPhase")or "Idle")
 end
 p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
 	local power=p:GetAttribute("ThrowPower")or 0;local gain=power-previousPower;previousPower=power;updateStats()
 	local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")::BasePart?
 	if gain>0 and gain<=Config.TrainGain and root then Effects.popup(root,string.format("+%d Power",gain),Color3.fromRGB(140,210,255),"PowerPopup")end
 end)
-for _,attr in {"Training","ParkingUsed","EquippedTicket"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
+for _,attr in {"Training","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
 cash.Changed:Connect(updateStats);updateStats()
--- PlayerModule remains the sole camera controller. Throws never take it over.
+-- Default camera outside a bounded throw cinematic; Cinematics restores on every exit.
 local function restoreCamera(character: Model)
 	local h=character:WaitForChild("Humanoid")::Humanoid;local root=character:WaitForChild("HumanoidRootPart")::BasePart
+	Cinematics.cancel()
 	local camera=workspace.CurrentCamera;p.CameraMode=Enum.CameraMode.Classic
 	p.CameraMinZoomDistance,p.CameraMaxZoomDistance=Config.CameraMinZoom,Config.CameraMaxZoom
 	UIS.MouseBehavior=Enum.MouseBehavior.Default;h.CameraOffset=Config.CameraFocusOffset

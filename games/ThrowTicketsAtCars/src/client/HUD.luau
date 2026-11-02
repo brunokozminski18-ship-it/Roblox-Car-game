@@ -37,9 +37,9 @@ function HUD.mount(parent: Instance): any
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize()
  return {gui=gui,top=top,throw=throw,train=train,shop=shop,message=message,
   render=function(cash: number,power: number,equipped: string?,training: boolean)
-   local distance=Rules.distance(power,equipped);local b=Config.Biomes[Rules.biome(distance)]
+   local distance=Rules.distance(power);local b=Config.Biomes[Rules.biome(distance)]
    stats.Text=string.format('CASH <font color="#B2FFAD">$%s</font>  |  POWER <font color="#FFF2A6">%s</font>  |  %s',short(cash),short(power),b.Name:upper())
-   local nextIndex,need=Rules.nextBiome(power,equipped)
+   local nextIndex,need=Rules.nextBiome(power)
    if nextIndex then
     local nextBiome=Config.Biomes[nextIndex];fill.Size=UDim2.fromScale(math.clamp((distance-b.MinPower)/(nextBiome.MinPower-b.MinPower),0,1),1)
     track:SetAttribute("NextBiome",nextBiome.Name);track:SetAttribute("NeedPower",need)
@@ -47,6 +47,13 @@ function HUD.mount(parent: Instance): any
    train.Text=if training then "TRAIN ON"else string.format("TRAIN +%d",Config.TrainGain)
    local gradient=train:FindFirstChildOfClass("UIGradient")::UIGradient
    gradient.Color=if training then ColorSequence.new(Color3.fromHex("8CF27C"),Color3.fromHex("22B24A"))else ColorSequence.new(Color3.fromHex("D98BFF"),Color3.fromHex("7B2BE6"))
+  end,
+  mode=function(location: string,throwing: boolean,phase: string)
+   local road=location~="Plot";throw.Visible,train.Visible,shop.Visible=road,road,road
+   throw.Active,train.Active,shop.Active=not throwing,not throwing,not throwing
+   throw.Text=if throwing then (if phase=="Tow"then "TOWING..."else "THROWING...")else "THROW"
+   throw.TextSize=if throwing then 18 else 27
+   local g=throw:FindFirstChildOfClass("UIGradient")::UIGradient;g.Color=if throwing then ColorSequence.new(Color3.fromHex("8995A8"),Color3.fromHex("56627A"))else ColorSequence.new(Color3.fromHex("FFF4A0"),Color3.fromHex("FFD24A"))
   end}
 end
 return HUD

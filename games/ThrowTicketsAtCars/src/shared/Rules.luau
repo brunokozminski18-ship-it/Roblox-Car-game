@@ -8,19 +8,24 @@ function Rules.ticket(id: any): (any,number)
 	for i,t in Config.Tickets do if t.Id==id then return t,i end end
 	return Config.Tickets[1],1
 end
-function Rules.distance(power: number,ticketId: string?): number
-	return if Rules.finiteNumber(power) then math.clamp(power*Rules.ticket(ticketId).Multiplier,0,Config.MapEnd) else 0
+function Rules.distance(power: number): number
+	return if Rules.finiteNumber(power) then math.clamp(power,0,Config.MapEnd) else 0
 end
 function Rules.biome(distance: number): number
 	local index=1
 	for i,data in Config.Biomes do if distance>=data.MinPower then index=i else break end end
 	return index
 end
-function Rules.nextBiome(power: number,ticketId: string?): (number?,number?)
-	local multiplier=Rules.ticket(ticketId).Multiplier
-	local current=Rules.biome(Rules.distance(power,ticketId))
-	local nextBiome=Config.Biomes[current+1]
-	return if nextBiome then current+1 else nil, if nextBiome then math.max(0,math.ceil(nextBiome.MinPower/multiplier)-power) else nil
+function Rules.nextBiome(power: number): (number?,number?)
+ local nextIndex=Rules.biome(Rules.distance(power))+1;local b=Config.Biomes[nextIndex]
+ return if b then nextIndex else nil, if b then math.max(0,b.MinPower-power)else nil
+end
+function Rules.trafficPosition(biome: number,slot: number,time: number): CFrame
+ local start=Config.Biomes[biome].MinPower+9
+ local finish=(if Config.Biomes[biome+1]then Config.Biomes[biome+1].MinPower else Config.MapEnd)-9
+ local span=math.max(1,finish-start);local progress=(time*Config.TrafficSpeed+slot*11)%span
+ local forward=slot%2==1;local distance=start+(if forward then span-progress else progress)
+ return CFrame.new(if forward then -Config.TrafficLaneX else Config.TrafficLaneX,Config.CarHeight,-distance)*CFrame.Angles(0,if forward then 0 else math.pi,0)
 end
 function Rules.rarityWeights(ticketId: string): any
 	local luck=Rules.ticket(ticketId).Luck;local out={}
@@ -63,15 +68,6 @@ function Rules.reward(biome: number, rarity: number, car: number): any
 end
 function Rules.salePrice(income: number): number
 	return math.floor(income*Config.SaleIncomeSeconds)
-end
-function Rules.planParking(incomes: {[number]:number}, income: number): (string,number?)
-	local weakest: number?=nil
-	for i=1,Config.ParkingSlots do
-		if incomes[i]==nil then return "Add",i end
-		if weakest==nil or incomes[i]<incomes[weakest] then weakest=i end
-	end
-	if weakest and income>incomes[weakest] then return "Upgrade",weakest end
-	return "Sell",nil
 end
 function Rules.arcPoint(origin: Vector3, destination: Vector3, t: number, height: number): Vector3
 	return origin:Lerp(destination,t)+Vector3.new(0,height*4*t*(1-t),0)
