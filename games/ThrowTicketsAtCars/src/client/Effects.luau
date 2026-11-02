@@ -31,11 +31,11 @@ local function animate(seconds: number, update: (number) -> (), complete: (() ->
 	end)
 end
 
-local function paper(name: string): Part
+local function paper(name: string,ticketId: string?): Part
 	local part = Instance.new("Part")
 	part.Name, part.Size = name, Config.TicketSize
 	part.Anchored, part.CanCollide, part.CanTouch, part.CanQuery = true, false, false, false
-	part.Material, part.Color = Enum.Material.SmoothPlastic, Color3.fromRGB(255, 244, 166)
+	part.Material, part.Color = Enum.Material.SmoothPlastic, Rules.ticket(ticketId).Color
 	part.Parent = folder
 	return part
 end
@@ -87,7 +87,7 @@ local function impact(car: Model, income: number, mine: boolean?)
 	highlight.FillColor, highlight.OutlineColor = Color3.fromRGB(255, 70, 50), Color3.fromRGB(255, 70, 50)
 	highlight.FillTransparency, highlight.Parent = 0.65, car
 	Debris:AddItem(highlight, Config.StickerSeconds)
-	local sticker = paper("StuckTicket")
+	local sticker = paper("StuckTicket",car:GetAttribute("TicketId"))
 	local surface = Instance.new("SurfaceGui")
 	surface.Active = false
 	surface.Face, surface.CanvasSize = Enum.NormalId.Top, Vector2.new(160, 210)
@@ -122,7 +122,7 @@ function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, inco
 			if template:IsA("Model")and template.PrimaryPart then
 				proxy=template:Clone();proxy.Name="LandingPreview_"..metadata.Id
 				for _,part in proxy:GetDescendants()do if part:IsA("BasePart")then part.CanCollide,part.CanTouch,part.CanQuery=false,false,false end end
-				proxy:SetAttribute("CarName",metadata.Name);proxy:SetAttribute("Rarity",metadata.Rarity);proxy:SetAttribute("Outcome",metadata.Outcome);proxy:SetAttribute("SaleValue",metadata.SaleValue)
+				proxy:SetAttribute("TicketId",metadata.TicketId);proxy:SetAttribute("CarName",metadata.Name);proxy:SetAttribute("Rarity",metadata.Rarity);proxy:SetAttribute("Outcome",metadata.Outcome);proxy:SetAttribute("SaleValue",metadata.SaleValue)
 				local roof=proxy:FindFirstChild("Roof")::BasePart?;if roof then roof.Color=Config.Rarities[metadata.Rarity].Color end
 				proxy:PivotTo(CFrame.new(metadata.Position));proxy.Parent=folder
 				Debris:AddItem(proxy,Config.TicketFlightSeconds+Config.TowApproachSeconds+Config.TowLoadSeconds+0.1)
@@ -130,7 +130,7 @@ function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, inco
 			end
 		end
 	end
-	local ticket = paper("FlyingTicket")
+	local ticket = paper("FlyingTicket",metadata and metadata.TicketId)
 	Debris:AddItem(ticket, Config.TicketFlightSeconds + 0.2)
 	animate(Config.TicketFlightSeconds, function(t)
 		if ticket.Parent then

@@ -1,7 +1,8 @@
 # Błędy i ograniczenia
-- VERIFIED 02.11.2026: obrót Touch i PC oraz zoom, napisy i pasywne SurfaceGui — końcowy smoke Studio.
-- Błędów gry nie odnotowano. VirtualInput odrzucił jeden testowy klik w obszar nakładki CaptureControls; klik lewej części TRAIN działał.
-- NOT FINAL: +1 Power/s oznacza ok. 41 minut do Hypercar Island; tempo do balansu.
-- Cash nadal nie ma wydatków; metagra poza zakresem.
-- Multiplayer i fizyczny telefon nieprzetestowane.
-- Dalekie modele: metadane i lokalny podgląd obsługują opóźnione wczytanie; Persistent dla bram, aut i lawet.
+- Błędów gry nie odnotowano w końcowych testach 02.11.2026.
+- NOT FINAL: wygląd sklepu, próbka Rusty Sedan, ceny/mnożniki i czas do kolejnego zakupu.
+- Fizyczny telefon, duża liczba graczy i awaria prawdziwego backendu nieprzetestowane.
+- Błędy backendu, utrata lease i niejednoznaczny zapis testowane przez wstrzyknięty magazyn.
+- Przy awarii serwera lub nieudanym finalnym zapisie może obowiązywać lease do 90 s; gracz dostaje jasny komunikat.
+- Studio VirtualInput może odrzucić klik w nakładkę CaptureControls; klik lewej części przycisku działał.
+- Studio zgłaszało ostrzeżenia pluginu i systemowego assetu avatara 203785492; brak MessageError gry.

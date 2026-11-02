@@ -7,6 +7,7 @@ local GuiService=game:GetService("GuiService")
 local Config=require(RS.ThrowTickets.Config)
 local Rules=require(RS.ThrowTickets.Rules)
 local Effects=require(script.Parent.Effects)
+local ShopUI=require(script.Parent.Shop)
 local p=Players.LocalPlayer
 local remotes=RS.ThrowTickets:WaitForChild("Remotes")
 local Throw=remotes:WaitForChild("Throw")::RemoteEvent
@@ -39,7 +40,8 @@ track.AnchorPoint,track.Position=Vector2.new(0.5,0),UDim2.new(0.5,0,0,104)
 track.BorderSizePixel,track.BackgroundColor3,track.Active=0,Color3.fromRGB(35,35,35),false;track.Parent=gui
 local fill=Instance.new("Frame");fill.Name="Fill";fill.Size=UDim2.fromScale(0,1)
 fill.BorderSizePixel,fill.BackgroundColor3,fill.Active=0,Color3.fromRGB(255,213,80),false;fill.Parent=track
-local message=label("Message",UDim2.new(0.7,0,0,28),UDim2.new(0.15,0,1,-32),"THROW! Distance = Power")
+local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedback)
+local message=label("Message",UDim2.new(0.7,0,0,28),UDim2.new(0.15,0,1,-32),"THROW! Distance = Power x Ticket")
 message.TextSize=15
 local function button(name: string,size: Vector2,pos: UDim2): TextButton
 	local b=Instance.new("TextButton");b.Name,b.Text,b.Size,b.Position=name,name:upper(),UDim2.fromOffset(size.X,size.Y),pos
@@ -58,7 +60,7 @@ end
 gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(responsive);responsive()
 local lastThrow=-math.huge
 local function throw()
-	if os.clock()-lastThrow<Config.ThrowCooldown then return end
+	if shop.isOpen()or not p:GetAttribute("DataReady")or os.clock()-lastThrow<Config.ThrowCooldown then return end
 	lastThrow=os.clock();throwButton.Text,throwButton.BackgroundColor3="THROW!",Color3.fromRGB(255,224,110)
 	task.delay(Config.RequestInterval,function()throwButton.Text,throwButton.BackgroundColor3="THROW",Color3.fromRGB(225,230,235)end)
 	-- No direction, power, biome or reward is supplied by this client.
@@ -72,7 +74,7 @@ end)
 local version=0
 Feedback.OnClientEvent:Connect(function(text: string)
 	version+=1;local current=version;message.Text=text
-	task.delay(Config.MessageSeconds,function()if version==current then message.Text="THROW! Distance = Power"end end)
+	task.delay(Config.MessageSeconds,function()if version==current then message.Text="THROW! Distance = Power x Ticket"end end)
 end)
 Ticket.OnClientEvent:Connect(function(origin: Vector3,destination: Vector3,car: Model?,owner: number,income: number,metadata: any)
 	Effects.flight(origin,destination,car,income,owner==p.UserId,metadata)
@@ -85,16 +87,16 @@ local function short(n: number): string
 end
 local previousPower=p:GetAttribute("ThrowPower")or Config.StartPower
 local function updateStats()
-	local power=p:GetAttribute("ThrowPower")or 0;local distance=Rules.distance(power)
+	local power=p:GetAttribute("ThrowPower")or 0;local equipped=p:GetAttribute("EquippedTicket");local distance=Rules.distance(power,equipped)
 	local index=Rules.biome(distance);local b=Config.Biomes[index]
 	cashLabel.Text="CASH $"..short(cash.Value);powerLabel.Text="POWER "..short(power)
 	biomeLabel.Text=string.format("%s | %d STUDS",b.Name:upper(),distance)
 	biomeLabel.TextColor3=b.Color:Lerp(Color3.new(1,1,1),0.65)
-	local nextIndex,need=Rules.nextBiome(power)
+	local nextIndex,need=Rules.nextBiome(power,equipped)
 	if nextIndex then
 		local nextBiome=Config.Biomes[nextIndex]
 		nextLabel.Text=string.format("Next biome: %s - need %d Power",nextBiome.Name,need)
-		fill.Size=UDim2.fromScale(math.clamp((power-b.MinPower)/(nextBiome.MinPower-b.MinPower),0,1),1)
+		fill.Size=UDim2.fromScale(math.clamp((distance-b.MinPower)/(nextBiome.MinPower-b.MinPower),0,1),1)
 	else nextLabel.Text=string.format("MAX BIOME | Road limit: %d studs",Config.MapEnd);fill.Size=UDim2.fromScale(1,1)end
 	trainButton.Text=if p:GetAttribute("Training")then"TRAIN: ON"else string.format("TRAIN +%d",Config.TrainGain)
 end
@@ -103,7 +105,7 @@ p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
 	local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")::BasePart?
 	if gain>0 and gain<=Config.TrainGain and root then Effects.popup(root,string.format("+%d Power",gain),Color3.fromRGB(140,210,255),"PowerPopup")end
 end)
-for _,attr in {"Training","ParkingUsed"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
+for _,attr in {"Training","ParkingUsed","EquippedTicket"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
 cash.Changed:Connect(updateStats);updateStats()
 -- PlayerModule remains the sole camera controller. Throws never take it over.
 local function restoreCamera(character: Model)

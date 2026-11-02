@@ -1,19 +1,19 @@
 # Stan — THROW TICKETS AT CARS!
-- VERIFIED — 02.11.2026, iteracja 3; Studio, iPhone 7 poziomo 666×374 + PC 1406×761, jeden gracz.
-- Rzut bez celowania: klient nie podaje argumentów, serwer ustala dystans, biom, auto i rzadkość.
-- Power ograniczony do końca mapy 3200. Sześć biomów według Config.
-- Common/Rare/Epic/Legendary: wagi 70/22/7/1; osobne pule nazw aut, dochód biom × rzadkość.
-- Kolorowe podłoża, szare dekoracje, 6 bram i 24 odnawiające się auta widokowe.
-- Parking: silniejsze wymienia najsłabsze; pozostałe sprzedawane jednorazowo.
-- Stare auto zarabia do dostawy nowego. Rezerwacje zabezpieczone tokenem.
-- Dalekie wyniki mają niezależne metadane i lokalny podgląd, nie zależą od chwili wczytania modelu.
-- Testy: 14/14 scenariuszy serwera, 36/36 asercji, 47 pakietów z metadanymi.
-- Potwierdzone: progi 0/50/150/400/1000/2500 i clamp 3200, 6 podmian, sprzedaż dokładnie raz.
-- Maksymalnie 3 lawety naraz; transport ok. 2,55 s; odtworzone 24 auta widokowe.
-- Próbka Junkyard zaakceptowana jako układ dalszych biomów. Wygląd i balans NOT FINAL.
-- Końcowy smoke: pasywne SurfaceGui i HUD, rzuty 24/2500, trening przyciskiem +1, dochód i laweta 2,57 s.
-- Kamera: obrót Touch 96°, PC RMB+MouseDelta 59,57°, zoom 12,5→3,80; powrót myszy do Default.
-- Ponownie 36/36 asercji; zgodność wszystkich sześciu źródeł Studio z src. Brak błędów gry.
-- Zapis z mapą: assets/SavedStudio_2026-11-02.rbxlx; kopia mapy .rbxm; źródła w src/.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
-- Następny krok: ocena zabawy przez użytkownika i późniejsze strojenie tempa; fizyczny telefon/multiplayer niebadane.
+- VERIFIED — 02.11.2026, iteracja 4; Studio, emulator iPhone 7 poziomo + PC, jeden gracz.
+- 6 mandatów: Paper Ticket, Pink Slip, Parking Fine, Court Summons, Golden Ticket, Diamond Ticket.
+- Serwer kontroluje Cash, własność, kolejność BUY/EQUIP, dystans i losowanie.
+- Mnożniki x1/2,5/7/18/45/110; bonus wag Rare+ 0/5/10/15/20/25%. Balans NOT FINAL.
+- Przy Power 24 każdy kolejny mandat sięga kolejnego biomu; limit mapy 3200.
+- SHOP pulsuje, gdy stać na następny mandat. Okno D: przewijana lista, ikony-prostokąty, czytelne stany.
+- Próbka Rusty Sedan: 29 prymitywów, bez marek/siatek/uploadów. Reszta aut bez zmian.
+- Sklep i auto: NOT FINAL, bez akceptacji wyglądu przez użytkownika.
+- Zapis Schema 1: Cash, Power, Owned, Equipped, Parking; osobny magazyn Studio.
+- Jeden writer, lease 90 s + token; autosave 25 s, leave/shutdown, zakup zapisuje się wkrótce.
+- Pending auta odtwarzane jako zaparkowane; sprzedaż zaliczana przed animacją, bez utraty przy wyjściu.
+- API Services włączone przez użytkownika. QA key usunięty; testy nie dotknęły magazynu live.
+- 72/72 asercje + 14/14 regresji serwera. 47 pakietów efektów; 3 lawety równocześnie, 2,58 s transport.
+- Telefon: brak Cash odrzucony, kupno/equip Pink, dystans 24→60. PC Parking Fine: 37×7=259.
+- Rejoin: Cash/Power, wszystkie 6 mandatów, Diamond wyposażony, 3 auta i 725/s wróciły.
+- Brak błędów gry; fizyczny telefon i multiplayer niebadane.
+- Raport/zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4]].
+- Następny krok: ocena próbek i strojenie tempa zakupów. Bez publikacji.

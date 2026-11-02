@@ -4,18 +4,49 @@ local Rules = {}
 function Rules.finiteNumber(n: any): boolean
 	return typeof(n)=="number" and n==n and math.abs(n)<math.huge
 end
-function Rules.distance(power: number): number
-	return if Rules.finiteNumber(power) then math.clamp(power,0,Config.MapEnd) else 0
+function Rules.ticket(id: any): (any,number)
+	for i,t in Config.Tickets do if t.Id==id then return t,i end end
+	return Config.Tickets[1],1
+end
+function Rules.distance(power: number,ticketId: string?): number
+	return if Rules.finiteNumber(power) then math.clamp(power*Rules.ticket(ticketId).Multiplier,0,Config.MapEnd) else 0
 end
 function Rules.biome(distance: number): number
 	local index=1
 	for i,data in Config.Biomes do if distance>=data.MinPower then index=i else break end end
 	return index
 end
-function Rules.nextBiome(power: number): (number?,number?)
-	local current=Rules.biome(Rules.distance(power))
+function Rules.nextBiome(power: number,ticketId: string?): (number?,number?)
+	local multiplier=Rules.ticket(ticketId).Multiplier
+	local current=Rules.biome(Rules.distance(power,ticketId))
 	local nextBiome=Config.Biomes[current+1]
-	return if nextBiome then current+1 else nil, if nextBiome then math.max(0,nextBiome.MinPower-power) else nil
+	return if nextBiome then current+1 else nil, if nextBiome then math.max(0,math.ceil(nextBiome.MinPower/multiplier)-power) else nil
+end
+function Rules.rarityWeights(ticketId: string): any
+	local luck=Rules.ticket(ticketId).Luck;local out={}
+	for i,r in Config.Rarities do out[i]={Weight=r.Weight*(if i==1 then 1 else 1+luck)} end
+	return out
+end
+function Rules.shop(data: any,action: any,id: any): string
+	if typeof(id)~="string" or #id>24 then return "Invalid ticket!" end
+	local ticket,index=Rules.ticket(id);if ticket.Id~=id then return "Invalid ticket!" end
+	if action=="Buy" then
+		if data.Owned[id] then return "Already owned!" end
+		if index>1 and not data.Owned[Config.Tickets[index-1].Id]then return "Buy the previous ticket first!" end
+		if data.Cash<ticket.Price then return "Not enough Cash!" end
+		data.Cash-=ticket.Price;data.Owned[id]=true
+		return "Bought "..ticket.Name.."!"
+	elseif action=="Equip" then
+		if not data.Owned[id] then return "Ticket not owned!" end
+		data.Equipped=id;return "Equipped "..ticket.Name.."!"
+	end
+	return "Invalid action!"
+end
+function Rules.savedReward(record: any): any
+	if typeof(record)~="table" or not Rules.finiteNumber(record.Biome) or record.Biome%1~=0 or not Rules.finiteNumber(record.Rarity)or record.Rarity%1~=0 then return nil end
+	local b=Config.Biomes[record.Biome];if not b or not Config.Rarities[record.Rarity] then return nil end
+	for i,c in b.Cars do if c.Name==record.Name then return Rules.reward(record.Biome,record.Rarity,i) end end
+	return nil
 end
 function Rules.weighted(entries: any, roll: number): number
 	local total=0

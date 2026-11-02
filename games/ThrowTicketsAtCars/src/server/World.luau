@@ -1,5 +1,6 @@
 --!strict
 local Config = require(game:GetService("ReplicatedStorage").ThrowTickets.Config)
+local RustySedan=require(script.Parent.RustySedan)
 local World = {}
 function World.part(parent: Instance,name: string,size: Vector3,position: Vector3,color: Color3): Part
 	local p=Instance.new("Part")
@@ -26,6 +27,7 @@ function World.car(parent: Instance,name: string,reward: any,position: Vector3):
 	World.part(m,"Roof",Config.RoofSize,position+Vector3.new(0,Config.RoofOffset,0),Config.Rarities[reward.Rarity].Color)
 	local glass=World.part(m,"Windshield",Config.WindshieldSize,position+Vector3.new(0,Config.RoofOffset,Config.WindshieldFront),Color3.fromRGB(135,157,170))
 	glass.Material=Enum.Material.Glass
+	if reward.Name=="Rusty Sedan"then RustySedan.decorate(m,World.part,position)end
 	for _,p in m:GetChildren() do if p:IsA("BasePart") then p.CanCollide=false end end
 	m.PrimaryPart=body
 	m:SetAttribute("CarName",reward.Name);m:SetAttribute("Rarity",reward.Rarity);m:SetAttribute("Biome",reward.Biome);m:SetAttribute("Income",reward.Income)
@@ -59,7 +61,7 @@ local function gate(root: Folder,index: number)
 		gui.LightInfluence,gui.MaxDistance=0,Config.GateLabelDistance
 		gui.Enabled=index==1
 		local t=Instance.new("TextLabel");t.Size=UDim2.fromScale(1,1);t.BackgroundTransparency=1
-		t.Text=string.format("%s  |  %d+ POWER",b.Name:upper(),b.MinPower)
+		t.Text=string.format("%s  |  %d+ RANGE",b.Name:upper(),b.MinPower)
 		t.Font,t.TextSize,t.TextColor3=Enum.Font.GothamBlack,40,Color3.new(1,1,1)
 		t.Parent,gui.Parent=gui,beam
 	end
@@ -95,7 +97,7 @@ function World.build(biomeCount: number?): Folder
 	end
 	World.part(root,"StartApron",Vector3.new(Config.GroundWidth,1,Config.MapPadding),Vector3.new(0,-0.55,Config.MapPadding/2),Config.Biomes[1].Color)
 	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(225,225,225))
-	World.label(line,"THROW = POWER DISTANCE",1)
+	World.label(line,"POWER x TICKET",1)
 	local train=World.part(root,"TrainingPad",Config.TrainingSize,Config.TrainingPosition,Color3.fromRGB(120,135,120))
 	World.label(train,string.format("TRAIN +%d POWER / s",Config.TrainGain),1)
 	local spawn=Instance.new("SpawnLocation");spawn.Name="PrototypeSpawn";spawn.Anchored,spawn.Neutral=true,true

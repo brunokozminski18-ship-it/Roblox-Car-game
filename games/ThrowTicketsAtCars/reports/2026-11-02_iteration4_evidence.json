@@ -1,0 +1,579 @@
+{
+  "date": "2026-11-02",
+  "pure": {
+    "base": 7,
+    "biome": 29,
+    "tickets": 27,
+    "profiles": 9,
+    "total": 72
+  },
+  "regression": {
+    "errors": [],
+    "passed": true,
+    "results": [
+      {
+        "pass": true,
+        "name": "six cars and income",
+        "detail": 15
+      },
+      {
+        "pass": true,
+        "name": "stronger replaces weakest reservation",
+        "detail": 2
+      },
+      {
+        "pass": true,
+        "name": "old car earns during tow",
+        "detail": 15
+      },
+      {
+        "pass": true,
+        "name": "upgrade delivery is atomic",
+        "detail": 5600
+      },
+      {
+        "pass": true,
+        "name": "weaker rolls are sold",
+        "detail": "Sell"
+      },
+      {
+        "pass": true,
+        "name": "sale pays exactly once",
+        "detail": 10
+      },
+      {
+        "pass": true,
+        "name": "sale preserves parking",
+        "detail": 5600
+      },
+      {
+        "pass": true,
+        "name": "all biome boundaries and map clamp",
+        "detail": 3200
+      },
+      {
+        "pass": true,
+        "name": "server cooldown blocks burst",
+        "detail": 1
+      },
+      {
+        "pass": true,
+        "name": "client cannot choose power/car/reward",
+        "detail": 0
+      },
+      {
+        "pass": true,
+        "name": "actual rarity variety",
+        "detail": 3
+      },
+      {
+        "pass": true,
+        "name": "view cars respawn",
+        "detail": 24
+      },
+      {
+        "pass": true,
+        "name": "transport fits three seconds",
+        "detail": 2.583706855773926
+      },
+      {
+        "pass": true,
+        "name": "server income matches active cars",
+        "detail": 5600
+      }
+    ]
+  },
+  "client": {
+    "packets": [
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 3,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Golden Hypercar",
+        "distance": 2500,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Golden Hypercar",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Hypercar",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 0,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 0,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 49,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Family Car",
+        "distance": 50,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Minivan",
+        "distance": 149,
+        "rarity": 3,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Taxi",
+        "distance": 150,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Police Cruiser",
+        "distance": 399,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Muscle Car",
+        "distance": 400,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rally Car",
+        "distance": 999,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Vintage Roadster",
+        "distance": 1000,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Gold-Trim Classic",
+        "distance": 2499,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Golden Hypercar",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Golden Hypercar",
+        "distance": 3200,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 3200,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      }
+    ],
+    "camera": true,
+    "maxGates": 1,
+    "maxTows": 3
+  },
+  "shopPC": {
+    "attrs": {
+      "LastSlot": 3,
+      "Own_paper": true,
+      "LastLandingZ": -2640,
+      "Upgrades": 0,
+      "ThrowPower": 24,
+      "LastResult": "Parked! +$700/s",
+      "SaveStatus": "Saved",
+      "Own_pink": true,
+      "Own_gold": true,
+      "Throws": 2,
+      "LastSale": 0,
+      "ParkedCount": 3,
+      "LastDistance": 2640,
+      "ParkingUsed": 3,
+      "Own_diamond": true,
+      "Own_parking": true,
+      "LastRollIncome": 700,
+      "DataReady": true,
+      "Income": 725,
+      "LastRarity": 1,
+      "SaleTotal": 0,
+      "Sales": 0,
+      "TrainingActive": false,
+      "LastCarName": "Golden Hypercar",
+      "LastBiome": 6,
+      "Training": false,
+      "LastDeliverySeconds": 2.549492835998535,
+      "Delivered": 2,
+      "LastOutcome": "Add",
+      "EffectiveDistance": 2640,
+      "Own_court": true,
+      "EquippedTicket": "diamond"
+    },
+    "data": {
+      "Power": 24,
+      "Owned": {
+        "diamond": true,
+        "gold": true,
+        "parking": true,
+        "paper": true,
+        "court": true,
+        "pink": true
+      },
+      "Parking": {
+        "1": {
+          "Biome": 2,
+          "Name": "Hatchback",
+          "Rarity": 1,
+          "Slot": 1
+        },
+        "2": {
+          "Biome": 3,
+          "Name": "Police Cruiser",
+          "Rarity": 1,
+          "Slot": 2
+        },
+        "3": {
+          "Biome": 6,
+          "Name": "Golden Hypercar",
+          "Rarity": 1,
+          "Slot": 3
+        }
+      },
+      "Equipped": "diamond",
+      "Cash": 351025
+    },
+    "errors": []
+  },
+  "rejoinAllTickets": {
+    "data": {
+      "Power": 24,
+      "Owned": {
+        "diamond": true,
+        "gold": true,
+        "parking": true,
+        "paper": true,
+        "court": true,
+        "pink": true
+      },
+      "Parking": {
+        "1": {
+          "Biome": 2,
+          "Name": "Hatchback",
+          "Rarity": 1,
+          "Slot": 1
+        },
+        "2": {
+          "Biome": 3,
+          "Name": "Police Cruiser",
+          "Rarity": 1,
+          "Slot": 2
+        },
+        "3": {
+          "Biome": 6,
+          "Name": "Golden Hypercar",
+          "Rarity": 1,
+          "Slot": 3
+        }
+      },
+      "Equipped": "diamond",
+      "Cash": 360450
+    },
+    "attrs": {
+      "Training": false,
+      "Own_gold": true,
+      "Own_pink": true,
+      "Throws": 0,
+      "Income": 725,
+      "ParkingUsed": 3,
+      "Own_diamond": true,
+      "Own_parking": true,
+      "DataReady": true,
+      "Upgrades": 0,
+      "SaleTotal": 0,
+      "Sales": 0,
+      "LastSale": 0,
+      "SaveStatus": "Saved",
+      "TrainingActive": false,
+      "ThrowPower": 24,
+      "Own_paper": true,
+      "Delivered": 0,
+      "ParkedCount": 3,
+      "EffectiveDistance": 2640,
+      "Own_court": true,
+      "EquippedTicket": "diamond"
+    }
+  },
+  "manualFlows": {
+    "phoneNoCash": "Not enough Cash!",
+    "phonePink": {
+      "purchasePrice": 100,
+      "basePower": 24,
+      "distanceBefore": 24,
+      "distanceAfter": 60,
+      "biome": 2
+    },
+    "pcParking": {
+      "price": 1200,
+      "basePower": 37,
+      "distance": 259,
+      "biome": 3
+    },
+    "burst40Purchases": {
+      "ticket": "court",
+      "cashBefore": 1000000,
+      "cashAfter": 988000
+    },
+    "diamond": {
+      "basePower": 24,
+      "distance": 2640,
+      "biome": 6
+    },
+    "affordableHint": true
+  },
+  "review": "Read-only review identified in-flight load shutdown counter; fixed and retested, no remaining important finding."
+}

@@ -1,15 +1,14 @@
-# Current Task — iteracja 3 zakończona
-- Właściciel: Codex; 02.11.2026. Wznowiono na wyraźną prośbę użytkownika.
-- Status: VERIFIED — 02.11.2026, Studio: emulator iPhone 7 poziomo + PC, jeden gracz.
-- Decyzja zatwierdzona: rzut bez celowania, dystans=Power, biom wybiera pulę aut.
-- Próbka Junkyard zaakceptowana przez użytkownika; zbudowano 6 biomów, 24 auta widokowe i bramy.
-- Serwer losuje, pilnuje cooldownu, wymienia najsłabsze auto lub płaci za sprzedaż.
-- Testy wykonane: 14/14 scenariuszy serwera, 36/36 asercji, 47 pakietów efektów, objazd 6 bram.
-- Końcowy smoke: pasywne SurfaceGui, czytelny HUD, rzuty 24/2500, trening +1, dochód i laweta 2,57 s.
-- Kamera: rzeczywiste zdarzenia Touch zmieniły kierunek o 96°; PC RMB+MouseDelta o 59,57°, zoom 12,5→3,80.
-- Skrypty Studio zgodne z sześcioma plikami src; ponownie 36/36 asercji. Brak błędów gry.
-- Zapis Studio: assets/SavedStudio_2026-11-02.rbxlx (mapa z aktualnego Studio + kod).
-- Dodatkowo: assets/StudioMapSnapshot_2026-11-02.rbxm i assets/Prototype.rbxlx; poza gitem.
-- Raport i zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
-- Studio pozostawione w Edit, emulator/HTTP wyłączone. Bez publikacji.
-- Następny krok: użytkownik ocenia zabawę; tempo treningu i wygląd NOT FINAL. Fizyczny telefon/multiplayer niebadane.
+# Current Task — iteracja 4 zakończona
+- Właściciel: Codex; 02.11.2026.
+- VERIFIED: Studio, iPhone 7 poziomo 666×374 + PC 1406×761, jeden gracz.
+- Sklep: 6 mandatów, BUY/EQUIP/EQUIPPED/LOCKED, serwerowa kolejność i ceny, wskazówka SHOP!.
+- Dystans Power×mandat; mały bonus wag Rare+, limit 3200. Wszystkie liczby w Config.
+- Zapis Schema 1: Cash, Power, Owned, Equipped, Parking. Jeden writer Profiles, UpdateAsync+lease/token.
+- Autosave 25 s, zwolnienie sesji przy wyjściu/shutdown; błąd load nie zapisuje domyślnych danych.
+- Studio API włączone przez użytkownika; osobny magazyn _STUDIO. Klucz QA po testach usunięty.
+- Testy: 72/72 asercje, 14/14 scenariuszy; realny Stop/Play odtworzył wszystkie pola i dochód.
+- Próbka UI w stylu D oraz TYLKO Rusty Sedan (29 części, 0 meshes): NOT FINAL, oczekują oceny.
+- Reszta aut pozostaje z szarych klocków. Bez petów, Rebirth, Robux i publikacji.
+- Źródła Studio zgodne z 10 plikami src; zapis miejsca assets/SavedStudio_2026-11-02.rbxlx.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration4]].
+- Studio Edit, emulator/HTTP wyłączone. Następny krok: ocena sklepu i auta przez użytkownika.

@@ -17,3 +17,8 @@
 - Iteracja 3: podgląd Edit może trzymać stary require(World) po zmianie Source; wymiana tożsamości ModuleScript przy imporcie odświeżyła cache.
 - Iteracja 3, końcowy smoke: VirtualInput rozwiązał test kamery — telefon zamienia przytrzymanie i ruch LMB w Touch; PC wymaga RMB, potem SendMouseDelta przy LockCurrentPosition. Potwierdzono 96°/59,57°, bez zmian w grze.
 - VirtualInput może odrzucić klik pod nakładką CoreGui CaptureControls; sprawdzaj rzeczywiste zdarzenia i alternatywny punkt przycisku. Samo odrzucenie testowej komendy nie oznacza błędu gry.
+- Iteracja 4: serwerowy profil jest źródłem Cash/Power; leaderstats i atrybuty tylko go pokazują. Przepisanie ich z UI nie może zmienić ceny, dystansu ani własności.
+- Iteracja 4: zapisuj obiecany parking przed animacją, a sprzedaż zaliczaj z losowaniem. Wyjście podczas lawety nie odbiera zatwierdzonego wyniku.
+- Iteracja 4: shutdown czeka także na rozpoczęte loady, nie tylko finalne save; inaczej normalne zamknięcie może zostawić lease do 90 s.
+- Iteracja 4: UIGradient na TextButton barwi także jego litery, a UIStroke Contextual obrysowuje tekst. Osobny podpis i ApplyStrokeMode.Border usunęły nieczytelne BUY/X.
+- Iteracja 4: x1/2,5/7/18/45/110 daje sześć biomów przy Power 24; to sprawdzony skok zasięgu, nie dowód dobrego tempa zakupów. Próbki UI/auta i balans NOT FINAL.

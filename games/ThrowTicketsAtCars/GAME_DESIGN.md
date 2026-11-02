@@ -1,40 +1,45 @@
 # THROW TICKETS AT CARS! — obecny design
-- Prototyp z klocków. Wygląd i balans: NOT FINAL.
-- USER APPROVED 02.11.2026: Rzut bez celowania: odległość = Power, biom decyduje o puli aut.
-- Rzut z białej linii, zawsze wzdłuż drogi; kierunek postaci i kamery nie zmienia wyniku.
-- Odległość ograniczona do końca mapy, domyślnie 3200 studów.
-- Klient tylko prosi o rzut; serwer liczy pozycję, cooldown, losowanie i pieniądze.
+- Pętla: THROW → losowanie auta w biomie → mandat/laweta → parking lub sprzedaż → TRAIN / ticket upgrade → dalszy biom.
+- Rzut z białej linii, wzdłuż drogi; kierunek kamery i postaci nie zmienia wyniku.
+- Serwer liczy dystans = min(Power × equipped ticket, 3200), biom, losowanie, waluty i własność.
 
-## Pętla
-THROW → biom i losowanie → TICKETED! → laweta w tle → parking albo sprzedaż → TRAIN → dalszy biom.
+## Mandaty — Config, balans NOT FINAL
+| Mandat | Cena Cash | Zasięg × | Bonus wag Rare+ |
+| --- | --- | --- | --- |
+| Paper Ticket | 0 | 1 | 0% |
+| Pink Slip | 100 | 2,5 | 5% |
+| Parking Fine | 1200 | 7 | 10% |
+| Court Summons | 12000 | 18 | 15% |
+| Golden Ticket | 90000 | 45 | 20% |
+| Diamond Ticket | 600000 | 110 | 25% |
+- Zakupy po kolei, raz; wyposażanie dowolnego posiadanego. BUY nie wyposaża automatycznie.
+- Luck mnoży wyłącznie wagi Rare/Epic/Legendary przez 1+bonus, potem normalizacja.
+- SHOP pulsuje, gdy stać na następny mandat; menu otwiera listę przy następnym celu.
 
-## Biomy — progi i pule w Config
-| Biom | Power | Pula |
+## Biomy i auta
+| Biom | Minimalny dystans | Pula |
 | --- | --- | --- |
-| Junkyard | 0+ | Rusty Sedan, Old Van, Broken Pickup |
-| Suburbs | 50+ | Family Car, Minivan, Hatchback |
-| Downtown | 150+ | Taxi, Police Cruiser, Limo |
-| Sports Track | 400+ | Sports Coupe, Rally Car, Muscle Car |
-| Luxury Classics | 1000+ | Vintage Roadster, Gold-Trim Classic |
-| Hypercar Island | 2500+ | Hypercar, Golden Hypercar, Rocket Car |
-- Własny kolor podłoża, sześć dekoracji z klocków i cztery auta widokowe na biom.
-- Najwyżej jeden najbliższy napis bramy; ukryty, jeżeli wchodzi pod HUD.
-- Auta widokowe wracają po zabraniu; brak widokowego auta nie blokuje rzutu.
+| Junkyard | 0 | Rusty Sedan, Old Van, Broken Pickup |
+| Suburbs | 50 | Family Car, Minivan, Hatchback |
+| Downtown | 150 | Taxi, Police Cruiser, Limo |
+| Sports Track | 400 | Sports Coupe, Rally Car, Muscle Car |
+| Luxury Classics | 1000 | Vintage Roadster, Gold-Trim Classic |
+| Hypercar Island | 2500 | Hypercar, Golden Hypercar, Rocket Car |
+- 4 auta widokowe na biom, odnawiane; jeden najbliższy napis bramy, chowany pod HUD.
+- Jedyna próbka modelu: Rusty Sedan z 29 części; pozostałe auta szare. Próbka NOT FINAL.
+- Rzadkości bazowe Common/Rare/Epic/Legendary: wagi 70/22/7/1; mnożniki dochodu 1/3/8/20.
+- Dochód = BaseIncome biomu × rzadkość; nazwa auta z puli wybranego biomu.
 
-## Losowanie i parking
-- Wagi Common/Rare/Epic/Legendary: domyślnie 70/22/7/1.
-- Gatunek auta losowany osobno z puli biomu; każdy ma nazwę i wariant rzadkości.
-- Dochód = BaseIncome biomu × mnożnik rzadkości (1/3/8/20).
-- Parking 6 miejsc. Lepsze auto zastępuje najsłabsze; stare zarabia do dostawy.
-- Gorsze lub równe auto sprzedawane jednorazowo; cena domyślnie 10 sekund jego dochodu.
-- Token rezerwacji chroni równoległe dostawy. Cash i income kontroluje serwer.
-- Wszystkie liczby są wersją do balansu, nie zatwierdzonym balansem.
+## Parking i zapis
+- 6 miejsc. Lepsze wymienia najsłabsze; stare zarabia do dostawy. Token odrzuca starą dostawę.
+- Słabsze/równe sprzedawane za 10 sekund dochodu; Cash zapisany od razu, laweta kosmetyczna w tle.
+- Cash, Power, Owned, Equipped i Parking zapisane w jednym profilu Schema 1 z blokadą sesji.
+- Pending auto zapisane jako obiecany stan miejsca i odtwarzane jako zaparkowane.
+- Bez dochodu offline. Studio używa osobnego magazynu _STUDIO, nie magazynu live.
 
-## Prezentacja i zakres
-- HUD: Cash, Power, biom rzutu, Next biome i pasek.
-- Nazwa i rzadkość w kolorze; wynik dalekiego rzutu widoczny również bez wczytanego modelu.
-- Efekty klienta zachowane: mandat/łuk/obrót, podskok, dźwięk, parking pop i +1 Power.
-- Kamera pozostaje standardowa; rzut nie przejmuje sterowania.
-- Bez sklepu, petów, Rebirth, DataStore, marek, modeli samochodowych i publikacji.
-
-Źródła: [[playbook/ARCHITECTURE]], [[playbook/ECONOMY]], LihFolk Vault V2.
+## Prezentacja i granice
+- HUD Cash/Power/biom/Next biome; kamera standardowa, rzuty jej nie przejmują.
+- Mandat w kolorze wyposażonego typu, łuk/obrót, TICKETED, dźwięk, pop i +1 Power.
+- Próbka sklepu styl D i Rusty Sedan: NOT FINAL, czekają na ocenę.
+- Bez petów, Rebirth, Robux, innych modeli i publikacji.
+Źródła: LihFolk Vault V2 (CC BY 4.0), playbook/ARCHITECTURE, ECONOMY, UI_STYLE, MOBILE_UI.

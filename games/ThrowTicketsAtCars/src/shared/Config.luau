@@ -2,6 +2,16 @@
 -- Prototype tuning: NOT FINAL. All progression, rewards and world dimensions live here.
 return table.freeze({
 	StartPower=24, TrainGain=1, TickSeconds=1,
+	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=1,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	Tickets={
+		{Id="paper",Name="Paper Ticket",Price=0,Multiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
+		{Id="pink",Name="Pink Slip",Price=100,Multiplier=2.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},
+		{Id="parking",Name="Parking Fine",Price=1200,Multiplier=7,Luck=0.10,Color=Color3.fromRGB(124,230,255)},
+		{Id="court",Name="Court Summons",Price=12000,Multiplier=18,Luck=0.15,Color=Color3.fromRGB(194,139,255)},
+		{Id="gold",Name="Golden Ticket",Price=90000,Multiplier=45,Luck=0.20,Color=Color3.fromRGB(255,208,66)},
+		{Id="diamond",Name="Diamond Ticket",Price=600000,Multiplier=110,Luck=0.25,Color=Color3.fromRGB(165,255,243)},
+	},
 	ThrowCooldown=0.65, RequestInterval=0.12, TrainRequestInterval=0.3,
 	MapEnd=3200, RoadWidth=24, GroundWidth=88, MapPadding=18,
 	ThrowOrigin=Vector3.new(0,3.25,0), LandingHeight=3.25,

@@ -1,7 +1,9 @@
--- Studio Server only. No test hooks are shipped in src/.
+-- Studio Server only. Fresh QA profile; uses the server-only Studio harness.
 assert(game:GetService("RunService"):IsStudio())
 local p=game.Players:GetPlayers()[1]
 assert(p:GetAttribute("Throws")==0,"Fresh Play required")
+assert(p:GetAttribute("DataReady")and p:GetAttribute("ParkingUsed")==0 and p:GetAttribute("EquippedTicket")=="paper","Fresh isolated profile required")
+local qa=game.ServerStorage.ThrowTicketsQA
 local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local Http=game:GetService("HttpService")
@@ -9,6 +11,7 @@ local results={}
 local seen={}
 local function save(name,ok,detail)
 	table.insert(results,{name=name,pass=ok,detail=detail});p:SetAttribute("QAResults",Http:JSONEncode(results))
+	print("[TTAC QA] "..Http:JSONEncode({name=name,pass=ok,detail=detail}))
 	assert(ok,name..": "..tostring(detail))
 end
 local function waitFor(predicate,seconds)
@@ -21,7 +24,7 @@ local function send(mode)
 end
 local function shot(power)
 	task.wait(Config.ThrowCooldown+.08)
-	p:SetAttribute("ThrowPower",power)
+	qa:Invoke("SetPower",power)
 	local before=p:GetAttribute("Throws");send("Throw")
 	assert(waitFor(function()return p:GetAttribute("Throws")==before+1 end,2),"Normal intent not accepted")
 	local expected=Rules.biome(Rules.distance(power))
