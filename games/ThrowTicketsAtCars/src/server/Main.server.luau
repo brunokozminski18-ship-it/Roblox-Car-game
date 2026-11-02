@@ -4,6 +4,7 @@ local RS = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local Config = require(RS.ThrowTickets.Config)
 local Rules = require(RS.ThrowTickets.Rules)
+local Aim = require(RS.ThrowTickets.Aim)
 local World = require(script.Parent.World)
 
 assert(#Config.Tiers == 5 and Config.ParkingSlots > 0 and Config.TickSeconds > 0)
@@ -60,6 +61,8 @@ local function tweenPivot(model: Model, destination: CFrame, duration: number)
 end
 
 local function deliver(p: Player, state: State, car: Car, slot: number)
+	task.wait(Config.TicketFlightSeconds)
+	if states[p] ~= state then return end
 	local tow = Instance.new("Model")
 	tow.Name = "Tow_" .. car.id
 	tow:SetAttribute("OwnerId", p.UserId)
@@ -68,9 +71,11 @@ local function deliver(p: Player, state: State, car: Car, slot: number)
 	tow.PrimaryPart, tow.Parent = body, world.Tows
 	tweenPivot(tow, CFrame.new(car.position + Config.TowApproachOffset), Config.TowApproachSeconds)
 	if states[p] ~= state then tow:Destroy(); return end
+	tow:SetAttribute("Phase", "Hook")
 	task.wait(Config.TowLoadSeconds)
 	car.model:PivotTo(tow:GetPivot() + Vector3.new(0, Config.TowLoadHeight, 0))
 	car.model.Parent = tow
+	tow:SetAttribute("Phase", "Return")
 	-- Respawn starts when the source car is actually picked up, not on hit.
 	cars[car.id] = nil
 	task.delay(Config.RespawnSeconds, function() spawnCar(car.tier, car.position) end)
@@ -79,6 +84,7 @@ local function deliver(p: Player, state: State, car: Car, slot: number)
 		car.model.Parent = state.folder
 		car.model:PivotTo(CFrame.new(state.positions[slot]))
 		car.model:SetAttribute("Parked", true)
+		p:SetAttribute("LastDeliverySeconds", workspace:GetServerTimeNow() - car.model:GetAttribute("ClaimedAt"))
 		local mark = car.model:FindFirstChild("Ticketed")
 		if mark then mark:Destroy() end
 		state.income += Config.Tiers[car.tier].Income
@@ -96,55 +102,56 @@ Throw.OnServerEvent:Connect(function(p: Player, ...: any)
 	if now - state.lastRequest < Config.RequestInterval then return end
 	state.lastRequest = now
 	if select("#", ...) ~= 2 then return end
-	local id, direction = ...
-	if typeof(id) ~= "string" or #id > 32 or not Rules.finiteVector(direction) then return end
+	local viewOrigin, direction = ...
+	if not Rules.finiteVector(viewOrigin) or not Rules.finiteVector(direction) then return end
 	if direction.Magnitude < 0.99 or direction.Magnitude > 1.01 then return end
 	if now - state.lastThrow < Config.ThrowCooldown then return end
 	local root = liveRoot(p)
-	if not root then return end
+	if not root or not Aim.validOrigin(viewOrigin, root.Position) then return end
 	if not Rules.inBox(root.Position, Config.LaunchCenter, Config.LaunchHalfX, Config.LaunchHalfZ, Config.LaunchHeightTolerance) then
 		result(p, "Stand on the THROW line!"); return
 	end
 	state.lastThrow = now
 	local origin = root.Position
 	local power = p:GetAttribute("ThrowPower") :: number
-	local car = cars[id]
-	if not car or car.claimed or car.model.Parent ~= world.Cars then
-		Ticket:FireAllClients(origin, origin + direction * power)
-		result(p, "Aim at a car!"); return
+	-- Server independently chooses the car under the validated camera ray.
+	local model = Aim.choose(world.Cars, viewOrigin, direction)
+	local car = model and cars[model:GetAttribute("CarId")]
+	local aimPoint = if car then Aim.point(car.model) else viewOrigin + direction * Config.AimMaxDistance
+	local delta = aimPoint - origin
+	if delta.Magnitude < 0.001 then return end
+	local flightEnd = origin + delta.Unit * math.min(delta.Magnitude, power)
+	local function miss(text: string)
+		Ticket:FireAllClients(origin, flightEnd, nil, p.UserId, 0)
+		result(p, text)
 	end
-	local body = car.model.PrimaryPart :: BasePart
-	local delta = body.Position - origin
-	if delta.Unit:Dot(direction) < Config.AimConeDot then result(p, "Miss!"); return end
 	p:SetAttribute("Throws", (p:GetAttribute("Throws") or 0) + 1)
-	local flightEnd = if delta.Magnitude <= power then body.Position else origin + delta.Unit * power
-	-- Only known, server-built endpoints are relayed.
-	Ticket:FireAllClients(origin, flightEnd)
-	if not Rules.canReach(origin, body.Position, power) then result(p, "Too far! TRAIN for more power."); return end
+	if not car or car.claimed or car.model.Parent ~= world.Cars then miss("Aim at a car!"); return end
+	local body = car.model.PrimaryPart :: BasePart
+	if not Rules.canReach(origin, body.Position, power) then miss("Too far! TRAIN for more power."); return end
+	local slot = Rules.firstFree(state.slots, Config.ParkingSlots)
+	if not slot then miss("Parking full!"); return end
 	local params = RaycastParams.new()
 	params.FilterType = Enum.RaycastFilterType.Include
 	params.FilterDescendantsInstances = {world.Cars}
 	local previous = origin
 	for step = 1,Config.TicketArcSegments do
-		local point = Rules.arcPoint(origin, body.Position, step / Config.TicketArcSegments, Config.TicketArcHeight)
+		local point = Rules.arcPoint(origin, aimPoint, step / Config.TicketArcSegments, Config.TicketArcHeight)
 		local hit = workspace:Raycast(previous, point - previous, params)
 		if hit then
-			if not hit.Instance:IsDescendantOf(car.model) then result(p, "Another car is in the way!"); return end
+			if not hit.Instance:IsDescendantOf(car.model) then miss("Another car is in the way!"); return end
 			break
 		end
 		previous = point
 	end
-	local slot = Rules.firstFree(state.slots, Config.ParkingSlots)
-	if not slot then result(p, "Parking full!"); return end
-	-- No yielding between availability checks, claim and reservation.
+	-- Synchronous reservation. Cosmetic animation never decides ownership or income.
 	car.claimed, state.slots[slot] = true, true
 	car.model:SetAttribute("Claimed", true)
 	car.model:SetAttribute("OwnerId", p.UserId)
-	local mark = Instance.new("Highlight")
-	mark.Name, mark.FillColor, mark.OutlineColor = "Ticketed", Color3.new(1, 0, 0), Color3.new(1, 0, 0)
-	mark.FillTransparency, mark.Adornee, mark.Parent = 0.5, car.model, car.model
+	car.model:SetAttribute("ClaimedAt", workspace:GetServerTimeNow())
 	p:SetAttribute("ParkingUsed", (p:GetAttribute("ParkingUsed") or 0) + 1)
-	result(p, "Ticketed! Tow on the way.")
+	Ticket:FireAllClients(origin, aimPoint, car.model, p.UserId, Config.Tiers[car.tier].Income)
+	result(p, "Ticket on the way!")
 	task.spawn(deliver, p, state, car, slot)
 end)
 

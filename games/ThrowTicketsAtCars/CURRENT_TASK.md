@@ -1,10 +1,12 @@
-# Current Task — THROW TICKETS AT CARS!
+# Current Task — iteracja 2: kamera i game feel
 - Właściciel: Codex; 02.11.2026.
-- Status: VERIFIED — prototyp i test techniczny 1 gracza zakończone.
-- Cel: sprawdzić rzucanie mandatami, lawetę w tle, parking, income i trening.
-- Zakres wykonany: szara mapa 5 stref, 10 aut, 6 miejsc/gracza, serwer i klient, Config, Rojo.
-- Test: telefon poziomo (iPhone 13 Pro + mały iPhone 7), następnie PC.
-- Szczegóły i zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-02_prototype]].
-- Studio: Edit, podgląd z kodu, emulator wyłączony, brak publikacji.
-- Wygląd i balans: NOT FINAL; brak akceptacji użytkownika.
-- Następny krok: ocena próbki mapy/HUD i faktycznej zabawy przez użytkownika.
+- Status: IMPLEMENTED — kod i testy automatyczne zakończone; zakres w raporcie.
+- Naprawiono: TicketCamera/Scriptable co klatkę; orbit/zoom obsługuje PlayerModule z lekkim offsetem nad ramię.
+- Celowanie: środek widoku kamery; serwer sam wybiera i waliduje cel.
+- Klient: lot/obrót, naklejka, bounce, TICKETED! +$/s, audio, parking pop, +1 Power.
+- Transport z lotem: 2,53–2,57 s w tle. Rezerwacje i income nadal serwerowe.
+- Testy VERIFIED: telefon poziomo, zoom/klik PC, 14/14 regresji, 5/5 reguł; błędy klienta/serwera=0.
+- NEEDS VERIFICATION: rzeczywisty obrót RMB/myszą; MCP daje Delta=0, Computer Use ma timeout. Fizyczny pinch i multiplayer także nieprzetestowane.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration2]].
+- Wygląd i balans: NOT FINAL. Następny krok: użytkownik sprawdza próbkę i ruch myszy.
+- Bez nowych stref, metagry, DataStore i publikacji. Po testach Studio Edit, emulator wyłączony.

@@ -36,6 +36,8 @@ function World.car(parent: Instance, name: string, tier: number, position: Vecto
 	model.Name = name
 	local body = World.part(model, "Body", Config.CarSize, position, Color3.fromRGB(145, 145, 145))
 	World.part(model, "Roof", Config.RoofSize, position + Vector3.new(0, Config.RoofOffset, 0), Config.Tiers[tier].Color)
+	local glass = World.part(model, "Windshield", Config.WindshieldSize, position + Vector3.new(0, Config.RoofOffset, Config.WindshieldFront), Color3.fromRGB(135, 157, 170))
+	glass.Material = Enum.Material.Glass
 	for _,p in model:GetChildren() do if p:IsA("BasePart") then p.CanCollide = false end end
 	model.PrimaryPart = body
 	model.Parent = parent

@@ -7,3 +7,6 @@
 - Bieżący LogService klient/serwer pozwolił odróżnić 0 błędów gry od starych komunikatów w wyniku narzędzia konsoli.
 - Pasywne TRAIN, Cash bez zastosowania i koniec wyborów przy pełnym parkingu to hipotezy ryzyka, wymagają oceny graczy.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_prototype]]. Wygląd i balans: NOT FINAL.
+- Iteracja 2: Scriptable wymuszany co klatkę blokował domyślny orbit/zoom. Własny test ruchu nie dowodzi zgodności ze standardową kamerą; PlayerModule musi pozostać właścicielem wejścia.
+- Iteracja 2: MCP potrafi podać zerowy MouseMovement.Delta przy RMB; nie dostosowujemy gry do ograniczenia narzędzia i nie opisujemy tego jako PASS fizycznego obrotu myszy.
+- Iteracja 2: AlwaysOnTop BillboardGui znikał w automatycznych zrzutach (pułapka znana z LihFolk). Ekranowe popupy śledzące auto dały czytelny efekt i możliwy do sprawdzenia zrzut.

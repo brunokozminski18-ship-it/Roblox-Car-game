@@ -1,17 +1,19 @@
 # Stan — THROW TICKETS AT CARS!
-- VERIFIED — 02.11.2026: test techniczny, 1 gracz, Studio MCP.
-- Telefon główny: iPhone 13 Pro, poziomo, viewport 749×388.
-- Dodatkowo mały iPhone 7, poziomo, 666×374; PC 1406×761.
-- Działa: przycisk THROW, celowanie przeciąganiem, klik auta myszą na PC.
-- Serwer weryfikuje cel, zasięg, łuk, cooldown, limit parkingu i rezerwacje.
-- Potwierdzono 2 lawety jednocześnie, odrodzenie aut, 6 dostaw i odmowę przy pełnym parkingu.
-- Cash rośnie dopiero po dostawie. Trening TRAIN i płytka +1/s, bez podwajania.
-- Trening naturalny 24→44 odblokował strefę 40; strefy 60/80/100 sprawdzone z mocą QA 120.
-- Błędne typy, NaN, infinity i spam nie przyznają aut; testy reguł 10/10.
-- Bieżące logi serwera i klienta: 0 błędów gry; historyczne komunikaty narzędzia opisane w raporcie.
-- Rojo build PASS; 5/5 źródeł w Studio identycznych z buildem.
-- Studio zostawione w Edit z podglądem mapy; emulator i HTTP wyłączone.
-- Kod i narzędzia w folderze gry; brak DataStore, metagry i publikacji.
-- Wygląd i balans: NOT FINAL. Zabawa z ludźmi: NEEDS VERIFICATION.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_prototype]].
-- Następny krok: użytkownik ocenia tę próbkę i gra 2 minuty; potem test z 3 osobami na telefonie.
+- IMPLEMENTED — 02.11.2026, iteracja 2: domyślna kamera i game feel.
+- Przyczyna błędu: TicketCamera wymuszał Scriptable/CFrame co klatkę i nie miał zoomu.
+- Teraz CameraType=Custom, CameraSubject=Humanoid, Classic, zoom 0,5–64; bez własnego przechwytywania obrotu.
+- Telefon poziomo 666×374: obrót dotykiem i zoom emulatora; środek celownika (333,187) zgodny z promieniem.
+- Trafienie mimo postaci stojącej tyłem: potwierdzone, cel wyznacza kamera.
+- Serwer wybiera auto z promienia kamery, sprawdza origin, dystans, łuk i miejsce.
+- Klient: obrót/łuk mandatu, naklejka na szybie, podskok, TICKETED! +$/s, krótki dźwięk.
+- Klient: skalowanie na parkingu i wyskakujące +1 Power; efekty nie przyznają Cash.
+- Laweta z dostawą: zmierzone 2,53–2,57 s. Income dopiero po dostawie.
+- HUD: osobne Cash i Power 22 px na małym telefonie; THROW 110×62, 8 px nad skokiem.
+- PC: Custom, wheel zoom 12,5→5,26 i standardowe blokowanie kursora przy RMB.
+- NEEDS VERIFICATION: fizyczny obrót myszą; MCP daje zerowe MouseMovement.Delta, Computer Use nie uzyskuje obrazu okna.
+- Gest pinch na fizycznym telefonie oraz multiplayer nie były testowane.
+- Raport bieżący: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration2]].
+- Poprzedni prototyp: [[games/ThrowTicketsAtCars/reports/2026-11-02_prototype]].
+- Wygląd i balans: NOT FINAL. Test zabawy z ludźmi: NEEDS VERIFICATION.
+- Regresja 14/14 i testy reguł iteracji 2 5/5 PASS; końcowe błędy klienta/serwera=0.
+- Końcowy smoke po przesunięciu nad ramię: trafienie, GUI i zoom telefonu/PC PASS w opisanym zakresie.

@@ -1,7 +1,8 @@
 # Błędy i ograniczenia — prototyp
-- Nie wykryto otwartego błędu blokującego test jednego gracza.
-- NOT FINAL: etykiety dalszych stref nachodzą na siebie w perspektywie telefonu.
-- Pełny parking kończy rozwój sesji; brak wymiany/sprzedaży jest celowym zakresem prototypu.
-- Cash nie ma jeszcze zastosowania. Trening jest pasywnym czekaniem.
-- NEEDS VERIFICATION: multiplayer, fizyczny telefon, test zabawy z 3 osobami.
-- MCP pokazuje historyczne komunikaty Studio/awatara; świeży LogService klienta i serwera ma 0 błędów.
+- Naprawiono: własny Scriptable co klatkę blokował standardowy obrót/zoom.
+- NOT FINAL: etykiety dalszych stref nachodzą na siebie na telefonie.
+- Pełny parking kończy rozwój sesji; brak wymiany/sprzedaży jest celowym zakresem.
+- Cash nie ma zastosowania; trening pozostaje pasywny.
+- NEEDS VERIFICATION: fizyczny obrót RMB/myszą, pinch na telefonie, multiplayer i zabawa z 3 osobami.
+- MCP podczas RMB dostarcza Delta=0; zrzuty Windows Computer Use kończą się timeout. Nie traktujemy tego jako potwierdzenia fizycznego obrotu PC.
+- Automatyczne zrzuty pomijają AlwaysOnTop BillboardGui (pułapka opisana w LihFolk); popupy są nakładką śledzącą punkt świata.
