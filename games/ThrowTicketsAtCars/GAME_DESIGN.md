@@ -1,37 +1,40 @@
-# THROW TICKETS AT CARS! 🚗
-- Prototyp: szare klocki. Wygląd i balans: NOT FINAL.
-- Jedno zdanie: policjant rzuca mandatami w auta, które laweta zabiera na zarabiający parking.
-- Czasownik: rzucaj.
-- Pętla: celuj kamerą → rzuć → czerwony znacznik → laweta → auto zarabia → trenuj dalszy rzut.
-- Telefon: duży THROW po prawej, celownik, pomoc celowania; PC także klik myszą; zawsze środek kamery.
-- 5 stref: 20/40/60/80/100 studów; po dwa szare auta z kolorowym dachem.
-- Parking: 6 miejsc na gracza; rezerwacja od trafienia, income dopiero po dostawie.
-- Pełny parking: odmowa bez przejęcia auta; brak wymiany aut w tym prototypie.
-- Trening: przełącznik TRAIN albo płytka, +1/s, bez podwajania.
-- Wszystkie wartości rozgrywki i geometrii: wspólny Config; wynik ustala serwer.
-- Bez sklepu, petów, Rebirth, DataStore, marek, uploadów, publikacji i Robux.
+# THROW TICKETS AT CARS! — obecny design
+- Prototyp z klocków. Wygląd i balans: NOT FINAL.
+- USER APPROVED 02.11.2026: Rzut bez celowania: odległość = Power, biom decyduje o puli aut.
+- Rzut z białej linii, zawsze wzdłuż drogi; kierunek postaci i kamery nie zmienia wyniku.
+- Odległość ograniczona do końca mapy, domyślnie 3200 studów.
+- Klient tylko prosi o rzut; serwer liczy pozycję, cooldown, losowanie i pieniądze.
 
-## Założenia implementacyjne Codexa (nie akceptacja użytkownika)
-- Rzut z oznaczonej linii startowej, aby chodzenie do auta nie zastępowało treningu.
-- Odległość 3D od postaci do środka auta; dlatego start 24 pozwala trafić strefę 20.
-- Cel pod celownikiem z niewielką tolerancją; serwer sam wybiera cel z ograniczonego promienia kamery, sprawdza dystans i łuk.
-- Laweta nie blokuje kolejnych rzutów; zajęte i dostarczone miejsca liczą się do limitu.
-- Po śmierci parking zostaje do końca sesji; po wyjściu znika. Bez trwałego zapisu.
+## Pętla
+THROW → biom i losowanie → TICKETED! → laweta w tle → parking albo sprzedaż → TRAIN → dalszy biom.
 
-## FUN_CHECKLIST — hipotezy, do testu z ludźmi
-- 10 sekund bez nagród: NEEDS VERIFICATION; mandat i laweta mają dać czytelny efekt.
-- Reakcja świata: łuk mandatu, czerwony znacznik, laweta, przyrost Cash.
-- Umiejętność: celowanie i wybór droższego auta; trening sam w sobie pasywny.
-- Inni gracze: wspólne auta, osobne parkingi; brak rozbudowanej rywalizacji.
-- Pierwsza minuta: pierwsze auto bez treningu, kolejny tier po kilkunastu sekundach treningu.
-- Powrót jutro i rynek: poza zakresem prototypu; nie wykonano badania rynku.
-- Test zabawy: 3 osoby na telefonie pozostaje do zrobienia przez użytkownika.
-- Ryzyko: po 6 autach koniec wyborów; Cash nie ma zastosowania w tym teście.
+## Biomy — progi i pule w Config
+| Biom | Power | Pula |
+| --- | --- | --- |
+| Junkyard | 0+ | Rusty Sedan, Old Van, Broken Pickup |
+| Suburbs | 50+ | Family Car, Minivan, Hatchback |
+| Downtown | 150+ | Taxi, Police Cruiser, Limo |
+| Sports Track | 400+ | Sports Coupe, Rally Car, Muscle Car |
+| Luxury Classics | 1000+ | Vintage Roadster, Gold-Trim Classic |
+| Hypercar Island | 2500+ | Hypercar, Golden Hypercar, Rocket Car |
+- Własny kolor podłoża, sześć dekoracji z klocków i cztery auta widokowe na biom.
+- Najwyżej jeden najbliższy napis bramy; ukryty, jeżeli wchodzi pod HUD.
+- Auta widokowe wracają po zabraniu; brak widokowego auta nie blokuje rzutu.
 
-Źródła zasad wykonania: [[playbook/FUN_CHECKLIST]], [[playbook/ARCHITECTURE]], LihFolk Vault V2.
+## Losowanie i parking
+- Wagi Common/Rare/Epic/Legendary: domyślnie 70/22/7/1.
+- Gatunek auta losowany osobno z puli biomu; każdy ma nazwę i wariant rzadkości.
+- Dochód = BaseIncome biomu × mnożnik rzadkości (1/3/8/20).
+- Parking 6 miejsc. Lepsze auto zastępuje najsłabsze; stare zarabia do dostawy.
+- Gorsze lub równe auto sprzedawane jednorazowo; cena domyślnie 10 sekund jego dochodu.
+- Token rezerwacji chroni równoległe dostawy. Cash i income kontroluje serwer.
+- Wszystkie liczby są wersją do balansu, nie zatwierdzonym balansem.
 
-## Iteracja 2 (02.11.2026)
-- Kamera PlayerModule: Custom, Humanoid, obrót i zoom; brak przejmowania wejścia i nadpisywania co klatkę.
-- Reakcja po potwierdzeniu serwera: mandat na szybie, podskok, TICKETED! +$/s i dźwięk.
-- +$/s to przyrost dochodu po dostawie, nie jednorazowe przyznanie Cash.
-- Parking pop oraz +1 Power są lokalne; transport z lotem mandatu trwa ok. 2,55 s.
+## Prezentacja i zakres
+- HUD: Cash, Power, biom rzutu, Next biome i pasek.
+- Nazwa i rzadkość w kolorze; wynik dalekiego rzutu widoczny również bez wczytanego modelu.
+- Efekty klienta zachowane: mandat/łuk/obrót, podskok, dźwięk, parking pop i +1 Power.
+- Kamera pozostaje standardowa; rzut nie przejmuje sterowania.
+- Bez sklepu, petów, Rebirth, DataStore, marek, modeli samochodowych i publikacji.
+
+Źródła: [[playbook/ARCHITECTURE]], [[playbook/ECONOMY]], LihFolk Vault V2.

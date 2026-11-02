@@ -1,19 +1,18 @@
 # Stan — THROW TICKETS AT CARS!
-- IMPLEMENTED — 02.11.2026, iteracja 2: domyślna kamera i game feel.
-- Przyczyna błędu: TicketCamera wymuszał Scriptable/CFrame co klatkę i nie miał zoomu.
-- Teraz CameraType=Custom, CameraSubject=Humanoid, Classic, zoom 0,5–64; bez własnego przechwytywania obrotu.
-- Telefon poziomo 666×374: obrót dotykiem i zoom emulatora; środek celownika (333,187) zgodny z promieniem.
-- Trafienie mimo postaci stojącej tyłem: potwierdzone, cel wyznacza kamera.
-- Serwer wybiera auto z promienia kamery, sprawdza origin, dystans, łuk i miejsce.
-- Klient: obrót/łuk mandatu, naklejka na szybie, podskok, TICKETED! +$/s, krótki dźwięk.
-- Klient: skalowanie na parkingu i wyskakujące +1 Power; efekty nie przyznają Cash.
-- Laweta z dostawą: zmierzone 2,53–2,57 s. Income dopiero po dostawie.
-- HUD: osobne Cash i Power 22 px na małym telefonie; THROW 110×62, 8 px nad skokiem.
-- PC: Custom, wheel zoom 12,5→5,26 i standardowe blokowanie kursora przy RMB.
-- NEEDS VERIFICATION: fizyczny obrót myszą; MCP daje zerowe MouseMovement.Delta, Computer Use nie uzyskuje obrazu okna.
-- Gest pinch na fizycznym telefonie oraz multiplayer nie były testowane.
-- Raport bieżący: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration2]].
-- Poprzedni prototyp: [[games/ThrowTicketsAtCars/reports/2026-11-02_prototype]].
-- Wygląd i balans: NOT FINAL. Test zabawy z ludźmi: NEEDS VERIFICATION.
-- Regresja 14/14 i testy reguł iteracji 2 5/5 PASS; końcowe błędy klienta/serwera=0.
-- Końcowy smoke po przesunięciu nad ramię: trafienie, GUI i zoom telefonu/PC PASS w opisanym zakresie.
+- IMPLEMENTED — 02.11.2026, iteracja 3; WSTRZYMANE na prośbę użytkownika.
+- Rzut bez celowania: klient nie podaje argumentów, serwer ustala dystans, biom, auto i rzadkość.
+- Power ograniczony do końca mapy 3200. Sześć biomów według Config.
+- Common/Rare/Epic/Legendary: wagi 70/22/7/1; osobne pule nazw aut, dochód biom × rzadkość.
+- Kolorowe podłoża, szare dekoracje, 6 bram i 24 odnawiające się auta widokowe.
+- Parking: silniejsze wymienia najsłabsze; pozostałe sprzedawane jednorazowo.
+- Stare auto zarabia do dostawy nowego. Rezerwacje zabezpieczone tokenem.
+- Dalekie wyniki mają niezależne metadane i lokalny podgląd, nie zależą od chwili wczytania modelu.
+- Testy: 14/14 scenariuszy serwera, 36/36 asercji, 47 pakietów z metadanymi.
+- Potwierdzone: progi 0/50/150/400/1000/2500 i clamp 3200, 6 podmian, sprzedaż dokładnie raz.
+- Maksymalnie 3 lawety naraz; transport ok. 2,55 s; odtworzone 24 auta widokowe.
+- Próbka Junkyard zaakceptowana jako układ dalszych biomów. Wygląd i balans NOT FINAL.
+- Ostatnia korekta napisów i Active=false wymaga końcowego smoke po wznowieniu.
+- Kamera: Custom, zoom PC 12,5→5,26; gesty obrotu niepotwierdzone jednoznacznie przez automat.
+- Zapis z mapą: assets/SavedStudio_2026-11-02.rbxlx; kopia mapy .rbxm; źródła w src/.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
+- Następny krok po wznowieniu: końcowa kontrola kamery/UI i raport; bez rozszerzania zakresu.

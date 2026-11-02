@@ -40,34 +40,44 @@ local function paper(name: string): Part
 	return part
 end
 
-function Effects.popup(part: BasePart, text: string, color: Color3, name: string?)
+function Effects.popup(part: BasePart, text: string, color: Color3, name: string?, forceVisible: boolean?)
 	-- Screen-space label follows its world point. It stays readable on a small phone
 	-- and is visible in Studio captures that omit AlwaysOnTop BillboardGuis.
+	if name=="TicketedPopup" then for _,old in overlay:GetChildren() do if old.Name==name then old:Destroy()end end end
 	local label = Instance.new("TextLabel")
-	label.Name, label.Size = name or "RewardPopup", UDim2.fromOffset(230, 74)
+	label.Name, label.Size = name or "RewardPopup", if name=="TicketedPopup"then UDim2.fromOffset(270,100)else UDim2.fromOffset(230,74)
 	label.AnchorPoint, label.BackgroundTransparency = Vector2.new(0.5, 0.5), 1
-	label.Font, label.TextSize = Enum.Font.GothamBlack, 25
+	label.Font, label.TextSize = Enum.Font.GothamBlack, if name=="TicketedPopup"then 20 else 25
 	label.Text, label.TextColor3 = text, color
 	label.TextStrokeTransparency, label.TextStrokeColor3 = 0.1, Color3.fromRGB(25, 25, 25)
 	label.Active, label.Parent = false, overlay
+	local lastPosition=part.Position
 	Debris:AddItem(label, Config.PopupSeconds + 0.1)
 	animate(Config.PopupSeconds, function(t)
 		if not label.Parent then return end
 		local camera = workspace.CurrentCamera
-		if not part.Parent or not camera then label.Visible = false; return end
-		local point = camera:WorldToViewportPoint(part.Position + Vector3.new(0, 1.5, 0))
-		label.Visible = point.Z > 0 and (part.Position - camera.CFrame.Position).Magnitude <= Config.LabelDistance
-		label.Position = UDim2.fromOffset(point.X, point.Y - 16 - t * Config.PopupRisePixels)
+		if not camera then label.Visible=false;return end
+		if part.Parent then lastPosition=part.Position end
+		local point=camera:WorldToViewportPoint(lastPosition+Vector3.new(0,1.5,0))
+		local close=(lastPosition-camera.CFrame.Position).Magnitude<=Config.LabelDistance
+		label.Visible = (point.Z>0 and close)or forceVisible==true
+		local y=point.Y-16-t*Config.PopupRisePixels
+		local x=point.X
+		if forceVisible and (not close or point.Z<=0)then x,y=camera.ViewportSize.X/2,camera.ViewportSize.Y*0.62-t*20 end
+		if name=="TicketedPopup"then y=math.clamp(y,210,math.max(210,camera.ViewportSize.Y-80))end
+		label.Position = UDim2.fromOffset(x,y)
 		label.TextTransparency = math.max(0, (t - 0.6) / 0.4)
 		label.TextStrokeTransparency = label.TextTransparency
 	end, function() label:Destroy() end)
 end
 
-local function impact(car: Model, income: number)
+local function impact(car: Model, income: number, mine: boolean?)
 	if not car.Parent or not car.PrimaryPart then return end
 	local glass = car:FindFirstChild("Windshield") :: BasePart?
 	local body = car.PrimaryPart
-	Effects.popup(body, string.format("TICKETED!\n+$%d/s", income), Color3.fromRGB(255, 223, 75), "TicketedPopup")
+	local rarity=Config.Rarities[car:GetAttribute("Rarity")or 1]
+	local payoff=if car:GetAttribute("Outcome")=="Sell"then string.format("SOLD $%d",car:GetAttribute("SaleValue")or 0)else string.format("+$%d/s",income)
+	Effects.popup(body,string.format("TICKETED!\n%s\n%s | %s",car:GetAttribute("CarName")or"Car",rarity.Name,payoff),rarity.Color,"TicketedPopup",mine)
 	local ping = sound:Clone()
 	ping.Name, ping.Parent = "TicketImpact", SoundService
 	ping:Play()
@@ -79,6 +89,7 @@ local function impact(car: Model, income: number)
 	Debris:AddItem(highlight, Config.StickerSeconds)
 	local sticker = paper("StuckTicket")
 	local surface = Instance.new("SurfaceGui")
+	surface.Active = false
 	surface.Face, surface.CanvasSize = Enum.NormalId.Top, Vector2.new(160, 210)
 	local text = Instance.new("TextLabel")
 	text.Size, text.BackgroundTransparency = UDim2.fromScale(1, 1), 1
@@ -98,16 +109,40 @@ local function impact(car: Model, income: number)
 	end, function() if car.Parent == originalParent then car:PivotTo(start) end end)
 end
 
-function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, income: number)
+function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, income: number, mine: boolean?, metadata: any)
+	local world=workspace:FindFirstChild("TicketPrototype")
+	local function resolve(): Model?
+		if car and car.Parent and car.PrimaryPart then return car end
+		local found=world and metadata and world:FindFirstChild("Ticketed_"..metadata.Id,true)
+		return if found and found:IsA("Model")and found.PrimaryPart then found else nil
+	end
+	local proxy: Model?=nil
+	if not resolve()and metadata and world then
+		for _,template in world.Cars:GetChildren()do
+			if template:IsA("Model")and template.PrimaryPart then
+				proxy=template:Clone();proxy.Name="LandingPreview_"..metadata.Id
+				for _,part in proxy:GetDescendants()do if part:IsA("BasePart")then part.CanCollide,part.CanTouch,part.CanQuery=false,false,false end end
+				proxy:SetAttribute("CarName",metadata.Name);proxy:SetAttribute("Rarity",metadata.Rarity);proxy:SetAttribute("Outcome",metadata.Outcome);proxy:SetAttribute("SaleValue",metadata.SaleValue)
+				local roof=proxy:FindFirstChild("Roof")::BasePart?;if roof then roof.Color=Config.Rarities[metadata.Rarity].Color end
+				proxy:PivotTo(CFrame.new(metadata.Position));proxy.Parent=folder
+				Debris:AddItem(proxy,Config.TicketFlightSeconds+Config.TowApproachSeconds+Config.TowLoadSeconds+0.1)
+				break
+			end
+		end
+	end
 	local ticket = paper("FlyingTicket")
 	Debris:AddItem(ticket, Config.TicketFlightSeconds + 0.2)
 	animate(Config.TicketFlightSeconds, function(t)
 		if ticket.Parent then
-			ticket.CFrame = CFrame.new(Rules.arcPoint(origin, destination, t, Config.TicketArcHeight)) * CFrame.Angles(t * math.pi * 4, t * math.pi * 2, 0)
+			ticket.CFrame = CFrame.new(Rules.arcPoint(origin, destination, t, Rules.arcHeight((destination-origin).Magnitude))) * CFrame.Angles(t * math.pi * 4, t * math.pi * 2, 0)
 		end
 	end, function()
 		ticket:Destroy()
-		if car and car.Parent then impact(car, income) end
+		local target=resolve()
+		if target then
+			if proxy then proxy:Destroy()end
+			impact(target,income,mine)
+		elseif proxy and proxy.Parent then impact(proxy,income,mine)end
 	end)
 end
 

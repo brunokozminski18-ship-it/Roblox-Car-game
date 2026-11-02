@@ -10,3 +10,8 @@
 - Iteracja 2: Scriptable wymuszany co klatkę blokował domyślny orbit/zoom. Własny test ruchu nie dowodzi zgodności ze standardową kamerą; PlayerModule musi pozostać właścicielem wejścia.
 - Iteracja 2: MCP potrafi podać zerowy MouseMovement.Delta przy RMB; nie dostosowujemy gry do ograniczenia narzędzia i nie opisujemy tego jako PASS fizycznego obrotu myszy.
 - Iteracja 2: AlwaysOnTop BillboardGui znikał w automatycznych zrzutach (pułapka znana z LihFolk). Ekranowe popupy śledzące auto dały czytelny efekt i możliwy do sprawdzenia zrzut.
+
+- Iteracja 3: pełny parking nie kończy sesji — tokeny rezerwacji oddzielają obiecany i aktywny dochód; lepsze auta zastępują najsłabsze, pozostałe są sprzedawane.
+- Iteracja 3: daleki model może nie być gotowy przy nadejściu eventu nawet z Persistent. Serwerowe metadane i lokalny podgląd utrzymują czytelny wynik.
+- Iteracja 3: pojedynczy napis bramy także może wejść pod HUD. Trzeba sprawdzać przecięcie projekcji, nie tylko liczbę widocznych bram.
+- Iteracja 3: podgląd Edit może trzymać stary require(World) po zmianie Source; wymiana tożsamości ModuleScript przy imporcie odświeżyła cache.

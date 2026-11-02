@@ -1,22 +1,23 @@
 # Start — THROW TICKETS AT CARS!
 
-## Test w 2 minuty
-1. Play. Stań na białej linii przy starcie.
-2. Celuj przeciągając ekran telefonu; PC: prawy przycisk + mysz. Zoom: szczypnięcie / kółko.
-3. Wciśnij THROW. PC: klik myszą także rzuca w środek ekranu, niezależnie od kursora.
-4. Rzuć w drugie bliskie auto, zanim pierwsza laweta wróci. Obserwuj parking i Cash.
-5. Włącz TRAIN na ok. 20 sekund. Wyceluj w zielony dach (40 studs) i rzuć.
-6. Zapełnij 6 miejsc; kolejny rzut daje Parking full! Stop/Play zeruje sesję.
+## Po wznowieniu
+- Pełny lokalny zapis Studio: assets/SavedStudio_2026-11-02.rbxlx.
+- Źródłem prawdy pozostaje src/ i Config; mapa generowana z World.luau.
+- Najpierw sprawdź CURRENT_TASK i raport roboczy iteracji 3.
 
-## Folder i Studio
-- Źródło prawdy: src/, wszystkie wartości rozgrywki: src/shared/Config.luau.
-- Rojo: uruchom rojo serve default.project.json --port 34873 z folderu gry i połącz plugin.
+## Test pętli
+1. Play, stań na białej linii. THROW zawsze rzuca wzdłuż drogi; celowanie nie jest potrzebne.
+2. Nazwa, rzadkość, mandat i laweta; po cooldownie możesz rzucać ponownie.
+3. TRAIN do 50 Power → Suburbs. HUD pokazuje docelowy biom i brak do kolejnego.
+4. Parking 6 aut: lepsze wymienia najsłabsze; gorsze/równe sprzedawane za $X.
+5. Stop/Play zeruje sesję. Bez DataStore.
+
+## Rojo i testy
+- rojo serve default.project.json --port 34873; połącz plugin.
 - Alternatywa MCP: python tools/rojo_snapshot.py → tools/SyncStudio.luau w Edit.
-- Import MCP wymaga tymczasowego HttpEnabled; po imporcie można wyłączyć.
-- Budowanie bez serwera: python tools/rojo_snapshot.py --build-only.
-- Generator sceny jest w src/server/World.luau; scena powstaje przy Play.
-- Lokalny build: assets/Prototype.rbxlx (poza gitem, kod bez publikacji).
-- Miejsce: 74773184167716. Bez zapisu: Stop/Play usuwa auta i pieniądze.
-- Wygląd i balans: NOT FINAL. Test zabawy z 3 ludźmi jeszcze nieodbyty.
-
-[[games/ThrowTicketsAtCars/GAME_DESIGN|Design]] · [[games/ThrowTicketsAtCars/PROGRESS|Stan]] · [[games/ThrowTicketsAtCars/BUGS|Błędy]]
+- Build: python tools/rojo_snapshot.py --build-only → assets/Prototype.rbxlx.
+- tools/PreviewStudio.luau odtwarza podgląd Edit z tego samego World.
+- Testy: ClientScenarios w Client, następnie ServerScenarios w Server, na świeżym Play.
+- Import usuwa przestarzałe elementy tylko we własnych folderach ThrowTickets; tymczasowy HTTP po pracy wyłączamy.
+- Miejsce 74773184167716, bez publikacji.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].

@@ -1,0 +1,467 @@
+{
+  "server": {
+    "deliverySeconds": 2.550114154815674,
+    "income": 7000,
+    "upgrades": 6,
+    "passed": true,
+    "sales": 36,
+    "weightsSimulation": [
+      6989,
+      2218,
+      692,
+      101
+    ],
+    "results": [
+      {
+        "pass": true,
+        "name": "six cars and income",
+        "detail": 6
+      },
+      {
+        "pass": true,
+        "name": "stronger replaces weakest reservation",
+        "detail": 1
+      },
+      {
+        "pass": true,
+        "name": "old car earns during tow",
+        "detail": 6
+      },
+      {
+        "pass": true,
+        "name": "upgrade delivery is atomic",
+        "detail": 7000
+      },
+      {
+        "pass": true,
+        "name": "weaker rolls are sold",
+        "detail": "Sell"
+      },
+      {
+        "pass": true,
+        "name": "sale pays exactly once",
+        "detail": 10
+      },
+      {
+        "pass": true,
+        "name": "sale preserves parking",
+        "detail": 7000
+      },
+      {
+        "pass": true,
+        "name": "all biome boundaries and map clamp",
+        "detail": 3200
+      },
+      {
+        "pass": true,
+        "name": "server cooldown blocks burst",
+        "detail": 1
+      },
+      {
+        "pass": true,
+        "name": "client cannot choose power/car/reward",
+        "detail": 0
+      },
+      {
+        "pass": true,
+        "name": "actual rarity variety",
+        "detail": 3
+      },
+      {
+        "pass": true,
+        "name": "view cars respawn",
+        "detail": 24
+      },
+      {
+        "pass": true,
+        "name": "transport fits three seconds",
+        "detail": 2.549696922302246
+      },
+      {
+        "pass": true,
+        "name": "server income matches active cars",
+        "detail": 7000
+      }
+    ]
+  },
+  "client": {
+    "maxTows": 3,
+    "gates": [
+      {
+        "visible": {
+          "1": "Gate1"
+        },
+        "expected": "Gate1",
+        "pass": true
+      },
+      {
+        "visible": {
+          "1": "Gate2"
+        },
+        "expected": "Gate2",
+        "pass": true
+      },
+      {
+        "visible": {
+          "1": "Gate3"
+        },
+        "expected": "Gate3",
+        "pass": true
+      },
+      {
+        "visible": {
+          "1": "Gate4"
+        },
+        "expected": "Gate4",
+        "pass": true
+      },
+      {
+        "visible": {
+          "1": "Gate5"
+        },
+        "expected": "Gate5",
+        "pass": true
+      },
+      {
+        "visible": {
+          "1": "Gate6"
+        },
+        "expected": "Gate6",
+        "pass": true
+      }
+    ],
+    "allCamerasCustom": true,
+    "maxVisibleGates": 1,
+    "packets": [
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Hypercar",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 0,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 0,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 49,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Hatchback",
+        "distance": 50,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Minivan",
+        "distance": 149,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Police Cruiser",
+        "distance": 150,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Police Cruiser",
+        "distance": 399,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Muscle Car",
+        "distance": 400,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Sports Coupe",
+        "distance": 999,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Vintage Roadster",
+        "distance": 1000,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Gold-Trim Classic",
+        "distance": 2499,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rocket Car",
+        "distance": 2500,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Golden Hypercar",
+        "distance": 3200,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Golden Hypercar",
+        "distance": 3200,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Rusty Sedan",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Old Van",
+        "distance": 24,
+        "rarity": 2,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 4,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      },
+      {
+        "camera": "Custom",
+        "name": "Broken Pickup",
+        "distance": 24,
+        "rarity": 1,
+        "hasMetadata": true
+      }
+    ]
+  }
+}

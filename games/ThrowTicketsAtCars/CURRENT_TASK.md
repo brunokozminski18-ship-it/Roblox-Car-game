@@ -1,12 +1,14 @@
-# Current Task — iteracja 2: kamera i game feel
-- Właściciel: Codex; 02.11.2026.
-- Status: IMPLEMENTED — kod i testy automatyczne zakończone; zakres w raporcie.
-- Naprawiono: TicketCamera/Scriptable co klatkę; orbit/zoom obsługuje PlayerModule z lekkim offsetem nad ramię.
-- Celowanie: środek widoku kamery; serwer sam wybiera i waliduje cel.
-- Klient: lot/obrót, naklejka, bounce, TICKETED! +$/s, audio, parking pop, +1 Power.
-- Transport z lotem: 2,53–2,57 s w tle. Rezerwacje i income nadal serwerowe.
-- Testy VERIFIED: telefon poziomo, zoom/klik PC, 14/14 regresji, 5/5 reguł; błędy klienta/serwera=0.
-- NEEDS VERIFICATION: rzeczywisty obrót RMB/myszą; MCP daje Delta=0, Computer Use ma timeout. Fizyczny pinch i multiplayer także nieprzetestowane.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration2]].
-- Wygląd i balans: NOT FINAL. Następny krok: użytkownik sprawdza próbkę i ruch myszy.
-- Bez nowych stref, metagry, DataStore i publikacji. Po testach Studio Edit, emulator wyłączony.
+# Current Task — iteracja 3: praca wstrzymana
+- Właściciel: Codex; 02.11.2026. Wstrzymano na wyraźną prośbę użytkownika.
+- Status: IMPLEMENTED; końcowa weryfikacja i podsumowanie nie są zakończone.
+- Decyzja zatwierdzona: rzut bez celowania, dystans=Power, biom wybiera pulę aut.
+- Próbka Junkyard zaakceptowana przez użytkownika; zbudowano 6 biomów, 24 auta widokowe i bramy.
+- Serwer losuje, pilnuje cooldownu, wymienia najsłabsze auto lub płaci za sprzedaż.
+- Testy wykonane: 14/14 scenariuszy serwera, 36/36 asercji, 47 pakietów efektów, objazd 6 bram.
+- Ostatnie zmiany: ukrycie napisów pod HUD i pasywne SurfaceGui; ostatnia flaga Active=false nie była ponownie testowana w Play.
+- Kamera Custom i zoom sprawdzone; odpowiedź użytkownika brzmi „nie zablokowana” — nie dopisywać na tej podstawie jednoznacznego PASS.
+- Zapis Studio: assets/SavedStudio_2026-11-02.rbxlx (mapa z aktualnego Studio + kod).
+- Dodatkowo: assets/StudioMapSnapshot_2026-11-02.rbxm i assets/Prototype.rbxlx; poza gitem.
+- Raport roboczy: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration3]].
+- Po wznowieniu: otworzyć zapis, dokończyć kontrolę kamery i napisów, końcowy smoke telefonu/PC, uaktualnić raport.
+- Nie wznawiać pracy automatycznie. Wygląd i balans: NOT FINAL. Bez publikacji.

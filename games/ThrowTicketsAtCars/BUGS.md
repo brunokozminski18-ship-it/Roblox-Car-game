@@ -1,8 +1,9 @@
-# Błędy i ograniczenia — prototyp
-- Naprawiono: własny Scriptable co klatkę blokował standardowy obrót/zoom.
-- NOT FINAL: etykiety dalszych stref nachodzą na siebie na telefonie.
-- Pełny parking kończy rozwój sesji; brak wymiany/sprzedaży jest celowym zakresem.
-- Cash nie ma zastosowania; trening pozostaje pasywny.
-- NEEDS VERIFICATION: fizyczny obrót RMB/myszą, pinch na telefonie, multiplayer i zabawa z 3 osobami.
-- MCP podczas RMB dostarcza Delta=0; zrzuty Windows Computer Use kończą się timeout. Nie traktujemy tego jako potwierdzenia fizycznego obrotu PC.
-- Automatyczne zrzuty pomijają AlwaysOnTop BillboardGui (pułapka opisana w LihFolk); popupy są nakładką śledzącą punkt świata.
+# Błędy i ograniczenia — stan przerwania
+- NEEDS VERIFICATION: końcowa kontrola kamery i napisów po wznowieniu.
+- Ostatnia korekta SurfaceGui.Active=false została zapisana, bez ponownego Play na prośbę o zatrzymanie.
+- Odpowiedź użytkownika o kamerze: „nie zablokowana”; zachowujemy brzmienie bez rozstrzygania dwuznaczności.
+- Automat nie odtwarza wiarygodnie gestu obrotu; CameraType pozostał Custom, zoom PC działał.
+- NOT FINAL: +1 Power/s oznacza ok. 41 minut do Hypercar Island; tempo do balansu.
+- Cash nadal nie ma wydatków; metagra poza zakresem.
+- Multiplayer i fizyczny telefon nieprzetestowane.
+- Dalekie modele: metadane i lokalny podgląd obsługują opóźnione wczytanie; Persistent dla bram, aut i lawet.
