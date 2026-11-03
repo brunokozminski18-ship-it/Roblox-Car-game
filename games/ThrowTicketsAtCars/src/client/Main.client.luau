@@ -6,11 +6,14 @@ local RunService=game:GetService("RunService")
 local GuiService=game:GetService("GuiService")
 local Config=require(RS.ThrowTickets.Config)
 local Rules=require(RS.ThrowTickets.Rules)
+local Audio=require(script.Parent.Audio)
+task.spawn(function()local status=Audio.preload();Players.LocalPlayer:SetAttribute("AudioPreload",game:GetService("HttpService"):JSONEncode(status))end)
 local Effects=require(script.Parent.Effects)
 local ShopUI=require(script.Parent.Shop)
 local Cinematics=require(script.Parent.Cinematics)
 local Exercises=require(script.Parent.Exercises)
 local p=Players.LocalPlayer
+Audio.mountButtons(p:WaitForChild("PlayerGui"))
 local remotes=RS.ThrowTickets:WaitForChild("Remotes")
 local Throw=remotes:WaitForChild("Throw")::RemoteEvent
 local Train=remotes:WaitForChild("Train")::RemoteEvent
@@ -22,6 +25,17 @@ local cash=p:WaitForChild("leaderstats"):WaitForChild("Cash")::IntValue
 local hud=require(script.Parent.HUD).mount(p:WaitForChild("PlayerGui"))
 local gui,trainButton,message=hud.gui,hud.train,hud.message
 local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedback,hud.shop)
+local reveal=require(script.Parent.CatchReveal).mount(p:WaitForChild("PlayerGui"),Audio.play)
+remotes:WaitForChild("Juice").OnClientEvent:Connect(function(kind,data)
+ if kind=="Reveal"then reveal.show(data,function()remotes.ContinueCatch:FireServer(data.Id)end)
+ elseif kind=="XP"then
+  local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")
+  if root then Effects.popup(root,"+"..Rules.powerText(data.Amount).." XP",Color3.fromRGB(145,215,255),"XPPopup")end
+  Audio.play("XP");if data.Levels>0 then Audio.play("LevelUp")end
+ end
+end)
+p.CharacterRemoving:Connect(reveal.hide)
+p:GetAttributeChangedSignal("ThrowPhase"):Connect(function()local phase=p:GetAttribute("ThrowPhase");if phase=="Idle"or phase=="Tow"then reveal.hide()end end)
 local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars)
 require(script.Parent.ThrowMeterUI).mount(Throw)
 Exercises.mount();require(script.Parent.Traffic).mount(world)

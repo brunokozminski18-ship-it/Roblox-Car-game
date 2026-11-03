@@ -13,6 +13,9 @@ local Schema=require(script.Parent.ProfileSchema)
 local Profiles=require(script.Parent.Profiles)
 local Tools=require(script.Parent.CarTools)
 local Meter=require(RS.ThrowTickets.ThrowMeter)
+local J=require(RS.ThrowTickets.JuiceRules)
+local Progression=require(RS.ThrowTickets.Progression)
+local GearService=require(script.Parent.GearService)
 local GarageService=require(script.Parent.GarageService)
 local profiles=Profiles.new(game:GetService("DataStoreService"):GetDataStore(Config.Data.StoreName..(if RunService:IsStudio()then "_STUDIO"else "")))
 local world=World.build()
@@ -21,6 +24,8 @@ local remotes=Instance.new("Folder");remotes.Name,remotes.Parent="Remotes",RS.Th
 local function remote(name: string): RemoteEvent local r=Instance.new("RemoteEvent");r.Name,r.Parent=name,remotes;return r end
 local Throw,Train,Feedback,Ticket,Shop,Garage,Snapshot=remote("Throw"),remote("Train"),remote("Feedback"),remote("Ticket"),remote("Shop"),remote("Garage"),remote("InventorySnapshot")
 local ConfirmSale=remote("ConfirmSale")
+local Juice,SelectPower,ContinueCatch,TrainingBoost,GearVisit=remote("Juice"),remote("SelectPower"),remote("ContinueCatch"),remote("TrainingBoost"),remote("GearVisit")
+local gearService: any
 local garageService: any
 local states: {[Player]:any}={}
 local plots: {[number]:boolean}={}
@@ -37,12 +42,15 @@ local function trainingNow(p: Player,s: any,enabled: boolean): boolean
  local root=rootOf(p);local pad=s.folder:FindFirstChild("TrainingPad")
  return Rules.trainingActive(if root then root.Position else nil,if pad then pad.Position else nil,enabled,s.job~=nil or s.meter~=nil)
 end
+local function selection(s: any): number return if s.selectedMax~=false then s.data.Power else math.clamp(s.selectedPower or s.data.Power,math.min(1,s.data.Power),s.data.Power)end
 local function mirror(p: Player,s: any)
  p.leaderstats.Cash.Value=s.data.Cash;p:SetAttribute("ThrowPower",s.data.Power)
  p:SetAttribute("EquippedTicket",s.data.Equipped);p:SetAttribute("EffectiveDistance",Rules.distance(s.data.Power))
  for _,t in Config.Tickets do p:SetAttribute("Own_"..t.Id,s.data.Owned[t.Id]==true)end
  p:SetAttribute("Exercise",s.data.Exercise);p:SetAttribute("TrainingRate",Rules.trainingRate(s.data.Power,s.data.Exercise))
  p:SetAttribute("InventoryCount",GarageRules.inventoryCount(s.data));p:SetAttribute("Income",s.income)
+ p:SetAttribute("TrainingLevel",s.data.TrainingLevel);p:SetAttribute("TrainingXP",s.data.TrainingXP);p:SetAttribute("TrainingXPNeeded",Config.Progression.XPPerLevel);p:SetAttribute("ThrowSelection",selection(s));p:SetAttribute("SelectionMax",s.selectedMax~=false)
+ if gearService then gearService.update(p,s)end
 end
 local function snapshot(p: Player,s: any)
  local cards={};for _,c in s.data.Cars do if not c.Pending then local r=Rules.savedReward(c);table.insert(cards,{Id=c.Id,Name=c.Name,Biome=c.Biome,Rarity=c.Rarity,Income=r.Income,Slot=c.Slot})end end
@@ -89,10 +97,10 @@ local function teleport(p: Player,s: any,plot: boolean)
  end
  p:SetAttribute("Location",if plot then "Plot"else "Road")
 end
-local function tweenPivot(model: Model,to: CFrame,seconds: number)
+local function tweenPivot(model: Model,to: CFrame,seconds: number,style: Enum.EasingStyle?)
  local value=Instance.new("CFrameValue");value.Value=model:GetPivot()
  local c=value.Changed:Connect(function(cf)if model.Parent then model:PivotTo(cf)end end)
- local tween=TweenService:Create(value,TweenInfo.new(seconds,Enum.EasingStyle.Linear),{Value=to})
+ local tween=TweenService:Create(value,TweenInfo.new(seconds,style or Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Value=to})
  tween:Play();tween.Completed:Wait();c:Disconnect();value:Destroy()
 end
 local function cleanJob(job: any)
@@ -114,9 +122,17 @@ end
 local function runCatch(p: Player,s: any,j: any)
  local ok,err=xpcall(function()
   task.delay(Config.ThrowWindupSeconds,function()if states[p]==s and s.job==j and mutable(s)then phase(p,s,"Flying")end end)
-  tweenPivot(j.car,CFrame.new(j.position),Config.ThrowWindupSeconds+Config.TicketFlightSeconds)
+  tweenPivot(j.car,CFrame.new(j.position-Vector3.new(0,0,2)),Config.ThrowWindupSeconds+Config.TicketFlightSeconds)
   if states[p]~=s or not mutable(s)or s.job~=j then cleanJob(j);return end
-  phase(p,s,"Tow");p:SetAttribute("LastHitAt",workspace:GetServerTimeNow())
+  phase(p,s,"Hit");p:SetAttribute("LastHitAt",workspace:GetServerTimeNow())
+  tweenPivot(j.car,CFrame.new(j.position),Config.Juice.BrakeSeconds,Enum.EasingStyle.Quad)
+  if states[p]~=s or not mutable(s)or s.job~=j then cleanJob(j);return end
+  phase(p,s,"Reveal");j.revealAt=workspace:GetServerTimeNow()
+  j.readyAt=j.revealAt+math.max((if j.reward.Rarity>=3 then Config.Juice.RareRevealMin else Config.Juice.CommonRevealMin),#j.reward.Name*Config.Juice.LetterSeconds*(if j.reward.Rarity>=3 then 1.35 else 1))
+  Juice:FireClient(p,"Reveal",j.metadata)
+  while states[p]==s and mutable(s)and not j.continued and workspace:GetServerTimeNow()<j.revealAt+Config.Juice.RevealTimeout do task.wait(.05)end
+  if states[p]~=s or not mutable(s)then cleanJob(j);return end
+  phase(p,s,"Tow")
   local tow=Instance.new("Model");tow.Name="Tow_"..j.id;tow.ModelStreamingMode=Enum.ModelStreamingMode.Persistent;tow:SetAttribute("OwnerId",p.UserId)
   local body=World.part(tow,"Flatbed",Config.TowSize,j.position+Config.TowStartOffset,Color3.fromRGB(78,78,78));body.CanCollide=false;body.CanTouch=false;body.CanQuery=false
   tow.PrimaryPart,tow.Parent=body,world.Tows;j.tow=tow
@@ -137,10 +153,12 @@ local function performThrow(p: Player,bonus: number)
  local r=rootOf(p);if not r then return end
  if not Rules.inBox(r.Position,Config.LaunchCenter,Config.LaunchHalfX,Config.LaunchHalfZ,Config.LaunchHeightTolerance)then result(p,"Stand on the THROW line!");return end
  if GarageRules.inventoryCount(s.data)>=Config.InventoryLimit then result(p,"Inventory full!");return end
- local distance=math.min(Config.MapEnd,Rules.distance(s.data.Power)*(1+math.clamp(bonus,Config.ThrowMeter.MinBonus,Config.ThrowMeter.MaxBonus)));local biome=Rules.biome(distance)
+ local chosen=selection(s);local distance=J.distance(s.data.Power,chosen,bonus);local biome=Rules.biome(distance)
  s.meter=nil;p:SetAttribute("MeterStart",nil);p:SetAttribute("LastThrowBonus",bonus)
  local humanoid=p.Character and p.Character:FindFirstChildOfClass("Humanoid");if humanoid then humanoid:UnequipTools()end
- local reward=Rules.reward(biome,Rules.weighted(Rules.rarityWeights(s.data.Equipped),rng:NextNumber()),Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber()),s.data.Equipped)
+ local rarity=if RunService:IsStudio()and s.nextRarity then s.nextRarity else Rules.weighted(Rules.rarityWeights(s.data.Equipped),rng:NextNumber());s.nextRarity=nil
+ local reward=Rules.reward(biome,rarity,Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber()),s.data.Equipped)
+ local best=0;for _,owned in s.data.Cars do best=math.max(best,Rules.savedReward(owned).Income)end
  local id=Http:GenerateGUID(false)
  assert(GarageRules.add(s.data,reward,id,true))
  s.lastThrow=now;p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Windup")
@@ -161,7 +179,9 @@ local function performThrow(p: Player,bonus: number)
  local start=workspace:GetServerTimeNow();j.started=start
  for key,value in {LastDistance=distance,LastBiome=biome,LastRarity=reward.Rarity,LastCarName=reward.Name,LastRollIncome=reward.Income,LastLandingZ=landing.Z,LastShotId=id,Throws=(p:GetAttribute("Throws")or 0)+1}do p:SetAttribute(key,value)end
  publish(p,s);saveSoon(p,s)
- Ticket:FireAllClients(Config.ThrowOrigin,landing,car,p.UserId,reward.Income,{Id=id,Name=reward.Name,Rarity=reward.Rarity,Biome=biome,Income=reward.Income,Position=position,ApproachFrom=approach,TicketId=s.data.Equipped,StartTime=start,WindupSeconds=Config.ThrowWindupSeconds,FlightSeconds=Config.TicketFlightSeconds})
+ j.metadata={Id=id,Name=reward.Name,Rarity=reward.Rarity,Biome=biome,Income=reward.Income,Position=position,ApproachFrom=approach,TicketId=s.data.Equipped,StartTime=start,WindupSeconds=Config.ThrowWindupSeconds,FlightSeconds=Config.TicketFlightSeconds,Reveal=true,NewBest=reward.Income>best,Odds=J.odds(reward,s.data.Equipped),Luck=1+Rules.ticket(s.data.Equipped).Luck,Perfect=J.perfect(bonus),BonusPower=chosen*bonus}
+ Juice:FireClient(p,"ThrowResult",{Perfect=j.metadata.Perfect,BonusPower=j.metadata.BonusPower})
+ Ticket:FireAllClients(Config.ThrowOrigin,landing,car,p.UserId,reward.Income,j.metadata)
  task.spawn(runCatch,p,s,j)
 end
 Train.OnServerEvent:Connect(function(p: Player,...: any)
@@ -194,6 +214,29 @@ Throw.OnServerEvent:Connect(function(p: Player,...: any)
  if bonus==nil then return end
  performThrow(p,bonus)
 end)
+SelectPower.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if not mutable(s)or s.job or s.meter or select("#",...)~=1 then return end
+ local now=os.clock();if now-(s.lastSelection or 0)<.08 then return end;s.lastSelection=now
+ local value=J.selection(s.data.Power,...);if value==nil then return end
+ s.selectedPower=value;s.selectedMax=math.abs(value-s.data.Power)<.0001;mirror(p,s)
+end)
+ContinueCatch.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if not mutable(s)or select("#",...)~=1 or not s.job or s.phase~="Reveal"then return end
+ local id=...;local j=s.job
+ if typeof(id)~="string"or #id>64 or id~=j.id or workspace:GetServerTimeNow()<j.readyAt then return end
+ j.continued=true
+end)
+TrainingBoost.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if not mutable(s)or select("#",...)~=1 or not trainingNow(p,s,p:GetAttribute("Training")==true)then return end
+ local id=...;local offer=s.boostOffer;local now=workspace:GetServerTimeNow()
+ if typeof(id)~="string"or #id>64 or not offer or id~=offer.Id or now>offer.ExpiresAt or now<(s.boostUntil or 0)then return end
+ s.boostOffer=nil;s.boostUntil=now+Config.Progression.BoostSeconds;s.nextBoostOffer=now+Config.Progression.OfferEvery
+ p:SetAttribute("BoostUntil",s.boostUntil);Juice:FireClient(p,"BoostStarted",{Until=s.boostUntil})
+end)
+GearVisit.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if not mutable(s)or select("#",...)~=2 then return end
+ gearService.visit(p,s,...)
+end)
 local poll=0
 RunService.Heartbeat:Connect(function(dt)
  poll+=dt;if poll<Config.ThrowMeter.PollSeconds then return end;poll=0
@@ -213,6 +256,7 @@ RunService.Heartbeat:Connect(function(dt)
   p:SetAttribute("TrainingActive",trainingNow(p,s,p:GetAttribute("Training")==true))
  end end
 end)
+gearService=GearService.new({Juice=Juice,result=result,rootOf=rootOf,mutable=mutable})
 local function joined(p: Player)
  if closing then return end;loading+=1;p:SetAttribute("DataReady",false)
  local stats=Instance.new("Folder");stats.Name,stats.Parent="leaderstats",p
@@ -225,7 +269,8 @@ local function joined(p: Player)
  local folder,positions=World.parking(world,plot,p.UserId,p.DisplayName)
  local entrance=positions[1]+Vector3.new(0,3,6)
  local s={profile=profile,data=profile.Data,plot=plot,folder=folder,positions=positions,entrance=entrance,center=folder.ParkingGround.Position,placed={},tools={},padArmed=true,income=0,phase="Idle",lastThrow=-math.huge,lastRequest=-math.huge,lastTrain=-math.huge,lastShop=-math.huge,lastGarage=-math.huge}
- states[p]=s
+ states[p]=s;s.nextBoostOffer=workspace:GetServerTimeNow()+6
+ gearService.mount(p,s)
  for i=1,Config.ParkingSlots do garageService.prompt(p,s,folder["Slot"..i],"Place","",i)end
  for key,value in {Throws=0,Delivered=0,InventoryCount=0,Income=0,ParkingUsed=0,ParkedCount=0}do p:SetAttribute(key,value)end
  p:SetAttribute("Location","Road");p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Idle")
@@ -256,7 +301,16 @@ task.spawn(function()
    s.data.Cash=math.min(Config.MaxCash,s.data.Cash+s.income)
    local training=trainingNow(p,s,p:GetAttribute("Training")==true)
    p:SetAttribute("TrainingActive",training)
-   if training then s.data.Power=math.min(Config.MaxPower,s.data.Power+Rules.trainingRate(s.data.Power,s.data.Exercise)*Config.TickSeconds)end
+   if training then
+    local now=workspace:GetServerTimeNow();local boosted=now<(s.boostUntil or 0)
+    if s.boostOffer and now>s.boostOffer.ExpiresAt then s.boostOffer=nil end
+    if not boosted and not s.boostOffer and now>=(s.nextBoostOffer or 0)then
+     s.boostOffer={Id=Http:GenerateGUID(false),ExpiresAt=now+Config.Progression.OfferLifetime};s.nextBoostOffer=now+Config.Progression.OfferEvery;Juice:FireClient(p,"BoostOffer",s.boostOffer)
+    end
+    local amount=Rules.trainingRate(s.data.Power,s.data.Exercise)*Config.Progression.XPPerLevel*Config.TickSeconds*(if boosted then 2 else 1)
+    local levels,gain=Progression.addXP(s.data,amount)
+    Juice:FireClient(p,"XP",{Amount=amount,Levels=levels,Gain=gain,Level=s.data.TrainingLevel,XP=s.data.TrainingXP,Needed=Config.Progression.XPPerLevel,Power=s.data.Power,Boosted=boosted})
+   end
    if training or s.income>0 then profiles:touch(s.profile)end;mirror(p,s)
    if os.clock()>=s.profile.NextSave and not s.profile.Saving then
     if s.profile.Dirty or os.clock()-s.profile.LastSave>=Config.Data.LeaseSeconds/3 then
@@ -278,16 +332,18 @@ if RunService:IsStudio()then
   elseif command=="AddPower"and Rules.finiteNumber(value)and value>0 then
    s.data.Power=math.min(Config.MaxPower,s.data.Power+value);publish(p,s);return true
   elseif command=="SetCash"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxCash then s.data.Cash=math.floor(value);publish(p,s);return true
-  elseif command=="SetPower"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxPower then s.data.Power=math.floor(value);publish(p,s);return true
+  elseif command=="SetPower"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxPower then s.data.Power=math.floor(value);s.data.TrainingLevel=Progression.levelFromPower(s.data.Power);s.data.TrainingXP=0;publish(p,s);return true
   elseif command=="GiveCar"then
    local b=if typeof(value)=="number"and Config.Biomes[value]then value elseif typeof(value)=="table"and Config.Biomes[value.Biome]then value.Biome else 1
    local rarity=if typeof(value)=="table"and Config.Rarities[value.Rarity]then value.Rarity else 1
    local ok=GarageRules.add(s.data,Rules.reward(b,rarity,1),Http:GenerateGUID(false),false);if ok then publish(p,s)end;return ok
   elseif command=="TeleportSlot"and Rules.finiteNumber(value)and s.positions[value]then
    local r=rootOf(p);if r then p.Character:PivotTo(CFrame.new(s.positions[value]+Vector3.new(0,3,0)));p:SetAttribute("Location","Plot");return true end
+  elseif command=="ForceNextRarity"and Rules.finiteNumber(value)and Config.Rarities[value]then s.nextRarity=value;return true
+  elseif command=="SetXP"and Rules.finiteNumber(value)and value>=0 and value<Config.Progression.XPPerLevel then s.data.TrainingXP=value;publish(p,s);return true
   elseif command=="Save"then return save(p,s,false)
   elseif command=="Exit"then release(p);return true end
   return nil
  end
 end
-print("[ThrowTickets] Iteration 8: Tools, garage prompts and server throw clock ready.")
+print("[ThrowTickets] Iteration 10a: reveal, XP, boost and selected throw ready.")

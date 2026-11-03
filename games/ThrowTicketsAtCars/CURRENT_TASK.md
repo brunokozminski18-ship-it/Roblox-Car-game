@@ -1,16 +1,18 @@
-# Current Task — poprawka treningu po iteracji 8
-- Właściciel: Codex; 03.11.2026. Status: VERIFIED — telefon poziomo, PC,197 asercji, zakup i save/rejoin.
-- Zlecenie użytkownika: naprawić brak wzrostu Power i umożliwić kupowanie lepszego treningu.
-- Diagnoza live: gracz na własnej płytce, Training=false; auto-start i opóźnione TrainingActive myliły toggle TRAIN. HUD dodatkowo ukrywał ułamki Power.
-- [x] TrainingActive aktualizowane od razu; TRAIN/STOP jednoznacznie pokazuje akcję; serwer nalicza z bieżącej pozycji na własnej płytce.
-- [x] Power do3 miejsc po przecinku i popup każdego ticka; na HUD rzeczywiste Power/s.
-- [x] SHOP → TRAINING/TICKETS, ceny i rzeczywiste stawki; istniejące6 ćwiczeń x1/2/4/8/16/32.
-- VERIFIED: Focused Training$180 zwiększyło0.05555→0.11111 Power/s; Weighted Training$25488 zwiększyło do0.22222 Power/s.
-- VERIFIED: STOP nie nalicza, TRAIN wznawia, zejście z płytki zatrzymuje, próba treningu poza nią odrzucona; ponowny zakup nie zabiera Cash.
-- VERIFIED: po rejoin dokładnie ten sam Exercise3, Cash74332 i Power98.55555555555614.
-- Nowa regresja RED→GREEN44 kontroli; pełny zestaw197 PASS. Finalne LogService klienta0 MessageError; review bez istotnych uwag.
-- Źródło: LihFolk Vault V2, Progression and Pacing Design/Pricing Curves and Upgrade Costs TL;DR przez MCP, tylko odczyt.
-- Ceny, Work i tempo Config zachowane. Testy na oddzielnym QA, bez resetu/grantów profilu użytkownika i publikacji.
-- Studio Edit, emulator/HTTP off, TestProfileKey nil.
-- Raport/zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8#Poprawka treningu — 03.11.2026]].
-- Następny krok: użytkownik testuje SHOP → TRAINING i płytkę; balans nadal NOT FINAL. Ręczny touch-hold promptu z iteracji8 pozostaje NEEDS VERIFICATION.
+# Current Task — iteracja 10a: feedback złapania, rzutu i treningu
+- Właściciel: Codex;03.11.2026. Status: IMPLEMENTED częściowo; pełna iteracja NIE jest ukończona.
+- Specyfikacja: research/ThrowFoodForAnimals [A/B/C/D/H], własne grafiki/nazwy, bez Rebirth/Robux/publikacji.
+- Źródła: MCP Obsidiana tylko odczyt; przed pracą juice/feedback/sound design/camera i6 wskazanych TL;DR, raport poniżej.
+- Próbka: CatchReveal pokazana na iPhone7 poziomo; czeka na ocenę użytkownika zgodnie z AGENTS „Najpierw jedna próbka”. Nie oznaczono USER APPROVED.
+- [x] Serwer: wybór siły<=Power, PERFECT/bonus metadata, reveal przed lawetą, obce/wczesne/powtórne Continue odrzucane, limit12 s.
+- [x] Karta auta: ViewportFrame, litery+dźwięk, rarity/income/newbest, Epic odds count-up i Tap to continue; hit kamera/brake/sticker/shake.
+- [x] XP/level, schema4 i migracja zachowująca stary Power; boost2 s z ofertą4 s sterowane serwerem; Gear toast/visit serwer i stanowisko next sprzętu.
+- [x] Audio:12 cue/9 ID Creator Store, preload wszystkich w natywnym kliencie Loaded=true i Length>0, pule/górny limit12 głosów.
+- [ ] Po ocenie próbki: FlightHUD biom/LUCK, PERFECT/+POWER UI i suwak/MAX, XP bar/Level up/2x button, GearToast+shop open i smuga sklepu.
+- [ ] Pełny test nowych UI na telefonie/PC: obecne testy nie są zaliczeniem całej listy użytkownika.
+- VERIFIED03.11 tylko zakres obecny:264 asercje; serwer common/Epic→reveal→laweta, wcześniejszy biom, boost, GearVisit, rejoin; PC rzeczywisty Continue.
+- Review: brak usterek security/data; poprawione sticker ghost po dostawie i zbyt krótki proxy podczas reveal; sticker RED1→GREEN0.
+- Save/rejoin zachował4 auta/Id/Slot/Ticket, Power208, Level185, XP81.25, Cash1000 na QA; nie resetowano/grantowano danych użytkownika.
+- Stan końcowy Studio Edit, QA/emulator/HTTP off; pełna iteracja wymaga dalszej pracy.
+- Parametry wykonawcze:100 XP/level, +1 Power/level, XP=dotychczasowy Power/s×100; tempo/balans NOT FINAL.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a]].
+- Następny krok: ocena karty przez użytkownika, potem dokończenie UI i pełnych testów.

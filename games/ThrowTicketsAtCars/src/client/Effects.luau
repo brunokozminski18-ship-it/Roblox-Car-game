@@ -9,6 +9,7 @@ local ContentProvider = game:GetService("ContentProvider")
 local Config = require(RS.ThrowTickets.Config)
 local Rules = require(RS.ThrowTickets.Rules)
 local CarBuilder = require(RS.ThrowTickets.CarBuilder)
+local Audio=require(script.Parent.Audio)
 local Effects = {}
 local overlay = Instance.new("ScreenGui")
 overlay.Name, overlay.ResetOnSpawn, overlay.DisplayOrder = "TicketFXOverlay", false, 20
@@ -16,19 +17,14 @@ overlay.ScreenInsets = Enum.ScreenInsets.None
 overlay.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local folder = Instance.new("Folder")
 folder.Name, folder.Parent = "TicketClientFX", workspace
-local sound = Instance.new("Sound")
-sound.Name, sound.SoundId = "TicketImpactTemplate", Config.ImpactSound
-sound.Volume, sound.PlaybackSpeed, sound.Parent = Config.ImpactVolume, Config.ImpactPitch, SoundService
-task.spawn(function() ContentProvider:PreloadAsync({sound}) end)
-
-local function animate(seconds: number, update: (number) -> (), complete: (() -> ())?)
+local function animate(seconds: number, update: (number) -> any, complete: (() -> ())?)
 	local elapsed = 0
 	local connection: RBXScriptConnection
 	connection = RunService.RenderStepped:Connect(function(dt)
 		elapsed += dt
 		local t = math.min(1, elapsed / seconds)
-		update(t)
-		if t >= 1 then connection:Disconnect(); if complete then complete() end end
+		local keep=update(t)
+		if keep==false or t >= 1 then connection:Disconnect(); if complete then complete() end end
 	end)
 end
 
@@ -78,11 +74,8 @@ local function impact(car: Model, income: number, mine: boolean?, metadata: any)
 	local body = car.PrimaryPart
 	local rarity=Config.Rarities[if metadata then metadata.Rarity else car:GetAttribute("Rarity")or 1] or Config.Rarities[1]
 	local carName=if metadata then metadata.Name else car:GetAttribute("CarName")or "Car"
-	Effects.popup(body,string.format("TICKETED!\n%s\n%s | $%d/s on plot",carName,rarity.Name,income),rarity.Color,"TicketedPopup",mine)
-	local ping = sound:Clone()
-	ping.Name, ping.Parent = "TicketImpact", SoundService
-	ping:Play()
-	Debris:AddItem(ping, 2)
+	if not(mine and metadata and metadata.Reveal)then Effects.popup(body,string.format("TICKETED!\n%s\n%s | $%d/s on plot",carName,rarity.Name,income),rarity.Color,"TicketedPopup",mine)end
+	if mine then Audio.play("Impact")end
 	local highlight = Instance.new("Highlight")
 	highlight.Name, highlight.Adornee = "Ticketed", car
 	highlight.FillColor, highlight.OutlineColor = Color3.fromRGB(255, 70, 50), Color3.fromRGB(255, 70, 50)
@@ -97,7 +90,8 @@ local function impact(car: Model, income: number, mine: boolean?, metadata: any)
 	text.Text, text.TextColor3, text.TextSize = "TICKET", Color3.fromRGB(120, 25, 20), 36
 	text.Font, text.Parent = Enum.Font.GothamBlack, surface
 	surface.Parent = sticker
-	animate(Config.StickerSeconds, function()
+	animate(if metadata and metadata.Reveal then Config.Juice.RevealTimeout+3 else Config.StickerSeconds, function()
+		if not sticker.Parent or not body.Parent then return false end
 		if sticker.Parent and body.Parent then
 			local anchor = if glass and glass.Parent then glass.CFrame else body.CFrame * CFrame.new(0, Config.RoofOffset, Config.WindshieldFront)
 			sticker.CFrame = anchor * CFrame.new(0, 0, 0.1) * CFrame.Angles(math.pi / 2, 0, 0)
@@ -174,8 +168,9 @@ function Effects.flight(origin: Vector3, destination: Vector3, car: Model?, inco
 			if cars then replicaConnection=cars.ChildAdded:Connect(function(node)
 				if node.Name=="Ticketed_"..tostring(id)then preview:Destroy();clearReplicaWatch()end
 			end)end
-			Debris:AddItem(preview,Config.TowApproachSeconds+Config.TowLoadSeconds+0.1)
-			task.delay(Config.TowApproachSeconds+Config.TowLoadSeconds+0.2,clearReplicaWatch)
+			local lifetime=(if metadata and metadata.Reveal then Config.Juice.RevealTimeout+Config.Juice.BrakeSeconds else 0)+Config.TowApproachSeconds+Config.TowLoadSeconds
+			Debris:AddItem(preview,lifetime+0.1)
+			task.delay(lifetime+0.2,clearReplicaWatch)
 		end
 		if onComplete then local success,message=pcall(onComplete);if not success then warn(message)end end
 	end

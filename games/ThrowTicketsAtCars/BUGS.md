@@ -10,3 +10,4 @@
 - Domyślny hotbar Roblox ukryty; narzędzia odtwarzają się po śmierci/rejoin. Wybór wyposażonego auta nie jest częścią zapisu.
 - Zatwierdzona próbka My Cars; modele i finalny balans nadal NOT FINAL.
 - Naprawiono03.11: TRAIN mógł wyłączyć auto-start zanim TrainingActive trafiło na HUD; przyrost1/18 Power/s był niewidoczny po obcięciu do całości. Aktualny stan/STOP, ułamki i jawna stawka przeszły telefon/PC oraz197 kontroli.
+- Iteracja10a NIEUKOŃCZONA: sample karty czeka na ocenę; nowe UI dla flight/slider/PERFECT/XPbar/2x/GearToast/shine nie jest jeszcze podłączone. Serwer i karta działają, reszta wymaga kontynuacji.

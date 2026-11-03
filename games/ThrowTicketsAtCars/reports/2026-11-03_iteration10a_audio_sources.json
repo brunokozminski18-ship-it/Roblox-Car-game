@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-03",
+  "status": "IMPLEMENTED; NEEDS VERIFICATION in current experience",
+  "scope": "Creator Store discovery + client audio catalog/pool only; no Studio scene or Play changes",
+  "knowledgeSource": "LihFolk Vault V2",
+  "notesReadViaMCP": [
+    "07 Lighting VFX and Audio/Sound Design for Games.md",
+    "47 Game Feel and Juice/Feedback Timing - Sound Visual and Haptic Sync.md",
+    "07 Lighting VFX and Audio/Sound Fundamentals.md, loading/pooling and client ownership sections"
+  ],
+  "discovery": {
+    "tool": "Roblox Studio MCP search_asset",
+    "scope": "creator_store",
+    "assetType": "Audio",
+    "allSelectedResultsReportedFree": true,
+    "assetsInserted": false,
+    "sources": [
+      { "id": "106623224876186", "name": "Tiny Click - Daily Sounds", "creator": "DailySoundsFX", "query": "Daily Sounds click", "roles": ["Tap"], "url": "https://create.roblox.com/store/asset/106623224876186" },
+      { "id": "106553517979212", "name": "UI Notification", "creator": "CoreCraft Studio", "query": "ui notification", "roles": ["Toast"], "url": "https://create.roblox.com/store/asset/106553517979212" },
+      { "id": "138309872562566", "name": "Retro Coin Collect - Daily Sounds", "creator": "DailySoundsFX", "query": "Daily Sounds coin", "roles": ["Counter"], "url": "https://create.roblox.com/store/asset/138309872562566" },
+      { "id": "106984966606682", "name": "Cartoon Pop - Daily Sounds", "creator": "DailySoundsFX", "query": "Cartoon Pop", "roles": ["Letter", "Impact"], "url": "https://create.roblox.com/store/asset/106984966606682" },
+      { "id": "112485797063762", "name": "UI - Level Up", "creator": "SodaBreadle", "query": "level up", "roles": ["LevelUp"], "url": "https://create.roblox.com/store/asset/112485797063762" },
+      { "id": "130378474223829", "name": "Coin Pickup - Daily Sounds", "creator": "DailySoundsFX", "query": "Daily Sounds coin", "roles": ["Purchase", "XP"], "url": "https://create.roblox.com/store/asset/130378474223829" },
+      { "id": "9126103903", "name": "Tire Chirp Engine Car In Short Punchy Skids (SFX)", "creator": "ProSoundEffects", "query": "Car Tire Skidding (SFX)", "roles": ["Brake"], "url": "https://create.roblox.com/store/asset/9126103903" },
+      { "id": "134821092416328", "name": "Rewards Level Up - Next Tier", "creator": "Los Calientes Studio", "query": "level up", "roles": ["Rare"], "url": "https://create.roblox.com/store/asset/134821092416328" },
+      { "id": "80984744279155", "name": "Fast Whoosh - Daily Sounds", "creator": "DailySoundsFX", "query": "Daily Sounds whoosh", "roles": ["Throw", "Boost"], "url": "https://create.roblox.com/store/asset/80984744279155" }
+    ]
+  },
+  "implementation": {
+    "cueCount": 12,
+    "distinctSourceIds": 9,
+    "globalPlayingVoiceLimit": 12,
+    "prebuiltVoices": 16,
+    "preload": "Audio.preload() yields, returns per-key Loaded/Length/Id; call in task.spawn",
+    "play": "Audio.play(key, optionalPitchMultiplier) checks IsLoaded, never yields, bounded pool with voice reuse, cue throttle, pitch variance and tail limits",
+    "buttonBinding": "Audio.mountButtons(playerGui) mounts existing/future GuiButton.Activated once, AudioKey overrides Tap, AudioMuted=true suppresses custom-wired button",
+    "inspection": "Audio.status() and SoundService.AudioStatus/<cue> attributes",
+    "ownConsoleWarnings": false
+  },
+  "verification": {
+    "creatorStoreMetadata": "VERIFIED by search_asset result",
+    "liveLoadAndLength": "Pending root integration/playtest",
+    "auditoryFit": "NEEDS VERIFICATION",
+    "phoneMix": "NEEDS VERIFICATION",
+    "onsetSeconds": null,
+    "peakSeconds": null,
+    "timingMeasured": false,
+    "timingPolicy": "Start reactive cues with visuals; no guessed early scheduling or source seek"
+  }
+}

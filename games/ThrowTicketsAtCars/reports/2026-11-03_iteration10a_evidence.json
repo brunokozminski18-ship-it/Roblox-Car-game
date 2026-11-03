@@ -1,0 +1,229 @@
+{
+  "status": "PARTIAL: backend and one catch card implemented; remaining UI pending sample approval",
+  "tests": {
+    "rules": {
+      "ok": true,
+      "result": "7 basic assertions passed"
+    },
+    "garage-security": {
+      "ok": true,
+      "result": "1 garage security assertion passed"
+    },
+    "profiles": {
+      "ok": true,
+      "result": "9 profile safety assertions passed"
+    },
+    "progression10a": {
+      "ok": true,
+      "result": "54 progression10a assertions passed"
+    },
+    "iteration8": {
+      "ok": true,
+      "result": "40 iteration-8 assertions passed"
+    },
+    "iteration6": {
+      "ok": true,
+      "result": "62 iteration-6 assertions passed"
+    },
+    "juice10a": {
+      "ok": true,
+      "result": "13 juice assertions passed"
+    },
+    "training-fix": {
+      "ok": true,
+      "result": "44 training-fix assertions passed"
+    },
+    "iteration7": {
+      "ok": true,
+      "result": "34 iteration-7 assertions passed"
+    }
+  },
+  "boost": {
+    "events": {
+      "1": {
+        "Boosted": false,
+        "Levels": 1,
+        "Needed": 100,
+        "Power": 25,
+        "Amount": 25,
+        "Level": 2,
+        "XP": 15,
+        "Gain": 1
+      },
+      "2": {
+        "Boosted": true,
+        "Levels": 0,
+        "Needed": 100,
+        "Power": 25,
+        "Amount": 50,
+        "Level": 2,
+        "XP": 65,
+        "Gain": 0
+      },
+      "3": {
+        "Boosted": true,
+        "Levels": 1,
+        "Needed": 100,
+        "Power": 26,
+        "Amount": 50,
+        "Level": 3,
+        "XP": 15,
+        "Gain": 1
+      }
+    },
+    "power": 26,
+    "untilTime": 1793723634.508813,
+    "level": 3,
+    "xp": 15,
+    "now": 1793723635.029152
+  },
+  "common": {
+    "reveal": {
+      "TicketId": "paper",
+      "ApproachFrom": "7, 1.399999976158142, -89.27163696289062",
+      "Reveal": true,
+      "Income": 6,
+      "StartTime": 1793723685.373807,
+      "Odds": 4,
+      "Rarity": 1,
+      "Id": "5a4be566-a299-4aaf-b3c2-2d0d42e465c0",
+      "Biome": 2,
+      "Perfect": true,
+      "FlightSeconds": 2,
+      "Name": "Hatchback",
+      "BonusPower": 4.951635428837367,
+      "WindupSeconds": 0.45,
+      "Luck": 1,
+      "NewBest": true,
+      "Position": "7, 1.399999976158142, -57.271636962890625"
+    },
+    "phase": "Idle",
+    "distance": 54.95163542883736,
+    "delivered": 1,
+    "biome": 2
+  },
+  "rare": {
+    "phase": "Idle",
+    "camera": "Custom",
+    "reveal": {
+      "TicketId": "paper",
+      "ApproachFrom": "7, 1.399999976158142, -89.26976013183594",
+      "Reveal": true,
+      "Income": 18,
+      "StartTime": 1793723826.000025,
+      "Odds": 43,
+      "Rarity": 3,
+      "Id": "19216317-f6dd-4652-9d1f-a1c891c780e1",
+      "Biome": 2,
+      "Perfect": true,
+      "FlightSeconds": 2,
+      "Name": "Hatchback",
+      "BonusPower": 4.949760437011719,
+      "WindupSeconds": 0.45,
+      "Luck": 1,
+      "NewBest": true,
+      "Position": "7, 1.399999976158142, -57.26976013183594"
+    },
+    "delivered": 2
+  },
+  "saveBefore": {
+    "Cars": {
+      "1": {
+        "Rarity": 1,
+        "Slot": 0,
+        "Id": "5a4be566-a299-4aaf-b3c2-2d0d42e465c0",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      },
+      "2": {
+        "Rarity": 3,
+        "Slot": 0,
+        "Id": "19216317-f6dd-4652-9d1f-a1c891c780e1",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      },
+      "3": {
+        "Rarity": 1,
+        "Slot": 0,
+        "Id": "eb7f99c9-99c1-418b-bbc8-c092bd956465",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      },
+      "4": {
+        "Rarity": 1,
+        "Slot": 0,
+        "Id": "932c8058-38d6-4520-9399-13db4acbc987",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      }
+    },
+    "Owned": {
+      "paper": true
+    },
+    "TrainingXP": 81.25,
+    "Power": 208,
+    "TrainingLevel": 185,
+    "Exercise": 1,
+    "Equipped": "paper",
+    "Cash": 1000
+  },
+  "saveAfter": {
+    "Cars": {
+      "1": {
+        "Rarity": 1,
+        "Slot": 0,
+        "Id": "5a4be566-a299-4aaf-b3c2-2d0d42e465c0",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      },
+      "2": {
+        "Rarity": 3,
+        "Slot": 0,
+        "Id": "19216317-f6dd-4652-9d1f-a1c891c780e1",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      },
+      "3": {
+        "Rarity": 1,
+        "Slot": 0,
+        "Id": "eb7f99c9-99c1-418b-bbc8-c092bd956465",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      },
+      "4": {
+        "Rarity": 1,
+        "Slot": 0,
+        "Id": "932c8058-38d6-4520-9399-13db4acbc987",
+        "Ticket": "paper",
+        "Name": "Hatchback",
+        "Biome": 2
+      }
+    },
+    "Owned": {
+      "paper": true
+    },
+    "TrainingXP": 81.25,
+    "Power": 208,
+    "TrainingLevel": 185,
+    "Exercise": 1,
+    "Equipped": "paper",
+    "Cash": 1000
+  },
+  "saveMatch": true,
+  "nativeAudio": {
+    "audio": "{\"Letter\":{\"Loaded\":true,\"Length\":0.1579375,\"Id\":\"rbxassetid://106984966606682\"},\"Boost\":{\"Loaded\":true,\"Length\":0.9226666666666666,\"Id\":\"rbxassetid://80984744279155\"},\"LevelUp\":{\"Loaded\":true,\"Length\":1.5400208333333335,\"Id\":\"rbxassetid://112485797063762\"},\"Impact\":{\"Loaded\":true,\"Length\":0.1579375,\"Id\":\"rbxassetid://106984966606682\"},\"Brake\":{\"Loaded\":true,\"Length\":2.6431458333333337,\"Id\":\"rbxassetid://9126103903\"},\"Tap\":{\"Loaded\":true,\"Length\":0.153125,\"Id\":\"rbxassetid://106623224876186\"},\"Purchase\":{\"Loaded\":true,\"Length\":0.4974166666666667,\"Id\":\"rbxassetid://130378474223829\"},\"Throw\":{\"Loaded\":true,\"Length\":0.9226666666666666,\"Id\":\"rbxassetid://80984744279155\"},\"Toast\":{\"Loaded\":true,\"Length\":0.9701587301587301,\"Id\":\"rbxassetid://106553517979212\"},\"Rare\":{\"Loaded\":true,\"Length\":2.482312925170068,\"Id\":\"rbxassetid://134821092416328\"},\"XP\":{\"Loaded\":true,\"Length\":0.4974166666666667,\"Id\":\"rbxassetid://130378474223829\"},\"Counter\":{\"Loaded\":true,\"Length\":0.4975,\"Id\":\"rbxassetid://138309872562566\"}}",
+    "errors": []
+  },
+  "review": {
+    "Sticker": "RED1 leaked sticker -> GREEN0",
+    "Fallback": "Proxy lifetime extended through reveal",
+    "Backend": "No security/data findings"
+  }
+}

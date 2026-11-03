@@ -2,6 +2,8 @@
 -- Prototype tuning: NOT FINAL. All progression, rewards and world dimensions live here.
 local Config={
 	StartPower=24, TickSeconds=1,
+ Progression={XPPerLevel=100,PowerPerLevel=1,OfferEvery=12,OfferLifetime=4,BoostSeconds=2},
+ Juice={LetterSeconds=.065,CommonRevealMin=1.3,RareRevealMin=2.5,RevealTimeout=12,PerfectPosition=.06,ToastSeconds=7,ShineEvery=5,BrakeSeconds=.3},
  Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond"},TrainingWorkPerPower={4,18,32,90,220,220}},
  Simulation={CatchLoopSeconds=14,RefreshSeconds=45,PurchaseSeconds=2,MaxSeconds=86400},
  Exercises={
@@ -18,7 +20,7 @@ local Config={
  ThrowWindupSeconds=.45, CameraReturnHold=.3, CaptureApproachDistance=32, CaptureLaneX=7,
  TrafficHz=30, TrafficSpeed=22, TrafficLaneX=7, TrafficRenderDistance=450,
 	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
-	Data={StoreName="ThrowTicketsAtCars_v1",Schema=3,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=4,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
 	Tickets={
 		{Id="paper",Name="Paper Ticket",Minutes=0,UnlockBiome=1,IncomeMultiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
 		{Id="pink",Name="Pink Slip",Minutes=1.5,UnlockBiome=1,IncomeMultiplier=1.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},

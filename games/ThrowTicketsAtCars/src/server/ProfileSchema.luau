@@ -1,9 +1,10 @@
 --!strict
 local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
+local Progression=require(game.ReplicatedStorage.ThrowTickets.Progression)
 local Schema={}
 function Schema.default(): any
- return {Cash=0,Power=Config.StartPower,Owned={paper=true},Equipped="paper",Exercise=1,Cars={}}
+ return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={}}
 end
 function Schema.copy(value: any): any
  if typeof(value)~="table"then return value end
@@ -31,6 +32,10 @@ function Schema.prepare(raw: any): (any,string?)
  if not Rules.finiteNumber(d.Exercise)or d.Exercise%1~=0 or not Config.Exercises[d.Exercise]then return nil,"Invalid exercise"end
  if not Rules.finiteNumber(d.Cash)or d.Cash<0 or d.Cash>Config.MaxCash or d.Cash%1~=0 then return nil,"Invalid Cash"end
  if not Rules.finiteNumber(d.Power)or d.Power<0 or d.Power>Config.MaxPower then return nil,"Invalid Power"end
+ -- Migration 3 -> 4: retain exact earned Power, derive display level, start fresh XP.
+ if raw.Schema<4 then d.TrainingLevel=Progression.levelFromPower(d.Power);d.TrainingXP=0 end
+ if not Rules.finiteNumber(d.TrainingLevel)or d.TrainingLevel%1~=0 or d.TrainingLevel<1 or d.TrainingLevel>1e9 then return nil,"Invalid TrainingLevel"end
+ if not Rules.finiteNumber(d.TrainingXP)or d.TrainingXP<0 or d.TrainingXP>=Config.Progression.XPPerLevel then return nil,"Invalid TrainingXP"end
  if typeof(d.Owned)~="table"or typeof(d.Cars)~="table"or typeof(d.Equipped)~="string"then return nil,"Invalid inventory"end
  local owned={};local gap=false
  for _,t in Config.Tickets do if d.Owned[t.Id]==true then if gap then return nil,"Invalid unlock sequence"end;owned[t.Id]=true else gap=true end end
@@ -47,6 +52,6 @@ function Schema.prepare(raw: any): (any,string?)
   table.insert(cars,{Id=c.Id,Biome=c.Biome,Rarity=c.Rarity,Name=c.Name,Ticket=c.Ticket,Slot=c.Slot})
  end
  if count~=#d.Cars or inventory>Config.InventoryLimit then return nil,"Inventory capacity exceeded"end
- return {Cash=d.Cash,Power=d.Power,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars}
+ return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars}
 end
 return Schema

@@ -18,3 +18,4 @@
 - Biomy bez zmian:0/50/150/400/1000/2500. Klockowa mapa; Rusty Sedan jako próbka modelu.
 - Źródło: LihFolk Vault V2 (CC BY4.0), cztery wskazane TL;DR inventory/persistence/prompt/QoL, tylko odczyt MCP.
 - Poprawka treningu03.11: TRAIN/STOP steruje ćwiczeniem na własnej płytce; stan aktualny od razu, Power i przyrosty pokazują ułamki. SHOP rozdziela TRAINING/TICKETS, każda karta treningu podaje rzeczywiste Power/s; zakup wyższego ćwiczenia automatycznie je aktywuje.
+- Iteracja10a częściowo IMPLEMENTED: schema4 dodaje TrainingLevel/TrainingXP bez utraty starego Power;100 XP→+1 Power, XP/sek=stara stawka×100, oferta2x co12 s ważna4 s, boost2 s. Wybrana siła1..Power z dotychczasowym małym bonusem. Reveal przed lawetą z minimum1.3/2.5 s i limitem12 s. Pozostały UI PLANNED, patrz CURRENT_TASK.
