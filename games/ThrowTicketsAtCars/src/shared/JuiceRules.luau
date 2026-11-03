@@ -17,8 +17,13 @@ function J.perfect(bonus: number): boolean
  return bonus>=Config.ThrowMeter.MaxBonus-(Config.ThrowMeter.MaxBonus-Config.ThrowMeter.MinBonus)*Config.Juice.PerfectPosition
 end
 function J.odds(reward: any,ticketId: string): number
- local weights=Rules.rarityWeights(ticketId);local total=0;for _,r in weights do total+=r.Weight end
- local carTotal,chosen=0,1;for _,c in Config.Biomes[reward.Biome].Cars do carTotal+=c.Weight;if c.Name==reward.Name then chosen=c.Weight end end
- return math.max(1,math.floor(total/weights[reward.Rarity].Weight*carTotal/chosen+.5))
+ local function probability(entries: any,id: any): number
+  local total,weight=0,0;for i,e in entries do total+=e.Weight;if (e.Id or i)==id then weight=e.Weight end end
+  return weight/total
+ end
+ local pool={};for _,c in Config.Biomes[reward.Biome].Cars do if c.Rarity==reward.Rarity then table.insert(pool,c)end end
+ local p=probability(Rules.rarityWeights(ticketId),reward.Rarity)*probability(pool,reward.CatalogId)
+ p*=probability(Rules.extraWeights(Config.Variants,ticketId),reward.Variant or "Normal")*probability(Rules.extraWeights(Config.CarSizes,ticketId),reward.Size or "Normal")
+ return math.max(1,math.floor(1/p+.5))
 end
 return J

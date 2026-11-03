@@ -32,6 +32,9 @@ function HUD.mount(parent: Instance): any
  local cars=action("Cars",88,48,12,{"74E6FF","1E95F0"});cars.TextSize=22
  local train=action("Train",88,48,112,{"D98BFF","7B2BE6"});train.TextSize=17
  local shop=action("Shop",88,48,212,{"FF86CF","E2338C"});shop.TextSize=22
+ local index=action("Index",88,48,12,{"74E6FF","3470CF"});index.AnchorPoint=Vector2.zero;index.Position=UDim2.fromOffset(12,60);index.TextSize=18
+ local statusGui=Instance.new("ScreenGui");statusGui.Name="CarStatus";statusGui.ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets;statusGui.DisplayOrder=45;statusGui.ResetOnSpawn=false;statusGui.Parent=parent
+ local banner=S.text(statusGui,"StatusBanner","",17,UDim2.new(.5,0,0,114),UDim2.new(.8,0,0,32));banner.AnchorPoint=Vector2.new(.5,0);banner.TextXAlignment=Enum.TextXAlignment.Center;banner.BackgroundTransparency=.1;banner.Visible=false;S.corner(banner,12)
  local trainingStatus=S.text(gui,"TrainingStatus","",15,UDim2.new(1,-12,0,112),UDim2.fromOffset(300,24))
  trainingStatus.AnchorPoint=Vector2.new(1,0);trainingStatus.TextXAlignment=Enum.TextXAlignment.Right;trainingStatus.TextColor3=Color3.fromHex("B2FFAD");trainingStatus.Visible=false
  local message=S.text(gui,"Message","",16,UDim2.new(.5,0,1,-88),UDim2.new(1,-120,0,26))
@@ -43,7 +46,7 @@ function HUD.mount(parent: Instance): any
   message.Size=UDim2.fromOffset(math.min(400,math.max(220,gui.AbsoluteSize.X-300)),26);message.Position=UDim2.new(.5,0,1,if gui.AbsoluteSize.Y<520 then -112 else -132)
  end
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize()
- return {gui=gui,top=top,cars=cars,train=train,shop=shop,message=message,powerSettings=powerSettings,
+ return {gui=gui,top=top,cars=cars,train=train,shop=shop,index=index,banner=banner,message=message,powerSettings=powerSettings,
   render=function(cash: number,power: number,equipped: string?,training: boolean,rate: number)
    local distance=Rules.distance(power);local b=Config.Biomes[Rules.biome(distance)]
    stats.Text=string.format('CASH <font color="#B2FFAD">$%s</font>',short(cash));powerLabel.Text="POWER "..short(power);biomeLabel.Text=b.Name:upper()
@@ -59,6 +62,7 @@ function HUD.mount(parent: Instance): any
   end,
   mode=function(location: string,throwing: boolean,phase: string)
    train.Visible,shop.Visible,cars.Visible=not throwing,not throwing,not throwing
+   index.Visible=not throwing
    train.Active,shop.Active,cars.Active=not throwing,not throwing,not throwing
   end}
 end

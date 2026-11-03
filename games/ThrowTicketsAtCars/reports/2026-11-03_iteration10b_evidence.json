@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-03",
+  "pure": {
+    "profiles.spec.luau": "9 profile safety assertions passed",
+    "garage-security.spec.luau": "1 garage security assertion passed",
+    "rules.spec.luau": "7 basic assertions passed",
+    "iteration6.spec.luau": "62 iteration-6 assertions passed",
+    "progression10a.spec.luau": "54 progression10a assertions passed",
+    "training-fix.spec.luau": "44 training-fix assertions passed",
+    "iteration10b.spec.luau": "77 iteration-10b assertions passed (10000 deterministic rolls)",
+    "juice10a.spec.luau": "64 juice assertions passed",
+    "iteration8.spec.luau": "40 iteration-8 assertions passed",
+    "iteration7.spec.luau": "34 iteration-7 assertions passed"
+  },
+  "clientErrors": [],
+  "serverErrors": [],
+  "finalPhoneErrors": [],
+  "qa": {
+    "schema4To5": {
+      "oldParked": "old-parked",
+      "newModel": "Puddle Pickup",
+      "rarity": 2,
+      "slot": 6,
+      "income": 2
+    },
+    "parkingCapacity": [
+      6,
+      8,
+      10
+    ],
+    "earlyHoldKept": 8,
+    "indexAfterSaleAndRejoin": "3/48",
+    "goldBig": {
+      "odds": 5714,
+      "income": 9,
+      "sale": 1620
+    },
+    "fullParkingCatch": {
+      "parked": 8,
+      "inventory": 20,
+      "slot": 0,
+      "rarity": 4,
+      "variant": "Diamond",
+      "size": "GIANT"
+    }
+  }
+}

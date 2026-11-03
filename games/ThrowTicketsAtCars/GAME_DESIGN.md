@@ -1,4 +1,4 @@
-# THROW TICKETS AT CARS! — iteracja10a
+# THROW TICKETS AT CARS! — iteracja 10b
 - USER APPROVED03.11: zakres8/10a, My Cars i scena złapania v2 wyłącznie testowa. Bez Rebirth/petów/Robux/nowych biomów/publikacji.
 - Pętla: wybierz siłę → wejdź na białą płytkę → tap paska → mandat/biom/LUCK → hit/reveal → laweta → działka/Tool.
 - Dystans=min(koniec mapy,wybranaSiła×(1+bonus)); siła1..Power tylko z ikony przy Power, domyślnieMAX/schowany suwak, wybór pozostaje w sesji. Bonus -5%..+10%, PERFECT szczyt6%.
@@ -6,18 +6,21 @@
 - Lot pokazuje rzeczywisty biom pozycji i animowany licznik do luck mandatu. Licznik nie dodaje ukrytych mnożników szans.
 - Trafienie: hamowanie0.3 s, miękki whoosh/impact/sticker/shake, close→pullback, nazwa losowymi literami0.18 s (Epic×1.8), rarity/$/s/NEW BEST. Epic osobny tytuł/cue/wash i większy skończony shake.
 - NEW BEST: ścisły rekord dochodu w posiadanych autach. Epic+1inX to zaokrąglone rzeczywiste odds konkretnego auta, z wagami mandatu.
-- Continue wymaga jobId i minimum common2.4/Epic5 s oraz czasu nazwy; wspólne revealSeconds, timeout16 s. Kamera płynnie ogląda lawetę, fade0.14/0.3 s podczas teleportu; kontrola wraca poIdle.
+- Pierwszy tap w trakcie reveal pokazuje całą kartę, drugi potwierdza Continue. Serwer wymaga jobId i minimum 0.65 s zwykłe / 1.2 s Epic+ lub Super Lucky; timeout 16 s. Kamera ogląda lawetę i przechodzi przez fade przy teleporcie.
 - XP/sek=Work/koszt pracy biomu×100.100 XP→level+1 iPower+1; nowe ćwiczenie podwaja XP względem poprzedniego, ceny zachowane.
 - Oferta2x co12 s aktywnego treningu, ważna4 s; duży losowy centralny cel bez timera. Klik zId→pop/poświata2 s i boost serwera, bez stackowania. Telefon LEVEL UP na XPbar.
 - NEW GEAR: pierwszy osiągalny next exercise/ticket z ceną/efektem/timerem7 s; akcja teleportuje do własnego stanowiska i otwiera kategorię sklepu, nie kupuje.
 - Next exercise w świecie ma cenę zieloną/czerwoną; SHOP TRAINING/TICKETS, biała smuga co5 s, Reduced Motion respektowane.
 - Profil kontroluje własność; auta Slot0 odtwarzają Tools w Backpack/Character. Hotbar5 slotów z3D/$/s/numerem ponad XPbar; CARS otwiera pełny ekwipunek20.
-- My Cars: dochód malejąco+Id, parking6/6; PLACE wyposaża, PICK UP przy miejscu; Epic+ SELL przez token15 s, EQUIP BEST atomowo parkuje najlepsze6.
+- My Cars: PARKED / BACKPACK, w sekcji dochód malejąco i Id jako rozstrzygnięcie; PLACE wyposaża, PICK UP przy miejscu; Epic+, każda odmiana lub GIANT wymagają YES/NO i tokenu 15 s. EQUIP BEST wypełnia aktualną pojemność.
 - Wolne miejsce: Place car tylko przy trzymanym aucie; postawione: Pick up. Hold0.5 s i walidacja własności/dystansu/stanu/cooldownu.
 - Działki obok rzutu i własny trening; powrót pieszo, bez BACK TO ROAD/blokady Plot.
-- Income=floor(biom×rzadkość×mandat), min1; sprzedaż180 s dochodu. Mandaty zwiększają luck/income nowego auta, bez mnożnika dystansu.
+- Katalog: 8 aut w każdym z 6 biomów, 3 Common/2 Rare/2 Epic/1 Legendary. Losowanie serwera: rarity → model z tej grupy → niezależne variant i size. Odds uwzględniają wszystkie cztery czynniki.
+- Income=floor(biom×rzadkość×mandat×odmiana×rozmiar), min 1. Odmiany bazowo Gold 5% ×2, Diamond 1% ×4, Neon 0.25% ×8; BIG 10% ×1.5 i GIANT 2% ×3. Luck zwiększa wagi specjalnych wyników o (1+luck), nie zasięg. Sprzedaż 180 s dochodu.
+- Car Index zapisuje odkryte CatalogId, niezależnie od posiadania egzemplarza. Zablokowane modele są czarne, a karty mają kolor rzadkości.
+- Parking 6→8→10→12→14→16, cena 3/7/15/30/60 min startowego dochodu referencyjnego. Brak wolnych miejsc zostawia łup w plecaku; 20 aut w plecaku blokuje próbę przed rzutem.
 - Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/400/1000/2500. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
-- Schema4: Cash/Power/TrainingLevel/TrainingXP/Exercise/Owned/Equipped/Cars(Id,Biome,Rarity,Name,Ticket,Slot); tylko parking zarabia, brak offline.
+- Schema 5: poprzednie pola plus ParkingCapacity, Discovered i CatalogId/Variant/Size każdego auta. Migracja zachowuje ID, biom, rzadkość, mandat, miejsce i dochód; tylko parking zarabia, brak offline.
 - Jeden writer/lease/token/autosave/leave/shutdown; łup zapisany przed animacją. Boost i aktualne wyposażenie/suwak są stanem sesji.
 - Audio14 cue/5 ID Creator Store, testowy miks×0.52, ciche krótkie XP/litery, preload/pooling/cap12, pitch/choke. Kamera jeden owner do końcaTow z cleanup/FOV/Focus i ograniczonym shake.
-- Źródło: LihFolk Vault V2(CC BY4.0), MCP tylko odczyt; referencja użytkownika ThrowFoodForAnimals [A/B/C/D/H] i film, własne nazwy/grafiki.
+- Źródło: LihFolk Vault V2 (CC BY 4.0), MCP tylko odczyt; ThrowFoodForAnimals [E/F] dla 10b, własne nazwy i grafiki. Balans i wygląd NOT FINAL.

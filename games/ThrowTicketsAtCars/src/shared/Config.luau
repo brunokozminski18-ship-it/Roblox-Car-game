@@ -20,7 +20,7 @@ local Config={
  ThrowWindupSeconds=.45, CameraReturnHold=.3, CaptureApproachDistance=32, CaptureLaneX=7,
  TrafficHz=30, TrafficSpeed=22, TrafficLaneX=7, TrafficRenderDistance=450,
 	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
-	Data={StoreName="ThrowTicketsAtCars_v1",Schema=4,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=5,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
 	Tickets={
 		{Id="paper",Name="Paper Ticket",Minutes=0,UnlockBiome=1,IncomeMultiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
 		{Id="pink",Name="Pink Slip",Minutes=1.5,UnlockBiome=1,IncomeMultiplier=1.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},
@@ -36,7 +36,9 @@ local Config={
 	TicketSize=Vector3.new(0.8,0.08,1.2), MessageSeconds=3,
 	TowApproachSeconds=0.5, TowLoadSeconds=0.2, TowReturnSeconds=1.3,
 	RespawnSeconds=3, SaleIncomeSeconds=180,
-	ParkingSlots=6, ParkingColumns=2,
+	ParkingSlots=6, ParkingMax=16, ParkingColumns=4, ParkingUpgradeMinutes={3,7,15,30,60},
+	Variants={{Id="Normal",Weight=.9375,Multiplier=1},{Id="Gold",Weight=.05,Multiplier=2},{Id="Diamond",Weight=.01,Multiplier=4},{Id="Neon",Weight=.0025,Multiplier=8}},
+	CarSizes={{Id="Normal",Weight=.88,Multiplier=1,Scale=1},{Id="BIG",Weight=.1,Multiplier=1.5,Scale=1.22},{Id="GIANT",Weight=.02,Multiplier=3,Scale=1.45}},
 	ParkingSpacing=Vector3.new(11,0,12), ParkingOrigin=Vector3.new(-54,0,-6), PlayerPlotSpacing=54,
 	CarSize=Vector3.new(7,2.5,9), RoofSize=Vector3.new(5.5,1.4,4.5), CarHeight=1.4, RoofOffset=1.85,
 	WindshieldSize=Vector3.new(5.3,1.15,0.12), WindshieldFront=2.32,
@@ -70,6 +72,21 @@ local Config={
 }
 -- Prices are authored in minutes. Reference includes a six-car park and active sales.
 -- Starter benchmark is the measured ramp-up rather than an already full rare park.
+local names={
+ {"Rusty Hatch","Grandma Sedan","Duct Tape Van","Puddle Pickup","Squeaky Wagon","Tin Can Turbo","Scrap Baron","Junkyard Royal"},
+ {"School Run","Coupon Coupe","Lawn Van","Weekend Wagon","Snack Shuttle","Driveway Deluxe","Sprinkler GT","Suburban Crown"},
+ {"Meter Muncher","Lunch Taxi","Alley Hatch","Siren Sedan","Late Limo","Rush Hour RS","Midnight Meter","Gridlock King"},
+ {"Pit Potato","Lap Wagon","Cone Crusher","Apex Buggy","Rally Rumble","Paddock Phantom","Track Taco","Lap Lord"},
+ {"Velvet Wagon","Sunday Coupe","Teacup Tourer","Pearl Phaeton","Ribbon Roadster","Chrome Duke","Silk Sprint","Gilded Duchess"},
+ {"Island Dart","Palm Coupe","Reef Rocket","Tide Turbo","Lagoon GT","Solar Slip","Coral Comet","Island Emperor"},
+}
+for i,b in Config.Biomes do
+ b.LegacyCars=b.Cars
+ b.Cars={}
+ for style,name in names[i] do
+  b.Cars[style]={Id=string.format("b%d_car%d",i,style),Name=name,Rarity=if style<=3 then 1 elseif style<=5 then 2 elseif style<=7 then 3 else 4,Weight=1,Style=style}
+ end
+end
 local rarityTotal,rarityWeight=0,0
 for _,r in Config.Rarities do rarityTotal+=r.Weight*r.Multiplier;rarityWeight+=r.Weight end
 for i,b in Config.Biomes do

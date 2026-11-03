@@ -35,13 +35,17 @@ return function(Progression,Schema,Config)
  check(Progression.levelFromPower(Config.StartPower)==1 and Progression.levelFromPower(0)==1,"Migration never creates a level below 1")
  check(Progression.levelFromPower(78.5)==55 and Progression.levelFromPower(Config.MaxPower)<=1e9,"Migration floors old fractional Power into bounded integer level")
  local old={Cash=123456,Power=78.55555,Owned={paper=true,pink=true},Equipped="pink",Exercise=2,Cars={
-  {Id="parked_car",Biome=2,Rarity=3,Name=Config.Biomes[2].Cars[1].Name,Ticket="pink",Slot=2},
-  {Id="stored_car",Biome=1,Rarity=1,Name=Config.Biomes[1].Cars[2].Name,Ticket="paper",Slot=0},
+  {Id="parked_car",Biome=2,Rarity=3,Name=Config.Biomes[2].LegacyCars[1].Name,Ticket="pink",Slot=2},
+  {Id="stored_car",Biome=1,Rarity=1,Name=Config.Biomes[1].LegacyCars[2].Name,Ticket="paper",Slot=0},
  }}
  local untouched=Schema.copy(old);local migrated,reason=Schema.prepare({Schema=3,Data=old})
  check(migrated~=nil,reason or "Schema 3 migration must load")
  check(migrated.TrainingLevel==55 and migrated.TrainingXP==0,"Schema 3 receives derived level and empty XP")
- for k,v in old do check(equal(v,migrated[k]),"Migration preserves old field "..k)end
+ for k,v in old do
+  if k=="Cars"then
+   check(#v==#migrated.Cars and migrated.Cars[1].Id==v[1].Id and migrated.Cars[2].Id==v[2].Id,"Migration preserves owned instances")
+  else check(equal(v,migrated[k]),"Migration preserves old field "..k)end
+ end
  check(equal(old,untouched),"Migration never mutates the loaded old profile")
  for _,power in {0,Config.StartPower,Config.StartPower+.125,Config.MaxPower}do
   local legacy=Schema.copy(old);legacy.Power=power
@@ -52,16 +56,16 @@ return function(Progression,Schema,Config)
   local invalid=if field=="TrainingXP"then {-1,100,math.huge,-math.huge,0/0,"0",false} else {0,-1,1.5,1e9+1,math.huge,-math.huge,0/0,"1",false}
   for _,value in invalid do
    local bad=Schema.copy(migrated);bad[field]=value
-   check(Schema.prepare({Schema=4,Data=bad})==nil,"Schema 4 rejects invalid "..field)
+   check(Schema.prepare({Schema=5,Data=bad})==nil,"Schema 5 rejects invalid "..field)
   end
   local bad=Schema.copy(migrated);bad[field]=nil
-  check(Schema.prepare({Schema=4,Data=bad})==nil,"Schema 4 rejects missing "..field)
+  check(Schema.prepare({Schema=5,Data=bad})==nil,"Schema 5 rejects missing "..field)
  end
  migrated.TrainingXP=99.75;migrated.BoostUntil=123;migrated.TrainingOffer={Expires=456}
- local restored=Schema.prepare({Schema=4,Data=migrated})
- check(restored and restored.TrainingLevel==55 and restored.TrainingXP==99.75,"New progression survives schema 4 save/load")
+ local restored=Schema.prepare({Schema=5,Data=migrated})
+ check(restored and restored.TrainingLevel==55 and restored.TrainingXP==99.75,"New progression survives schema 5 save/load")
  check(restored.BoostUntil==nil and restored.TrainingOffer==nil,"Transient training boost/offer is never persisted")
- local again=Schema.prepare({Schema=4,Data=restored})
- check(equal(restored,again),"Schema 4 prepare is idempotent and preserves every saved field")
+ local again=Schema.prepare({Schema=5,Data=restored})
+ check(equal(restored,again),"Schema 5 prepare is idempotent and preserves every saved field")
  return count.." progression10a assertions passed"
 end

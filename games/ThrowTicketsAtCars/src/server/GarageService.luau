@@ -9,14 +9,17 @@ function Service.new(ctx: any): any
  local api={}
  local function eligible(p: Player,s: any): boolean return ctx.mutable(s)and not s.job and not s.meter and ctx.rootOf(p)~=nil end
  local function nearby(p: Player,s: any,index: any): boolean
-  if not Rules.finiteNumber(index)or index%1~=0 or index<1 or index>Config.ParkingSlots then return false end
+  if not Rules.finiteNumber(index)or index%1~=0 or index<1 or index>(s.data.ParkingCapacity or Config.ParkingSlots) then return false end
   local r=ctx.rootOf(p);return r~=nil and (r.Position-s.positions[index]).Magnitude<=Config.PlacementDistance
  end
  function api.act(p: Player,s: any,action: string,id: any,index: any,fromPrompt: boolean?)
   if not eligible(p,s)then return end
   if action=="Place"and fromPrompt~=true then return end
   if typeof(id)~="string"or #id>64 then return end
-  if action=="Equip"then if Tools.equip(p,s,id)then ctx.result(p,"Hold E at a free spot to place your car.")end;return end
+  if action=="Equip"or action=="PreparePlace"then
+   if action=="PreparePlace"and Garage.parkedCount(s.data)>=(s.data.ParkingCapacity or Config.ParkingSlots)then ctx.result(p,Garage.fullMessage(s.data));return end
+   if Tools.equip(p,s,id)then ctx.result(p,"Hold E at a free spot to place your car.")end;return
+  end
   if action=="Unequip"then local h=p.Character and p.Character:FindFirstChildOfClass("Humanoid");if h then h:UnequipTools()end;return end
   if action=="Place"or action=="Remove"then
    if not nearby(p,s,index)then ctx.result(p,"Move closer to your parking spot!");return end
@@ -27,7 +30,7 @@ function Service.new(ctx: any): any
    local ok,message=Garage.equipBest(s.data);ctx.result(p,message);if ok then ctx.publish(p,s)end;return
   elseif action=="Sell"then
    local car=Garage.find(s.data,id);if not car or car.Pending then return end
-   if car.Rarity>=3 then
+   if Garage.requiresConfirmation(car) then
     local confirmation=s.sale
     if typeof(index)~="string"or not confirmation or confirmation.id~=id or confirmation.token~=index or os.clock()>confirmation.expires then
      local token=Http:GenerateGUID(false);s.sale={id=id,token=token,expires=os.clock()+15}
@@ -38,7 +41,7 @@ function Service.new(ctx: any): any
    index=0
   else return end
   local ok,message=Garage.act(s.data,action,id,index);ctx.result(p,message)
-  if ok then ctx.publish(p,s);if action=="Remove"then Tools.equip(p,s,id)end end
+  if ok then ctx.publish(p,s);if ctx.saveSoon then ctx.saveSoon(p,s)end;if action=="Remove"then Tools.equip(p,s,id)end end
  end
  function api.prompt(p: Player,s: any,parent: BasePart,action: string,id: string,index: number)
   local prompt=Instance.new("ProximityPrompt");prompt.Name=if action=="Place"then "PlaceCar"else "PickUpCar"

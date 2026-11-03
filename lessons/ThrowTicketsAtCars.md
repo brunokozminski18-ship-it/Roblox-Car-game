@@ -57,3 +57,6 @@
 -10a poprawki: toast wysłany przy wczytaniu profilu może wyprzedzić HUD i jednocześnie oznaczyć ofertę jako pokazaną. Idempotentne JuiceReady od klienta rozwiązało utratę, bez przeniesienia ekonomii na klienta.
 -10a poprawki: powrót kamery na początkuTow ucina payoff. Kamera pozostała przez zabranie auta; fade obejmuje dopiero teleport i handoff doCustom. Native audit klatek po renderze odróżnia działającą kamerę od chwilowego stanu narzędzia MCP.
 -10a mobile:44px przycisku nie gwarantuje wolnego obrazu. Manualny suwak,2x bliżej środka, LEVEL UP na XPbar i wąski komunikat usunęły stałe kolizje; większy przezroczysty DynamicThumbstick input frame nie jest widoczną tarczą joysticka.
+-10b: identyfikator egzemplarza i CatalogId pełnią różne role. Sprzedaż usuwa egzemplarz, ale nie odkrycie; nazwa testowa może się zmienić bez odrzucenia zapisu.
+-10b: test migracji sprawdzał rzeczywisty stary zapis na osobnym kluczu QA, a następnie rejoin po sprzedaży i zakupie miejsc. Test funkcji migracji sam nie sprawdza sposobu zapisu i odbudowy GUI.
+-10b: pełna działka i pełny plecak to różne warunki. Ostatnie miejsce plecaka rezerwuje się przed animacją, a brak miejsca blokuje już wejście w Meter.

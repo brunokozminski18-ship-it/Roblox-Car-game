@@ -25,6 +25,7 @@ local cash=p:WaitForChild("leaderstats"):WaitForChild("Cash")::IntValue
 local hud=require(script.Parent.HUD).mount(p:WaitForChild("PlayerGui"))
 local gui,trainButton,message=hud.gui,hud.train,hud.message
 local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedback,hud.shop)
+local indexView=require(script.Parent.CarIndex).mount(p:WaitForChild("PlayerGui"),hud.index)
 local juice=require(script.Parent.JuiceHUD).mount(remotes,shop)
 Cinematics.setFeedback(juice.feedback)
 local reveal=require(script.Parent.CatchReveal).mount(p:WaitForChild("PlayerGui"),Audio.play)
@@ -36,17 +37,26 @@ local function juiceReady()if p:GetAttribute("DataReady")then (remotes:WaitForCh
 p:GetAttributeChangedSignal("DataReady"):Connect(juiceReady);juiceReady()
 p.CharacterRemoving:Connect(reveal.hide)
 p:GetAttributeChangedSignal("ThrowPhase"):Connect(function()local phase=p:GetAttribute("ThrowPhase");if phase=="Idle"or phase=="Tow"then reveal.hide()end end)
-local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars)
+local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars,indexView)
+indexView.gui:GetAttributeChangedSignal("Open"):Connect(function()if indexView.isOpen()then inventory.open(false);shop.close()end end)
+inventory.gui:GetAttributeChangedSignal("Open"):Connect(function()if inventory.isOpen()then indexView.close()end end)
+p.PlayerGui.TicketShop:GetAttributeChangedSignal("Open"):Connect(function()if shop.isOpen()then indexView.close();inventory.open(false)end end)
+p:GetAttributeChangedSignal("Throwing"):Connect(function()if p:GetAttribute("Throwing")then indexView.close()end end)
 require(script.Parent.ThrowMeterUI).mount(Throw)
 require(script.Parent.PowerSelector).mount(remotes:WaitForChild("SelectPower")::RemoteEvent,hud.powerSettings)
 Exercises.mount();require(script.Parent.Traffic).mount(world)
 trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("TrainingActive"))end)
 local version=0;local messageDeadline=0
+local bannerVersion=0
 local function messageVisibility()
  message.Visible=os.clock()<messageDeadline and not p:GetAttribute("BoostTargetVisible")and not p:GetAttribute("PowerSelectorVisible")
 end
 for _,a in {"BoostTargetVisible","PowerSelectorVisible"}do p:GetAttributeChangedSignal(a):Connect(messageVisibility)end
 Feedback.OnClientEvent:Connect(function(text: string)
+	if text:sub(1,9)=="Sold for "or text:sub(1,20)=="Your parking is full"or text:sub(1,13)=="Backpack full"or text=="NEW CAR DISCOVERED!"or text:sub(1,17)=="Parking upgraded!"then
+	 bannerVersion+=1;local n=bannerVersion;hud.banner.Text=text;hud.banner.BackgroundColor3=if text:find("full",1,true)then Color3.fromHex("A32742")else Color3.fromHex("23683C");hud.banner.Visible=true
+	 task.delay(3,function()if bannerVersion==n then hud.banner.Visible=false end end);return
+	end
 	if string.sub(text,1,6)=="Bought"then Audio.play("Purchase")end
 	version+=1;local current=version;message.Text=text;messageDeadline=os.clock()+Config.MessageSeconds;messageVisibility()
 	task.delay(Config.MessageSeconds,function()if version==current then message.Text="";message.Visible=false end end)

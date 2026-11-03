@@ -7,21 +7,26 @@ local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local S=require(script.Parent.Style)
 local Preview=require(script.Parent.CarPreview)
 local Inventory={}
-function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEvent,confirmSale: RemoteEvent,launch: TextButton): any
+function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEvent,confirmSale: RemoteEvent,launch: TextButton,indexView: any): any
  local p=Players.LocalPlayer;local playerGui=p:WaitForChild("PlayerGui")
  task.spawn(function()for _=1,20 do local ok=pcall(function()StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack,false)end);if ok then break end;task.wait(.2)end end)
  local cars,byId,hotbars={},{},{};local token=nil;local lastRequest=-math.huge
  local view: any
  local function send(action: string,id: string)
-  if not p:GetAttribute("DataReady")or p:GetAttribute("Throwing")or os.clock()-lastRequest<.18 then return end
+  if not p:GetAttribute("DataReady")or p:GetAttribute("Throwing")then return end
+  if action=="ConfirmSell"then
+   if not token or token.id~=id then return end
+   local value=token.value;token=nil
+   local delaySeconds=math.max(0,.18-(os.clock()-lastRequest));lastRequest=os.clock()+delaySeconds
+   task.delay(delaySeconds,function()garage:FireServer("Sell",id,value)end);return
+  end
+  if os.clock()-lastRequest<.18 then return end
   lastRequest=os.clock()
   local c=byId[id]
-  if action=="ConfirmSell"then
-   if token and token.id==id then garage:FireServer("Sell",id,token.value);token=nil end
-  else garage:FireServer(action,id,if action=="Remove"and c then c.Slot else 0)end
-  if action=="Equip"then view.open(false)end
+  garage:FireServer(action,id,if action=="Remove"and c then c.Slot else 0)
+  if action=="PreparePlace"then view.open(false)end
  end
- view=require(script.Parent.MyCarsView).mount(playerGui,send)
+ view=require(script.Parent.MyCarsView).mount(playerGui,function(action,id)send(if action=="Equip"then "PreparePlace"else action,id)end)
  local gui=Instance.new("ScreenGui");gui.Name="CarHotbar";gui.ResetOnSpawn=false;gui.DisplayOrder=15;gui.ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets;gui.Parent=playerGui
  local bar=Instance.new("Frame");bar.Name="Slots";bar.AnchorPoint=Vector2.new(.5,1);bar.Position=UDim2.new(.5,0,1,-46);bar.BackgroundTransparency=1;bar.Parent=gui
  local layout=Instance.new("UIListLayout");layout.FillDirection=Enum.FillDirection.Horizontal;layout.HorizontalAlignment=Enum.HorizontalAlignment.Center;layout.Padding=UDim.new(0,7);layout.SortOrder=Enum.SortOrder.LayoutOrder;layout.Parent=bar
@@ -51,7 +56,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
    elseif not c and slot then slot.button:Destroy();hotbars[i]=nil;slot=nil end
    if slot then slot.button.Size=UDim2.fromOffset(size,size);local outline=slot.button:FindFirstChildOfClass("UIStroke");outline.Color=if equipped==slot.id then Color3.fromHex("FFD24A")else S.INK;outline.Thickness=if equipped==slot.id then 4 else 2 end
   end
-  bar.Visible=not busy()and not view.isOpen()and not p:GetAttribute("PowerSelectorVisible")and not p:GetAttribute("BoostTargetVisible")
+  bar.Visible=not busy()and not view.isOpen()and not indexView.isOpen()and not p:GetAttribute("PowerSelectorVisible")and not p:GetAttribute("BoostTargetVisible")
   if p:GetAttribute("MeterStart")then view.open(false)end
  end
  launch.Activated:Connect(function()if not busy()then view.open(not view.isOpen());render()end end)
@@ -60,11 +65,11 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
   if typeof(snapshot)~="table"or typeof(snapshot.Cars)~="table"then return end
   cars=snapshot.Cars;table.sort(cars,function(a,b)return if a.Income==b.Income then a.Id<b.Id else a.Income>b.Income end)
   byId={};for _,c in cars do byId[c.Id]=c end
-  view.render(cars,snapshot.InventoryCount);render()
+  view.render(cars,snapshot.InventoryCount,snapshot.ParkingCapacity);indexView.render(snapshot.Discovered);render()
  end)
  confirmSale.OnClientEvent:Connect(function(id,value,price)if byId[id]then token={id=id,value=value};view.confirm(byId[id],price)end end)
  UIS.InputBegan:Connect(function(input,processed)
-  if processed or busy()or view.isOpen()then return end
+  if processed or busy()or view.isOpen()or indexView.isOpen()then return end
   local i=input.KeyCode.Value-Enum.KeyCode.One.Value+1;local slot=hotbars[i]
   if i>=1 and i<=Config.HotbarSlots and slot then send(if p:GetAttribute("EquippedCarId")==slot.id then "Unequip"else "Equip",slot.id)end
  end)
@@ -81,7 +86,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
   for prompt in prompts do
    local own=prompt:GetAttribute("OwnerId")==p.UserId;local action=prompt:GetAttribute("GarageAction")
    local parent=prompt.Parent
-   prompt.Enabled=own and not busy()and not view.isOpen()and(if action=="Place"then (p:GetAttribute("EquippedCarId")or "")~=""and parent:GetAttribute("CarId")==nil else true)
+   if parent then prompt.Enabled=own and not busy()and not view.isOpen()and not indexView.isOpen()and(if action=="Place"then parent:GetAttribute("Unlocked")==true and (p:GetAttribute("EquippedCarId")or "")~=""and parent:GetAttribute("CarId")==nil else true)end
   end
   render()
  end)

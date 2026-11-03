@@ -45,7 +45,8 @@ function UI.mount(remotes: any,shop: any): any
  visit.Activated:Connect(function()if gear then remotes.GearVisit:FireServer(gear.Kind,gear.Id);gear=nil end end)
  local function hidden(): boolean
   local playerGui=p.PlayerGui;local cars=playerGui:FindFirstChild("MyCars");local store=playerGui:FindFirstChild("TicketShop")
-  return (cars~=nil and cars:GetAttribute("Open")==true)or(store~=nil and store:GetAttribute("Open")==true)
+  local index=playerGui:FindFirstChild("CarIndex")
+  return (cars~=nil and cars:GetAttribute("Open")==true)or(store~=nil and store:GetAttribute("Open")==true)or(index~=nil and index:GetAttribute("Open")==true)
  end
  local function feedback(kind: string,data: any)
   if kind=="Flight"then
@@ -72,7 +73,7 @@ function UI.mount(remotes: any,shop: any): any
   local compact=gui.AbsoluteSize.Y<520
   if compact then levelUp.Visible=false end
   xp.Size=UDim2.fromOffset(math.clamp(gui.AbsoluteSize.X-(if compact then 300 else 220),220,720),28)
-  toast.Size=UDim2.fromOffset(if compact then 244 else 340,if compact then 92 else 132);toast.Position=UDim2.fromOffset(12,60)
+  toast.Size=UDim2.fromOffset(if compact then 244 else 340,if compact then 92 else 132);toast.Position=UDim2.fromOffset(12,112)
   title.TextSize=if compact then 18 else 22;toast.Available.Visible=not compact
   name.Position=UDim2.fromOffset(12,if compact then 27 else 54);name.Size=UDim2.new(1,-24,0,24);name.TextSize=if compact then 17 else 20
   detail.Position=UDim2.fromOffset(12,if compact then 54 else 82);detail.Size=UDim2.new(1,-110,0,32);detail.TextSize=if compact then 12 else 14

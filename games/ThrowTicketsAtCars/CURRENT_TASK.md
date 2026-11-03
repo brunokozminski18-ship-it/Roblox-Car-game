@@ -1,21 +1,13 @@
-# Current Task — iteracja10a: poprawki po teście użytkownika
-- Właściciel: Codex;03.11.2026. IMPLEMENTED, VERIFIED03.11 w zakresie poniżej. Całość testowa, wygląd/brzmienie/balans NOT FINAL.
-- [x] Suwak wyłącznie po ikonie przy Power, domyślnie schowany/MAX; wybrana siła zachowana w sesji do zmiany/MAX. Płytka otwiera tylko pasek tapnięcia.
-- [x] Epic+: minimum5 s i litery1.8×, EPIC CATCH, oddzielne miękkie cue, rosnące1inX, większy skończony shake i pojedynczy błysk; wspólna reguła czasu klient/serwer.
-- [x] Continue→kamera pokazuje ładowanie/odjazd lawety; fade0.14/0.3 s przy teleporcie, Custom i sterowanie przywrócone po Idle.
-- [x]2x:84 px telefon/92 PC, losowo bliżej środka; bez timera, znika po4 s; klik pop1.33×→znika, serwerowe2 s boosta i Highlight postaci.
-- [x] NEW GEAR na osobnym QA: gotowość klienta zapobiega utracie toastu przy wczytaniu, przycisk teleportuje do własnej stacji/otwiera sklep, jedna oferta nie spamuje w sesji.
-- [x] Widoczna biała smuga UIGradient.Offset co5 s; anulowanie/ReducedMotion nadal ograniczają animację.
-- [x] Telefon: Power44×44, menu88×48, hotbar44–54; XP między dolnymi narożnikami, compact toast244×92/SHOP80×44. LEVEL UP na XPbar, komunikat nie zakrywa hotbara/2x/suwaka.
-- [x] Audio:−48% głośności wszystkich cue, usunięte skid/retro/wysokie fanfary; miękkie istniejące click/pop/coin/whoosh, ciche krótkie XP/litery z lekką wariacją pitch.
-- [x] FlightHUD, PERFECT/+POWER, XP/level-up i automatyczne zamknięcie sklepu przy wejściu na płytkę sprawdzone na telefonie.
-- VERIFIED:284 asercje(20 nowych), RED→GREEN reguły czasu; iPhone7 poziomo666×374/safe316 iPC, common2.42 s/Epic5.02 s, pełne złapanie/Continue/Tow/Idle.
-- Wybrane101 utrzymało się przez2 rzuty; MAX207 i over-power/NaN odrzucone. Native audit:120 klatek Tow:Scriptable→32 Custom po zakończeniu, Fade wrócił do1/TouchGui true.
--2x losowe pozycje347/169,385/184,395/167; niekliknięte oferty3.96–4.00 s, klik pop1.331/poświata/2×XP.
-- Gear:200 QA→Focused toast/teleport;22 s=1 emisja. PC20×JuiceReady bez duplikacji; Weighted iPink po jednej odrębnej ofercie. Zakup Focused200→20,Exercise2.
--14 cue/5 ID nativeLoaded+Length>0; wszystkie Played w pełnym PC przepływie. Subiektywna ocena dźwięków przez użytkownika pozostaje otwarta.
-- Końcowy klient/serwer0 MessageError w kontrolach; review bez konkretnych nowych usterek. Zrzuty przed/po i dowody w raporcie.
-- Studio Edit, QA key usunięty, emulator/HTTP off,32 źródła Rojo. Bez Rebirth/Robux/publikacji; brak grantów/resetów profilu użytkownika.
-- Źródła: LihFolk Vault V2, MCP tylko odczyt juice/feedback/mobile/sound; playbook/MOBILE_UI. Fizyczny telefon i inne rozdzielczości nadal wymagają playtestu.
-- Raport i lista dla użytkownika: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a_fixes]].
-- Następny krok: użytkownik ocenia czytelność, odczucie Epic/Tow i testowy miks audio.
+# Current Task — iteracja 10b: kolekcja aut i działka
+- Właściciel: Codex; 03.11.2026. IMPLEMENTED i VERIFIED w zakresie raportu. Wersja testowa; wygląd, balans i docelowe GUI telefonu NOT FINAL.
+- Referencje [E]/[F] w research/ThrowFoodForAnimals.md i LihFolk Vault V2, MCP tylko odczyt. Własne modele klockowe, nazwy i układ. Bez Rebirth, Robux i publikacji.
+- Poprawki 10a: pierwszy tap odsłania całą kartę, drugi kontynuuje; szybki drugi tap kolejkuje się do minimum serwera 0.65/1.2 s. Smuga także na obrysie.
+- 48 aut w 6 biomach, stała rzadkość; serwer losuje rarity → model → variant → size. Realne 1 in X, Gold/Diamond/Neon i BIG/GIANT, tymczasowe mnożniki.
+- Index: 4×2 na biom, sylwetki i kolor rzadkości, postęp biomu/całości, toast i kropka do otwarcia; odkrycie pozostaje po sprzedaży.
+- Schema 5 migruje stare auta do odpowiednika biom/rarity, zachowując Id/Slot/Ticket/dochód. Parking +2 od 6 do 16, ceny w minutach dochodu, etykiety aut.
+- My Cars: PARKED / BACKPACK, EQUIP BEST, YES/NO dla Epic+/odmian/GIANT, czerwone pełne limity i zielona sprzedaż.
+- VERIFIED: 392 asercji, w tym 10 000 losowań; migracja rzeczywistego profilu QA schema4, zapis/rejoin odkryć i pojemności; zakup 6→8→10, odrzucone krótkie hold; pełny parking nie usuwa łupu, plecak 20 blokuje Meter; sprzedaż YES/NO.
+- Telefon iPhone 7 poziomo i PC: Index, zrzuty Gold BIG i działki, działające modale, 0 MessageError w kontrolach. Fizyczny telefon i multiplayer poza testem.
+- Studio Edit, QA/emulator/HTTP off. 34 źródła Rojo; żadnych grantów ani resetów profilu użytkownika.
+- Raport i komenda QA: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10b]].
+- Następny krok: test użytkownika, finalne nazwy i ocena tempa kolekcji; docelowy HUD telefonu później.

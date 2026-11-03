@@ -46,7 +46,7 @@ function Selector.mount(remote: RemoteEvent,toggle: GuiButton): any
  end
  local function available(): boolean
   if p:GetAttribute("DataReady")~=true or p:GetAttribute("Throwing")==true or p:GetAttribute("CinematicActive")==true or p:GetAttribute("MeterStart")~=nil
-   or p:GetAttribute("ShopOpen")==true or p:GetAttribute("CarsOpen")==true or windowOpen("TicketShop")or windowOpen("MyCars")then return false end
+   or p:GetAttribute("ShopOpen")==true or p:GetAttribute("CarsOpen")==true or windowOpen("TicketShop")or windowOpen("MyCars")or windowOpen("CarIndex")then return false end
   local character=p.Character;local root=character and character:FindFirstChild("HumanoidRootPart");local humanoid=character and character:FindFirstChildOfClass("Humanoid")
   return root~=nil and root:IsA("BasePart")and humanoid~=nil and humanoid.Health>0
  end

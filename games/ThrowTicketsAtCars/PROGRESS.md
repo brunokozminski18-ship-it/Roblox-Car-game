@@ -1,21 +1,13 @@
 # Stan — THROW TICKETS AT CARS!
-- Iteracja10a + poprawki po teście IMPLEMENTED/VERIFIED03.11.2026; próbka v2 zaakceptowana wyłącznie testowo. Wygląd/brzmienie/balans NOT FINAL.
-- Pętla: biała płytka → pasek/tap → lot mandatu/biom/LUCK → hamowanie i reveal → laweta → działka/Tool.
-- Catch: kamera przy aucie, sticker/shake/pisk, losowo odsłaniane litery, rarity/$/s/NEW BEST; Epic+ osobne większe ujęcie i1inX.
-- Rzut: suwak1..Power/Lands in/MAX wyłącznie z ikony przy Power, wybór w sesji; domyślnie MAX/schowany. Płytka→Meter/PERFECT, bonus -5%..+10%, timeout3 s daje+2.5%.
-- Trening: XP100/level i+1 Power, pasek XP/level/+XP/level-up, czasowe2x z ofertą4 s i boostem2 s; lepsze ćwiczenia zwiększają XP/s.
-- SHOP: TRAINING/TICKETS, rzeczywiste XP/s, zakupy serwerowe; NEW GEAR z ceną/efektem/czasem i teleportem do własnego stanowiska.
-- Next gear ma czerwony/zielony koszt; gotowość klienta zapobiega utracie toastu, ten samId raz w sesji. Shop: czytelny UIGradient.Offset co5 s, zamyka się przed Meter.
-- Auta: stabilneId, odtwarzalne Tools w Backpack, mały trzymany model,5-slotowy hotbar ViewportFrame/$/s/numer, reszta w My Cars.
-- My Cars: sort dochodu+Id, parking6/6 i plecak20, PLACE wyposaża, PICK UP oddaje; Epic+ SELL wymaga tokenu potwierdzenia.
-- EQUIP BEST atomowo rozdziela najlepsze6 aut, bez sprzedaży i utraty przy pełnym plecaku.
-- Place car/Pick up przez hold0.5 s; serwer kontroluje własność, dystans, stan, hold i cooldown. Bez BACK TO ROAD/THROW i blokady Plot.
-- Własny trening przy działce;60 działek w hubie, maks.13.42 s bezpośredniego marszu do płytki przy szybkości16.
-- Schema4: migracja zachowuje stare Power/auta/zakupy; XP/level dopisane. Zapis łupu przed animacją, lease/token/autosave/leave/shutdown.
-- VERIFIED03.11:284 asercje; iPhone7 poziomo/PC: common2.42 s/Epic5.02 s, wybrane101 przez2 rzuty, MAX, płynnyTow/fade, losowe2x/pop/glow, gear/zakupy/shine.
-- Zapis/rejoin ostatniej serii zachował3 auta ze slotami, Power200/Level177/XP75, Exercise2, Owned/Equipped. Osobny QA key, bez zmiany danych użytkownika.
--40 powtórek tapu uruchomiło1 rzut. Green111.00/red95.99 przy wybranych101; niefinity/over-power/spoofedContinue odrzucone.
-- Końcowy LogService klient+serwer:0 MessageError. Pozostają ostrzeżenia Studio injection/ContentId opisane w BUGS.
--32 źródła Rojo; Studio Edit, QA/emulator/HTTP off.14 cue/5 ID Loaded iPlayed, głośność×0.52, ostre cue zastąpione miękkimi; brak publikacji/Robux.
-- NEEDS VERIFICATION: fizyczny touch-hold promptu, fizyczny telefon/multiplayer, subiektywne brzmienie i balans; nie zastępuje ich test automatyczny.
-- Telefon: Power44×44/menu88×48, centralne2x84 px bez timera; LEVEL UP na XPbar, mały toast i komunikat ponad hotbarem. Raport przed/po: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a_fixes]].
+- Iteracja 10b IMPLEMENTED i VERIFIED 03.11.2026. Wersja testowa; grafika, balans i docelowe UI telefonu NOT FINAL.
+- Pętla: wybór Power → płytka/tap → lot → hit → reveal → laweta → działka/Tool. Pierwszy tap przyspiesza reveal, drugi zatwierdza.
+- 6 biomów × 8 aut, stałe rzadkości 3/2/2/1. Serwer liczy wynik i szanse z tych samych tabel; odmiany/rozmiary wpływają na dochód i wygląd.
+- Car Index: 48 odkryć, sylwetki i kolor rzadkości, postęp biomu/całości; toast i kropka nowości. Odkrycia nie przepadają przy sprzedaży.
+- Schema 5: zachowany stary dochód aut, unikalne Id i miejsca; migracja przypisuje nowy model w tym samym biomie/rarity.
+- Parking 6→16 co 2; stanowisko kupna z ceną i walidacją własności, dystansu, hold, kasy oraz aktualnego stopnia. Auta mają etykiety.
+- My Cars: sekcje PARKED/BACKPACK, PICK UP / PLACE / SELL, EQUIP BEST do aktualnej pojemności; YES/NO Epic+/odmiana/GIANT.
+- Plecak 20, hotbar 5; pełny parking nie blokuje łapania, pełny plecak blokuje rzut przed Meter. Czerwony banner limitu i zielony banner sprzedaży.
+- Trening XP/level/2x i sprzęt zachowane; sklep z odświeżoną smugą przez ramkę. Kamera nadal płynnie przechodzi do lawety.
+- 392 kontroli PASS, w tym rozkład 10 000 losowań; QA schema4→5 i rejoin, zakup 6→8→10, pełne limity i sprzedaż. Telefon poziomo + PC, 0 błędów skryptów w kontrolach.
+- 34 źródła Rojo. Studio Edit, QA/emulator/HTTP off. Bez Rebirth/Robux/publikacji.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10b]].

@@ -77,7 +77,13 @@ end
 function Rules.savedReward(record: any): any
 	if typeof(record)~="table" or not Rules.finiteNumber(record.Biome) or record.Biome%1~=0 or not Rules.finiteNumber(record.Rarity)or record.Rarity%1~=0 then return nil end
 	local b=Config.Biomes[record.Biome];if not b or not Config.Rarities[record.Rarity] then return nil end
-	for i,c in b.Cars do if c.Name==record.Name then local t=Rules.ticket(record.Ticket);if t.Id~=record.Ticket then return nil end;return Rules.reward(record.Biome,record.Rarity,i,record.Ticket) end end
+	local t=Rules.ticket(record.Ticket);if t.Id~=record.Ticket then return nil end
+	if record.CatalogId~=nil then
+	 -- CatalogId is stable; the player-facing name can change after the test.
+	 for i,c in b.Cars do if c.Id==record.CatalogId and c.Rarity==record.Rarity and Rules.extra(Config.Variants,record.Variant)and Rules.extra(Config.CarSizes,record.Size)then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket,record.Variant,record.Size)end end
+	else
+	 for i,c in b.LegacyCars do if c.Name==record.Name then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket)end end
+	end
 	return nil
 end
 function Rules.weighted(entries: any, roll: number): number
@@ -89,10 +95,47 @@ function Rules.weighted(entries: any, roll: number): number
 	for i,entry in entries do sum+=entry.Weight; if target<sum then return i end end
 	return #entries
 end
-function Rules.reward(biome: number, rarity: number, car: number, ticketId: string?): any
+function Rules.extra(entries: any,id: any): any
+ for _,e in entries do if e.Id==id then return e end end
+ return nil
+end
+function Rules.extraWeights(entries: any,ticketId: string): any
+ local luck=Rules.ticket(ticketId).Luck;local out={}
+ for i,e in entries do out[i]={Id=e.Id,Weight=e.Weight*(if i==1 then 1 else 1+luck)}end
+ return out
+end
+function Rules.reward(biome: number, rarity: number, car: number, ticketId: string?,variant: string?,size: string?): any
 	local b,r=Config.Biomes[biome],Config.Rarities[rarity]
 	local ticket=Rules.ticket(ticketId or "paper")
-	return {Biome=biome,Rarity=rarity,Name=b.Cars[car].Name,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier))}
+	local model=b.Cars[car]
+	if not model or model.Rarity~=rarity then
+	 local pool={};for _,c in b.Cars do if c.Rarity==rarity then table.insert(pool,c)end end
+	 model=pool[(car-1)%#pool+1]
+	end
+	local v=Rules.extra(Config.Variants,variant)or Config.Variants[1];local s=Rules.extra(Config.CarSizes,size)or Config.CarSizes[1]
+	return {Biome=biome,Rarity=rarity,Name=model.Name,CatalogId=model.Id,Style=model.Style,Variant=v.Id,Size=s.Id,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier*v.Multiplier*s.Multiplier))}
+end
+function Rules.rollCar(biome: number,ticket: string,rng: Random,force: any?): any
+ local f=force or {};local rarity=f.Rarity or Rules.weighted(Rules.rarityWeights(ticket),rng:NextNumber());local pool={}
+ for i,c in Config.Biomes[biome].Cars do if c.Rarity==rarity then table.insert(pool,{Index=i,Weight=c.Weight})end end
+ local idx=pool[Rules.weighted(pool,rng:NextNumber())].Index
+ if f.Car and Config.Biomes[biome].Cars[f.Car] and Config.Biomes[biome].Cars[f.Car].Rarity==rarity then idx=f.Car end
+ local variant=f.Variant or Config.Variants[Rules.weighted(Rules.extraWeights(Config.Variants,ticket),rng:NextNumber())].Id
+ local size=f.Size or Config.CarSizes[Rules.weighted(Rules.extraWeights(Config.CarSizes,ticket),rng:NextNumber())].Id
+ return Rules.reward(biome,rarity,idx,ticket,variant,size)
+end
+function Rules.parkingPrice(data: any): number?
+ local cap=data.ParkingCapacity or Config.ParkingSlots
+ local minutes=Config.ParkingUpgradeMinutes[(cap-Config.ParkingSlots)/2+1]
+ if not minutes then return nil end
+ return math.floor(minutes*Config.Biomes[1].ReferenceIncomePerMinute+.5)
+end
+function Rules.upgradeParking(data: any,expected: any): (boolean,string)
+ local cap=data.ParkingCapacity or Config.ParkingSlots;local price=Rules.parkingPrice(data)
+ if expected~=cap or not price then return false,"Parking upgrade unavailable!"end
+ if data.Cash<price then return false,"Not enough Cash!"end
+ data.Cash-=price;data.ParkingCapacity=cap+2
+ return true,"Parking upgraded! It holds "..data.ParkingCapacity.." cars now"
 end
 function Rules.salePrice(income: number): number
 	return math.floor(income*Config.SaleIncomeSeconds)

@@ -97,18 +97,40 @@ function World.build(biomeCount: number?): Folder
 	root.Parent=workspace
 	return root
 end
+function World.capacity(folder: Folder,capacity: number)
+	folder:SetAttribute("Capacity",capacity)
+	for index=1,Config.ParkingMax do
+		local slot=folder:FindFirstChild("Slot"..index)
+		if slot and slot:IsA("BasePart") then
+			local unlocked=index<=capacity
+			slot:SetAttribute("Unlocked",unlocked)
+			slot.Transparency=if unlocked then 0 else 1
+			slot.CanCollide=unlocked
+			slot.CanQuery=unlocked
+			slot.CanTouch=unlocked
+		end
+	end
+end
 function World.parking(root: Folder,plot: number,ownerId: number,displayName: string): (Folder,{Vector3})
 	local f=Instance.new("Folder");f.Name=tostring(ownerId);f:SetAttribute("OwnerId",ownerId);f.Parent=root.Parking
 	local origin=World.plotOrigin(plot)
-	World.part(f,"ParkingGround",Vector3.new(27,1,40),origin-Vector3.new(5.5,0.55,12),Color3.fromRGB(130,130,130))
+	-- The lot and training pad both fit between adjacent origins (32 by 44 studs).
+	World.part(f,"ParkingGround",Vector3.new(30,1,43),origin-Vector3.new(8.5,0.55,7.2),Color3.fromRGB(130,130,130))
 	local train=World.part(f,"TrainingPad",Config.TrainingSize,origin+Vector3.new(0,.2,10),Color3.fromRGB(120,155,140));train:SetAttribute("OwnerId",ownerId);World.label(train,"TRAINING",1)
 	local positions={}
-	for i=1,Config.ParkingSlots do
-		local pos=origin-Vector3.new((i-1)%Config.ParkingColumns*Config.ParkingSpacing.X,0,math.floor((i-1)/Config.ParkingColumns)*Config.ParkingSpacing.Z)
+	for i=1,Config.ParkingMax do
+		local pos=origin-Vector3.new((i-1)%4*6.5,0,math.floor((i-1)/4)*8.2)
 		positions[i]=pos+Vector3.new(0,Config.CarHeight,0)
-		local part=World.part(f,"Slot"..i,Vector3.new(9,0.2,10),pos,Color3.fromRGB(178,178,178))
+		local part=World.part(f,"Slot"..i,Vector3.new(6.2,0.2,7.8),pos,Color3.fromRGB(178,178,178))
 		part:SetAttribute("OwnerId",ownerId);part:SetAttribute("ActiveIncome",0)
 	end
+	local sign=World.part(f,"ParkingUpgradeSign",Vector3.new(5,3,.5),origin+Vector3.new(-10,1.5,8),Color3.fromRGB(47,105,199))
+	sign.CanCollide=false;sign.CanTouch=false;sign:SetAttribute("OwnerId",ownerId)
+	local label=World.label(sign,"PARKING UPGRADE",2.25);label.Name="UpgradeLabel";label.MaxDistance=35
+	local icon=Instance.new("Frame");icon.Name="CarIcon";icon.BorderSizePixel=0;icon.Size=UDim2.fromOffset(22,8);icon.Position=UDim2.fromOffset(38,12);icon.BackgroundColor3=Color3.fromHex("B9D5F7");icon.Parent=label
+	local roof=Instance.new("Frame");roof.BorderSizePixel=0;roof.Size=UDim2.fromOffset(12,5);roof.Position=UDim2.fromOffset(4,-4);roof.BackgroundColor3=icon.BackgroundColor3;roof.Parent=icon
+	for _,x in {3,15}do local wheel=Instance.new("Frame");wheel.BorderSizePixel=0;wheel.Size=UDim2.fromOffset(5,5);wheel.Position=UDim2.fromOffset(x,6);wheel.BackgroundColor3=Color3.fromHex("25344B");wheel.Parent=icon end
+	World.capacity(f,Config.ParkingSlots)
 	World.label(f.Slot1,displayName.."'s parking",7).MaxDistance=45
 	return f,positions
 end
