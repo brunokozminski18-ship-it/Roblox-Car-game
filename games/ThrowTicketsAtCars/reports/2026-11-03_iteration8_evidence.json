@@ -1,0 +1,101 @@
+{
+  "units": {
+    "iteration7": {
+      "ok": true,
+      "result": "34 iteration-7 assertions passed"
+    },
+    "security": {
+      "ok": true,
+      "result": "1 garage security assertion passed"
+    },
+    "iteration6": {
+      "ok": true,
+      "result": "62 iteration-6 assertions passed"
+    },
+    "iteration8": {
+      "ok": true,
+      "result": "40 iteration-8 assertions passed"
+    },
+    "rules": {
+      "ok": true,
+      "result": "7 basic assertions passed"
+    },
+    "profiles": {
+      "ok": true,
+      "result": "9 profile safety assertions passed"
+    }
+  },
+  "integration": {
+    "Device": "phone landscape",
+    "Events": [
+      {
+        "Name": "Training on plot",
+        "Values": {
+          "Before": 103.77777777777789,
+          "After": 103.83333333333344,
+          "Location": "Plot"
+        }
+      },
+      {
+        "Name": "green",
+        "Values": {
+          "Throws": 3,
+          "Power": 103.888888888889,
+          "Distance": 114.13572803376226,
+          "Spam": true,
+          "Bonus": 0.09863267626081196
+        }
+      },
+      {
+        "Name": "red",
+        "Values": {
+          "Throws": 4,
+          "Power": 103.888888888889,
+          "Distance": 98.9864321644345,
+          "Spam": true,
+          "Bonus": -0.04718942301613946
+        }
+      },
+      {
+        "Name": "timeout",
+        "Values": {
+          "Throws": 5,
+          "Power": 103.888888888889,
+          "Distance": 106.48611111111121,
+          "Spam": false,
+          "Bonus": 0.024999999999999994
+        }
+      }
+    ],
+    "Complete": true
+  },
+  "saveBefore": {
+    "Cars": "[{\"Rarity\":1,\"Slot\":2,\"Id\":\"658c17a9-a3ba-4816-b87f-6a1cb01b400d\",\"Ticket\":\"paper\",\"Name\":\"Taxi\",\"Biome\":3},{\"Rarity\":1,\"Slot\":6,\"Id\":\"686fa0be-cdbe-4837-96a4-b584c8141d77\",\"Ticket\":\"paper\",\"Name\":\"Family Car\",\"Biome\":2},{\"Rarity\":2,\"Slot\":3,\"Id\":\"82993c46-f14b-4228-9d08-7fe541fae7b7\",\"Ticket\":\"paper\",\"Name\":\"Hatchback\",\"Biome\":2},{\"Rarity\":1,\"Slot\":0,\"Id\":\"9844177a-1534-4bb8-8882-a4c3ef678afa\",\"Ticket\":\"paper\",\"Name\":\"Hatchback\",\"Biome\":2},{\"Rarity\":1,\"Slot\":1,\"Id\":\"a65043f1-a7e9-4099-b6bd-5bc517af556b\",\"Ticket\":\"paper\",\"Name\":\"Rusty Sedan\",\"Biome\":1},{\"Rarity\":2,\"Slot\":4,\"Id\":\"d07a8f92-df88-4388-ac95-ec0c8bbac10e\",\"Ticket\":\"paper\",\"Name\":\"Minivan\",\"Biome\":2},{\"Rarity\":1,\"Slot\":0,\"Id\":\"f3808b2c-58ba-4625-b6a1-0ccc67aa51a1\",\"Ticket\":\"paper\",\"Name\":\"Family Car\",\"Biome\":2},{\"Rarity\":2,\"Slot\":5,\"Id\":\"f52b0044-968f-41eb-bc4a-245cfaacbe09\",\"Ticket\":\"paper\",\"Name\":\"Family Car\",\"Biome\":2}]",
+    "Power": 111.11111111111143,
+    "Owned": "{\"paper\":true}",
+    "Exercise": 1,
+    "Equipped": "paper",
+    "Cash": 1639546
+  },
+  "saveAfter": {
+    "Cars": "[{\"Rarity\":1,\"Slot\":2,\"Id\":\"658c17a9-a3ba-4816-b87f-6a1cb01b400d\",\"Ticket\":\"paper\",\"Name\":\"Taxi\",\"Biome\":3},{\"Rarity\":1,\"Slot\":6,\"Id\":\"686fa0be-cdbe-4837-96a4-b584c8141d77\",\"Ticket\":\"paper\",\"Name\":\"Family Car\",\"Biome\":2},{\"Rarity\":2,\"Slot\":3,\"Id\":\"82993c46-f14b-4228-9d08-7fe541fae7b7\",\"Ticket\":\"paper\",\"Name\":\"Hatchback\",\"Biome\":2},{\"Rarity\":1,\"Slot\":0,\"Id\":\"9844177a-1534-4bb8-8882-a4c3ef678afa\",\"Ticket\":\"paper\",\"Name\":\"Hatchback\",\"Biome\":2},{\"Rarity\":1,\"Slot\":1,\"Id\":\"a65043f1-a7e9-4099-b6bd-5bc517af556b\",\"Ticket\":\"paper\",\"Name\":\"Rusty Sedan\",\"Biome\":1},{\"Rarity\":2,\"Slot\":4,\"Id\":\"d07a8f92-df88-4388-ac95-ec0c8bbac10e\",\"Ticket\":\"paper\",\"Name\":\"Minivan\",\"Biome\":2},{\"Rarity\":1,\"Slot\":0,\"Id\":\"f3808b2c-58ba-4625-b6a1-0ccc67aa51a1\",\"Ticket\":\"paper\",\"Name\":\"Family Car\",\"Biome\":2},{\"Rarity\":2,\"Slot\":5,\"Id\":\"f52b0044-968f-41eb-bc4a-245cfaacbe09\",\"Ticket\":\"paper\",\"Name\":\"Family Car\",\"Biome\":2}]",
+    "Power": 111.11111111111143,
+    "Owned": "{\"paper\":true}",
+    "Exercise": 1,
+    "Equipped": "paper",
+    "Cash": 1639688
+  },
+  "saveRejoinMatch": true,
+  "logs": {
+    "Warnings": {
+      "1": "Script injection failed. Make sure it is enabled first before restarting Studio",
+      "2": "ContentId: rbxassetid://203785492 failed due to: Asset type does not match requested type"
+    },
+    "Errors": []
+  },
+  "plotCapacity": {
+    "Players": 60,
+    "MaximumWalkSeconds": 13.422229766845703
+  },
+  "review": "Place bypass fixed; security regression RED -> GREEN; no other actionable findings"
+}

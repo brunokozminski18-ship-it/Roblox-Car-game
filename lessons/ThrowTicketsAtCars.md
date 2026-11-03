@@ -38,3 +38,10 @@
 - Iteracja 7: 30 symulacji wspólnych reguł i 151 s rzeczywistego telefonu dały różne, ale zgodne z celami czasy; założenia czasu transportu/obsługi trzeba oddzielić od pomiaru UI.
 - Iteracja 7: ułamkowy Power wymaga jednocześnie zmiany whitelisty zapisu i zaokrąglenia HUD; inaczej ekran pokazuje długi ogon cyfr. Save/rejoin zachował dokładną wartość i bonus mandatu przypisany do auta.
 - Iteracja 7: LihFolk Vault V2 (CC BY 4.0) podaje metodę cen/pacingu/payback, a nie gotowe liczby tej gry. Horyzont120 min i polityka zachłanna są naszymi założeniami; długi grind nadal wymaga ludzi.
+
+- Iteracja8 (03.11): Tool jest odtwarzalnym widokiem profilu. Po śmierci trzeba sprawdzać właściwy Backpack/Character, nie samo tool.Parent — stary character może nadal zawierać narzędzie.
+- Iteracja8: sama walidacja odległości nie dowodzi hold. Publiczna akcja Place omijała prompt; ograniczenie do ścieżki promptu i test RED→GREEN zamknęły obejście.
+- Iteracja8: Equip Best musi planować całą zamianę bez yield; sekwencyjne Remove/Place może zablokować pełny plecak. Stabilny dochód+Id daje powtarzalny układ.
+- Iteracja8: nazwa urządzenia nie gwarantuje wiarygodnych współrzędnych automatyzacji. iPhone7/iPhone13 miały różne powierzchnie wejścia; cel GUI działał lepiej niż skopiowany offset.
+- Iteracja8: oddzielaj test silnikowego InputHoldBegin/End od fizycznego dotyku promptu. Timeout natywnego capture nie dowodzi błędu gry ani PASS interakcji.
+- Iteracja8: pierwotne odsuwanie kolejnych działek w jednej linii łamie krótki powrót przy MaxPlayers60. Siatka po obu stronach drogi ograniczyła bezpośredni marsz do13.42 s; nie jest to test60 klientów.

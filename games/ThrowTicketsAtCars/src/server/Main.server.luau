@@ -11,12 +11,17 @@ local GarageRules=require(RS.ThrowTickets.GarageRules)
 local World=require(script.Parent.World)
 local Schema=require(script.Parent.ProfileSchema)
 local Profiles=require(script.Parent.Profiles)
+local Tools=require(script.Parent.CarTools)
+local Meter=require(RS.ThrowTickets.ThrowMeter)
+local GarageService=require(script.Parent.GarageService)
 local profiles=Profiles.new(game:GetService("DataStoreService"):GetDataStore(Config.Data.StoreName..(if RunService:IsStudio()then "_STUDIO"else "")))
 local world=World.build()
 local old=RS.ThrowTickets:FindFirstChild("Remotes");if old then old:Destroy()end
 local remotes=Instance.new("Folder");remotes.Name,remotes.Parent="Remotes",RS.ThrowTickets
 local function remote(name: string): RemoteEvent local r=Instance.new("RemoteEvent");r.Name,r.Parent=name,remotes;return r end
-local Throw,Train,Feedback,Ticket,Shop,Garage,Snapshot,Travel=remote("Throw"),remote("Train"),remote("Feedback"),remote("Ticket"),remote("Shop"),remote("Garage"),remote("InventorySnapshot"),remote("Travel")
+local Throw,Train,Feedback,Ticket,Shop,Garage,Snapshot=remote("Throw"),remote("Train"),remote("Feedback"),remote("Ticket"),remote("Shop"),remote("Garage"),remote("InventorySnapshot")
+local ConfirmSale=remote("ConfirmSale")
+local garageService: any
 local states: {[Player]:any}={}
 local plots: {[number]:boolean}={}
 local loading,leaving=0,0
@@ -47,11 +52,13 @@ local function publish(p: Player,s: any)
   parked+=1;local reward=Rules.savedReward(c);local model=s.placed[c.Id]
   if not model then
    model=World.car(s.folder,"Parked_"..c.Id,reward,s.positions[c.Slot]);model:SetAttribute("OwnerId",p.UserId);model:SetAttribute("CarId",c.Id);model:SetAttribute("Parked",true);s.placed[c.Id]=model
+   if garageService then garageService.prompt(p,s,model.PrimaryPart,"Remove",c.Id,c.Slot)end
   end
+  model:PivotTo(model:GetPivot()+s.positions[c.Slot]-model.PrimaryPart.Position)
   s.folder["Slot"..c.Slot]:SetAttribute("CarId",c.Id);s.folder["Slot"..c.Slot]:SetAttribute("ActiveIncome",reward.Income)
  end end
  s.income=GarageRules.income(s.data);p:SetAttribute("ParkingUsed",parked);p:SetAttribute("ParkedCount",parked)
- profiles:touch(s.profile);mirror(p,s);snapshot(p,s)
+ profiles:touch(s.profile);Tools.sync(p,s);mirror(p,s);snapshot(p,s)
 end
 local function save(p: Player,s: any,release: boolean): string
  local status=profiles:save(s.profile,release)
@@ -98,7 +105,7 @@ local function completeCatch(p: Player,s: any,j: any)
  cleanJob(j);s.job=nil;phase(p,s,"Idle")
  p:SetAttribute("LastCapturedId",j.id);p:SetAttribute("LastDeliverySeconds",workspace:GetServerTimeNow()-j.started)
  p:SetAttribute("Delivered",(p:GetAttribute("Delivered")or 0)+1)
- teleport(p,s,true);publish(p,s);saveSoon(p,s);result(p,"Car in inventory! PLACE, SELL or keep it.")
+ teleport(p,s,true);publish(p,s);Tools.equip(p,s,j.id);saveSoon(p,s);result(p,"Car caught! Hold E at a free parking spot.")
 end
 local function runCatch(p: Player,s: any,j: any)
  local ok,err=xpcall(function()
@@ -119,14 +126,16 @@ local function runCatch(p: Player,s: any,j: any)
  end,debug.traceback)
  if not ok then warn("[ThrowTickets] Cosmetic transport recovered: "..tostring(err));completeCatch(p,s,j)end
 end
-Throw.OnServerEvent:Connect(function(p: Player,...: any)
+local function performThrow(p: Player,bonus: number)
  local s=states[p];if not mutable(s)then return end
- local now=os.clock();if now-s.lastRequest<Config.RequestInterval then return end;s.lastRequest=now
- if select("#",...)~=0 or s.job or now-s.lastThrow<Config.ThrowCooldown then return end
+ local now=os.clock()
+ if s.job or now-s.lastThrow<Config.ThrowCooldown then return end
  local r=rootOf(p);if not r then return end
- if p:GetAttribute("Location")~="Road"or not Rules.inBox(r.Position,Config.LaunchCenter,Config.LaunchHalfX,Config.LaunchHalfZ,Config.LaunchHeightTolerance)then result(p,"Stand on the THROW line!");return end
+ if not Rules.inBox(r.Position,Config.LaunchCenter,Config.LaunchHalfX,Config.LaunchHalfZ,Config.LaunchHeightTolerance)then result(p,"Stand on the THROW line!");return end
  if GarageRules.inventoryCount(s.data)>=Config.InventoryLimit then result(p,"Inventory full!");return end
- local distance=Rules.distance(s.data.Power);local biome=Rules.biome(distance)
+ local distance=math.min(Config.MapEnd,Rules.distance(s.data.Power)*(1+math.clamp(bonus,Config.ThrowMeter.MinBonus,Config.ThrowMeter.MaxBonus)));local biome=Rules.biome(distance)
+ s.meter=nil;p:SetAttribute("MeterStart",nil);p:SetAttribute("LastThrowBonus",bonus)
+ local humanoid=p.Character and p.Character:FindFirstChildOfClass("Humanoid");if humanoid then humanoid:UnequipTools()end
  local reward=Rules.reward(biome,Rules.weighted(Rules.rarityWeights(s.data.Equipped),rng:NextNumber()),Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber()),s.data.Equipped)
  local id=Http:GenerateGUID(false)
  assert(GarageRules.add(s.data,reward,id,true))
@@ -150,45 +159,54 @@ Throw.OnServerEvent:Connect(function(p: Player,...: any)
  publish(p,s);saveSoon(p,s)
  Ticket:FireAllClients(Config.ThrowOrigin,landing,car,p.UserId,reward.Income,{Id=id,Name=reward.Name,Rarity=reward.Rarity,Biome=biome,Income=reward.Income,Position=position,ApproachFrom=approach,TicketId=s.data.Equipped,StartTime=start,WindupSeconds=Config.ThrowWindupSeconds,FlightSeconds=Config.TicketFlightSeconds})
  task.spawn(runCatch,p,s,j)
-end)
+end
 Train.OnServerEvent:Connect(function(p: Player,...: any)
  local s=states[p];if not mutable(s)or select("#",...)~=1 or s.job then return end
  local now=os.clock();if now-s.lastTrain<Config.TrainRequestInterval then return end;s.lastTrain=now
- local enabled=...;if typeof(enabled)~="boolean"or not rootOf(p)or p:GetAttribute("Location")~="Road"then return end
+ local enabled=...;if typeof(enabled)~="boolean"or not rootOf(p)or s.meter then return end
+ if enabled and not s.onTrainingPad then result(p,"Stand on your training pad!");return end
  p:SetAttribute("Training",enabled)
 end)
 Shop.OnServerEvent:Connect(function(p: Player,...: any)
- local s=states[p];if not mutable(s)or s.job or select("#",...)~=2 then return end
+ local s=states[p];if not mutable(s)or s.job or s.meter or select("#",...)~=2 then return end
  local now=os.clock();if now-s.lastShop<Config.ShopRequestInterval then return end;s.lastShop=now
  local action,id=...;local text=Rules.shop(s.data,action,id);result(p,text)
  if text:sub(1,7)=="Bought "or text:sub(1,9)=="Equipped "then publish(p,s);saveSoon(p,s)end
 end)
+garageService=GarageService.new({mutable=mutable,rootOf=rootOf,atPlot=atPlot,result=result,publish=publish,confirm=ConfirmSale})
 Garage.OnServerEvent:Connect(function(p: Player,...: any)
  local s=states[p];if not mutable(s)or select("#",...)~=3 then return end
  local now=os.clock();if now-s.lastGarage<Config.GarageRequestInterval then return end;s.lastGarage=now
  local action,id,index=...
  if typeof(action)~="string"or #action>12 then return end
  if action=="Sync"and id==""and index==0 then snapshot(p,s);return end
- if s.job then result(p,"Finish the throw first!");return end
- if not atPlot(p,s)then result(p,"Go to your plot first!");return end
- if action=="Place"or action=="Remove"then
-  if not Rules.finiteNumber(index)or index%1~=0 or index<1 or index>Config.ParkingSlots then result(p,"Invalid slot!");return end
-  local root=rootOf(p);if not root or (root.Position-s.positions[index]).Magnitude>Config.PlacementDistance then result(p,"Move closer to your slot!");return end
- end
- local ok,text=GarageRules.act(s.data,action,id,index);result(p,text)
- if ok then publish(p,s);saveSoon(p,s)end
+ garageService.act(p,s,action,id,index)
 end)
-Travel.OnServerEvent:Connect(function(p: Player,...: any)
- local s=states[p];if not mutable(s)or s.job or select("#",...)~=1 then return end
- local destination=...;if destination~="Road"and destination~="Plot"then return end
- local now=os.clock();if now-s.lastTravel<Config.TravelRequestInterval then return end;s.lastTravel=now
- if destination=="Road"then
-  if not atPlot(p,s)then result(p,"Use BACK TO ROAD on your plot!");return end
- else
-  local r=rootOf(p)
-  if not r or not Rules.inBox(r.Position,Config.LaunchCenter,Config.LaunchHalfX,Config.LaunchHalfZ,Config.LaunchHeightTolerance)then result(p,"Go to the THROW line first!");return end
- end
- teleport(p,s,destination=="Plot");snapshot(p,s)
+-- Client supplies only the synchronized tap time; no position, reward or bonus.
+Throw.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if not mutable(s)or select("#",...)~=1 or not s.meter or s.job then return end
+ local now=os.clock();if now-s.lastRequest<Config.RequestInterval then return end;s.lastRequest=now
+ local tap=...;local bonus=Meter.tap(s.meter,tap,workspace:GetServerTimeNow(),p:GetNetworkPing())
+ if bonus==nil then return end
+ performThrow(p,bonus)
+end)
+local poll=0
+RunService.Heartbeat:Connect(function(dt)
+ poll+=dt;if poll<Config.ThrowMeter.PollSeconds then return end;poll=0
+ for p,s in states do if mutable(s)then
+  local r=rootOf(p);local inside=r~=nil and Rules.inBox(r.Position,Config.LaunchCenter,Config.LaunchHalfX,Config.LaunchHalfZ,Config.LaunchHeightTolerance)
+  if not inside then s.padArmed=true end
+  if s.meter then
+   if not inside or s.job then s.meter=nil;p:SetAttribute("MeterStart",nil);phase(p,s,"Idle")
+   elseif workspace:GetServerTimeNow()-s.meter>=Config.ThrowMeter.Timeout then performThrow(p,Meter.bonus(.5))end
+  elseif inside and s.padArmed and not s.job and os.clock()-s.lastThrow>=Config.ThrowCooldown and GarageRules.inventoryCount(s.data)<Config.InventoryLimit then
+   s.padArmed=false;s.meter=workspace:GetServerTimeNow();p:SetAttribute("MeterStart",s.meter);p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Meter")
+  end
+  local pad=s.folder:FindFirstChild("TrainingPad")
+  local onPad=r and pad and Rules.inBox(r.Position,pad.Position,Config.TrainingRadius,Config.TrainingRadius,Config.TrainingHeightTolerance)
+  if onPad and not s.onTrainingPad and not s.job and not s.meter then p:SetAttribute("Training",true)end
+  s.onTrainingPad=onPad
+ end end
 end)
 local function joined(p: Player)
  if closing then return end;loading+=1;p:SetAttribute("DataReady",false)
@@ -201,14 +219,18 @@ local function joined(p: Player)
  local plot=1;while plots[plot]do plot+=1 end;plots[plot]=true
  local folder,positions=World.parking(world,plot,p.UserId,p.DisplayName)
  local entrance=positions[1]+Vector3.new(0,3,6)
- local s={profile=profile,data=profile.Data,plot=plot,folder=folder,positions=positions,entrance=entrance,center=folder.ParkingGround.Position,placed={},income=0,phase="Idle",lastThrow=-math.huge,lastRequest=-math.huge,lastTrain=-math.huge,lastShop=-math.huge,lastGarage=-math.huge,lastTravel=-math.huge}
+ local s={profile=profile,data=profile.Data,plot=plot,folder=folder,positions=positions,entrance=entrance,center=folder.ParkingGround.Position,placed={},tools={},padArmed=true,income=0,phase="Idle",lastThrow=-math.huge,lastRequest=-math.huge,lastTrain=-math.huge,lastShop=-math.huge,lastGarage=-math.huge}
  states[p]=s
+ for i=1,Config.ParkingSlots do garageService.prompt(p,s,folder["Slot"..i],"Place","",i)end
  for key,value in {Throws=0,Delivered=0,InventoryCount=0,Income=0,ParkingUsed=0,ParkedCount=0}do p:SetAttribute(key,value)end
  p:SetAttribute("Location","Road");p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Idle")
  publish(p,s);p:SetAttribute("DataReady",true);p:SetAttribute("SaveStatus","Saved")
  local function characterAdded(c: Model)
   p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);c:WaitForChild("HumanoidRootPart")
-  if states[p]==s and c.Parent then teleport(p,s,s.spawnPlot==true)end
+  if states[p]==s and c.Parent then
+   s.meter=nil;p:SetAttribute("MeterStart",nil);if not s.job then phase(p,s,"Idle")end
+   teleport(p,s,s.spawnPlot==true);Tools.sync(p,s)
+  end
  end
  p.CharacterAdded:Connect(characterAdded);if p.Character then task.spawn(characterAdded,p.Character)end
 end
@@ -227,7 +249,7 @@ task.spawn(function()
  while not closing do task.wait(Config.TickSeconds)
   for p,s in states do if mutable(s)then
    s.data.Cash=math.min(Config.MaxCash,s.data.Cash+s.income)
-   local training=rootOf(p)~=nil and not s.job and p:GetAttribute("Location")=="Road"and p:GetAttribute("Training")==true
+   local training=rootOf(p)~=nil and not s.job and not s.meter and s.onTrainingPad and p:GetAttribute("Training")==true
    p:SetAttribute("TrainingActive",training)
    if training then s.data.Power=math.min(Config.MaxPower,s.data.Power+Rules.trainingRate(s.data.Power,s.data.Exercise)*Config.TickSeconds)end
    if training or s.income>0 then profiles:touch(s.profile)end;mirror(p,s)
@@ -253,8 +275,9 @@ if RunService:IsStudio()then
   elseif command=="SetCash"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxCash then s.data.Cash=math.floor(value);publish(p,s);return true
   elseif command=="SetPower"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxPower then s.data.Power=math.floor(value);publish(p,s);return true
   elseif command=="GiveCar"then
-   local b=if typeof(value)=="number"and Config.Biomes[value]then value else 1
-   local ok=GarageRules.add(s.data,Rules.reward(b,1,1),Http:GenerateGUID(false),false);if ok then publish(p,s)end;return ok
+   local b=if typeof(value)=="number"and Config.Biomes[value]then value elseif typeof(value)=="table"and Config.Biomes[value.Biome]then value.Biome else 1
+   local rarity=if typeof(value)=="table"and Config.Rarities[value.Rarity]then value.Rarity else 1
+   local ok=GarageRules.add(s.data,Rules.reward(b,rarity,1),Http:GenerateGUID(false),false);if ok then publish(p,s)end;return ok
   elseif command=="TeleportSlot"and Rules.finiteNumber(value)and s.positions[value]then
    local r=rootOf(p);if r then p.Character:PivotTo(CFrame.new(s.positions[value]+Vector3.new(0,3,0)));p:SetAttribute("Location","Plot");return true end
   elseif command=="Save"then return save(p,s,false)
@@ -262,4 +285,4 @@ if RunService:IsStudio()then
   return nil
  end
 end
-print("[ThrowTickets] Iteration 7: timed prices, training upgrades and schema 3 ready.")
+print("[ThrowTickets] Iteration 8: Tools, garage prompts and server throw clock ready.")

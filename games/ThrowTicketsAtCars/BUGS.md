@@ -1,11 +1,11 @@
 # Błędy i ograniczenia
-- Końcowe testy Studio03.11.2026: brak błędów gry klienta i serwera; pomiar telefonu71 s/151 s i save/rejoin PASS.
-- Balans NOT FINAL: ceny w minutach, benchmark dochodu, trening, rzadkości i bonusy mandatów wymagają playtestu.
-- Późne biomy (do ok.7,5 h aktywnie) sprawdzone wyłącznie w symulacji, bez rozegrania tych godzin.
-- Model zakłada cykl14 s, odświeżenie45 s i aktywne wybieranie najlepszych aut. Inny styl/losowanie/latencja zmienią czasy.
-- Fizyczny telefon, wielu graczy i rzeczywista awaria backendu nieprzetestowane.
-- Zapis łupu poprzedza animację; wolny backend wydłuża przygotowanie. Lease po awarii może trwać do90 s.
-- Brak dochodu offline. Zmiana mandatu nie zwiększa dochodu już złapanych aut.
-- Dochód auta zaokrąglany w dół do pełnych $/s; najtańsze Common mogą nie dostać pełnego nominalnego bonusu x1,5.
-- Studio CaptureControls może blokować środek przycisku przy VirtualInput; testy klikały lewy fragment. Nie dotyczy to źródła nagród.
-- Wygląd sklepu/HUD/hotbara/Rusty Sedan nadal NOT FINAL.
+- Iteracja8: brak MessageError klienta/serwera w końcowych LogService;153 asercje PASS.
+- NEEDS VERIFICATION: ręczny touch-hold promptu. Domyślny BillboardGui nie jest wiarygodnie obsługiwany przez klik MCP; natywny capture Studio dwukrotnie timeout. InputHoldBegin/End na telefonie uruchamia tę samą walidację i działa.
+- Studio ostrzega o nieudanej iniekcji skryptu i ContentId203785492 (niezgodny typ assetu); to MessageWarning, bez błędu w skryptach gry. Nie zmieniano obcych pluginów.
+- Balans NOT FINAL. Ceny/ćwiczenia zachowano; tempo iteracji7 nie jest pomiarem nowej pętli chodzenia i paska.
+- Fizyczny telefon, wielu równoczesnych graczy i awaria backendu nieprzetestowane.60 działek sprawdzono geometrycznie, nie60 klientami.
+- Zapis łupu poprzedza animację; wolny backend wydłuża przygotowanie. Lease po awarii do90 s.
+- Akcje garażu zaznaczają profil dirty; zapis przez budżetowany autosave/leave/shutdown, bez zapisu przy każdym kliknięciu.
+- Brak dochodu offline. Mnożnik mandatu przypisany przy złapaniu; nie przelicza starych aut.
+- Domyślny hotbar Roblox ukryty; narzędzia odtwarzają się po śmierci/rejoin. Wybór wyposażonego auta nie jest częścią zapisu.
+- Zatwierdzona próbka My Cars; modele i finalny balans nadal NOT FINAL.

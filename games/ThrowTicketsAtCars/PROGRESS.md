@@ -1,21 +1,19 @@
 # Stan — THROW TICKETS AT CARS!
-- USER APPROVED — 03.11.2026: użytkownik potwierdził działanie pętli i zapisu iteracji6. Wygląd i nowy balans nadal NOT FINAL.
-- VERIFIED — 03.11.2026, iteracja7: 30 symulacji produkcyjnych reguł, telefon iPhone7 poziomo666×374, save/rejoin jednego gracza.
-- Power pochodzi tylko z TRAIN; mandaty nie zmieniają dystansu. 5 płatnych ćwiczeń w istniejącym SHOP, każde podwaja tempo ćwiczeń.
-- Cena każdego ćwiczenia/mandatu wyliczana z Minutes × ReferenceIncomePerMinute w biomie odblokowania. Bez cen $ wpisanych ręcznie.
-- Ćwiczenia: 0/1/2/8/25/90 min; mandaty: 0/1,5/6/15/40/120 min. Payback i korzyść/cena sprawdzone w modelu.
-- Auta: biom × rzadkość × mandat przy złapaniu, zaokrąglone do pełnych $/s. Sprzedaż = 180 s dochodu. Tylko postawione auta zarabiają pasywnie.
-- Telefon od zera: pierwsze ćwiczenie po71,04 s, Suburbs po151,48 s; bez przyznawania zasobów, faktyczne kliknięcia i chodzenie.
-- Symulacja, mediany: Suburbs 2.73 min; Downtown 17.08 min; Sports Track 49.47 min; Luxury Classics 150.32 min; Hypercar Island 453.73 min.
-- Wszystkie 30 przebiegów mieszczą się w ±25% celów. Dokładne zakresy i każdy zakup w raporcie.
-- 112 asercji reguł/profili +512 akceptacji tempa PASS. Sprawdzono brak Cash, poprzednika, duplikat i dev Reset/+Cash/+Power.
-- Schema3: Exercise, ułamkowy Power i Ticket auta; migracja zachowuje Cash/mandaty/ID/sloty. Dotychczasowe auta mają Paper Ticket.
-- Save/rejoin: dokładnie te same 7 aut/slotów/Ticket, ćwiczenie2, Pink i Power59,555…; 6 postawionych +1 w ekwipunku.
-- Zachowana pętla: zamach+lot2,45 s → trafienie jadącego wyniku → laweta2 s → własna działka → ekwipunek.
-- Zachowane limity20+6, PLACE/REMOVE/SELL, MY PLOT/BACK TO ROAD i serwerowa własność. Zatwierdzony łup zapisany przed animacją.
-- Końcowe logi klienta/serwera bez błędów gry. QA osobno, postępu użytkownika nieresetowano.
-- 18 źródeł Rojo; pełna lokalna kopia assets/SavedStudio_2026-11-03.rbxlx. Studio Edit, emulator/HTTP off, QA usunięte.
-- Źródło: LihFolk Vault V2, wskazane sekcje o tempie i payback; tylko odczyt lokalny z powodu braku MCP Obsidiana.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration7]].
-- Dalsze godziny są estymacją modelu. Fizyczny telefon, wielu graczy i dłuższy test zabawy pozostają do zrobienia.
-- Sklep/HUD/hotbar/Rusty Sedan i balans NOT FINAL. Bez publikacji, Rebirth, petów i Robux.
+- IMPLEMENTED — iteracja8,03.11.2026; zakres i próbka My Cars USER APPROVED.
+- Auta: profil+stabilneId, Tools w plecaku, mały model w ręce,5-slotowy hotbar z ViewportFrame i dochodem.
+- My Cars: sort malejący dochodu+Id, liczniki6/6 i x/20, PLACE wyposaża, PICK UP oddaje, SELL; Epic+ wymaga jednorazowego tokenu potwierdzenia.
+- EQUIP BEST atomowo rozdziela najlepsze6 aut; pełny plecak nie blokuje zamiany, nic nie sprzedaje.
+- ProximityPrompt Place car/Pick up, hold0.5 s; serwer sprawdza właściciela, dystans, stan, czas hold i cooldown.
+- Usunięto BACK TO ROAD oraz stare ekranowe karty/akcje i THROW. Stan Location nie blokuje mechanik.
+- Własny trening przy działce.60 działek w hubie: prostokąty nie nakładają się; maks.13.42 s bezpośredniego marszu do płytki przy szybkości16.
+- Wejście na białą płytkę startuje zegar serwera. Tap to tylko czas; bonus -5%..+10%, timeout3 s daje+2.5%; ponowne uzbrojenie po zejściu.
+- VERIFIED03.11:153 asercje reguł/profili/bezpieczeństwa; telefon iPhone13Pro/iPhone7 poziomo+PC; UI, E, trening, spam, śmierć, save/rejoin.
+- Pomiar zegara: zielony+9.863%, czerwony-4.719%, timeout+2.5%.40 powtórek zaakceptowano tylko raz na cykl.
+- Save/rejoin zachował dokładnie8 aut,6 miejsc+2 w plecaku, Power111.11111111111143, ćwiczenie i mandaty.
+- NEEDS VERIFICATION: ręczne dotykowe przytrzymanie promptu; silnikowa ścieżka InputHoldBegin/End w emulatorze PASS, automatyczny klik/natywny podgląd niezweryfikowane.
+- Kod/server review: poprawiono obejście hold przez publiczne Place; regresja RED→GREEN. Brak dalszych konkretnych uwag.
+- LogService0 MessageError. Dwa ostrzeżenia Studio/ContentId, opisane w raporcie.
+- Ceny nadal z minut dochodu iteracji7; nowy czas chodzenia/pasek zmieniają rytm, wcześniejsza symulacja nie dowodzi balansu iteracji8.
+- Schema3 zachowana; autosave/leave/shutdown i zapis łupu przed animacją. Tools odtwarzane z danych, nie zapisywane jako instancje.
+-24 źródła Rojo, Studio Edit, emulator/HTTP off, QA usunięte. Bez publikacji, resetu użytkownika i wydatków Robux.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8]]. Wygląd modeli i balans NOT FINAL.

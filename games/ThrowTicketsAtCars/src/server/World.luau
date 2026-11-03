@@ -22,6 +22,12 @@ function World.label(parent: BasePart,text: string,offset: number?)
 	return gui
 end
 World.car=CarBuilder.create
+function World.plotOrigin(plot: number): Vector3
+ local group=math.floor((plot-1)/2)
+ local side=if plot%2==1 then -1 else 1
+ local rows={20,64,-24,108,-68,-112}
+ return Vector3.new(side*(54+group%5*32),0,rows[math.floor(group/5)%#rows+1])
+end
 function World.viewPosition(biome: number,slot: number): Vector3
 	local start=Config.Biomes[biome].MinPower
 	local finish=if Config.Biomes[biome+1] then Config.Biomes[biome+1].MinPower else Config.MapEnd
@@ -84,9 +90,8 @@ function World.build(biomeCount: number?): Folder
 		for slot=1,Config.ViewCarsPerBiome do World.viewCar(root,i,slot) end
 	end
 	World.part(root,"StartApron",Vector3.new(Config.GroundWidth,1,Config.MapPadding),Vector3.new(0,-0.55,Config.MapPadding/2),Config.Biomes[1].Color)
-	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(225,225,225))
-	local train=World.part(root,"TrainingPad",Config.TrainingSize,Config.TrainingPosition,Color3.fromRGB(120,135,120))
-	World.label(train,"TRAINING: UPGRADE IN SHOP",1)
+	World.part(root,"ParkingHubGround",Vector3.new(420,1,300),Vector3.new(0,-.65,0),Config.Biomes[1].Color)
+	World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(225,225,225))
 	local spawn=Instance.new("SpawnLocation");spawn.Name="PrototypeSpawn";spawn.Anchored,spawn.Neutral=true,true
 	spawn.Size,spawn.Position=Config.SpawnSize,Config.SpawnPosition;spawn.Transparency,spawn.CanCollide,spawn.Duration=1,false,0;spawn.Parent=root
 	root.Parent=workspace
@@ -94,8 +99,9 @@ function World.build(biomeCount: number?): Folder
 end
 function World.parking(root: Folder,plot: number,ownerId: number,displayName: string): (Folder,{Vector3})
 	local f=Instance.new("Folder");f.Name=tostring(ownerId);f:SetAttribute("OwnerId",ownerId);f.Parent=root.Parking
-	local origin=Config.ParkingOrigin-Vector3.new((plot-1)*Config.PlayerPlotSpacing,0,0)
+	local origin=World.plotOrigin(plot)
 	World.part(f,"ParkingGround",Vector3.new(27,1,40),origin-Vector3.new(5.5,0.55,12),Color3.fromRGB(130,130,130))
+	local train=World.part(f,"TrainingPad",Config.TrainingSize,origin+Vector3.new(0,.2,10),Color3.fromRGB(120,155,140));train:SetAttribute("OwnerId",ownerId);World.label(train,"TRAINING",1)
 	local positions={}
 	for i=1,Config.ParkingSlots do
 		local pos=origin-Vector3.new((i-1)%Config.ParkingColumns*Config.ParkingSpacing.X,0,math.floor((i-1)/Config.ParkingColumns)*Config.ParkingSpacing.Z)

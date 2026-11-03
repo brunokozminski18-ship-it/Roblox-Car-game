@@ -1,16 +1,17 @@
-# Current Task — iteracja 7: tempo wg LihFolk
-- Właściciel: Codex; 03.11.2026. Status: VERIFIED — 30 symulacji, telefon poziomo (pierwsze minuty), save/rejoin. Balans NOT FINAL.
-- USER APPROVED 03.11: użytkownik potwierdził działanie pętli i zapisu iteracji 6; nie jest to akceptacja nowego balansu.
-- Źródła: LihFolk Vault V2, Progression and Pacing Design TL;DR/sekcja3 oraz Pricing Curves and Upgrade Costs TL;DR/payback. MCP Obsidiana niedostępne; lokalny odczyt, bez zapisów w bibliotece.
-- Zrobione: [x] test RED; [x] Config w minutach; [x] zakup ćwiczeń w istniejącym SHOP; [x] schema3; [x] 30 seedów; [x] zegar telefonu; [x] raport i źródła do commitu.
-- Ceny = minuty × referencyjny aktywny dochód biomu. Ćwiczenia 0/1/2/8/25/90 min, mandaty 0/1,5/6/15/40/120 min.
-- Ćwiczenia podwajają szybkość treningu; tempo bazowe zależy od biomu. Dystans nadal równy wyłącznie Power.
-- Mandat daje luck i bonus dochodu auta przy złapaniu; sprzedaż za 3 min jego dochodu. Brak wstecznego bonusu starych aut po EQUIP.
-- Schema3 zapisuje ćwiczenie, ułamkowy Power i Ticket każdego auta; zachowuje dotychczasową własność.
-- Telefon od zera bez grantów: Focused Training 71,04 s; Suburbs 151,48 s. Faktyczne GUI i chodzenie, nie teleporty QA.
-- Symulacja: wszystkie 30 przebiegów w ±25% celów; 112 asercji reguł/profili +512 akceptacji tempa PASS.
-- Save/rejoin zachował 7 aut/sloty/Ticket, ćwiczenie2, Pink i ułamkowy Power. Końcowe logi gry bez błędów.
-- Dev tylko Studio: Reset, AddCash, AddPower w ServerStorage.ThrowTicketsQA; sprawdzone na QA po pomiarze.
-- Postępu użytkownika nieresetowano. Studio Edit, emulator/HTTP off, QA key usunięty; pełna kopia assets/SavedStudio_2026-11-03.rbxlx.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration7]].
-- Następny krok: ocena tempa przez użytkownika i dłuższy playtest. Późne godziny to prognoza, nie rozegrana sesja.
+# Current Task — iteracja 8
+- Właściciel: Codex; 03.11.2026. Status: IMPLEMENTED; VERIFIED w zakresie testów poniżej.
+- USER APPROVED: zakres iteracji 8 oraz pokazana próbka My Cars; bez Rebirth/petów/Robux/finalnej grafiki/biomów.
+- Źródła: MCP Obsidiana, LihFolk Vault V2 — cztery wskazane TL;DR; biblioteka wyłącznie odczyt.
+- [x] Profil jest własnością; Tools w Backpack/Character, trzymany model, hotbar 5 slotów ViewportFrame/$/s/numer.
+- [x] My Cars: stabilny sort dochodu+Id, liczniki, PLACE wyposaża, PICK UP, SELL z serwerowym potwierdzeniem Epic+, Equip Best.
+- [x] Place car/Pick up przez prompty; hold0.5 s, właściciel/dystans/stan/cooldown; publiczne Place nie omija hold.
+- [x] Bez BACK TO ROAD, ekranowych PLACE/REMOVE/SELL i THROW; Location nie blokuje ruchu/treningu/rzutu.
+- [x] Własny trening przy działce; układ60 działek bez nakładania, maks.13.42 s marszu przy WalkSpeed16.
+- [x] Płytka rzutu: zegar serwera, tap tylko czas, bonus -5%..+10%, timeout3 s, rearm po zejściu.
+- VERIFIED03.11: 153 asercje; iPhone13Pro/iPhone7 poziomo i PC, E place/pickup, My Cars/sell/equip best, zegar/spam, śmierć, save/rejoin.
+- Save/rejoin: dokładnie8 aut,6 miejsc+2 w plecaku, Ticket/Power/ćwiczenie/mandaty zachowane.
+- NEEDS VERIFICATION: fizyczne dotykowe przytrzymanie systemowego promptu. InputHoldBegin/End w emulatorze PASS; klik MCP nie dał wiarygodnego wyniku, natywny podgląd okna timeout.
+- LogService: 0 MessageError klient/serwer; ostrzeżenia Studio/iniekcji i ContentId203785492 odnotowane w raporcie.
+- Studio Edit; emulator/HTTP off; klucz QA usunięty. Nie zmieniano profilu użytkownika i nie publikowano.
+- Raport/zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8]].
+- Następny krok: ręczny touch-hold i playtest balansu. Finalny wygląd modeli i balans NOT FINAL.

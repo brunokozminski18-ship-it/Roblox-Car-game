@@ -2,6 +2,17 @@
 local Config=require(script.Parent.Config)
 local Rules=require(script.Parent.Rules)
 local Garage={}
+function Garage.sorted(data: any,inventoryOnly: boolean): {any}
+ local out={};for _,c in data.Cars do if not c.Pending and(not inventoryOnly or c.Slot==0)then table.insert(out,c)end end
+ table.sort(out,function(a,b)local ai,bi=Rules.savedReward(a).Income,Rules.savedReward(b).Income;return if ai==bi then a.Id<b.Id else ai>bi end)
+ return out
+end
+function Garage.equipBest(data: any): (boolean,string)
+ local sorted=Garage.sorted(data,false);local target={};local changed=false
+ for i,c in sorted do target[c.Id]=if i<=Config.ParkingSlots then i else 0 end
+ for _,c in data.Cars do if not c.Pending then local slot=target[c.Id];if c.Slot~=slot then changed=true end;c.Slot=slot end end
+ return true,if changed then "Best cars parked!"else "Best cars already parked!"
+end
 function Garage.find(data: any,id: any): (any,number?)
  if typeof(id)~="string"or #id<1 or #id>64 then return nil,nil end
  for i,c in data.Cars do if c.Id==id then return c,i end end;return nil,nil
@@ -31,7 +42,7 @@ function Garage.act(data: any,action: any,id: any,slot: any): (boolean,string)
   if Garage.inventoryCount(data)>=Config.InventoryLimit then return false,"Inventory full!"end
   c.Slot=0;return true,"Returned to inventory!"
  elseif action=="Sell"then
-  if slot~=0 or c.Slot~=0 then return false,"Remove car before selling!"end
+  if slot~=0 then return false,"Invalid sale!"end
   local price=Rules.salePrice(Rules.savedReward(c).Income)
   table.remove(data.Cars,index);data.Cash=math.min(Config.MaxCash,data.Cash+price)
   return true,"Sold for $"..price
