@@ -61,14 +61,14 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  local padding=Instance.new("UIPadding");padding.PaddingTop,padding.PaddingBottom=UDim.new(0,4),UDim.new(0,4);padding.PaddingLeft=UDim.new(0,4);padding.PaddingRight=UDim.new(0,12);padding.Parent=list
  local notice=text(panel,"Notice","Training upgrades double your XP gain.",16,UDim2.new(0,22,1,-34),UDim2.new(1,-44,0,26));notice.TextXAlignment=Enum.TextXAlignment.Center
  local rows={};local opened=false;local pulse: Tween?=nil;local pulsing=false
- -- One reusable, non-interactive shine layer and one tween for the whole window.
- local shineLayer=Instance.new("Frame");shineLayer.Name="ShineLayer";shineLayer.AnchorPoint=panel.AnchorPoint;shineLayer.Position=panel.Position;shineLayer.ClipsDescendants=true
- shineLayer.BackgroundTransparency=1;shineLayer.BorderSizePixel=0;shineLayer.Active=false;shineLayer.Selectable=false;shineLayer.ZIndex=100;shineLayer.Parent=gui
- local shine=Instance.new("Frame");shine.Name="Shine";shine.Size=UDim2.fromScale(1,1);shine.Position=UDim2.new()
- shine.BackgroundColor3=Color3.new(1,1,1);shine.BackgroundTransparency=0;shine.BorderSizePixel=0;shine.Active=false;shine.Selectable=false;shine.Visible=false;shine.ZIndex=100;shine.Parent=shineLayer;corner(shine,41)
- local shineGradient=gradient(shine,Color3.new(1,1,1),Color3.new(1,1,1));shineGradient.Name="Sweep";shineGradient.Rotation=18;shineGradient.Offset=Vector2.new(-1,0)
- shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.40,1),NumberSequenceKeypoint.new(.445,.68),NumberSequenceKeypoint.new(.5,.16),NumberSequenceKeypoint.new(.555,.68),NumberSequenceKeypoint.new(.60,1),NumberSequenceKeypoint.new(1,1)})
- local shineTween=Tween:Create(shineGradient,TweenInfo.new(1.05,Enum.EasingStyle.Linear),{Offset=Vector2.new(1,0)})
+ -- A narrow moving reflection clipped to the header surface.
+ local shineLayer=Instance.new("Frame");shineLayer.Name="ShineLayer";shineLayer.Size=UDim2.fromScale(1,1);shineLayer.ClipsDescendants=true
+ shineLayer.BackgroundTransparency=1;shineLayer.BorderSizePixel=0;shineLayer.Parent=gloss
+ local shine=Instance.new("Frame");shine.Name="Shine";shine.AnchorPoint=Vector2.new(.5,.5);shine.Size=UDim2.new(.09,0,0,120)
+ shine.Position=UDim2.fromScale(-.15,.5);shine.Rotation=22;shine.BackgroundColor3=Color3.new(1,1,1);shine.BorderSizePixel=0;shine.Visible=false;shine.Parent=shineLayer
+ local shineGradient=gradient(shine,Color3.new(1,1,1),Color3.new(1,1,1))
+ shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.26,.75),NumberSequenceKeypoint.new(.52,.66),NumberSequenceKeypoint.new(.82,.86),NumberSequenceKeypoint.new(1,1)})
+ local shineTween=Tween:Create(shine,TweenInfo.new(.85,Enum.EasingStyle.Linear),{Position=UDim2.fromScale(1.15,.5)})
  local nextShine=os.clock()+Config.Juice.ShineEvery
  local function stopShine()shineTween:Cancel();shine.Visible=false end
  -- Cancel also fires Completed; deferred cancellation must not hide a new sweep.
@@ -89,24 +89,12 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   local shackle=Instance.new("Frame");shackle.Size=UDim2.fromOffset(12,14);shackle.Position=UDim2.fromOffset(4,0);shackle.BackgroundTransparency=1;shackle.Parent=lock;corner(shackle,6);stroke(shackle,2,Color3.new(1,1,1))
   local lockBody=Instance.new("Frame");lockBody.Size=UDim2.fromOffset(18,13);lockBody.Position=UDim2.fromOffset(1,10);lockBody.BackgroundColor3=Color3.new(1,1,1);lockBody.BorderSizePixel=0;lockBody.Parent=lock;corner(lockBody,3)
   action.Activated:Connect(function()if not p:GetAttribute("DataReady")then return end;remote:FireServer(if item.Kind=="Exercise"then "Exercise"elseif p:GetAttribute("Own_"..t.Id)then "Equip"else "Buy",t.Id)end)
-  rows[i]={root=row,gradient=g,action=action,price=price,name=name,perk=perk,icon=icon,lock=lock,stripes=stripes,pulsing=false}
+  rows[i]={root=row,gradient=g,action=action,price=price,name=name,perk=perk,icon=icon,lock=lock,stripes=stripes}
  end
  local function nextTicket(affordable: boolean?,kind: string?): number?
   for i,item in items do if (not kind or item.Kind==kind)and not isOwned(p,item)and isUnlocked(p,item)and(not affordable or cash.Value>=item.Data.Price)then return i end end;return nil
  end
- local function buyPulses()
-  for _,row in rows do
-   local active=opened and row.root:GetAttribute("State")=="Affordable"and not GuiService.ReducedMotionEnabled
-   row.action:SetAttribute("Pulsing",active)
-   if row.pulsing~=active then
-    row.pulsing=active;if row.pulse then row.pulse:Cancel();row.pulse=nil end
-    row.action.BackgroundColor3=if row.root:GetAttribute("State")=="Locked"then Color3.fromHex("34436B")else Color3.new(1,1,1)
-    if active then row.pulse=Tween:Create(row.action,Motion.pulse,{BackgroundColor3=Color3.fromHex("B9FFB0")});row.pulse:Play()end
-   end
-  end
- end
  local function updatePulse()
-  buyPulses()
   local index=nextTicket(true);local should=not opened and p:GetAttribute("DataReady")==true and index~=nil
   if should==pulsing then return end;pulsing=should
   if pulse then pulse:Cancel();pulse=nil end;pulseScale.Scale=1
@@ -158,7 +146,6 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  end
  local function resize()
   panel.Size=UDim2.fromOffset(math.min(760,gui.AbsoluteSize.X-32),math.min(662,gui.AbsoluteSize.Y-24))
-  shineLayer.Size=panel.Size+UDim2.fromOffset(10,10)
   title.TextSize=if gui.AbsoluteSize.Y<400 then 30 else 40
   for _,row in rows do row.name.TextSize=if gui.AbsoluteSize.X<600 then 20 else 23;row.perk.TextSize=if gui.AbsoluteSize.X<600 then 15 else 17 end
  end
@@ -190,7 +177,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  local shineConnection=RunService.Heartbeat:Connect(function()
   if not opened or GuiService.ReducedMotionEnabled or os.clock()<nextShine then return end
   nextShine=os.clock()+Config.Juice.ShineEvery
-  shineTween:Cancel();shineGradient.Offset=Vector2.new(-1,0);shine.Visible=true;shineTween:Play()
+  shineTween:Cancel();shine.Position=UDim2.fromScale(-.15,.5);shine.Visible=true;shineTween:Play()
  end)
  gui.Destroying:Connect(function()shineConnection:Disconnect();stopShine();shineTween:Destroy()end)
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize();refresh()

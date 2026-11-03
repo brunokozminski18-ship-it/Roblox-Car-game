@@ -25,7 +25,7 @@ for _,t in Config.Tickets do
   local price=row.Action.Price
   check(price.Visible and price.TextSize>=22 and row.Action.Text=="BUY","Large price on BUY")
   check(if state=="Affordable"then price.TextColor3.G>price.TextColor3.R else price.TextColor3.R>price.TextColor3.G,"Price colour matches funds")
-  if window.Visible then check(row.Action:GetAttribute("Pulsing")== (state=="Affordable"and not game:GetService("GuiService").ReducedMotionEnabled),"Only affordable BUY pulses")end
+  if window.Visible then check(row.Action:GetAttribute("Pulsing")~=true,"Shop buttons stay still during the shine")end
  end
 end
 return {assertions=count,states=found}

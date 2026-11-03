@@ -86,9 +86,13 @@ function C.play(origin: Vector3,destination: Vector3,car: Model?,owner: number,i
     local offset=Vector3.new(4,6,13)
     if impactAt then
      local elapsed=os.clock()-impactAt
-     local pullback=math.clamp((elapsed-.28)/.85,0,1);pullback=1-(1-pullback)^3
+     local rare=data.Rarity>=3 or data.SuperLucky==true
+     local pullback=math.clamp((elapsed-(if rare then 1.45 else .28))/(if rare then 1.7 else .85),0,1)
+     pullback=pullback*pullback*(3-2*pullback)
      local final=if data.Rarity>=3 then Vector3.new(-8,4,10)else Vector3.new(-10,4.5,12)
-     offset=Vector3.new(0,1.2,6):Lerp(final,pullback)
+     local reveal=p.PlayerGui:FindFirstChild("CatchReveal")
+     if reveal and reveal:GetAttribute("Complete") then pullback=1 end
+     offset=Vector3.new(1.5,2,9):Lerp(final,pullback)
     end
     local shake=Vector3.zero
     if impactAt and not GuiService.ReducedMotionEnabled then
