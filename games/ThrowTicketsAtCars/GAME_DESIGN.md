@@ -12,15 +12,15 @@
 - NEW GEAR: pierwszy osiągalny next exercise/ticket z ceną/efektem/timerem7 s; akcja teleportuje do własnego stanowiska i otwiera kategorię sklepu, nie kupuje.
 - Next exercise w świecie ma cenę zieloną/czerwoną; SHOP TRAINING/TICKETS, biała smuga co5 s, Reduced Motion respektowane.
 - Profil kontroluje własność; auta Slot0 odtwarzają Tools w Backpack/Character. Hotbar5 slotów z3D/$/s/numerem ponad XPbar; CARS otwiera pełny ekwipunek20.
-- My Cars: PARKED / BACKPACK, w sekcji dochód malejąco i Id jako rozstrzygnięcie; PLACE wyposaża, PICK UP przy miejscu; Epic+, każda odmiana lub GIANT wymagają YES/NO i tokenu 15 s. EQUIP BEST wypełnia aktualną pojemność.
+- My Cars: PARKED / BACKPACK, w sekcji dochód malejąco i Id jako rozstrzygnięcie; PLACE wyposaża, PICK UP przy miejscu; przy zajętym slocie trzymane auto włącza Swap car (0,5 s), także przy pełnym plecaku; Epic+ lub każda odmiana wymagają YES/NO i tokenu 15 s. EQUIP BEST wypełnia aktualną pojemność.
 - Wolne miejsce: Place car tylko przy trzymanym aucie; postawione: Pick up. Hold0.5 s i walidacja własności/dystansu/stanu/cooldownu.
 - Działki obok rzutu i własny trening; powrót pieszo, bez BACK TO ROAD/blokady Plot.
-- Katalog: 8 aut w każdym z 6 biomów, 3 Common/2 Rare/2 Epic/1 Legendary. Losowanie serwera: rarity → model z tej grupy → niezależne variant i size. Odds uwzględniają wszystkie cztery czynniki.
-- Income=floor(biom×rzadkość×mandat×odmiana×rozmiar), min 1. Odmiany bazowo Gold 5% ×2, Diamond 1% ×4, Neon 0.25% ×8; BIG 10% ×1.5 i GIANT 2% ×3. Luck zwiększa wagi specjalnych wyników o (1+luck), nie zasięg. Sprzedaż 180 s dochodu.
+- Katalog: 8 aut w każdym z 6 biomów, 3 Common/2 Rare/2 Epic/1 Legendary. Losowanie serwera: rarity → model z tej grupy → variant. Odds uwzględniają rzadkość, model i odmianę.
+- Income=floor(biom×rzadkość×mandat×odmiana), min 1. Odmiany bazowo Gold 5% ×2, Diamond 1% ×4, Neon 0.25% ×8. Luck zwiększa wagi specjalnych wyników o (1+luck), nie zasięg. Sprzedaż 180 s dochodu.
 - Car Index zapisuje odkryte CatalogId, niezależnie od posiadania egzemplarza. Zablokowane modele są czarne, a karty mają kolor rzadkości.
 - Parking 6→8→10→12→14→16, cena 3/7/15/30/60 min startowego dochodu referencyjnego. Brak wolnych miejsc zostawia łup w plecaku; 20 aut w plecaku blokuje próbę przed rzutem.
 - Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/400/1000/2500. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
-- Schema 5: poprzednie pola plus ParkingCapacity, Discovered i CatalogId/Variant/Size każdego auta. Migracja zachowuje ID, biom, rzadkość, mandat, miejsce i dochód; tylko parking zarabia, brak offline.
+- Schema 5: poprzednie pola plus ParkingCapacity, Discovered i CatalogId/Variant każdego auta. Migracja zachowuje ID, biom, rzadkość, mandat, miejsce. Starsze auta z rozmiarem zachowują odmianę i otrzymują dochód bez dawnego mnożnika; tylko parking zarabia, brak offline.
 - Jeden writer/lease/token/autosave/leave/shutdown; łup zapisany przed animacją. Boost i aktualne wyposażenie/suwak są stanem sesji.
 - Audio14 cue/5 ID Creator Store, testowy miks×0.52, ciche krótkie XP/litery, preload/pooling/cap12, pitch/choke. Kamera jeden owner do końcaTow z cleanup/FOV/Focus i ograniczonym shake.
 - Źródło: LihFolk Vault V2 (CC BY 4.0), MCP tylko odczyt; ThrowFoodForAnimals [E/F] dla 10b, własne nazwy i grafiki. Balans i wygląd NOT FINAL.

@@ -62,13 +62,13 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  local notice=text(panel,"Notice","Training upgrades double your XP gain.",16,UDim2.new(0,22,1,-34),UDim2.new(1,-44,0,26));notice.TextXAlignment=Enum.TextXAlignment.Center
  local rows={};local opened=false;local pulse: Tween?=nil;local pulsing=false
  -- One reusable, non-interactive shine layer and one tween for the whole window.
- local shineLayer=Instance.new("Frame");shineLayer.Name="ShineLayer";shineLayer.Size=UDim2.new(1,10,1,10);shineLayer.Position=UDim2.fromOffset(-5,-5)
- shineLayer.BackgroundTransparency=1;shineLayer.BorderSizePixel=0;shineLayer.Active=false;shineLayer.Selectable=false;shineLayer.ZIndex=100;shineLayer.Parent=panel
+ local shineLayer=Instance.new("Frame");shineLayer.Name="ShineLayer";shineLayer.AnchorPoint=panel.AnchorPoint;shineLayer.Position=panel.Position;shineLayer.ClipsDescendants=true
+ shineLayer.BackgroundTransparency=1;shineLayer.BorderSizePixel=0;shineLayer.Active=false;shineLayer.Selectable=false;shineLayer.ZIndex=100;shineLayer.Parent=gui
  local shine=Instance.new("Frame");shine.Name="Shine";shine.Size=UDim2.fromScale(1,1);shine.Position=UDim2.new()
  shine.BackgroundColor3=Color3.new(1,1,1);shine.BackgroundTransparency=0;shine.BorderSizePixel=0;shine.Active=false;shine.Selectable=false;shine.Visible=false;shine.ZIndex=100;shine.Parent=shineLayer;corner(shine,41)
  local shineGradient=gradient(shine,Color3.new(1,1,1),Color3.new(1,1,1));shineGradient.Name="Sweep";shineGradient.Rotation=18;shineGradient.Offset=Vector2.new(-1,0)
- shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.40,1),NumberSequenceKeypoint.new(.5,.62),NumberSequenceKeypoint.new(.60,1),NumberSequenceKeypoint.new(1,1)})
- local shineTween=Tween:Create(shineGradient,TweenInfo.new(1.1,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Offset=Vector2.new(1,0)})
+ shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.40,1),NumberSequenceKeypoint.new(.445,.68),NumberSequenceKeypoint.new(.5,.16),NumberSequenceKeypoint.new(.555,.68),NumberSequenceKeypoint.new(.60,1),NumberSequenceKeypoint.new(1,1)})
+ local shineTween=Tween:Create(shineGradient,TweenInfo.new(1.05,Enum.EasingStyle.Linear),{Offset=Vector2.new(1,0)})
  local nextShine=os.clock()+Config.Juice.ShineEvery
  local function stopShine()shineTween:Cancel();shine.Visible=false end
  -- Cancel also fires Completed; deferred cancellation must not hide a new sweep.
@@ -158,6 +158,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  end
  local function resize()
   panel.Size=UDim2.fromOffset(math.min(760,gui.AbsoluteSize.X-32),math.min(662,gui.AbsoluteSize.Y-24))
+  shineLayer.Size=panel.Size+UDim2.fromOffset(10,10)
   title.TextSize=if gui.AbsoluteSize.Y<400 then 30 else 40
   for _,row in rows do row.name.TextSize=if gui.AbsoluteSize.X<600 then 20 else 23;row.perk.TextSize=if gui.AbsoluteSize.X<600 then 15 else 17 end
  end

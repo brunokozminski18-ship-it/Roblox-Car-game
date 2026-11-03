@@ -3,10 +3,10 @@ local Config=require(script.Parent.Config)
 local Rules=require(script.Parent.Rules)
 local Garage={}
 function Garage.requiresConfirmation(car: any): boolean
- return car.Rarity>=3 or (car.Variant~=nil and car.Variant~="Normal") or car.Size=="GIANT"
+ return car.Rarity>=3 or (car.Variant~=nil and car.Variant~="Normal")
 end
 function Garage.fullMessage(data: any): string
- return "Your parking is full! ("..(data.ParkingCapacity or Config.ParkingSlots).." cars)"
+ return "Your parking is full! ("..(data.ParkingCapacity or Config.ParkingSlots).." cars) Upgrade parking or swap a car."
 end
 function Garage.parkedCount(data: any): number
  local count=0;for _,car in data.Cars do if car.Slot>0 then count+=1 end end;return count
@@ -35,9 +35,24 @@ end
 function Garage.add(data: any,reward: any,id: string,pending: boolean): (boolean,string)
  if Garage.inventoryCount(data)>=Config.InventoryLimit then return false,"Inventory full!"end
  if Garage.find(data,id)then return false,"Duplicate car!"end
- table.insert(data.Cars,{Id=id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,CatalogId=reward.CatalogId,Variant=reward.Variant,Size=reward.Size,Ticket=reward.Ticket,Slot=0,Pending=if pending then true else nil})
+ table.insert(data.Cars,{Id=id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,CatalogId=reward.CatalogId,Variant=reward.Variant,Ticket=reward.Ticket,Slot=0,Pending=if pending then true else nil})
  if reward.CatalogId then data.Discovered=data.Discovered or {};data.Discovered[reward.CatalogId]=true end
  return true,"Car added!"
+end
+function Garage.swap(data: any, incomingId: string, parkedId: string, slot: number): (boolean,string)
+ local incoming=Garage.find(data,incomingId)
+ local parked=Garage.find(data,parkedId)
+ if not incoming or incoming.Pending or incoming.Slot~=0 or not parked or parked.Pending then
+  return false,"Cars unavailable!"
+ end
+ if slot<1 or slot>(data.ParkingCapacity or Config.ParkingSlots) or parked.Slot~=slot then
+  return false,"Parking spot changed!"
+ end
+ -- The incoming car frees the backpack space the outgoing car needs.
+ if Garage.inventoryCount(data)>Config.InventoryLimit then return false,"Backpack full!"end
+ incoming.Slot=slot
+ parked.Slot=0
+ return true,"Cars swapped!"
 end
 function Garage.act(data: any,action: any,id: any,slot: any): (boolean,string)
  local c,index=Garage.find(data,id);if not c then return false,"Car not owned!"end

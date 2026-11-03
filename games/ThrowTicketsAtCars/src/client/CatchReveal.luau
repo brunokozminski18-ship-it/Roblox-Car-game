@@ -1,10 +1,15 @@
 --!strict
 -- The reward stays in the world: this overlay supplies only reveal typography/input.
 local Tween=game:GetService("TweenService")
+local RunService=game:GetService("RunService")
 local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Juice=require(game.ReplicatedStorage.ThrowTickets.JuiceRules)
 local S=require(script.Parent.Style)
 local Reveal={}
+local function oddsText(value: number): string
+ local digits=tostring(math.floor(value))
+ return "1 in "..(digits:reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,",""))
+end
 function Reveal.mount(parent: Instance,playSound: ((string,number?)->())?): any
  local sound=playSound or function()end
  local gui=Instance.new("ScreenGui");gui.Name="CatchReveal";gui.ResetOnSpawn=false;gui.DisplayOrder=60;gui.ScreenInsets=Enum.ScreenInsets.None;gui.Parent=parent
@@ -27,6 +32,9 @@ function Reveal.mount(parent: Instance,playSound: ((string,number?)->())?): any
  local hint=centered("Hint","Tap to continue",18,.972,28)
  local nextButton=Instance.new("TextButton");nextButton.Name="Continue";nextButton.Size=UDim2.fromScale(1,1);nextButton.Text="";nextButton.BackgroundTransparency=1;nextButton.AutoButtonColor=false;nextButton:SetAttribute("AudioMuted",true);nextButton.Parent=panel
  local scale=Instance.new("UIScale");scale.Parent=name
+ local oddsScale=Instance.new("UIScale");oddsScale.Parent=odds
+ local counterConnection: RBXScriptConnection?=nil
+ local pop: Tween?=nil
  local version=0
  local callback: (() -> ())?=nil
  local completeCard: (() -> ())?=nil
@@ -47,6 +55,9 @@ function Reveal.mount(parent: Instance,playSound: ((string,number?)->())?): any
  name:GetPropertyChangedSignal("TextBounds"):Connect(placeBadge)
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize()
  local function hide()
+  if counterConnection then counterConnection:Disconnect();counterConnection=nil end
+  if pop then pop:Cancel();pop=nil end
+  oddsScale.Scale=1
   version+=1;gui.Enabled=false;callback=nil;completeCard=nil
   complete,minimumElapsed,queued=false,false,false
   gui:SetAttribute("Ready",false)
@@ -84,20 +95,48 @@ function Reveal.mount(parent: Instance,playSound: ((string,number?)->())?): any
   callback=onContinue;gui.Enabled=true;gui:SetAttribute("JobId",data.Id)
   local rare=data.Rarity>=3
   local variant=if typeof(data.Variant)=="string"then data.Variant:upper()else "NORMAL"
-  local size=if typeof(data.Size)=="string"then data.Size:upper()else "NORMAL"
   local superLucky=data.SuperLucky==true
   local rarityData=Config.Rarities[data.Rarity]
   local color=rarityData.Color
-  local tags={rarityData.Name:upper()}
-  if variant=="GOLD"or variant=="DIAMOND"or variant=="NEON"then table.insert(tags,variant)end
-  if size=="BIG"or size=="GIANT"then table.insert(tags,size)end
-  local showOdds=rare or superLucky or #tags>1
+  local showOdds=rare or superLucky or variant~="NORMAL"
   local target=math.max(1,math.floor(tonumber(data.Odds)or 1))
   rareTitle.Visible=rare or superLucky
   rareTitle.Text=if superLucky then "SUPER LUCKY!" elseif rare then rarityData.Name:upper().." CATCH!"else ""
-  name.TextColor3=Color3.new(1,1,1);rarity.Text=rarityData.Name:upper()..(if size=="NORMAL"then ""else "  •  "..size);rarity.TextColor3=color;income.Text="$"..data.Income.."/s"
+  name.TextColor3=Color3.new(1,1,1);rarity.Text=rarityData.Name:upper();rarity.TextColor3=color;income.Text="$"..data.Income.."/s"
   variantLabel.Text=variant;variantLabel.Visible=false;variantLabel.TextColor3=if variant=="GOLD"then Color3.fromHex("FFD54D")elseif variant=="DIAMOND"then Color3.fromHex("87ECFF")else Color3.fromHex("A3FF9C")
   rarity.Visible=false;income.Visible=false;badge.Visible=false;odds.Visible=showOdds;odds.Text=if showOdds then "1 in 1"else "";hint.Text="Tap to reveal"
+  local counterFinished=not showOdds
+  local function finishOdds()
+   if counterFinished then return end
+   counterFinished=true
+   if counterConnection then counterConnection:Disconnect();counterConnection=nil end
+   odds.Text=oddsText(target)
+   sound("Rare")
+   oddsScale.Scale=1.14
+   pop=Tween:Create(oddsScale,TweenInfo.new(.22,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Scale=1})
+   pop:Play()
+  end
+  if showOdds then
+   local duration=math.clamp(1.5+.3*math.log10(target),1.5,2.5)
+   local started=os.clock()
+   local lastTick=-math.huge
+   local lastNumber=1
+   counterConnection=RunService.RenderStepped:Connect(function()
+    local now=os.clock()
+    local progress=math.clamp((now-started)/duration,0,1)
+    if progress>=1 then finishOdds();return end
+    local eased=Tween:GetValue(progress,Enum.EasingStyle.Cubic,Enum.EasingDirection.Out)
+    local value=math.floor(1+(target-1)*eased)
+    if value~=lastNumber then
+     odds.Text=oddsText(value)
+     lastNumber=value
+     if now-lastTick>=.12 then
+      lastTick=now
+      sound("Counter",.85+.4*progress)
+     end
+    end
+   end)
+  end
   local full=data.Name:upper();local shown={};local order={}
   for i=1,#full do shown[i]=full:sub(i,i)==" ";if not shown[i]then table.insert(order,i)end end
   local rng=Random.new();for i=#order,2,-1 do local j=rng:NextInteger(1,i);order[i],order[j]=order[j],order[i]end
@@ -108,10 +147,10 @@ function Reveal.mount(parent: Instance,playSound: ((string,number?)->())?): any
    complete=true
    gui:SetAttribute("Complete",true)
    name.Text=full;name.TextColor3=color;rarity.Visible=true;income.Visible=true;variantLabel.Visible=variant~="NORMAL"
-   badge.Visible=data.NewBest==true;odds.Text="1 in "..target
+   badge.Visible=data.NewBest==true;finishOdds()
    scale.Scale=.88
    Tween:Create(scale,TweenInfo.new(.3,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Scale=1}):Play()
-   sound(if showOdds then "Rare"else "Toast")
+   if not showOdds then sound("Toast")end
    updateContinue()
   end
   completeCard=finish
@@ -134,9 +173,9 @@ function Reveal.mount(parent: Instance,playSound: ((string,number?)->())?): any
    for step,index in order do
     if version~=current or complete or not gui.Parent then return end
     shown[index]=true;name.Text=masked();sound("Letter",.98+step*.004)
-    if showOdds then odds.Text="1 in "..math.floor(1+(target-1)*step/#order);sound("Counter",.95+step*.006)end
     task.wait(Config.Juice.LetterSeconds*(if rare then Config.Juice.RareLetterMultiplier else 1))
    end
+   while version==current and not complete and not counterFinished do task.wait()end
    finish()
   end)
  end}

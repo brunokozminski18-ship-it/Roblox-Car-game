@@ -23,7 +23,7 @@ function J.odds(reward: any,ticketId: string): number
  end
  local pool={};for _,c in Config.Biomes[reward.Biome].Cars do if c.Rarity==reward.Rarity then table.insert(pool,c)end end
  local p=probability(Rules.rarityWeights(ticketId),reward.Rarity)*probability(pool,reward.CatalogId)
- p*=probability(Rules.extraWeights(Config.Variants,ticketId),reward.Variant or "Normal")*probability(Rules.extraWeights(Config.CarSizes,ticketId),reward.Size or "Normal")
+ p*=probability(Rules.extraWeights(Config.Variants,ticketId),reward.Variant or "Normal")
  return math.max(1,math.floor(1/p+.5))
 end
 return J

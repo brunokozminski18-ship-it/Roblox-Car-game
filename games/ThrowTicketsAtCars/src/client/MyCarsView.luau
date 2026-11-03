@@ -59,7 +59,7 @@ local function createRow(list: ScrollingFrame, car: any, onAction: (string, stri
    shade.Color = ColorSequence.new(color:Lerp(Color3.new(1, 1, 1), .12), color:Lerp(S.INK, .54))
    name.Text = nextCar.Name
    rarity.Text = tier.Name:upper()
-   traits.Text = tostring(nextCar.Variant or "Normal") .. "  •  " .. tostring(nextCar.Size or "Normal")
+   traits.Text = tostring(nextCar.Variant or "Normal")
    income.Text = "$" .. nextCar.Income .. "/s"
    action.Text = if nextCar.Slot > 0 then "PICK UP" else "PLACE"
   end,

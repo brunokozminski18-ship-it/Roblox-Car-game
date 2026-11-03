@@ -11,7 +11,7 @@ return function(J,Rules,Config)
  check(math.abs(J.distance(150,50,.1)-55)<1e-8 and J.distance(150,50,-.05)==47.5,"Bonus applies to chosen strength")
  check(math.abs(J.distance(150,50,999)-55)<1e-8 and J.distance(150,50,-999)==47.5,"Bonus cannot escape config cap")
  check(J.perfect(.1)and not J.perfect(0),"Perfect uses top of meter only")
- local reward=Rules.reward(1,3,1,"paper");check(J.odds(reward,"paper")==35,"Epic specific car odds include car selection and extras")
- check(J.odds(reward,"pink")<35,"Ticket luck improves displayed odds consistently")
+ local reward=Rules.reward(1,3,1,"paper");check(J.odds(reward,"paper")==30,"Epic specific car odds include car selection and extras")
+ check(J.odds(reward,"diamond")<30,"Ticket luck improves displayed odds consistently")
  return n.." juice assertions passed"
 end

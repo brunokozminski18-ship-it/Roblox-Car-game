@@ -86,6 +86,9 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
   for prompt in prompts do
    local own=prompt:GetAttribute("OwnerId")==p.UserId;local action=prompt:GetAttribute("GarageAction")
    local parent=prompt.Parent
+   if action=="Remove"then
+    prompt.ActionText=if (p:GetAttribute("EquippedCarId")or "")~=""then "Swap car"else "Pick up"
+   end
    if parent then prompt.Enabled=own and not busy()and not view.isOpen()and not indexView.isOpen()and(if action=="Place"then parent:GetAttribute("Unlocked")==true and (p:GetAttribute("EquippedCarId")or "")~=""and parent:GetAttribute("CarId")==nil else true)end
   end
   render()

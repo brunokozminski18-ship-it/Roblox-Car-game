@@ -164,7 +164,7 @@ function Index.mount(playerGui: Instance, launchButton: GuiButton): any
 				local car = card.data
 				card.preview = Preview.mount(card.host, {
 					Biome = section.index, Rarity = car.Rarity, Name = car.Name,
-					CatalogId = car.Id, Variant = "Normal", Size = "Normal",
+					CatalogId = car.Id, Variant = "Normal",
 				}, not unlocked)
 				card.previewUnlocked = unlocked
 			end

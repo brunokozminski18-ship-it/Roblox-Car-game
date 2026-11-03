@@ -80,7 +80,7 @@ function Rules.savedReward(record: any): any
 	local t=Rules.ticket(record.Ticket);if t.Id~=record.Ticket then return nil end
 	if record.CatalogId~=nil then
 	 -- CatalogId is stable; the player-facing name can change after the test.
-	 for i,c in b.Cars do if c.Id==record.CatalogId and c.Rarity==record.Rarity and Rules.extra(Config.Variants,record.Variant)and Rules.extra(Config.CarSizes,record.Size)then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket,record.Variant,record.Size)end end
+	 for i,c in b.Cars do if c.Id==record.CatalogId and c.Rarity==record.Rarity and Rules.extra(Config.Variants,record.Variant)then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket,record.Variant)end end
 	else
 	 for i,c in b.LegacyCars do if c.Name==record.Name then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket)end end
 	end
@@ -104,7 +104,7 @@ function Rules.extraWeights(entries: any,ticketId: string): any
  for i,e in entries do out[i]={Id=e.Id,Weight=e.Weight*(if i==1 then 1 else 1+luck)}end
  return out
 end
-function Rules.reward(biome: number, rarity: number, car: number, ticketId: string?,variant: string?,size: string?): any
+function Rules.reward(biome: number, rarity: number, car: number, ticketId: string?,variant: string?): any
 	local b,r=Config.Biomes[biome],Config.Rarities[rarity]
 	local ticket=Rules.ticket(ticketId or "paper")
 	local model=b.Cars[car]
@@ -112,8 +112,8 @@ function Rules.reward(biome: number, rarity: number, car: number, ticketId: stri
 	 local pool={};for _,c in b.Cars do if c.Rarity==rarity then table.insert(pool,c)end end
 	 model=pool[(car-1)%#pool+1]
 	end
-	local v=Rules.extra(Config.Variants,variant)or Config.Variants[1];local s=Rules.extra(Config.CarSizes,size)or Config.CarSizes[1]
-	return {Biome=biome,Rarity=rarity,Name=model.Name,CatalogId=model.Id,Style=model.Style,Variant=v.Id,Size=s.Id,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier*v.Multiplier*s.Multiplier))}
+	local v=Rules.extra(Config.Variants,variant)or Config.Variants[1]
+	return {Biome=biome,Rarity=rarity,Name=model.Name,CatalogId=model.Id,Style=model.Style,Variant=v.Id,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier*v.Multiplier))}
 end
 function Rules.rollCar(biome: number,ticket: string,rng: Random,force: any?): any
  local f=force or {};local rarity=f.Rarity or Rules.weighted(Rules.rarityWeights(ticket),rng:NextNumber());local pool={}
@@ -121,8 +121,7 @@ function Rules.rollCar(biome: number,ticket: string,rng: Random,force: any?): an
  local idx=pool[Rules.weighted(pool,rng:NextNumber())].Index
  if f.Car and Config.Biomes[biome].Cars[f.Car] and Config.Biomes[biome].Cars[f.Car].Rarity==rarity then idx=f.Car end
  local variant=f.Variant or Config.Variants[Rules.weighted(Rules.extraWeights(Config.Variants,ticket),rng:NextNumber())].Id
- local size=f.Size or Config.CarSizes[Rules.weighted(Rules.extraWeights(Config.CarSizes,ticket),rng:NextNumber())].Id
- return Rules.reward(biome,rarity,idx,ticket,variant,size)
+ return Rules.reward(biome,rarity,idx,ticket,variant)
 end
 function Rules.parkingPrice(data: any): number?
  local cap=data.ParkingCapacity or Config.ParkingSlots

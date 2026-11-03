@@ -34,7 +34,7 @@ function HUD.mount(parent: Instance): any
  local shop=action("Shop",88,48,212,{"FF86CF","E2338C"});shop.TextSize=22
  local index=action("Index",88,48,12,{"74E6FF","3470CF"});index.AnchorPoint=Vector2.zero;index.Position=UDim2.fromOffset(12,60);index.TextSize=18
  local statusGui=Instance.new("ScreenGui");statusGui.Name="CarStatus";statusGui.ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets;statusGui.DisplayOrder=45;statusGui.ResetOnSpawn=false;statusGui.Parent=parent
- local banner=S.text(statusGui,"StatusBanner","",17,UDim2.new(.5,0,0,114),UDim2.new(.8,0,0,32));banner.AnchorPoint=Vector2.new(.5,0);banner.TextXAlignment=Enum.TextXAlignment.Center;banner.BackgroundTransparency=.1;banner.Visible=false;S.corner(banner,12)
+ local banner=S.text(statusGui,"StatusBanner","",17,UDim2.new(.5,0,0,114),UDim2.new(.8,0,0,44));banner.AnchorPoint=Vector2.new(.5,0);banner.TextXAlignment=Enum.TextXAlignment.Center;banner.TextWrapped=true;banner.BackgroundTransparency=.1;banner.Visible=false;S.corner(banner,12)
  local trainingStatus=S.text(gui,"TrainingStatus","",15,UDim2.new(1,-12,0,112),UDim2.fromOffset(300,24))
  trainingStatus.AnchorPoint=Vector2.new(1,0);trainingStatus.TextXAlignment=Enum.TextXAlignment.Right;trainingStatus.TextColor3=Color3.fromHex("B2FFAD");trainingStatus.Visible=false
  local message=S.text(gui,"Message","",16,UDim2.new(.5,0,1,-88),UDim2.new(1,-120,0,26))

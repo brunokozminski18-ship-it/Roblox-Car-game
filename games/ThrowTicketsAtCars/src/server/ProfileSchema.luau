@@ -55,7 +55,7 @@ function Schema.prepare(raw: any): (any,string?)
   ids[c.Id]=true
   -- A committed pending catch becomes visible inventory on reconnect, exactly once.
   discovered[reward.CatalogId]=true
-  table.insert(cars,{Id=c.Id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,CatalogId=reward.CatalogId,Variant=reward.Variant,Size=reward.Size,Ticket=reward.Ticket,Slot=c.Slot})
+  table.insert(cars,{Id=c.Id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,CatalogId=reward.CatalogId,Variant=reward.Variant,Ticket=reward.Ticket,Slot=c.Slot})
  end
  if count~=#d.Cars or inventory>Config.InventoryLimit then return nil,"Inventory capacity exceeded"end
  return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered}

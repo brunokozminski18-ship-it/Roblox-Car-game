@@ -1,13 +1,8 @@
-# Current Task — iteracja 10b: kolekcja aut i działka
-- Właściciel: Codex; 03.11.2026. IMPLEMENTED i VERIFIED w zakresie raportu. Wersja testowa; wygląd, balans i docelowe GUI telefonu NOT FINAL.
-- Referencje [E]/[F] w research/ThrowFoodForAnimals.md i LihFolk Vault V2, MCP tylko odczyt. Własne modele klockowe, nazwy i układ. Bez Rebirth, Robux i publikacji.
-- Poprawki 10a: pierwszy tap odsłania całą kartę, drugi kontynuuje; szybki drugi tap kolejkuje się do minimum serwera 0.65/1.2 s. Smuga także na obrysie.
-- 48 aut w 6 biomach, stała rzadkość; serwer losuje rarity → model → variant → size. Realne 1 in X, Gold/Diamond/Neon i BIG/GIANT, tymczasowe mnożniki.
-- Index: 4×2 na biom, sylwetki i kolor rzadkości, postęp biomu/całości, toast i kropka do otwarcia; odkrycie pozostaje po sprzedaży.
-- Schema 5 migruje stare auta do odpowiednika biom/rarity, zachowując Id/Slot/Ticket/dochód. Parking +2 od 6 do 16, ceny w minutach dochodu, etykiety aut.
-- My Cars: PARKED / BACKPACK, EQUIP BEST, YES/NO dla Epic+/odmian/GIANT, czerwone pełne limity i zielona sprzedaż.
-- VERIFIED: 392 asercji, w tym 10 000 losowań; migracja rzeczywistego profilu QA schema4, zapis/rejoin odkryć i pojemności; zakup 6→8→10, odrzucone krótkie hold; pełny parking nie usuwa łupu, plecak 20 blokuje Meter; sprzedaż YES/NO.
-- Telefon iPhone 7 poziomo i PC: Index, zrzuty Gold BIG i działki, działające modale, 0 MessageError w kontrolach. Fizyczny telefon i multiplayer poza testem.
-- Studio Edit, QA/emulator/HTTP off. 34 źródła Rojo; żadnych grantów ani resetów profilu użytkownika.
-- Raport i komenda QA: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10b]].
-- Następny krok: test użytkownika, finalne nazwy i ocena tempa kolekcji; docelowy HUD telefonu później.
+# Current Task — iteracja 10b po teście użytkownika
+- 03.11.2026, Codex. IMPLEMENTED i VERIFIED w zakresie raportu. Wygląd i balans NOT FINAL.
+- Losowanie serwera: rzadkość → auto → odmiana. Gold, Diamond i Neon zostają. Rozmiary usunięto. Wczytanie schema 5 zachowuje Id, miejsce i odmianę, przeliczając dochód bez rozmiaru.
+- Rzadkie złapanie ma licznik aktualizowany co klatkę z separatorem tysięcy, narastającym dźwiękiem i akcentem. Pierwszy tap kończy odsłanianie, drugi kontynuuje.
+- Zajęty slot pokazuje Swap car przy trzymanym aucie. Serwer atomowo zamienia auta po przytrzymaniu. PLACE przy pełnym parkingu podpowiada ulepszenie lub zamianę.
+- Ukośna biała smuga obejmuje sklep razem z ramką. Raport zawiera zrzut w trakcie przejazdu.
+- Zweryfikowano 381 asercji, w tym 10 000 losowań, oraz test w Studio PC z izolowanym profilem QA. Następny krok to ocena efektów przez użytkownika.
+- Raport i lista do sprawdzenia w [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10b_fixes]].

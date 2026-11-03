@@ -1,6 +1,5 @@
 --!strict
 local Config=require(script.Parent.Config)
-local Rules=require(script.Parent.Rules)
 local RustySedan=require(script.Parent.RustySedan)
 local Builder={}
 function Builder.part(parent: Instance,name: string,size: Vector3,position: Vector3,color: Color3): Part
@@ -28,7 +27,6 @@ function Builder.create(parent: Instance,name: string,reward: any,position: Vect
 	 local color=if variant=="Gold"then Color3.fromRGB(255,188,45)elseif variant=="Diamond"then Color3.fromRGB(124,224,255)else Color3.fromRGB(98,255,146)
 	 for _,part in m:GetChildren()do if part:IsA("BasePart")and part~=glass then part.Color=color;part.Material=if variant=="Neon"then Enum.Material.Neon else Enum.Material.Metal;part.Reflectance=if variant=="Diamond"then .23 else .08 end end
 	end
-	m:ScaleTo((Rules.extra(Config.CarSizes,reward.Size)or Config.CarSizes[1]).Scale)
 	m:SetAttribute("CarName",reward.Name);m:SetAttribute("Rarity",reward.Rarity);m:SetAttribute("Biome",reward.Biome);m:SetAttribute("Income",reward.Income)
 	m.Parent=parent
 	return m

@@ -38,7 +38,6 @@ local Config={
 	RespawnSeconds=3, SaleIncomeSeconds=180,
 	ParkingSlots=6, ParkingMax=16, ParkingColumns=4, ParkingUpgradeMinutes={3,7,15,30,60},
 	Variants={{Id="Normal",Weight=.9375,Multiplier=1},{Id="Gold",Weight=.05,Multiplier=2},{Id="Diamond",Weight=.01,Multiplier=4},{Id="Neon",Weight=.0025,Multiplier=8}},
-	CarSizes={{Id="Normal",Weight=.88,Multiplier=1,Scale=1},{Id="BIG",Weight=.1,Multiplier=1.5,Scale=1.22},{Id="GIANT",Weight=.02,Multiplier=3,Scale=1.45}},
 	ParkingSpacing=Vector3.new(11,0,12), ParkingOrigin=Vector3.new(-54,0,-6), PlayerPlotSpacing=54,
 	CarSize=Vector3.new(7,2.5,9), RoofSize=Vector3.new(5.5,1.4,4.5), CarHeight=1.4, RoofOffset=1.85,
 	WindshieldSize=Vector3.new(5.3,1.15,0.12), WindshieldFront=2.32,

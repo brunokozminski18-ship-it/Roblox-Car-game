@@ -17,8 +17,11 @@ function Service.new(ctx: any): any
   if action=="Place"and fromPrompt~=true then return end
   if typeof(id)~="string"or #id>64 then return end
   if action=="Equip"or action=="PreparePlace"then
-   if action=="PreparePlace"and Garage.parkedCount(s.data)>=(s.data.ParkingCapacity or Config.ParkingSlots)then ctx.result(p,Garage.fullMessage(s.data));return end
-   if Tools.equip(p,s,id)then ctx.result(p,"Hold E at a free spot to place your car.")end;return
+   if Tools.equip(p,s,id)then
+    local full=Garage.parkedCount(s.data)>=(s.data.ParkingCapacity or Config.ParkingSlots)
+    ctx.result(p,if full then Garage.fullMessage(s.data)else "Hold E at a free spot to place your car.")
+   end
+   return
   end
   if action=="Unequip"then local h=p.Character and p.Character:FindFirstChildOfClass("Humanoid");if h then h:UnequipTools()end;return end
   if action=="Place"or action=="Remove"then
@@ -49,17 +52,46 @@ function Service.new(ctx: any): any
   prompt.ClickablePrompt=true;prompt.HoldDuration=Config.PromptHoldSeconds;prompt.KeyboardKeyCode=Enum.KeyCode.E;prompt.MaxActivationDistance=Config.PlacementDistance;prompt.RequiresLineOfSight=false;prompt.Exclusivity=Enum.ProximityPromptExclusivity.OnePerButton
   prompt:SetAttribute("OwnerId",p.UserId);prompt:SetAttribute("GarageAction",action);prompt.Parent=parent
   local heldAt: number?=nil
+  local heldCarId: string?=nil
+  local heldSlot: number?=nil
   prompt.PromptButtonHoldBegan:Connect(function(actor)
    local c=if action=="Remove"then Garage.find(s.data,id)else nil
-   if actor==p and eligible(p,s)and nearby(p,s,if c then c.Slot else index)then heldAt=os.clock()end
+   local slot=if c then c.Slot else index
+   if actor==p and eligible(p,s)and nearby(p,s,slot)then
+    local equipped=Tools.equipped(p,s)
+    heldAt=os.clock()
+    heldCarId=if equipped then equipped.Id else nil
+    heldSlot=slot
+   end
+  end)
+  prompt.PromptButtonHoldEnded:Connect(function(actor)
+   if actor==p and heldAt and os.clock()-heldAt<Config.PromptHoldSeconds-.06 then
+    heldAt,heldCarId,heldSlot=nil,nil,nil
+   end
   end)
   prompt.Triggered:Connect(function(actor)
-   local start=heldAt;heldAt=nil
-   if actor~=p or not start or os.clock()-start<Config.PromptHoldSeconds-.06 then return end
+   if actor~=p then return end
+   local start,carId,slot=heldAt,heldCarId,heldSlot
+   heldAt,heldCarId,heldSlot=nil,nil,nil
+   if not start or not slot or not eligible(p,s) or not nearby(p,s,slot) then return end
+   if s.folder:GetAttribute("OwnerId")~=p.UserId or not parent:IsDescendantOf(s.folder)then return end
+   local elapsed=os.clock()-start
+   if elapsed<Config.PromptHoldSeconds-.06 or elapsed>Config.PromptHoldSeconds+1.5 then return end
+   local equipped=Tools.equipped(p,s)
+   if (if equipped then equipped.Id else nil)~=carId then return end
    local now=os.clock();if now-s.lastGarage<Config.GarageRequestInterval then return end;s.lastGarage=now
    local car=if action=="Place"then Tools.equipped(p,s)else Garage.find(s.data,id)
    if not car then return end
-   api.act(p,s,action,car.Id,if action=="Remove"then car.Slot else index,true)
+   if action=="Remove" and equipped then
+    local ok,message=Garage.swap(s.data,equipped.Id,car.Id,slot)
+    if ok then
+     ctx.publish(p,s)
+     if ctx.saveSoon then ctx.saveSoon(p,s)end
+    end
+    ctx.result(p,message)
+   elseif action=="Place" or car.Slot==slot then
+    api.act(p,s,action,car.Id,slot,true)
+   end
   end)
   return prompt
  end

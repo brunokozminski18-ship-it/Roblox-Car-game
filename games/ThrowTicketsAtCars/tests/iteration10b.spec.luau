@@ -26,32 +26,26 @@ return function(Rules, Config, Schema, Garage, J)
 	local ticketId = "diamond"
 	local rarityWeights = Rules.rarityWeights(ticketId)
 	local variantWeights = Rules.extraWeights(Config.Variants, ticketId)
-	local sizeWeights = Rules.extraWeights(Config.CarSizes, ticketId)
 	local rarityTotal = sumWeights(rarityWeights)
 	local variantTotal = sumWeights(variantWeights)
-	local sizeTotal = sumWeights(sizeWeights)
-	local variantIndex, sizeIndex = {}, {}
+	local variantIndex = {}
 	for i, entry in Config.Variants do variantIndex[entry.Id] = i end
-	for i, entry in Config.CarSizes do sizeIndex[entry.Id] = i end
 	local rng = Random.new(10482026)
 	local trials = 10000
-	local rarities, cars, variants, sizes, joints = {}, {}, {}, {}, {}
+	local rarities, cars, variants = {}, {}, {}
 	local reward
 	for _ = 1, trials do
 		local roll = Rules.rollCar(1, ticketId, rng)
 		local car = catalog[roll.CatalogId]
-		local vi, si = variantIndex[roll.Variant], sizeIndex[roll.Size]
+		local vi = variantIndex[roll.Variant]
 		assert(car and car.Rarity == roll.Rarity and car.Name == roll.Name, "A roll must match its catalog identity and rarity")
-		assert(vi and si and roll.Ticket == ticketId and roll.Biome == 1, "A roll must retain its source and valid extra rolls")
+		assert(vi and roll.Size == nil and roll.Ticket == ticketId and roll.Biome == 1, "A roll must retain its source and valid extra rolls")
 		local base = biome.BaseIncome * Config.Rarities[roll.Rarity].Multiplier * Rules.ticket(ticketId).IncomeMultiplier
-		local income = math.max(1, math.floor(base * Config.Variants[vi].Multiplier * Config.CarSizes[si].Multiplier))
-		assert(roll.Income == income, "Variant and size multiply the unrounded reward before flooring")
+		local income = math.max(1, math.floor(base * Config.Variants[vi].Multiplier))
+		assert(roll.Income == income, "Variants multiply the unrounded reward before flooring")
 		rarities[roll.Rarity] = (rarities[roll.Rarity] or 0) + 1
 		cars[car.Id] = (cars[car.Id] or 0) + 1
 		variants[vi] = (variants[vi] or 0) + 1
-		sizes[si] = (sizes[si] or 0) + 1
-		local key = vi .. ":" .. si
-		joints[key] = (joints[key] or 0) + 1
 		reward = reward or roll
 	end
 
@@ -70,23 +64,18 @@ return function(Rules, Config, Schema, Garage, J)
 	end
 	for vi, variant in variantWeights do
 		frequency(variants[vi], variant.Weight / variantTotal, "Variant " .. vi)
-		for si, size in sizeWeights do
-			frequency(joints[vi .. ":" .. si], variant.Weight / variantTotal * size.Weight / sizeTotal, "Variant/size " .. vi .. "/" .. si)
-		end
 	end
-	for i, entry in sizeWeights do frequency(sizes[i], entry.Weight / sizeTotal, "Size " .. i) end
 
 	local function checkOdds(roll)
 		local car = catalog[roll.CatalogId]
 		local probability = rarityWeights[roll.Rarity].Weight / rarityTotal
 			* car.Weight / catalogWeight[roll.Rarity]
 			* variantWeights[variantIndex[roll.Variant]].Weight / variantTotal
-			* sizeWeights[sizeIndex[roll.Size]].Weight / sizeTotal
-		check(J.odds(roll, ticketId) == math.max(1, math.floor(1 / probability + .5)), "Odds include conditional catalog odds and both independent extra rolls")
+		check(J.odds(roll, ticketId) == math.max(1, math.floor(1 / probability + .5)), "Odds include conditional catalog odds and the variant")
 	end
 	checkOdds(reward)
-	local forced = Rules.rollCar(1, ticketId, rng, {Rarity = 3, Variant = "Gold", Size = "BIG"})
-	check(forced.Rarity == 3 and forced.Variant == "Gold" and forced.Size == "BIG", "QA forcing preserves requested rarity, variant and size")
+	local forced = Rules.rollCar(1, ticketId, rng, {Rarity = 3, Variant = "Gold"})
+	check(forced.Rarity == 3 and forced.Variant == "Gold" and forced.Size == nil, "QA forcing preserves requested rarity and variant")
 	checkOdds(forced)
 
 	local legacy = {
@@ -157,16 +146,30 @@ return function(Rules, Config, Schema, Garage, J)
 		"Equip best fills all purchased parking slots without losing cars")
 	check(Schema.prepare({Schema = 5, Data = full}) ~= nil, "The expanded garage survives save/load")
 
-	check(not Garage.requiresConfirmation({Rarity = 1, Variant = Config.Variants[1].Id, Size = Config.CarSizes[1].Id}),
+	check(not Garage.requiresConfirmation({Rarity = 1, Variant = Config.Variants[1].Id}),
 		"An ordinary Common car can be sold directly")
-	check(Garage.requiresConfirmation({Rarity = 3, Variant = Config.Variants[1].Id, Size = Config.CarSizes[1].Id}),
+	check(Garage.requiresConfirmation({Rarity = 3, Variant = Config.Variants[1].Id}),
 		"An Epic car needs explicit confirmation before selling")
-	check(Garage.requiresConfirmation({Rarity = 1, Variant = Config.Variants[2].Id, Size = Config.CarSizes[1].Id}),
+	check(Garage.requiresConfirmation({Rarity = 1, Variant = Config.Variants[2].Id}),
 		"A variant needs confirmation even on a Common car")
-	check(not Garage.requiresConfirmation({Rarity = 1, Variant = "Normal", Size = "BIG"}),
-		"An ordinary BIG Common car can be sold directly")
-	check(Garage.requiresConfirmation({Rarity = 1, Variant = "Normal", Size = "GIANT"}),
-		"A GIANT car needs confirmation even on a Common car")
+ local sized=Schema.copy(migrated)
+ sized.Cars[1].Size="BIG"
+ assert(Garage.add(sized,forced,"old-giant",false))
+ sized.Cars[2].Size="GIANT"
+ local stripped=Schema.prepare({Schema=5,Data=sized})
+ check(stripped and stripped.Cars[1].Size==nil and stripped.Cars[2].Size==nil,"Old sizes are stripped on load")
+ check(stripped.Cars[1].Id==oldCar.Id and stripped.Cars[1].Slot==6 and Rules.savedReward(stripped.Cars[1]).Income==3,"Old parked car keeps identity and base income")
+ check(stripped.Cars[2].Variant=="Gold" and Rules.savedReward(stripped.Cars[2]).Income==72,"Old GIANT keeps Gold and loses the size multiplier")
+ for i=Garage.inventoryCount(full)+1,Config.InventoryLimit do
+  assert(Garage.add(full,reward,"extra-"..i,false))
+ end
+ local incoming,parked
+ for _,car in full.Cars do
+  if car.Slot==0 then incoming=car elseif car.Slot==1 then parked=car end
+ end
+ check(not Garage.swap(full,incoming.Id,parked.Id,2) and incoming.Slot==0 and parked.Slot==1,"Stale spot leaves both cars unchanged")
+ check(Garage.swap(full,incoming.Id,parked.Id,1) and incoming.Slot==1 and parked.Slot==0,"Swap works with full parking and backpack")
+ check(Garage.inventoryCount(full)==Config.InventoryLimit and Garage.parkedCount(full)==Config.ParkingMax,"Swap preserves both capacities")
 
 	return string.format("%d iteration-10b assertions passed (%d deterministic rolls)", checks, trials)
 end

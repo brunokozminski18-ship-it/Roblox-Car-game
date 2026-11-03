@@ -57,7 +57,7 @@ local function mirror(p: Player,s: any)
  if parkingUpgrade then parkingUpgrade.update(p,s)end
 end
 local function snapshot(p: Player,s: any)
- local cards={};for _,c in s.data.Cars do if not c.Pending then local r=Rules.savedReward(c);table.insert(cards,{Id=c.Id,Name=c.Name,Biome=c.Biome,Rarity=c.Rarity,CatalogId=c.CatalogId,Variant=c.Variant,Size=c.Size,Income=r.Income,Slot=c.Slot})end end
+ local cards={};for _,c in s.data.Cars do if not c.Pending then local r=Rules.savedReward(c);table.insert(cards,{Id=c.Id,Name=c.Name,Biome=c.Biome,Rarity=c.Rarity,CatalogId=c.CatalogId,Variant=c.Variant,Income=r.Income,Slot=c.Slot})end end
  Snapshot:FireClient(p,{Cars=cards,InventoryCount=GarageRules.inventoryCount(s.data),Limit=Config.InventoryLimit,ParkingCapacity=s.data.ParkingCapacity,Discovered=s.data.Discovered,NewestId=p:GetAttribute("LastCapturedId")})
 end
 local function publish(p: Player,s: any)
@@ -70,7 +70,7 @@ local function publish(p: Player,s: any)
   if not model then
    model=World.car(s.folder,"Parked_"..c.Id,reward,s.positions[c.Slot]);model:SetAttribute("OwnerId",p.UserId);model:SetAttribute("CarId",c.Id);model:SetAttribute("Parked",true);s.placed[c.Id]=model
    model:ScaleTo(model:GetScale()*.60)
-   local label=World.label(model.PrimaryPart,c.Name.."\n"..c.Variant.." / "..c.Size.."  •  $"..reward.Income.."/s",3.2)
+   local label=World.label(model.PrimaryPart,c.Name.."\n"..c.Variant.."  •  $"..reward.Income.."/s",3.2)
    label.Name="CarLabel";label.Size=UDim2.fromOffset(144,35);label.MaxDistance=22;label.AlwaysOnTop=false;label.TextLabel.TextSize=14
    if garageService then garageService.prompt(p,s,model.PrimaryPart,"Remove",c.Id,c.Slot)end
   end
@@ -171,8 +171,7 @@ local function performThrow(p: Player,bonus: number)
  assert(GarageRules.add(s.data,reward,id,true))
  s.lastThrow=now;p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Windup")
  local landing=Vector3.new(Config.CaptureLaneX,Config.LandingHeight,-distance)
- local scale=Rules.extra(Config.CarSizes,reward.Size).Scale
- local position=landing-Vector3.new(0,Config.RoofOffset,Config.WindshieldFront)*scale
+ local position=landing-Vector3.new(0,Config.RoofOffset,Config.WindshieldFront)
  local approach=position+Vector3.new(0,0,-Config.CaptureApproachDistance)
  local car=World.car(world.Cars,"Ticketed_"..id,reward,approach)
  car:SetAttribute("CarId",id);car:SetAttribute("Claimed",true);car:SetAttribute("OwnerId",p.UserId);car:SetAttribute("TicketId",s.data.Equipped);car:SetAttribute("Outcome","Inventory")
@@ -189,7 +188,7 @@ local function performThrow(p: Player,bonus: number)
  for key,value in {LastDistance=distance,LastBiome=biome,LastRarity=reward.Rarity,LastCarName=reward.Name,LastRollIncome=reward.Income,LastLandingZ=landing.Z,LastShotId=id,Throws=(p:GetAttribute("Throws")or 0)+1}do p:SetAttribute(key,value)end
  publish(p,s);saveSoon(p,s)
  j.metadata={Id=id,Name=reward.Name,Rarity=reward.Rarity,Biome=biome,Income=reward.Income,Position=position,ApproachFrom=approach,TicketId=s.data.Equipped,StartTime=start,WindupSeconds=Config.ThrowWindupSeconds,FlightSeconds=Config.TicketFlightSeconds,Reveal=true,NewBest=reward.Income>best,Odds=J.odds(reward,s.data.Equipped),Luck=1+Rules.ticket(s.data.Equipped).Luck,Perfect=J.perfect(bonus),BonusPower=chosen*bonus}
- j.metadata.CatalogId=reward.CatalogId;j.metadata.Variant=reward.Variant;j.metadata.Size=reward.Size;j.metadata.SuperLucky=reward.Rarity==4 or reward.Variant~="Normal" or reward.Size=="GIANT"
+ j.metadata.CatalogId=reward.CatalogId;j.metadata.Variant=reward.Variant;j.metadata.SuperLucky=reward.Rarity==4 or reward.Variant~="Normal"
  Juice:FireClient(p,"ThrowResult",{Perfect=j.metadata.Perfect,BonusPower=j.metadata.BonusPower})
  Ticket:FireAllClients(Config.ThrowOrigin,landing,car,p.UserId,reward.Income,j.metadata)
  task.spawn(runCatch,p,s,j)
@@ -354,7 +353,7 @@ if RunService:IsStudio()then
   elseif command=="GiveCar"then
    local b=if typeof(value)=="number"and Config.Biomes[value]then value elseif typeof(value)=="table"and Config.Biomes[value.Biome]then value.Biome else 1
    local rarity=if typeof(value)=="table"and Config.Rarities[value.Rarity]then value.Rarity else 1
-   local ok=GarageRules.add(s.data,Rules.reward(b,rarity,1,nil,if typeof(value)=="table"then value.Variant else nil,if typeof(value)=="table"then value.Size else nil),Http:GenerateGUID(false),false);if ok then publish(p,s)end;return ok
+   local ok=GarageRules.add(s.data,Rules.reward(b,rarity,1,nil,if typeof(value)=="table"then value.Variant else nil),Http:GenerateGUID(false),false);if ok then publish(p,s)end;return ok
   elseif command=="TeleportSlot"and Rules.finiteNumber(value)and s.positions[value]then
    local r=rootOf(p);if r then p.Character:PivotTo(CFrame.new(s.positions[value]+Vector3.new(0,3,0)));p:SetAttribute("Location","Plot");return true end
   elseif command=="ForceNext"and typeof(value)=="table"then
@@ -365,9 +364,9 @@ if RunService:IsStudio()then
     for _,e in entries do if e.Id:lower()==id:lower()then return e.Id end end
     return nil
    end
-   local variant=normalize(Config.Variants,value.Variant);local size=normalize(Config.CarSizes,value.Size)
-   if value.Variant~=nil and not variant or value.Size~=nil and not size then return false end
-   s.nextRoll={Rarity=rarity,Variant=variant,Size=size};return true
+   local variant=normalize(Config.Variants,value.Variant)
+   if value.Variant~=nil and not variant then return false end
+   s.nextRoll={Rarity=rarity,Variant=variant};return true
   elseif command=="SetXP"and Rules.finiteNumber(value)and value>=0 and value<Config.Progression.XPPerLevel then s.data.TrainingXP=value;publish(p,s);return true
   elseif command=="Save"then return save(p,s,false)
   elseif command=="Exit"then release(p);return true end
