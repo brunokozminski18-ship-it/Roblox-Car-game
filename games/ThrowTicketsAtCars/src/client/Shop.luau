@@ -64,11 +64,11 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  -- One reusable, non-interactive shine layer and one tween for the whole window.
  local shineLayer=Instance.new("Frame");shineLayer.Name="ShineLayer";shineLayer.Size=UDim2.new(1,-10,1,-10);shineLayer.Position=UDim2.fromOffset(5,5)
  shineLayer.BackgroundTransparency=1;shineLayer.BorderSizePixel=0;shineLayer.Active=false;shineLayer.Selectable=false;shineLayer.ClipsDescendants=true;shineLayer.ZIndex=100;shineLayer.Parent=panel;corner(shineLayer,31)
- local shine=Instance.new("Frame");shine.Name="Shine";shine.AnchorPoint=Vector2.new(.5,.5);shine.Size=UDim2.fromScale(.18,2);shine.Position=UDim2.fromScale(-.4,.5)
- shine.BackgroundColor3=Color3.new(1,1,1);shine.BackgroundTransparency=.9;shine.BorderSizePixel=0;shine.Rotation=22;shine.Active=false;shine.Selectable=false;shine.Visible=false;shine.ZIndex=100;shine.Parent=shineLayer
- local shineGradient=gradient(shine,Color3.new(1,1,1),Color3.new(1,1,1));shineGradient.Rotation=0
- shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.5,0),NumberSequenceKeypoint.new(1,1)})
- local shineTween=Tween:Create(shine,TweenInfo.new(.85,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position=UDim2.fromScale(1.4,.5)})
+ local shine=Instance.new("Frame");shine.Name="Shine";shine.Size=UDim2.fromScale(1,1);shine.Position=UDim2.new()
+ shine.BackgroundColor3=Color3.new(1,1,1);shine.BackgroundTransparency=0;shine.BorderSizePixel=0;shine.Active=false;shine.Selectable=false;shine.Visible=false;shine.ZIndex=100;shine.Parent=shineLayer
+ local shineGradient=gradient(shine,Color3.new(1,1,1),Color3.new(1,1,1));shineGradient.Name="Sweep";shineGradient.Rotation=18;shineGradient.Offset=Vector2.new(-1,0)
+ shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.40,1),NumberSequenceKeypoint.new(.5,.62),NumberSequenceKeypoint.new(.60,1),NumberSequenceKeypoint.new(1,1)})
+ local shineTween=Tween:Create(shineGradient,TweenInfo.new(1.1,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Offset=Vector2.new(1,0)})
  local nextShine=os.clock()+Config.Juice.ShineEvery
  local function stopShine()shineTween:Cancel();shine.Visible=false end
  -- Cancel also fires Completed; deferred cancellation must not hide a new sweep.
@@ -183,12 +183,13 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  feedback.OnClientEvent:Connect(function(value)if opened then notice.Text=value end end)
  cash.Changed:Connect(refresh)
  for _,attribute in {"EquippedTicket","Exercise","ThrowPower","DataReady"}do p:GetAttributeChangedSignal(attribute):Connect(refresh)end
+ p:GetAttributeChangedSignal("Throwing"):Connect(function()if p:GetAttribute("Throwing")==true then setOpen(false)end end)
  for _,t in Config.Tickets do p:GetAttributeChangedSignal("Own_"..t.Id):Connect(refresh)end
  GuiService:GetPropertyChangedSignal("ReducedMotionEnabled"):Connect(function()stopShine();nextShine=os.clock()+Config.Juice.ShineEvery;pulsing=not pulsing;updatePulse()end)
  local shineConnection=RunService.Heartbeat:Connect(function()
   if not opened or GuiService.ReducedMotionEnabled or os.clock()<nextShine then return end
   nextShine=os.clock()+Config.Juice.ShineEvery
-  shineTween:Cancel();shine.Position=UDim2.fromScale(-.4,.5);shine.Visible=true;shineTween:Play()
+  shineTween:Cancel();shineGradient.Offset=Vector2.new(-1,0);shine.Visible=true;shineTween:Play()
  end)
  gui.Destroying:Connect(function()shineConnection:Disconnect();stopShine();shineTween:Destroy()end)
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize();refresh()

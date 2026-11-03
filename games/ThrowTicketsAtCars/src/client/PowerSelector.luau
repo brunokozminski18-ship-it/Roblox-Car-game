@@ -7,7 +7,7 @@ local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local S=require(script.Parent.Style)
 local Selector={}
-function Selector.mount(remote: RemoteEvent): any
+function Selector.mount(remote: RemoteEvent,toggle: GuiButton): any
  local p=Players.LocalPlayer;local playerGui=p:WaitForChild("PlayerGui")
  local gui=Instance.new("ScreenGui");gui.Name="PowerSelector";gui.ResetOnSpawn=false;gui.DisplayOrder=20
  gui.ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets;gui.SafeAreaCompatibility=Enum.SafeAreaCompatibility.None
@@ -30,7 +30,7 @@ function Selector.mount(remote: RemoteEvent): any
  local lands=S.text(panel,"LandsIn","",16,UDim2.fromOffset(8,73),UDim2.new(1,-16,0,21));lands.TextXAlignment=Enum.TextXAlignment.Center
  local dragInput: InputObject?=nil;local dragging=false;local preview: number?=nil;local queued: number?=nil
  local lastSent=-math.huge;local lastValue: number?=nil;local queueVersion=0;local pendingUntil=0
- local connections: {RBXScriptConnection}={};local alive=true
+ local connections: {RBXScriptConnection}={};local alive=true;local opened=false
  local function connect(signal: RBXScriptSignal,callback: any)table.insert(connections,signal:Connect(callback))end
  local function bounds(): (number,number)
   local value=p:GetAttribute("ThrowPower")
@@ -45,10 +45,10 @@ function Selector.mount(remote: RemoteEvent): any
   local window=playerGui:FindFirstChild(name);return window~=nil and window:GetAttribute("Open")==true
  end
  local function available(): boolean
-  if p:GetAttribute("DataReady")~=true or p:GetAttribute("Throwing")==true or p:GetAttribute("MeterStart")~=nil
+  if p:GetAttribute("DataReady")~=true or p:GetAttribute("Throwing")==true or p:GetAttribute("CinematicActive")==true or p:GetAttribute("MeterStart")~=nil
    or p:GetAttribute("ShopOpen")==true or p:GetAttribute("CarsOpen")==true or windowOpen("TicketShop")or windowOpen("MyCars")then return false end
   local character=p.Character;local root=character and character:FindFirstChild("HumanoidRootPart");local humanoid=character and character:FindFirstChildOfClass("Humanoid")
-  return root~=nil and root:IsA("BasePart")and humanoid~=nil and humanoid.Health>0 and (root.Position-Config.LaunchCenter).Magnitude<=20
+  return root~=nil and root:IsA("BasePart")and humanoid~=nil and humanoid.Health>0
  end
  local function render()
   local low,high=bounds();local value=math.clamp(if preview~=nil then preview else actual(),low,high)
@@ -60,7 +60,7 @@ function Selector.mount(remote: RemoteEvent): any
   max:SetAttribute("Selected",isMax);panel:SetAttribute("SelectedPower",value);panel:SetAttribute("Maximum",high)
  end
  local function refresh()
-  local show=available();gui.Enabled=show
+  local show=opened and available();gui.Enabled=show
   if p:GetAttribute("PowerSelectorVisible")~=show then p:SetAttribute("PowerSelectorVisible",show)end
   if not show then
    dragging=false;dragInput=nil;preview=nil;queued=nil;queueVersion+=1
@@ -117,6 +117,8 @@ function Selector.mount(remote: RemoteEvent): any
   local low,high=bounds();commit(math.clamp((preview or actual())+direction*math.max(1,math.floor((high-low)/20)),low,high))
  end)
  connect(max.Activated,function()local _,power=bounds();commit(power)end)
+ connect(toggle.Activated,function()if available()then opened=not opened;refresh()end end)
+ connect(p:GetAttributeChangedSignal("MeterStart"),function()if p:GetAttribute("MeterStart")~=nil then opened=false;refresh()end end)
  connect(UIS.WindowFocusReleased,function()dragging=false;dragInput=nil;preview=nil;queued=nil;queueVersion+=1;refresh()end)
  local function resize()
   panel.Size=UDim2.fromOffset(math.max(240,math.min(400,gui.AbsoluteSize.X-160)),96)

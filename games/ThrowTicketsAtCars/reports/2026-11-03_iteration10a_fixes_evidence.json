@@ -1,0 +1,1926 @@
+{
+  "Date": "2026-11-03",
+  "Scope": "User corrections; test version NOT FINAL",
+  "PureTests": {
+    "profiles.spec.luau": "9 profile safety assertions passed",
+    "progression10a.spec.luau": "54 progression10a assertions passed",
+    "rules.spec.luau": "7 basic assertions passed",
+    "iteration6.spec.luau": "62 iteration-6 assertions passed",
+    "training-fix.spec.luau": "44 training-fix assertions passed",
+    "garage-security.spec.luau": "1 garage security assertion passed",
+    "juice10a.spec.luau": "33 juice assertions passed",
+    "iteration8.spec.luau": "40 iteration-8 assertions passed",
+    "iteration7.spec.luau": "34 iteration-7 assertions passed"
+  },
+  "Phone": {
+    "Audio": {
+      "RareArrival": {
+        "Loaded": true,
+        "Length": 0.9226666666666666,
+        "Played": 1
+      },
+      "LevelUp": {
+        "Loaded": true,
+        "Length": 0.9701587301587301,
+        "Played": 18
+      },
+      "Letter": {
+        "Loaded": true,
+        "Length": 0.153125,
+        "Played": 18
+      },
+      "Boost": {
+        "Loaded": true,
+        "Length": 0.9226666666666666,
+        "Played": 1
+      },
+      "BoostOffer": {
+        "Loaded": true,
+        "Length": 0.1579375,
+        "Played": 15
+      },
+      "Rare": {
+        "Loaded": true,
+        "Length": 0.4974166666666667,
+        "Played": 1
+      },
+      "Impact": {
+        "Loaded": true,
+        "Length": 0.1579375,
+        "Played": 2
+      },
+      "Tap": {
+        "Loaded": true,
+        "Length": 0.153125,
+        "Played": 7
+      },
+      "Purchase": {
+        "Loaded": true,
+        "Length": 0.4974166666666667,
+        "Played": 0
+      },
+      "Throw": {
+        "Loaded": true,
+        "Length": 0.9226666666666666,
+        "Played": 2
+      },
+      "Toast": {
+        "Loaded": true,
+        "Length": 0.9701587301587301,
+        "Played": 2
+      },
+      "Brake": {
+        "Loaded": true,
+        "Length": 0.9226666666666666,
+        "Played": 2
+      },
+      "XP": {
+        "Loaded": true,
+        "Length": 0.1579375,
+        "Played": 172
+      },
+      "Counter": {
+        "Loaded": true,
+        "Length": 0.4974166666666667,
+        "Played": 50
+      }
+    },
+    "Errors": [],
+    "Gear": {
+      "WindowSeconds": 22,
+      "ToastVisible": false,
+      "Counts": {
+        "Exercise:focused": 1
+      },
+      "ShopStillOpen": true
+    },
+    "Cash": 200,
+    "Exercise": 1,
+    "Offers": {
+      "1": {
+        "Expires": 1793729524.592959,
+        "Position": "{0, 365}, {0, 185}",
+        "At": 1793729520.681365,
+        "VisibleSeconds": 0.9678199291229248,
+        "HadTimer": false,
+        "Size": "84, 84"
+      },
+      "2": {
+        "Expires": 1793729537.725572,
+        "Position": "{0, 385}, {0, 184}",
+        "At": 1793729533.811287,
+        "VisibleSeconds": 3.9849791526794434,
+        "HadTimer": false,
+        "Size": "84, 84"
+      },
+      "3": {
+        "Expires": 1793729549.857661,
+        "Position": "{0, 347}, {0, 169}",
+        "At": 1793729545.946883,
+        "VisibleSeconds": 3.99731707572937,
+        "HadTimer": false,
+        "Size": "84, 84"
+      },
+      "4": {
+        "Expires": 1793729562.007487,
+        "Position": "{0, 395}, {0, 167}",
+        "At": 1793729558.096869,
+        "VisibleSeconds": 3.963449001312256,
+        "HadTimer": false,
+        "Size": "84, 84"
+      }
+    }
+  },
+  "PC": {
+    "Preload": {
+      "RareArrival": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Counter": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Letter": {
+        "Id": "rbxassetid://106623224876186",
+        "Length": 0.153125,
+        "Loaded": true
+      },
+      "Boost": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "BoostOffer": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Impact": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Rare": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Brake": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Purchase": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Throw": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Toast": {
+        "Id": "rbxassetid://106553517979212",
+        "Length": 0.9701587301587301,
+        "Loaded": true
+      },
+      "Tap": {
+        "Id": "rbxassetid://106623224876186",
+        "Length": 0.153125,
+        "Loaded": true
+      },
+      "XP": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "LevelUp": {
+        "Id": "rbxassetid://106553517979212",
+        "Length": 0.9701587301587301,
+        "Loaded": true
+      }
+    },
+    "MinFade": 0,
+    "Audio": {
+      "RareArrival": 1,
+      "LevelUp": 6,
+      "Brake": 2,
+      "Boost": 1,
+      "BoostOffer": 9,
+      "Rare": 1,
+      "Impact": 2,
+      "Throw": 2,
+      "Purchase": 1,
+      "Tap": 10,
+      "Toast": 3,
+      "Letter": 18,
+      "XP": 94,
+      "Counter": 51
+    },
+    "Errors": [],
+    "Gear": {
+      "ReadyRequests": 20,
+      "Seconds": 22,
+      "Counts": {
+        "Ticket:pink": 1,
+        "Exercise:weighted": 1
+      }
+    },
+    "Reveals": {
+      "1": {
+        "Id": "d59cd30e-9ab2-46c7-8ba6-e1795cfbaee5",
+        "Seconds": 2.418546199798584,
+        "Rarity": 1,
+        "Started": 1793729855.281005
+      },
+      "2": {
+        "Id": "8e012456-f777-4b81-982b-07b629b90b1f",
+        "Seconds": 5.019889831542969,
+        "Rarity": 3,
+        "Started": 1793729896.480271
+      }
+    },
+    "Cameras": {
+      "Hit:Scriptable": 36,
+      "Idle:Scriptable": 20,
+      "Reveal:Scriptable": 570,
+      "Windup:Scriptable": 29,
+      "Windup:Custom": 25,
+      "Flying:Scriptable": 239,
+      "Tow:Scriptable": 240
+    },
+    "Events": {
+      "1": {
+        "Kind": "Gear",
+        "Data": {
+          "Name": "Weighted Training",
+          "Effect": "x4 training",
+          "Id": "weighted",
+          "Kind": "Exercise",
+          "Price": 25488,
+          "ExpiresAt": 1793729789.398926
+        },
+        "Time": 1793729782.449802
+      },
+      "2": {
+        "Kind": "GearOpen",
+        "Data": {
+          "Name": "Weighted Training",
+          "Effect": "x4 training",
+          "Id": "weighted",
+          "Kind": "Exercise",
+          "Price": 25488
+        },
+        "Time": 1793729783.564229
+      },
+      "3": {
+        "Kind": "Gear",
+        "Data": {
+          "Name": "Pink Slip",
+          "Effect": "+5% luck / x1.5 income",
+          "Id": "pink",
+          "Kind": "Ticket",
+          "Price": 270,
+          "ExpiresAt": 1793729796.599197
+        },
+        "Time": 1793729789.637618
+      },
+      "4": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": true,
+          "BonusPower": 10.087640626089913
+        },
+        "Time": 1793729852.547002
+      },
+      "5": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -145.4076385498047",
+          "Reveal": true,
+          "Income": 6,
+          "StartTime": 1793729852.512729,
+          "Odds": 4,
+          "Rarity": 1,
+          "Id": "d59cd30e-9ab2-46c7-8ba6-e1795cfbaee5",
+          "Biome": 2,
+          "Perfect": true,
+          "FlightSeconds": 2,
+          "Name": "Family Car",
+          "BonusPower": 10.087640626089913,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": false,
+          "Position": "7, 1.399999976158142, -113.40763854980469"
+        },
+        "Time": 1793729855.28102
+      },
+      "6": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "76b1f158-49e1-4120-954b-7c9418ea0096",
+          "ExpiresAt": 1793729865.496095
+        },
+        "Time": 1793729861.531504
+      },
+      "7": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 6.25,
+          "Gain": 0
+        },
+        "Time": 1793729861.531654
+      },
+      "8": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 12.5,
+          "Gain": 0
+        },
+        "Time": 1793729862.546248
+      },
+      "9": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 18.75,
+          "Gain": 0
+        },
+        "Time": 1793729863.563204
+      },
+      "10": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 25,
+          "Gain": 0
+        },
+        "Time": 1793729864.563238
+      },
+      "11": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 31.25,
+          "Gain": 0
+        },
+        "Time": 1793729865.579199
+      },
+      "12": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 37.5,
+          "Gain": 0
+        },
+        "Time": 1793729866.596022
+      },
+      "13": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 43.75,
+          "Gain": 0
+        },
+        "Time": 1793729867.613694
+      },
+      "14": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 50,
+          "Gain": 0
+        },
+        "Time": 1793729868.6137
+      },
+      "15": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 56.25,
+          "Gain": 0
+        },
+        "Time": 1793729869.614142
+      },
+      "16": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 62.5,
+          "Gain": 0
+        },
+        "Time": 1793729870.630176
+      },
+      "17": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 68.75,
+          "Gain": 0
+        },
+        "Time": 1793729871.648039
+      },
+      "18": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 75,
+          "Gain": 0
+        },
+        "Time": 1793729872.666996
+      },
+      "19": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "7132e7eb-8663-477d-a299-169923b22d8b",
+          "ExpiresAt": 1793729877.628781
+        },
+        "Time": 1793729873.666008
+      },
+      "20": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 81.25,
+          "Gain": 0
+        },
+        "Time": 1793729873.666139
+      },
+      "21": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 87.5,
+          "Gain": 0
+        },
+        "Time": 1793729874.665195
+      },
+      "22": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 200,
+          "Amount": 6.25,
+          "Level": 177,
+          "XP": 93.75,
+          "Gain": 0
+        },
+        "Time": 1793729875.683464
+      },
+      "23": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 0,
+          "Gain": 1
+        },
+        "Time": 1793729876.69763
+      },
+      "24": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 6.25,
+          "Gain": 0
+        },
+        "Time": 1793729877.69755
+      },
+      "25": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 12.5,
+          "Gain": 0
+        },
+        "Time": 1793729878.714564
+      },
+      "26": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 18.75,
+          "Gain": 0
+        },
+        "Time": 1793729879.729652
+      },
+      "27": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 25,
+          "Gain": 0
+        },
+        "Time": 1793729880.731127
+      },
+      "28": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 31.25,
+          "Gain": 0
+        },
+        "Time": 1793729881.748588
+      },
+      "29": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 37.5,
+          "Gain": 0
+        },
+        "Time": 1793729882.765546
+      },
+      "30": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 43.75,
+          "Gain": 0
+        },
+        "Time": 1793729883.782224
+      },
+      "31": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 50,
+          "Gain": 0
+        },
+        "Time": 1793729884.799379
+      },
+      "32": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "084ce012-81a7-4c43-b7ea-16fe642b138c",
+          "ExpiresAt": 1793729889.778522
+        },
+        "Time": 1793729885.816302
+      },
+      "33": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 56.25,
+          "Gain": 0
+        },
+        "Time": 1793729885.816414
+      },
+      "34": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 62.5,
+          "Gain": 0
+        },
+        "Time": 1793729886.831183
+      },
+      "35": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 68.75,
+          "Gain": 0
+        },
+        "Time": 1793729887.848523
+      },
+      "36": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 75,
+          "Gain": 0
+        },
+        "Time": 1793729888.86444
+      },
+      "37": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 81.25,
+          "Gain": 0
+        },
+        "Time": 1793729889.880887
+      },
+      "38": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 201,
+          "Amount": 6.25,
+          "Level": 178,
+          "XP": 87.5,
+          "Gain": 0
+        },
+        "Time": 1793729890.896961
+      },
+      "39": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": true,
+          "BonusPower": 10.033857328551155
+        },
+        "Time": 1793729893.730545
+      },
+      "40": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -145.35385131835938",
+          "Reveal": true,
+          "Income": 18,
+          "StartTime": 1793729893.693899,
+          "Odds": 43,
+          "Rarity": 3,
+          "Id": "8e012456-f777-4b81-982b-07b629b90b1f",
+          "Biome": 2,
+          "Perfect": true,
+          "FlightSeconds": 2,
+          "Name": "Family Car",
+          "BonusPower": 10.033857328551155,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": false,
+          "Position": "7, 1.399999976158142, -113.3538589477539"
+        },
+        "Time": 1793729896.480278
+      },
+      "41": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "61e50f7a-295a-4ba8-9ed3-1746e951739b",
+          "ExpiresAt": 1793729909.028012
+        },
+        "Time": 1793729905.064982
+      },
+      "42": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 5.25,
+          "Gain": 1
+        },
+        "Time": 1793729905.065116
+      },
+      "43": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 11.5,
+          "Gain": 0
+        },
+        "Time": 1793729906.080937
+      },
+      "44": {
+        "Kind": "BoostStarted",
+        "Data": {
+          "Until": 1793729908.227873
+        },
+        "Time": 1793729906.265703
+      },
+      "45": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": true,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 12.5,
+          "Level": 179,
+          "XP": 24,
+          "Gain": 0
+        },
+        "Time": 1793729907.083078
+      },
+      "46": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": true,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 12.5,
+          "Level": 179,
+          "XP": 36.5,
+          "Gain": 0
+        },
+        "Time": 1793729908.099153
+      },
+      "47": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 42.75,
+          "Gain": 0
+        },
+        "Time": 1793729909.114654
+      },
+      "48": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 49,
+          "Gain": 0
+        },
+        "Time": 1793729910.116062
+      },
+      "49": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 55.25,
+          "Gain": 0
+        },
+        "Time": 1793729911.11553
+      },
+      "50": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 61.5,
+          "Gain": 0
+        },
+        "Time": 1793729912.129582
+      },
+      "51": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 67.75,
+          "Gain": 0
+        },
+        "Time": 1793729913.146577
+      },
+      "52": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 74,
+          "Gain": 0
+        },
+        "Time": 1793729914.146139
+      },
+      "53": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 80.25,
+          "Gain": 0
+        },
+        "Time": 1793729915.14582
+      },
+      "54": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 86.5,
+          "Gain": 0
+        },
+        "Time": 1793729916.162863
+      },
+      "55": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 92.75,
+          "Gain": 0
+        },
+        "Time": 1793729917.180582
+      },
+      "56": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 202,
+          "Amount": 6.25,
+          "Level": 179,
+          "XP": 99,
+          "Gain": 0
+        },
+        "Time": 1793729918.180627
+      },
+      "57": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "0b050561-7046-4dc6-852c-ba9d5a7f689a",
+          "ExpiresAt": 1793729923.160508
+        },
+        "Time": 1793729919.196423
+      },
+      "58": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 5.25,
+          "Gain": 1
+        },
+        "Time": 1793729919.196677
+      },
+      "59": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 11.5,
+          "Gain": 0
+        },
+        "Time": 1793729920.213594
+      },
+      "60": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 17.75,
+          "Gain": 0
+        },
+        "Time": 1793729921.230378
+      },
+      "61": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 24,
+          "Gain": 0
+        },
+        "Time": 1793729922.248978
+      },
+      "62": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 30.25,
+          "Gain": 0
+        },
+        "Time": 1793729923.248434
+      },
+      "63": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 36.5,
+          "Gain": 0
+        },
+        "Time": 1793729924.265157
+      },
+      "64": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 42.75,
+          "Gain": 0
+        },
+        "Time": 1793729925.265487
+      },
+      "65": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 49,
+          "Gain": 0
+        },
+        "Time": 1793729926.282028
+      },
+      "66": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 55.25,
+          "Gain": 0
+        },
+        "Time": 1793729927.277017
+      },
+      "67": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 61.5,
+          "Gain": 0
+        },
+        "Time": 1793729928.293675
+      },
+      "68": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 67.75,
+          "Gain": 0
+        },
+        "Time": 1793729929.293221
+      },
+      "69": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 74,
+          "Gain": 0
+        },
+        "Time": 1793729930.310229
+      },
+      "70": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "5b763c1a-6e03-44c5-a14b-c9867aee478e",
+          "ExpiresAt": 1793729935.276569
+        },
+        "Time": 1793729931.309703
+      },
+      "71": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 80.25,
+          "Gain": 0
+        },
+        "Time": 1793729931.309848
+      },
+      "72": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 86.5,
+          "Gain": 0
+        },
+        "Time": 1793729932.328767
+      },
+      "73": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 92.75,
+          "Gain": 0
+        },
+        "Time": 1793729933.345503
+      },
+      "74": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 203,
+          "Amount": 6.25,
+          "Level": 180,
+          "XP": 99,
+          "Gain": 0
+        },
+        "Time": 1793729934.362012
+      },
+      "75": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 5.25,
+          "Gain": 1
+        },
+        "Time": 1793729935.362021
+      },
+      "76": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 11.5,
+          "Gain": 0
+        },
+        "Time": 1793729936.378784
+      },
+      "77": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 17.75,
+          "Gain": 0
+        },
+        "Time": 1793729937.393345
+      },
+      "78": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 24,
+          "Gain": 0
+        },
+        "Time": 1793729938.394273
+      },
+      "79": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 30.25,
+          "Gain": 0
+        },
+        "Time": 1793729939.410554
+      },
+      "80": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 36.5,
+          "Gain": 0
+        },
+        "Time": 1793729940.410918
+      },
+      "81": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 42.75,
+          "Gain": 0
+        },
+        "Time": 1793729941.427762
+      },
+      "82": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 49,
+          "Gain": 0
+        },
+        "Time": 1793729942.444922
+      },
+      "83": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "fdf93beb-3b16-4c9d-a462-35bf2249da8d",
+          "ExpiresAt": 1793729947.424766
+        },
+        "Time": 1793729943.461598
+      },
+      "84": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 55.25,
+          "Gain": 0
+        },
+        "Time": 1793729943.461741
+      },
+      "85": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 61.5,
+          "Gain": 0
+        },
+        "Time": 1793729944.461453
+      },
+      "86": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 67.75,
+          "Gain": 0
+        },
+        "Time": 1793729945.477712
+      },
+      "87": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 74,
+          "Gain": 0
+        },
+        "Time": 1793729946.477868
+      },
+      "88": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 80.25,
+          "Gain": 0
+        },
+        "Time": 1793729947.477879
+      },
+      "89": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 86.5,
+          "Gain": 0
+        },
+        "Time": 1793729948.494421
+      },
+      "90": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 92.75,
+          "Gain": 0
+        },
+        "Time": 1793729949.511799
+      },
+      "91": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 204,
+          "Amount": 6.25,
+          "Level": 181,
+          "XP": 99,
+          "Gain": 0
+        },
+        "Time": 1793729950.528269
+      },
+      "92": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 5.25,
+          "Gain": 1
+        },
+        "Time": 1793729951.528367
+      },
+      "93": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 11.5,
+          "Gain": 0
+        },
+        "Time": 1793729952.546958
+      },
+      "94": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 17.75,
+          "Gain": 0
+        },
+        "Time": 1793729953.563171
+      },
+      "95": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 24,
+          "Gain": 0
+        },
+        "Time": 1793729954.563143
+      },
+      "96": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "ca831887-4d52-4db8-a377-602d833bb8a0",
+          "ExpiresAt": 1793729959.542605
+        },
+        "Time": 1793729955.579919
+      },
+      "97": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 30.25,
+          "Gain": 0
+        },
+        "Time": 1793729955.580119
+      },
+      "98": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 36.5,
+          "Gain": 0
+        },
+        "Time": 1793729956.596041
+      },
+      "99": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 42.75,
+          "Gain": 0
+        },
+        "Time": 1793729957.609896
+      },
+      "100": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 49,
+          "Gain": 0
+        },
+        "Time": 1793729958.625977
+      },
+      "101": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 55.25,
+          "Gain": 0
+        },
+        "Time": 1793729959.643493
+      },
+      "102": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 61.5,
+          "Gain": 0
+        },
+        "Time": 1793729960.660488
+      },
+      "103": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 67.75,
+          "Gain": 0
+        },
+        "Time": 1793729961.676703
+      },
+      "104": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 74,
+          "Gain": 0
+        },
+        "Time": 1793729962.693594
+      },
+      "105": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 80.25,
+          "Gain": 0
+        },
+        "Time": 1793729963.692778
+      },
+      "106": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 86.5,
+          "Gain": 0
+        },
+        "Time": 1793729964.708553
+      },
+      "107": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 92.75,
+          "Gain": 0
+        },
+        "Time": 1793729965.708713
+      },
+      "108": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 205,
+          "Amount": 6.25,
+          "Level": 182,
+          "XP": 99,
+          "Gain": 0
+        },
+        "Time": 1793729966.725989
+      },
+      "109": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "9bb3e3e9-36e9-4ea3-a3fb-e060522d8056",
+          "ExpiresAt": 1793729971.707216
+        },
+        "Time": 1793729967.747684
+      },
+      "110": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 206,
+          "Amount": 6.25,
+          "Level": 183,
+          "XP": 5.25,
+          "Gain": 1
+        },
+        "Time": 1793729967.747793
+      },
+      "111": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 206,
+          "Amount": 6.25,
+          "Level": 183,
+          "XP": 11.5,
+          "Gain": 0
+        },
+        "Time": 1793729968.747185
+      }
+    }
+  },
+  "FinalPhoneAudit": {
+    "Touch": true,
+    "Power": 207,
+    "Audit": {
+      "Finished": {
+        "Custom": 32
+      },
+      "Active": {
+        "Hit:Scriptable": 18,
+        "Idle:Scriptable": 10,
+        "Reveal:Scriptable": 189,
+        "Windup:Scriptable": 1,
+        "Windup:Custom": 25,
+        "Flying:Scriptable": 120,
+        "Tow:Scriptable": 120
+      }
+    },
+    "Fade": 1,
+    "Selection": 207,
+    "MessageSize": "366, 26",
+    "MessagePosition": "150, 178",
+    "Errors": [],
+    "MAX": true,
+    "Rects": {
+      "Controls": {
+        "1": {
+          "Size": "70, 70",
+          "Name": "Players.FPG40.PlayerGui.TouchGui.TouchControlFrame.JumpButton",
+          "Pos": "571, 226"
+        },
+        "2": {
+          "Size": "366.399994, 310.666687",
+          "Name": "Players.FPG40.PlayerGui.TouchGui.TouchControlFrame.DynamicThumbstickFrame",
+          "Pos": "-100, 105.333344"
+        }
+      },
+      "SafeSize": "666, 316",
+      "Viewport": "666, 374",
+      "Buttons": {
+        "1": {
+          "Size": "44, 44",
+          "Name": "Players.FPG40.PlayerGui.TicketHUD.TopBar.PowerSettings",
+          "Pos": "359.619995, 4"
+        },
+        "2": {
+          "Size": "88, 48",
+          "Name": "Players.FPG40.PlayerGui.TicketHUD.Cars",
+          "Pos": "566, 60"
+        },
+        "3": {
+          "Size": "88, 48",
+          "Name": "Players.FPG40.PlayerGui.TicketHUD.Train",
+          "Pos": "466, 60"
+        },
+        "4": {
+          "Size": "88.0059586, 48.0032501",
+          "Name": "Players.FPG40.PlayerGui.TicketHUD.Shop",
+          "Pos": "365.994049, 59.9999924"
+        },
+        "5": {
+          "Size": "54, 54",
+          "Name": "Players.FPG40.PlayerGui.CarHotbar.Slots.Slot1",
+          "Pos": "214.5, 216"
+        },
+        "6": {
+          "Size": "54, 54",
+          "Name": "Players.FPG40.PlayerGui.CarHotbar.Slots.Slot2",
+          "Pos": "275.5, 216"
+        },
+        "7": {
+          "Size": "54, 54",
+          "Name": "Players.FPG40.PlayerGui.CarHotbar.Slots.Slot3",
+          "Pos": "336.5, 216"
+        },
+        "8": {
+          "Size": "54, 54",
+          "Name": "Players.FPG40.PlayerGui.CarHotbar.Slots.Slot4",
+          "Pos": "397.5, 216"
+        },
+        "9": {
+          "Size": "70, 70",
+          "Name": "Players.FPG40.PlayerGui.TouchGui.TouchControlFrame.JumpButton",
+          "Pos": "571, 226"
+        },
+        "10": {
+          "Size": "366.399994, 310.666687",
+          "Name": "Players.FPG40.PlayerGui.TouchGui.TouchControlFrame.DynamicThumbstickFrame.DynamicThumbstickUIModifier",
+          "Pos": "-100, 105.333344"
+        }
+      }
+    }
+  },
+  "FinalServerAudit": {
+    "QA": "iteration10a-userfix-20261103",
+    "Errors": []
+  },
+  "LastBuildSmoke": {
+    "Audio": {
+      "RareArrival": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Counter": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Letter": {
+        "Id": "rbxassetid://106623224876186",
+        "Length": 0.153125,
+        "Loaded": true
+      },
+      "Boost": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "BoostOffer": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Impact": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Rare": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Brake": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Purchase": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Throw": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Toast": {
+        "Id": "rbxassetid://106553517979212",
+        "Length": 0.9701587301587301,
+        "Loaded": true
+      },
+      "Tap": {
+        "Id": "rbxassetid://106623224876186",
+        "Length": 0.153125,
+        "Loaded": true
+      },
+      "XP": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "LevelUp": {
+        "Id": "rbxassetid://106553517979212",
+        "Length": 0.9701587301587301,
+        "Loaded": true
+      }
+    },
+    "Errors": [],
+    "Selector": false,
+    "ShopOpen": false,
+    "Meter": true
+  },
+  "Review": "Read-only review and final compact-UI follow-up: no concrete remaining findings."
+}

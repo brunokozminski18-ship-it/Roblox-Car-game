@@ -53,3 +53,7 @@
 -10a: sprawdzanie Sound.Played i natywnego preload dowodzi ścieżki odtworzenia; osobny require z MCP nie mierzy tego samego modułu i nie dowodzi odsłuchowej jakości.
 -10a: handler Tween.Completed musi odrzucać Cancelled, inaczej anulowanie starego przebiegu potrafi ukryć nowy. LihFolk SYMPTOMS wskazał ten wzorzec; cykl smugi potwierdzono w telefonie iPC.
 -10a: automat powracający na płytkę przed heartbeat wyjścia nie symuluje zejścia gracza. Uzbrój obserwatora nowego MeterStart i zachowaj rzeczywisty odstęp wyjścia; inaczej timeout można omyłkowo nazwać czerwonym tapem.
+-10a poprawki użytkownika: Visible=true nie dowodzi czytelnego efektu. Stara smuga o peak10% była technicznie animowana, ale użytkownik jej nie widział. UIGradient.Offset i peak38% potwierdzono zrzutem, nie samym stanem tweena.
+-10a poprawki: toast wysłany przy wczytaniu profilu może wyprzedzić HUD i jednocześnie oznaczyć ofertę jako pokazaną. Idempotentne JuiceReady od klienta rozwiązało utratę, bez przeniesienia ekonomii na klienta.
+-10a poprawki: powrót kamery na początkuTow ucina payoff. Kamera pozostała przez zabranie auta; fade obejmuje dopiero teleport i handoff doCustom. Native audit klatek po renderze odróżnia działającą kamerę od chwilowego stanu narzędzia MCP.
+-10a mobile:44px przycisku nie gwarantuje wolnego obrazu. Manualny suwak,2x bliżej środka, LEVEL UP na XPbar i wąski komunikat usunęły stałe kolizje; większy przezroczysty DynamicThumbstick input frame nie jest widoczną tarczą joysticka.

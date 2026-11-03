@@ -26,7 +26,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
  local bar=Instance.new("Frame");bar.Name="Slots";bar.AnchorPoint=Vector2.new(.5,1);bar.Position=UDim2.new(.5,0,1,-46);bar.BackgroundTransparency=1;bar.Parent=gui
  local layout=Instance.new("UIListLayout");layout.FillDirection=Enum.FillDirection.Horizontal;layout.HorizontalAlignment=Enum.HorizontalAlignment.Center;layout.Padding=UDim.new(0,7);layout.SortOrder=Enum.SortOrder.LayoutOrder;layout.Parent=bar
  local function busy(): boolean
-  local shop=playerGui:FindFirstChild("TicketShop");return p:GetAttribute("Throwing")==true or(shop~=nil and shop:GetAttribute("Open")==true)
+  local shop=playerGui:FindFirstChild("TicketShop");return p:GetAttribute("Throwing")==true or p:GetAttribute("CinematicActive")==true or(shop~=nil and shop:GetAttribute("Open")==true)
  end
  local function render()
   local equipped=p:GetAttribute("EquippedCarId")or "";local inventory={}
@@ -36,7 +36,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
    local found=false;for _,c in visible do if c.Id==equipped then found=true end end
    if not found then visible[math.min(Config.HotbarSlots,#visible+1)]=byId[equipped]end
   end
-  local size=if gui.AbsoluteSize.Y<400 then 54 else 70;bar.Size=UDim2.fromOffset(Config.HotbarSlots*(size+7),size)
+  local size=if gui.AbsoluteSize.Y<400 then math.clamp(math.floor((gui.AbsoluteSize.X-328)/5),44,54)else 70;bar.Size=UDim2.fromOffset(Config.HotbarSlots*(size+7),size)
   for i=1,Config.HotbarSlots do
    local c=visible[i];local slot=hotbars[i]
    if c and(not slot or slot.id~=c.Id)then
@@ -51,7 +51,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
    elseif not c and slot then slot.button:Destroy();hotbars[i]=nil;slot=nil end
    if slot then slot.button.Size=UDim2.fromOffset(size,size);local outline=slot.button:FindFirstChildOfClass("UIStroke");outline.Color=if equipped==slot.id then Color3.fromHex("FFD24A")else S.INK;outline.Thickness=if equipped==slot.id then 4 else 2 end
   end
-  bar.Visible=not busy()and not view.isOpen()and not p:GetAttribute("PowerSelectorVisible")
+  bar.Visible=not busy()and not view.isOpen()and not p:GetAttribute("PowerSelectorVisible")and not p:GetAttribute("BoostTargetVisible")
   if p:GetAttribute("MeterStart")then view.open(false)end
  end
  launch.Activated:Connect(function()if not busy()then view.open(not view.isOpen());render()end end)

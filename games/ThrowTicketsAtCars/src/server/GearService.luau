@@ -92,7 +92,7 @@ function Service.new(ctx: any): any
  end
  function api.update(p: Player,s: any)
   if not s then return end;paint(p,s)
-  if not idle(p,s)then return end
+  if not idle(p,s)or not s.juiceReady then return end
   local now=workspace:GetServerTimeNow();if now<(s.gearToastUntil or 0)then return end
   s.gearNotified=s.gearNotified or {}
   for _,kind in {"Exercise","Ticket"}do

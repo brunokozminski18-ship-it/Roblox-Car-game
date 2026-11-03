@@ -1,21 +1,21 @@
 # Stan — THROW TICKETS AT CARS!
-- Iteracja10a IMPLEMENTED i VERIFIED03.11.2026; próbka sceny v2 USER APPROVED wyłącznie jako wersja testowa. Wygląd i balans NOT FINAL.
+- Iteracja10a + poprawki po teście IMPLEMENTED/VERIFIED03.11.2026; próbka v2 zaakceptowana wyłącznie testowo. Wygląd/brzmienie/balans NOT FINAL.
 - Pętla: biała płytka → pasek/tap → lot mandatu/biom/LUCK → hamowanie i reveal → laweta → działka/Tool.
 - Catch: kamera przy aucie, sticker/shake/pisk, losowo odsłaniane litery, rarity/$/s/NEW BEST; Epic+ osobne większe ujęcie i1inX.
-- Rzut: wybór1..Power, Lands in/MAX, PERFECT i chwilowy bonusPower. Serwer liczy czas i ogranicza bonus -5%..+10%; timeout3 s daje+2.5%.
+- Rzut: suwak1..Power/Lands in/MAX wyłącznie z ikony przy Power, wybór w sesji; domyślnie MAX/schowany. Płytka→Meter/PERFECT, bonus -5%..+10%, timeout3 s daje+2.5%.
 - Trening: XP100/level i+1 Power, pasek XP/level/+XP/level-up, czasowe2x z ofertą4 s i boostem2 s; lepsze ćwiczenia zwiększają XP/s.
 - SHOP: TRAINING/TICKETS, rzeczywiste XP/s, zakupy serwerowe; NEW GEAR z ceną/efektem/czasem i teleportem do własnego stanowiska.
-- Next gear w świecie ma czerwony/zielony koszt; sklep pokazuje białą smugę co5 s (Reduced Motion ją wyłącza).
+- Next gear ma czerwony/zielony koszt; gotowość klienta zapobiega utracie toastu, ten samId raz w sesji. Shop: czytelny UIGradient.Offset co5 s, zamyka się przed Meter.
 - Auta: stabilneId, odtwarzalne Tools w Backpack, mały trzymany model,5-slotowy hotbar ViewportFrame/$/s/numer, reszta w My Cars.
 - My Cars: sort dochodu+Id, parking6/6 i plecak20, PLACE wyposaża, PICK UP oddaje; Epic+ SELL wymaga tokenu potwierdzenia.
 - EQUIP BEST atomowo rozdziela najlepsze6 aut, bez sprzedaży i utraty przy pełnym plecaku.
 - Place car/Pick up przez hold0.5 s; serwer kontroluje własność, dystans, stan, hold i cooldown. Bez BACK TO ROAD/THROW i blokady Plot.
 - Własny trening przy działce;60 działek w hubie, maks.13.42 s bezpośredniego marszu do płytki przy szybkości16.
 - Schema4: migracja zachowuje stare Power/auta/zakupy; XP/level dopisane. Zapis łupu przed animacją, lease/token/autosave/leave/shutdown.
-- VERIFIED03.11:264 asercje; telefon iPhone7 poziomo orazPC: common/Epic, earlier biome/MAX, PERFECT,2x/level, gear/zakupy/shine i native audio12/12.
+- VERIFIED03.11:284 asercje; iPhone7 poziomo/PC: common2.42 s/Epic5.02 s, wybrane101 przez2 rzuty, MAX, płynnyTow/fade, losowe2x/pop/glow, gear/zakupy/shine.
 - Zapis/rejoin ostatniej serii zachował3 auta ze slotami, Power200/Level177/XP75, Exercise2, Owned/Equipped. Osobny QA key, bez zmiany danych użytkownika.
 -40 powtórek tapu uruchomiło1 rzut. Green111.00/red95.99 przy wybranych101; niefinity/over-power/spoofedContinue odrzucone.
 - Końcowy LogService klient+serwer:0 MessageError. Pozostają ostrzeżenia Studio injection/ContentId opisane w BUGS.
--32 źródła Rojo; Studio Edit, QA/emulator/HTTP off. Bez publikacji i Robux.
+-32 źródła Rojo; Studio Edit, QA/emulator/HTTP off.14 cue/5 ID Loaded iPlayed, głośność×0.52, ostre cue zastąpione miękkimi; brak publikacji/Robux.
 - NEEDS VERIFICATION: fizyczny touch-hold promptu, fizyczny telefon/multiplayer, subiektywne brzmienie i balans; nie zastępuje ich test automatyczny.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a]]. Wnioski: [[lessons/ThrowTicketsAtCars]].
+- Telefon: Power44×44/menu88×48, centralne2x84 px bez timera; LEVEL UP na XPbar, mały toast i komunikat ponad hotbarem. Raport przed/po: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a_fixes]].

@@ -1,14 +1,14 @@
 # THROW TICKETS AT CARS! — iteracja10a
 - USER APPROVED03.11: zakres8/10a, My Cars i scena złapania v2 wyłącznie testowa. Bez Rebirth/petów/Robux/nowych biomów/publikacji.
 - Pętla: wybierz siłę → wejdź na białą płytkę → tap paska → mandat/biom/LUCK → hit/reveal → laweta → działka/Tool.
-- Dystans=min(koniec mapy,wybranaSiła×(1+bonus)); siła1..Power, MAX śledzi aktualny Power; bonus -5%..+10%, PERFECT szczyt6%.
+- Dystans=min(koniec mapy,wybranaSiła×(1+bonus)); siła1..Power tylko z ikony przy Power, domyślnieMAX/schowany suwak, wybór pozostaje w sesji. Bonus -5%..+10%, PERFECT szczyt6%.
 - Serwer startuje zegar, okres1.4 s, timeout3 s daje+2.5%; klient wysyła tylko czas tapu. Nowy rzut po opuszczeniu i wejściu na płytkę.
 - Lot pokazuje rzeczywisty biom pozycji i animowany licznik do luck mandatu. Licznik nie dodaje ukrytych mnożników szans.
-- Trafienie: hamowanie0.3 s, pisk/impact/sticker/shake, close→pullback, nazwa losowymi literami0.18 s (Epic×1.35), rarity/$/s/NEW BEST.
+- Trafienie: hamowanie0.3 s, miękki whoosh/impact/sticker/shake, close→pullback, nazwa losowymi literami0.18 s (Epic×1.8), rarity/$/s/NEW BEST. Epic osobny tytuł/cue/wash i większy skończony shake.
 - NEW BEST: ścisły rekord dochodu w posiadanych autach. Epic+1inX to zaokrąglone rzeczywiste odds konkretnego auta, z wagami mandatu.
-- Continue wymaga jobId i upływu minimum common2.4/Epic3.3 s oraz czasu nazwy; timeout12 s. Potem dotychczasowa laweta/teleport.
+- Continue wymaga jobId i minimum common2.4/Epic5 s oraz czasu nazwy; wspólne revealSeconds, timeout16 s. Kamera płynnie ogląda lawetę, fade0.14/0.3 s podczas teleportu; kontrola wraca poIdle.
 - XP/sek=Work/koszt pracy biomu×100.100 XP→level+1 iPower+1; nowe ćwiczenie podwaja XP względem poprzedniego, ceny zachowane.
-- Oferta2x co12 s aktywnego treningu, ważna4 s; klik zId uruchamia2 s boosta na serwerze, bez stackowania. Pasek XP, +XP iLEVEL UP.
+- Oferta2x co12 s aktywnego treningu, ważna4 s; duży losowy centralny cel bez timera. Klik zId→pop/poświata2 s i boost serwera, bez stackowania. Telefon LEVEL UP na XPbar.
 - NEW GEAR: pierwszy osiągalny next exercise/ticket z ceną/efektem/timerem7 s; akcja teleportuje do własnego stanowiska i otwiera kategorię sklepu, nie kupuje.
 - Next exercise w świecie ma cenę zieloną/czerwoną; SHOP TRAINING/TICKETS, biała smuga co5 s, Reduced Motion respektowane.
 - Profil kontroluje własność; auta Slot0 odtwarzają Tools w Backpack/Character. Hotbar5 slotów z3D/$/s/numerem ponad XPbar; CARS otwiera pełny ekwipunek20.
@@ -19,5 +19,5 @@
 - Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/400/1000/2500. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
 - Schema4: Cash/Power/TrainingLevel/TrainingXP/Exercise/Owned/Equipped/Cars(Id,Biome,Rarity,Name,Ticket,Slot); tylko parking zarabia, brak offline.
 - Jeden writer/lease/token/autosave/leave/shutdown; łup zapisany przed animacją. Boost i aktualne wyposażenie/suwak są stanem sesji.
-- Audio12 cue/9 ID Creator Store, preload/pooling/cap12, losowanie pitch i choke; kamera jeden owner z cleanup/FOV/Focus i ograniczonym shake.
+- Audio14 cue/5 ID Creator Store, testowy miks×0.52, ciche krótkie XP/litery, preload/pooling/cap12, pitch/choke. Kamera jeden owner do końcaTow z cleanup/FOV/Focus i ograniczonym shake.
 - Źródło: LihFolk Vault V2(CC BY4.0), MCP tylko odczyt; referencja użytkownika ThrowFoodForAnimals [A/B/C/D/H] i film, własne nazwy/grafiki.

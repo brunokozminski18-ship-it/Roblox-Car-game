@@ -3,7 +3,7 @@
 local Config={
 	StartPower=24, TickSeconds=1,
  Progression={XPPerLevel=100,PowerPerLevel=1,OfferEvery=12,OfferLifetime=4,BoostSeconds=2},
- Juice={LetterSeconds=.18,CommonRevealMin=2.4,RareRevealMin=3.3,RevealTimeout=12,PerfectPosition=.06,ToastSeconds=7,ShineEvery=5,BrakeSeconds=.3},
+ Juice={LetterSeconds=.18,CommonRevealMin=2.4,RareRevealMin=5,RareLetterMultiplier=1.8,RevealTimeout=16,PerfectPosition=.06,ToastSeconds=7,ShineEvery=5,BrakeSeconds=.3},
  Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond"},TrainingWorkPerPower={4,18,32,90,220,220}},
  Simulation={CatchLoopSeconds=14,RefreshSeconds=45,PurchaseSeconds=2,MaxSeconds=86400},
  Exercises={

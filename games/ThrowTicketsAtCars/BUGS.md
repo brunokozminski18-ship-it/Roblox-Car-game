@@ -1,5 +1,5 @@
 # Błędy i ograniczenia
-- Iteracja10a: końcowy LogService klient+serwer0 MessageError;264 asercje PASS, telefon landscape+PC.
+- Iteracja10a z poprawkami: LogService klient+serwer0 MessageError;284 asercje PASS, telefon landscape+PC.
 - NEEDS VERIFICATION: fizyczny touch-hold promptu; InputHoldBegin/End w emulatorze przeszedł walidację serwera w iteracji8.
 - Studio ostrzega o nieudanej iniekcji skryptu i ContentId203785492 (niezgodny typ assetu); MessageWarning, poza źródłami tej gry. Nie zmieniano obcych pluginów.
 - Wygląd/próbka10a zaakceptowane wyłącznie jako wersja testowa; finalna grafika, brzmienie i balans NOT FINAL.
@@ -8,6 +8,8 @@
 - Garaż zapisuje przez budżetowany autosave/leave/shutdown; brak dochodu offline. Mnożnik mandatu nie zmienia starych aut.
 - Tools odtwarzają się po śmierci/rejoin; wybór wyposażonego auta i suwaka nie są trwałym zapisem.
 - Trening daje XP, Power dopiero przy levelu.100 XP/level,+1 Power; wzrost skokowy jest widoczny na pasku i w LEVEL UP.
-- Native audio12/12 ładuje się i emituje Played w przepływie; onset/latencja odsłuchowa niezmierzone, ocena jakości wymaga odsłuchu gracza.
+- Native audio14/14 ładuje się i emituje Played; głośność×0.52 i nowe miękkie cue. Onset/latencja odsłuchowa niezmierzone, jakość do oceny użytkownika.
 - Naprawione: stan TRAIN/STOP i ukrywane ułamki; ghost sticker/proxy reveal; anulowany tween nie chowa nowej smugi; kamera przywraca również Focus.
 - Automatyzacja PC raz nie uzbroiła paska, bo teleport wrócił przed heartbeat wyjścia. Jawne zejście0.4 s i ponowne wejście uruchomiło rzut poprawnie; zasad gry nie zmieniano pod test.
+- Nowe poprawki: kamera utrzymana przezTow/fade i normalizacja starego Scriptable snapshot; stanCustom po końcu potwierdzony32 klatkami natywnymi. Gear czeka na gotowy klient, smuga rzeczywiście widoczna.
+- Pamięć suwaka i wyświetlonych toastów jest stanem sesji; nowa sesja startuje z MAX. Brak preset568×320 w obecnej liście Studio; przetestowano666×374, inne urządzenia wymagają testu.

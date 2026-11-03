@@ -1,19 +1,21 @@
-# Current Task — iteracja10a: złapanie, rzut i trening
-- Właściciel: Codex;03.11.2026. Status: IMPLEMENTED, VERIFIED03.11 w zakresie testów poniżej.
-- USER APPROVED03.11: próbka sceny v2 wyłącznie jako wersja testowa. Grafika, dźwięk i balans NOT FINAL.
-- Zakres: research/ThrowFoodForAnimals [A/B/C/D/H], własne nazwy/grafiki; bez Rebirth/Robux/publikacji.
-- [x] Lot: biome banner, rosnący LUCK i counter sound; trafienie: kamera close→pullback, brake/impact, sticker i skończony shake.
-- [x] Reveal w świecie: losowo odsłaniane litery, rarity/$/s, NEW BEST, Epic+ większe ujęcie i1inX, Tap to continue → laweta → działka.
-- [x] PERFECT/+POWER i suwak1..Power, Lands in/MAX, serwerowa walidacja siły/czasu, bonus -5%..+10%, timeout3 s i ponowne wejście.
-- [x] XP/level/schema4, dolny pasek, +XP/LEVEL UP; oferta2x i2 s boosta na zegarze serwera. Zakup ćwiczenia zwiększa XP/s.
-- [x] NEW GEAR cena/efekt/timer/teleport+sklep; własne stanowisko next gear z czerwonym/zielonym kosztem, smuga sklepu.
-- [x] Audio12 cue/9 ID Creator Store: native preload Loaded+Length>0, Played zaobserwowane dla każdego cue podczas przebiegu.
-- VERIFIED:264 asercje; iPhone7 poziomo666×374 +PC1914×761, common/Epic, Continue, flight/slider/MAX, boost/level, toast/zakup/shine.
-- Zegar: Power200, wybrane101 → green111.00, red95.99;40 tapów=1 rzut. Nadmiar siły/NaN/inf i obcy Continue odrzucone.
-- Save/rejoin:3 auta z tymi samymi Id/Slot/Ticket, Power200/Level177/XP75, Exercise2 i mandat zachowane; cash rośnie od parkingu.
-- Review bez dalszych istotnych uwag; naprawione Cancelled→hide smugi i komplet przywracania kamery z Focus.
-- Studio Edit, emulator/HTTP off, TestProfileKey usunięty; repo/Rojo32 źródła. Dane użytkownika bez resetów/grantów.
-- Źródła: LihFolk Vault V2, MCP tylko odczyt; juice/feedback/sound design/camera, patrz raport.
-- Ograniczenia: fizyczny telefon, multiplayer i subiektywna ocena brzmienia/balansu nadal do playtestu; techniczny PASS nie zatwierdza wyglądu.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a]].
-- Następny krok: test zabawy użytkownika na tej wersji testowej; dalsze strojenie na podstawie uwag.
+# Current Task — iteracja10a: poprawki po teście użytkownika
+- Właściciel: Codex;03.11.2026. IMPLEMENTED, VERIFIED03.11 w zakresie poniżej. Całość testowa, wygląd/brzmienie/balans NOT FINAL.
+- [x] Suwak wyłącznie po ikonie przy Power, domyślnie schowany/MAX; wybrana siła zachowana w sesji do zmiany/MAX. Płytka otwiera tylko pasek tapnięcia.
+- [x] Epic+: minimum5 s i litery1.8×, EPIC CATCH, oddzielne miękkie cue, rosnące1inX, większy skończony shake i pojedynczy błysk; wspólna reguła czasu klient/serwer.
+- [x] Continue→kamera pokazuje ładowanie/odjazd lawety; fade0.14/0.3 s przy teleporcie, Custom i sterowanie przywrócone po Idle.
+- [x]2x:84 px telefon/92 PC, losowo bliżej środka; bez timera, znika po4 s; klik pop1.33×→znika, serwerowe2 s boosta i Highlight postaci.
+- [x] NEW GEAR na osobnym QA: gotowość klienta zapobiega utracie toastu przy wczytaniu, przycisk teleportuje do własnej stacji/otwiera sklep, jedna oferta nie spamuje w sesji.
+- [x] Widoczna biała smuga UIGradient.Offset co5 s; anulowanie/ReducedMotion nadal ograniczają animację.
+- [x] Telefon: Power44×44, menu88×48, hotbar44–54; XP między dolnymi narożnikami, compact toast244×92/SHOP80×44. LEVEL UP na XPbar, komunikat nie zakrywa hotbara/2x/suwaka.
+- [x] Audio:−48% głośności wszystkich cue, usunięte skid/retro/wysokie fanfary; miękkie istniejące click/pop/coin/whoosh, ciche krótkie XP/litery z lekką wariacją pitch.
+- [x] FlightHUD, PERFECT/+POWER, XP/level-up i automatyczne zamknięcie sklepu przy wejściu na płytkę sprawdzone na telefonie.
+- VERIFIED:284 asercje(20 nowych), RED→GREEN reguły czasu; iPhone7 poziomo666×374/safe316 iPC, common2.42 s/Epic5.02 s, pełne złapanie/Continue/Tow/Idle.
+- Wybrane101 utrzymało się przez2 rzuty; MAX207 i over-power/NaN odrzucone. Native audit:120 klatek Tow:Scriptable→32 Custom po zakończeniu, Fade wrócił do1/TouchGui true.
+-2x losowe pozycje347/169,385/184,395/167; niekliknięte oferty3.96–4.00 s, klik pop1.331/poświata/2×XP.
+- Gear:200 QA→Focused toast/teleport;22 s=1 emisja. PC20×JuiceReady bez duplikacji; Weighted iPink po jednej odrębnej ofercie. Zakup Focused200→20,Exercise2.
+-14 cue/5 ID nativeLoaded+Length>0; wszystkie Played w pełnym PC przepływie. Subiektywna ocena dźwięków przez użytkownika pozostaje otwarta.
+- Końcowy klient/serwer0 MessageError w kontrolach; review bez konkretnych nowych usterek. Zrzuty przed/po i dowody w raporcie.
+- Studio Edit, QA key usunięty, emulator/HTTP off,32 źródła Rojo. Bez Rebirth/Robux/publikacji; brak grantów/resetów profilu użytkownika.
+- Źródła: LihFolk Vault V2, MCP tylko odczyt juice/feedback/mobile/sound; playbook/MOBILE_UI. Fizyczny telefon i inne rozdzielczości nadal wymagają playtestu.
+- Raport i lista dla użytkownika: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a_fixes]].
+- Następny krok: użytkownik ocenia czytelność, odczucie Epic/Tow i testowy miks audio.

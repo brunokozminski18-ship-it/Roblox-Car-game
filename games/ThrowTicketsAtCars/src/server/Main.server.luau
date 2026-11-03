@@ -25,6 +25,7 @@ local function remote(name: string): RemoteEvent local r=Instance.new("RemoteEve
 local Throw,Train,Feedback,Ticket,Shop,Garage,Snapshot=remote("Throw"),remote("Train"),remote("Feedback"),remote("Ticket"),remote("Shop"),remote("Garage"),remote("InventorySnapshot")
 local ConfirmSale=remote("ConfirmSale")
 local Juice,SelectPower,ContinueCatch,TrainingBoost,GearVisit=remote("Juice"),remote("SelectPower"),remote("ContinueCatch"),remote("TrainingBoost"),remote("GearVisit")
+local JuiceReady=remote("JuiceReady")
 local gearService: any
 local garageService: any
 local states: {[Player]:any}={}
@@ -128,7 +129,7 @@ local function runCatch(p: Player,s: any,j: any)
   tweenPivot(j.car,CFrame.new(j.position),Config.Juice.BrakeSeconds,Enum.EasingStyle.Quad)
   if states[p]~=s or not mutable(s)or s.job~=j then cleanJob(j);return end
   phase(p,s,"Reveal");j.revealAt=workspace:GetServerTimeNow()
-  j.readyAt=j.revealAt+math.max((if j.reward.Rarity>=3 then Config.Juice.RareRevealMin else Config.Juice.CommonRevealMin),#j.reward.Name*Config.Juice.LetterSeconds*(if j.reward.Rarity>=3 then 1.35 else 1))
+  j.readyAt=j.revealAt+J.revealSeconds(j.reward.Name,j.reward.Rarity)
   Juice:FireClient(p,"Reveal",j.metadata)
   while states[p]==s and mutable(s)and not j.continued and workspace:GetServerTimeNow()<j.revealAt+Config.Juice.RevealTimeout do task.wait(.05)end
   if states[p]~=s or not mutable(s)then cleanJob(j);return end
@@ -220,6 +221,10 @@ SelectPower.OnServerEvent:Connect(function(p: Player,...: any)
  local now=os.clock();if now-(s.lastSelection or 0)<.08 then return end;s.lastSelection=now
  local value=J.selection(s.data.Power,...);if value==nil then return end
  s.selectedPower=value;s.selectedMax=math.abs(value-s.data.Power)<.0001;mirror(p,s)
+end)
+JuiceReady.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if select("#",...)~=0 or not mutable(s)or p:GetAttribute("DataReady")~=true or s.juiceReady then return end
+ s.juiceReady=true;gearService.update(p,s)
 end)
 ContinueCatch.OnServerEvent:Connect(function(p: Player,...: any)
  local s=states[p];if not mutable(s)or select("#",...)~=1 or not s.job or s.phase~="Reveal"then return end

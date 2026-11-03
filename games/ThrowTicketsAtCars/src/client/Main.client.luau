@@ -32,17 +32,23 @@ remotes:WaitForChild("Juice").OnClientEvent:Connect(function(kind,data)
  if kind=="Reveal"then reveal.show(data,function()remotes.ContinueCatch:FireServer(data.Id)end)
  else juice.feedback(kind,data)end
 end)
+local function juiceReady()if p:GetAttribute("DataReady")then (remotes:WaitForChild("JuiceReady")::RemoteEvent):FireServer()end end
+p:GetAttributeChangedSignal("DataReady"):Connect(juiceReady);juiceReady()
 p.CharacterRemoving:Connect(reveal.hide)
 p:GetAttributeChangedSignal("ThrowPhase"):Connect(function()local phase=p:GetAttribute("ThrowPhase");if phase=="Idle"or phase=="Tow"then reveal.hide()end end)
 local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars)
 require(script.Parent.ThrowMeterUI).mount(Throw)
-require(script.Parent.PowerSelector).mount(remotes:WaitForChild("SelectPower")::RemoteEvent)
+require(script.Parent.PowerSelector).mount(remotes:WaitForChild("SelectPower")::RemoteEvent,hud.powerSettings)
 Exercises.mount();require(script.Parent.Traffic).mount(world)
 trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("TrainingActive"))end)
-local version=0
+local version=0;local messageDeadline=0
+local function messageVisibility()
+ message.Visible=os.clock()<messageDeadline and not p:GetAttribute("BoostTargetVisible")and not p:GetAttribute("PowerSelectorVisible")
+end
+for _,a in {"BoostTargetVisible","PowerSelectorVisible"}do p:GetAttributeChangedSignal(a):Connect(messageVisibility)end
 Feedback.OnClientEvent:Connect(function(text: string)
 	if string.sub(text,1,6)=="Bought"then Audio.play("Purchase")end
-	version+=1;local current=version;message.Text=text;message.Visible=true
+	version+=1;local current=version;message.Text=text;messageDeadline=os.clock()+Config.MessageSeconds;messageVisibility()
 	task.delay(Config.MessageSeconds,function()if version==current then message.Text="";message.Visible=false end end)
 end)
 Ticket.OnClientEvent:Connect(function(origin: Vector3,destination: Vector3,car: Model?,owner: number,income: number,metadata: any)
@@ -53,12 +59,13 @@ local function updateStats()
  local boosted=workspace:GetServerTimeNow()<(p:GetAttribute("BoostUntil")or 0)
  hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("TrainingActive")==true,(p:GetAttribute("TrainingRate")or 0)*(if boosted then 2 else 1))
  hud.mode(p:GetAttribute("Location")or "Road",p:GetAttribute("Throwing")==true,p:GetAttribute("ThrowPhase")or "Idle")
+ hud.gui.Enabled=p:GetAttribute("CinematicActive")~=true
  local phase=p:GetAttribute("ThrowPhase");hud.top.Visible=phase~="Flying"and phase~="Hit"and phase~="Reveal"
 end
 p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
 	updateStats()
 end)
-for _,attr in {"Training","TrainingActive","TrainingXP","BoostUntil","Exercise","TrainingRate","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
+for _,attr in {"Training","TrainingActive","TrainingXP","BoostUntil","Exercise","TrainingRate","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase","CinematicActive"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
 cash.Changed:Connect(updateStats);updateStats()
 -- Default camera outside a bounded throw cinematic; Cinematics restores on every exit.
 local function restoreCamera(character: Model)

@@ -78,9 +78,9 @@ local function impact(car: Model, income: number, mine: boolean?, metadata: any)
 	if mine then Audio.play("Impact")end
 	local highlight = Instance.new("Highlight")
 	highlight.Name, highlight.Adornee = "Ticketed", car
-	highlight.FillColor, highlight.OutlineColor = Color3.fromRGB(255, 70, 50), Color3.fromRGB(255, 70, 50)
+ highlight.FillColor, highlight.OutlineColor = if metadata and metadata.Rarity>=3 then rarity.Color else Color3.fromRGB(255,70,50),rarity.Color
 	highlight.FillTransparency, highlight.Parent = 0.65, car
-	Debris:AddItem(highlight, Config.StickerSeconds)
+ Debris:AddItem(highlight,if metadata and metadata.Rarity>=3 then 1.2 else .45)
 	local sticker = paper("StuckTicket",car:GetAttribute("TicketId"))
 	local surface = Instance.new("SurfaceGui")
 	surface.Active = false
