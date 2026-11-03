@@ -18,3 +18,4 @@
 16. 03.11.2026 — USER APPROVED: użytkownik zaakceptował pokazaną próbkę My Cars na telefonie i polecił dokończyć hotbar oraz pasek siły w tym samym stylu; nie zatwierdza to finalnych modeli ani balansu.
 17. 03.11.2026 — użytkownik zlecił naprawę braku wzrostu Power podczas treningu oraz możliwość kupowania lepszego treningu dającego większy przyrost; bez zlecenia zmiany cen lub całego balansu.
 18. 03.11.2026 — użytkownik zlecił iterację10a wg research ThrowFoodForAnimals [A/B/C/D/H]: feedback złapania, wybrana siła rzutu, XP/level/2x trening, podpowiedzi sprzętu i dźwięki Creator Store; bez kopiowania nazw/grafik, Rebirth i Robux. Próbka karty10a jeszcze nie zatwierdzona.
+19. 03.11.2026 — użytkownik odrzucił próbkę karty10a v1 i przekazał film Roblox2026-11-03 17-08-54 jako referencję działania/układu. Próbka v2 pełnoekranowej sceny nadal niezatwierdzona; brak kopiowania grafik/nazw.

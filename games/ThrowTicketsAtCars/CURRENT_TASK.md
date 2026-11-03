@@ -2,17 +2,18 @@
 - Właściciel: Codex;03.11.2026. Status: IMPLEMENTED częściowo; pełna iteracja NIE jest ukończona.
 - Specyfikacja: research/ThrowFoodForAnimals [A/B/C/D/H], własne grafiki/nazwy, bez Rebirth/Robux/publikacji.
 - Źródła: MCP Obsidiana tylko odczyt; przed pracą juice/feedback/sound design/camera i6 wskazanych TL;DR, raport poniżej.
-- Próbka: CatchReveal pokazana na iPhone7 poziomo; czeka na ocenę użytkownika zgodnie z AGENTS „Najpierw jedna próbka”. Nie oznaczono USER APPROVED.
+- Próbka v1 odrzucona. Film3:40 przeanalizowany wizualnie; v2 IMPLEMENTED: scena3D na drodze, zbliżenie/pullback, losowe litery, statystyki na dole. Próbka v2 czeka na ocenę, NOT FINAL.
 - [x] Serwer: wybór siły<=Power, PERFECT/bonus metadata, reveal przed lawetą, obce/wczesne/powtórne Continue odrzucane, limit12 s.
-- [x] Karta auta: ViewportFrame, litery+dźwięk, rarity/income/newbest, Epic odds count-up i Tap to continue; hit kamera/brake/sticker/shake.
+- [x] Scena złapania: ViewportFrame, litery+dźwięk, rarity/income/newbest, Epic odds count-up i Tap to continue; hit kamera/brake/sticker/shake.
 - [x] XP/level, schema4 i migracja zachowująca stary Power; boost2 s z ofertą4 s sterowane serwerem; Gear toast/visit serwer i stanowisko next sprzętu.
 - [x] Audio:12 cue/9 ID Creator Store, preload wszystkich w natywnym kliencie Loaded=true i Length>0, pule/górny limit12 głosów.
 - [ ] Po ocenie próbki: FlightHUD biom/LUCK, PERFECT/+POWER UI i suwak/MAX, XP bar/Level up/2x button, GearToast+shop open i smuga sklepu.
 - [ ] Pełny test nowych UI na telefonie/PC: obecne testy nie są zaliczeniem całej listy użytkownika.
 - VERIFIED03.11 tylko zakres obecny:264 asercje; serwer common/Epic→reveal→laweta, wcześniejszy biom, boost, GearVisit, rejoin; PC rzeczywisty Continue.
+- V2 VERIFIED: telefon+PC, przywrócenie Custom/TouchGui i ruchu; późny atrybut Display ukrywa auto i zostaje przywrócony.264 kontroli PASS.
 - Review: brak usterek security/data; poprawione sticker ghost po dostawie i zbyt krótki proxy podczas reveal; sticker RED1→GREEN0.
 - Save/rejoin zachował4 auta/Id/Slot/Ticket, Power208, Level185, XP81.25, Cash1000 na QA; nie resetowano/grantowano danych użytkownika.
 - Stan końcowy Studio Edit, QA/emulator/HTTP off; pełna iteracja wymaga dalszej pracy.
-- Parametry wykonawcze:100 XP/level, +1 Power/level, XP=dotychczasowy Power/s×100; tempo/balans NOT FINAL.
+- Parametry:100 XP/level,+1 Power/level; litera0.18 s, minimum common2.4/Epic3.3 s; średnie tempo i wygląd NOT FINAL.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a]].
-- Następny krok: ocena karty przez użytkownika, potem dokończenie UI i pełnych testów.
+- Następny krok: ocena sceny v2; potem pozostały UI10a. GIF podglądu bez dźwięku: assets/reveal_v2_preview/preview.gif (poza gitem).

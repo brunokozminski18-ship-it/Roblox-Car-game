@@ -53,6 +53,7 @@ local previousPower=p:GetAttribute("ThrowPower")or Config.StartPower
 local function updateStats()
  hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("TrainingActive")==true,p:GetAttribute("TrainingRate")or 0)
  hud.mode(p:GetAttribute("Location")or "Road",p:GetAttribute("Throwing")==true,p:GetAttribute("ThrowPhase")or "Idle")
+ local phase=p:GetAttribute("ThrowPhase");hud.top.Visible=phase~="Flying"and phase~="Hit"and phase~="Reveal"
 end
 p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
 	local power=p:GetAttribute("ThrowPower")or 0;local gain=power-previousPower;previousPower=power;updateStats()

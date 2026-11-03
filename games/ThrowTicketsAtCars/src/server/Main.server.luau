@@ -157,7 +157,8 @@ local function performThrow(p: Player,bonus: number)
  s.meter=nil;p:SetAttribute("MeterStart",nil);p:SetAttribute("LastThrowBonus",bonus)
  local humanoid=p.Character and p.Character:FindFirstChildOfClass("Humanoid");if humanoid then humanoid:UnequipTools()end
  local rarity=if RunService:IsStudio()and s.nextRarity then s.nextRarity else Rules.weighted(Rules.rarityWeights(s.data.Equipped),rng:NextNumber());s.nextRarity=nil
- local reward=Rules.reward(biome,rarity,Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber()),s.data.Equipped)
+ local carIndex=if RunService:IsStudio()and s.nextCar and Config.Biomes[biome].Cars[s.nextCar]then s.nextCar else Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber());s.nextCar=nil
+ local reward=Rules.reward(biome,rarity,carIndex,s.data.Equipped)
  local best=0;for _,owned in s.data.Cars do best=math.max(best,Rules.savedReward(owned).Income)end
  local id=Http:GenerateGUID(false)
  assert(GarageRules.add(s.data,reward,id,true))
@@ -339,6 +340,7 @@ if RunService:IsStudio()then
    local ok=GarageRules.add(s.data,Rules.reward(b,rarity,1),Http:GenerateGUID(false),false);if ok then publish(p,s)end;return ok
   elseif command=="TeleportSlot"and Rules.finiteNumber(value)and s.positions[value]then
    local r=rootOf(p);if r then p.Character:PivotTo(CFrame.new(s.positions[value]+Vector3.new(0,3,0)));p:SetAttribute("Location","Plot");return true end
+  elseif command=="ForceNextCar"and Rules.finiteNumber(value)and value%1==0 and value>=1 and value<=3 then s.nextCar=value;return true
   elseif command=="ForceNextRarity"and Rules.finiteNumber(value)and Config.Rarities[value]then s.nextRarity=value;return true
   elseif command=="SetXP"and Rules.finiteNumber(value)and value>=0 and value<Config.Progression.XPPerLevel then s.data.TrainingXP=value;publish(p,s);return true
   elseif command=="Save"then return save(p,s,false)

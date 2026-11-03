@@ -1,0 +1,26 @@
+{
+  "tests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"rules\":{\"ok\":true,\"result\":\"7 basic assertions passed\"},\"garage-security\":{\"ok\":true,\"result\":\"1 garage security assertion passed\"},\"profiles\":{\"ok\":true,\"result\":\"9 profile safety assertions passed\"},\"progression10a\":{\"ok\":true,\"result\":\"54 progression10a assertions passed\"},\"iteration8\":{\"ok\":true,\"result\":\"40 iteration-8 assertions passed\"},\"iteration6\":{\"ok\":true,\"result\":\"62 iteration-6 assertions passed\"},\"juice10a\":{\"ok\":true,\"result\":\"13 juice assertions passed\"},\"training-fix\":{\"ok\":true,\"result\":\"44 training-fix assertions passed\"},\"iteration7\":{\"ok\":true,\"result\":\"34 iteration-7 assertions passed\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "lastQA": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"afterClick\":\"Tow\",\"errors\":[],\"phase\":\"Idle\",\"lateTrafficRestored\":true,\"camera\":\"Custom\"}"
+      }
+    ],
+    "isError": false
+  },
+  "reference": "C:/Users/bruno/Videos/Captures/Roblox 2026-11-03 17-08-54.mp4",
+  "referenceDurationSeconds": 220.78,
+  "referenceInspection": "Overview every4s plus closeups every0.5s; visual analysis, no claimed audio listening",
+  "sampleApproval": "NOT APPROVED; previous v1 rejected",
+  "clip": "assets/reveal_v2_preview/preview.gif (silent capture sequence)",
+  "scope": "Catch scene v2 only; remaining iteration10a frontend still pending"
+}

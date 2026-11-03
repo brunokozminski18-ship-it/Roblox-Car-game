@@ -47,3 +47,4 @@
 - Iteracja8: pierwotne odsuwanie kolejnych działek w jednej linii łamie krótki powrót przy MaxPlayers60. Siatka po obu stronach drogi ograniczyła bezpośredni marsz do13.42 s; nie jest to test60 klientów.
 - Poprawka treningu03.11: stan żądany i aktywny muszą trafiać na HUD razem. Auto-start plus toggle oparty o ukrytą flagę wyłączał trening przed pierwszym tickiem. Sprawdzaj bieżącą pozycję przy nagrodzie i pokazuj ułamki, gdy tick daje mniej niż1 Power.
 - Iteracja10a etap serwera: wydłużenie reveal wymaga wydłużenia proxy przy streamingu, ale sticker musi znikać z body, a nie po samym nowym timeout. W review znaleziono oba lifecycle przypadki; ghost sticker odtworzono1→0.
+-10a v2: słowo karta nie musi oznaczać okna. Film pokazał scenę3D i teksty na tle świata; statyczny panel z miniaturą pomijał główne napięcie kamery i odsłaniania. Warto przed próbką obejrzeć pełny przebieg, a nie wyłącznie końcowy zrzut.

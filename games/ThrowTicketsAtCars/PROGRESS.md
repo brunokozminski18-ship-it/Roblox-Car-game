@@ -24,3 +24,4 @@
 - Iteracja10a częściowa: serwer reveal przed lawetą, selectedPower, XP/schema4/2x, GearVisit+stanowisko; jedna karta złapania i audio/camera feedback IMPLEMENTED.
 -264 asercje PASS; native audio12/12 Loaded, schema4 save/rejoin4aut/Level185/XP81.25/Power208; PC Continue, common/Epic server flow. To nie jest pełne zaliczenie UI10a.
 - Czeka ocena próbki karty (AGENTS first sample). FlightHUD/slider/PERFECT UI, XPbar/2x/levelup, GearToast/open shop/shine i pełne testy nadal PLANNED.
+-10a v2: po odrzuceniu v1 i analizie filmu zastąpiono panel sceną3D, kamera close→pullback, litery w losowej kolejności, statystyki po nazwie, tap na cały ekran. Telefon+PC i264 kontroli PASS; wygląd nadal czeka na ocenę.
