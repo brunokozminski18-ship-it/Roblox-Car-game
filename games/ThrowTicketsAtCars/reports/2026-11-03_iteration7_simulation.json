@@ -1,0 +1,4736 @@
+{
+  "Date": "2026-11-03",
+  "Source": "LihFolk Vault V2, local read-only fallback (Obsidian MCP unavailable)",
+  "Config": {
+    "Biomes": [
+      {
+        "ReferenceIncomePerMinute": 180,
+        "BaseIncome": 1,
+        "Name": "Junkyard",
+        "Power": 0
+      },
+      {
+        "ReferenceIncomePerMinute": 12744,
+        "BaseIncome": 6,
+        "Name": "Suburbs",
+        "Power": 50
+      },
+      {
+        "ReferenceIncomePerMinute": 87225.6,
+        "BaseIncome": 28,
+        "Name": "Downtown",
+        "Power": 150
+      },
+      {
+        "ReferenceIncomePerMinute": 543744.0000000001,
+        "BaseIncome": 120,
+        "Name": "Sports Track",
+        "Power": 400
+      },
+      {
+        "ReferenceIncomePerMinute": 3256800,
+        "BaseIncome": 500,
+        "Name": "Luxury Classics",
+        "Power": 1000
+      },
+      {
+        "ReferenceIncomePerMinute": 37382400,
+        "BaseIncome": 2200,
+        "Name": "Hypercar Island",
+        "Power": 2500
+      }
+    ],
+    "Economy": {
+      "StarterIncomeCars": 3,
+      "TicketPaybackHorizonMinutes": 120,
+      "ReferenceTicket": [
+        "paper",
+        "pink",
+        "parking",
+        "court",
+        "gold",
+        "diamond"
+      ],
+      "ReferenceCatchSeconds": 45,
+      "ReferenceParkedRarity": 3,
+      "TrainingWorkPerPower": [
+        4,
+        18,
+        32,
+        90,
+        220,
+        220
+      ]
+    },
+    "Tickets": [
+      {
+        "UnlockBiome": 1,
+        "Minutes": 0,
+        "Name": "Paper Ticket",
+        "Price": 0,
+        "IncomeMultiplier": 1,
+        "Luck": 0,
+        "Id": "paper"
+      },
+      {
+        "UnlockBiome": 1,
+        "Minutes": 1.5,
+        "Name": "Pink Slip",
+        "Price": 270,
+        "IncomeMultiplier": 1.5,
+        "Luck": 0.05,
+        "Id": "pink"
+      },
+      {
+        "UnlockBiome": 2,
+        "Minutes": 6,
+        "Name": "Parking Fine",
+        "Price": 76464,
+        "IncomeMultiplier": 2.2,
+        "Luck": 0.1,
+        "Id": "parking"
+      },
+      {
+        "UnlockBiome": 3,
+        "Minutes": 15,
+        "Name": "Court Summons",
+        "Price": 1308384,
+        "IncomeMultiplier": 3.2,
+        "Luck": 0.15,
+        "Id": "court"
+      },
+      {
+        "UnlockBiome": 4,
+        "Minutes": 40,
+        "Name": "Golden Ticket",
+        "Price": 21749760,
+        "IncomeMultiplier": 4.6,
+        "Luck": 0.2,
+        "Id": "gold"
+      },
+      {
+        "UnlockBiome": 5,
+        "Minutes": 120,
+        "Name": "Diamond Ticket",
+        "Price": 390816000,
+        "IncomeMultiplier": 12,
+        "Luck": 0.25,
+        "Id": "diamond"
+      }
+    ],
+    "Exercises": [
+      {
+        "UnlockBiome": 1,
+        "Minutes": 0,
+        "Name": "Basic Training",
+        "Id": "basic",
+        "Work": 1,
+        "Price": 0
+      },
+      {
+        "UnlockBiome": 1,
+        "Minutes": 1,
+        "Name": "Focused Training",
+        "Id": "focused",
+        "Work": 2,
+        "Price": 180
+      },
+      {
+        "UnlockBiome": 2,
+        "Minutes": 2,
+        "Name": "Weighted Training",
+        "Id": "weighted",
+        "Work": 4,
+        "Price": 25488
+      },
+      {
+        "UnlockBiome": 3,
+        "Minutes": 8,
+        "Name": "Intense Training",
+        "Id": "intense",
+        "Work": 8,
+        "Price": 697805
+      },
+      {
+        "UnlockBiome": 4,
+        "Minutes": 25,
+        "Name": "Elite Training",
+        "Id": "elite",
+        "Work": 16,
+        "Price": 13593600
+      },
+      {
+        "UnlockBiome": 5,
+        "Minutes": 90,
+        "Name": "Master Training",
+        "Id": "master",
+        "Work": 32,
+        "Price": 293112000
+      }
+    ]
+  },
+  "Simulations": {
+    "NoExercises": {
+      "Purchases": [
+        {
+          "PriceMinutes": 1.5,
+          "Seconds": 98,
+          "Price": 270,
+          "Biome": "Junkyard",
+          "TrainingRateBefore": 0.25,
+          "Name": "Pink Slip",
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.25,
+          "PaybackMinutes": 6.278350515463912
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 1032,
+          "Price": 76464,
+          "Biome": "Suburbs",
+          "TrainingRateBefore": 0.05555555555555555,
+          "Name": "Parking Fine",
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.05555555555555555,
+          "PaybackMinutes": 13.072879344641974
+        },
+        {
+          "PriceMinutes": 15,
+          "Seconds": 4027,
+          "Price": 1308384,
+          "Biome": "Downtown",
+          "TrainingRateBefore": 0.03125,
+          "Name": "Court Summons",
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.03125,
+          "PaybackMinutes": 31.875174499767326
+        },
+        {
+          "PriceMinutes": 40,
+          "Seconds": 15119,
+          "Price": 21749760,
+          "Biome": "Sports Track",
+          "TrainingRateBefore": 0.011111111111111112,
+          "Name": "Golden Ticket",
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.011111111111111112,
+          "PaybackMinutes": 88.89444181188486
+        }
+      ],
+      "Casts": 1934,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 243
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 3037
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 15119
+        }
+      ],
+      "Seed": 731,
+      "Power": 927.3576388871808,
+      "TrainingSeconds": 57364,
+      "Incomplete": true
+    },
+    "NoTickets": {
+      "Purchases": [
+        {
+          "PriceMinutes": 1,
+          "Seconds": 91,
+          "Price": 180,
+          "Biome": "Junkyard",
+          "TrainingRateBefore": 0.25,
+          "Name": "Focused Training",
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5
+        },
+        {
+          "PriceMinutes": 2,
+          "Seconds": 611,
+          "Price": 25488,
+          "Biome": "Suburbs",
+          "TrainingRateBefore": 0.1111111111111111,
+          "Name": "Weighted Training",
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.2222222222222222
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 2729,
+          "Price": 697805,
+          "Biome": "Downtown",
+          "TrainingRateBefore": 0.125,
+          "Name": "Intense Training",
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.25
+        },
+        {
+          "PriceMinutes": 25,
+          "Seconds": 8547,
+          "Price": 13593600,
+          "Biome": "Sports Track",
+          "TrainingRateBefore": 0.08888888888888889,
+          "Name": "Elite Training",
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.17777777777777778
+        },
+        {
+          "PriceMinutes": 90,
+          "Seconds": 33105,
+          "Price": 293112000,
+          "Biome": "Luxury Classics",
+          "TrainingRateBefore": 0.07272727272727272,
+          "Name": "Master Training",
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.14545454545454545
+        }
+      ],
+      "Seconds": 37630,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 161
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 1109
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 3462
+        },
+        {
+          "Name": "Luxury Classics",
+          "Seconds": 11116
+        },
+        {
+          "Name": "Hypercar Island",
+          "Seconds": 37630
+        }
+      ],
+      "Power": 2500.0323232309756,
+      "Casts": 855,
+      "Income": 15000,
+      "Seed": 731,
+      "TrainingSeconds": 24789,
+      "Cash": 80673515
+    },
+    "Runs": [
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 112,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 479,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1031,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1940,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 3123,
+            "Price": 1308384,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.08888888888888889,
+            "PaybackMinutes": 5.143738930706223
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5111,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7451,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14760,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21375,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27478,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1040
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 3033
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9180
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27478
+          }
+        ],
+        "Power": 2500.01616161615,
+        "Casts": 628,
+        "Income": 108000,
+        "Seed": 105460,
+        "TrainingSeconds": 18027,
+        "Cash": 724389323
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 97,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 393,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 909,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1763,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2662,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4734,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6849,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13782,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 19380,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26877,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 997
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2934
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8940
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26877
+          }
+        ],
+        "Power": 2500.1250000000464,
+        "Casts": 615,
+        "Income": 132000,
+        "Seed": 210189,
+        "TrainingSeconds": 17621,
+        "Cash": 1095877210
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 61,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 94,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 442,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 996,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1839,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2896,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4806,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7443,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13964,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 19724,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26998,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1029
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2980
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9014
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26998
+          }
+        ],
+        "Power": 2500.0727272727668,
+        "Casts": 618,
+        "Income": 144000,
+        "Seed": 314918,
+        "TrainingSeconds": 17697,
+        "Cash": 1149071362
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 136,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 947,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1835,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2934,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4911,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7071,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14412,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20325,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27251,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2976
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9057
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27251
+          }
+        ],
+        "Power": 2500.0727272727363,
+        "Casts": 624,
+        "Income": 144000,
+        "Seed": 419647,
+        "TrainingSeconds": 17860,
+        "Cash": 997536383
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 120,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 389,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 884,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1670,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2732,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4926,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7386,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14396,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20945,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27224,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 995
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2886
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9020
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27224
+          }
+        ],
+        "Power": 2500.0888888888926,
+        "Casts": 623,
+        "Income": 108000,
+        "Seed": 524376,
+        "TrainingSeconds": 17848,
+        "Cash": 789694977
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 61,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 98,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 408,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 974,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1830,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2983,
+            "Price": 1308384,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.08888888888888889,
+            "PaybackMinutes": 5.143738930706223
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4996,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7561,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14597,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20767,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27370,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1020
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2968
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9097
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27370
+          }
+        ],
+        "Power": 2500.0383838383796,
+        "Casts": 627,
+        "Income": 120000,
+        "Seed": 629105,
+        "TrainingSeconds": 17934,
+        "Cash": 895896984
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 61,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 94,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 407,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 839,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1814,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2762,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4800,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7006,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14616,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21006,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27320,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1004
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2955
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8991
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27320
+          }
+        ],
+        "Power": 2500.0727272727154,
+        "Casts": 625,
+        "Income": 132000,
+        "Seed": 733834,
+        "TrainingSeconds": 17914,
+        "Cash": 971243144
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 106,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1082,
+            "Price": 76464,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.125,
+            "PaybackMinutes": 1.8576734611684156
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1801,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2780,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4587,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6802,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13712,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 19426,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26813,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1022
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2967
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8883
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26813
+          }
+        ],
+        "Power": 2500.052272727321,
+        "Casts": 614,
+        "Income": 120000,
+        "Seed": 838563,
+        "TrainingSeconds": 17572,
+        "Cash": 981429960
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 113,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 389,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 794,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1625,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2615,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4681,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6951,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13975,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20643,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26948,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 995
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2856
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8890
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26948
+          }
+        ],
+        "Power": 2500.016161616191,
+        "Casts": 617,
+        "Income": 156000,
+        "Seed": 943292,
+        "TrainingSeconds": 17662,
+        "Cash": 1115735623
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 113,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 443,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 957,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1750,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2801,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4782,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7055,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14957,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21077,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27481,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1030
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2936
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8972
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27481
+          }
+        ],
+        "Power": 2500.0949494949105,
+        "Casts": 629,
+        "Income": 132000,
+        "Seed": 1048021,
+        "TrainingSeconds": 18015,
+        "Cash": 907257632
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 115,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 402,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 929,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1867,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 3015,
+            "Price": 1308384,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.08888888888888889,
+            "PaybackMinutes": 5.143738930706223
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4878,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7090,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13735,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 18849,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26910,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1002
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2985
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9039
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26910
+          }
+        ],
+        "Power": 2500.038383838442,
+        "Casts": 616,
+        "Income": 132000,
+        "Seed": 1152750,
+        "TrainingSeconds": 17639,
+        "Cash": 1112604446
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 96,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 403,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 897,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1883,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2961,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4796,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6891,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13616,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 19461,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26833,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1002
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2996
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9002
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26833
+          }
+        ],
+        "Power": 2500.0727272727913,
+        "Casts": 614,
+        "Income": 132000,
+        "Seed": 1257479,
+        "TrainingSeconds": 17592,
+        "Cash": 1063977948
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 102,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 404,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 948,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1858,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2803,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5171,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7664,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14463,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20493,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27347,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1003
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2984
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9198
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27347
+          }
+        ],
+        "Power": 2500.094949494957,
+        "Casts": 626,
+        "Income": 156000,
+        "Seed": 1362208,
+        "TrainingSeconds": 17926,
+        "Cash": 1006513709
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 108,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 929,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1749,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2886,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4778,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7073,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14144,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20247,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27073,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2933
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8969
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27073
+          }
+        ],
+        "Power": 2500.07272727275,
+        "Casts": 620,
+        "Income": 132000,
+        "Seed": 1466937,
+        "TrainingSeconds": 17742,
+        "Cash": 934508174
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 136,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 447,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 974,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1797,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2799,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4858,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7068,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13436,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 18604,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26751,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1032
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2968
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9019
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26751
+          }
+        ],
+        "Power": 2500.1111111111904,
+        "Casts": 613,
+        "Income": 156000,
+        "Seed": 1571666,
+        "TrainingSeconds": 17525,
+        "Cash": 1243674985
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 102,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 892,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1704,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2754,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5178,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7373,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14656,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21175,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27429,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2918
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9154
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27429
+          }
+        ],
+        "Power": 2500.0727272727136,
+        "Casts": 628,
+        "Income": 120000,
+        "Seed": 1676395,
+        "TrainingSeconds": 17978,
+        "Cash": 803792748
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 61,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 94,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 974,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1745,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2645,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5001,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7928,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14832,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21042,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27461,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2931
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9072
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27461
+          }
+        ],
+        "Power": 2500.072727272702,
+        "Casts": 628,
+        "Income": 120000,
+        "Seed": 1781124,
+        "TrainingSeconds": 18010,
+        "Cash": 898357009
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 112,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 479,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1067,
+            "Price": 76464,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.125,
+            "PaybackMinutes": 1.8576734611684156
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1715,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2705,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4787,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7206,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14797,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21573,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27401,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1037
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2931
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8973
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27401
+          }
+        ],
+        "Power": 2500.088888888861,
+        "Casts": 627,
+        "Income": 108000,
+        "Seed": 1885853,
+        "TrainingSeconds": 17965,
+        "Cash": 796950300
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 117,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 974,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1942,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 3042,
+            "Price": 1308384,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.08888888888888889,
+            "PaybackMinutes": 5.143738930706223
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5111,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7350,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14201,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20320,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27205,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 3027
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9176
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27205
+          }
+        ],
+        "Power": 2500.108838383867,
+        "Casts": 622,
+        "Income": 120000,
+        "Seed": 1990582,
+        "TrainingSeconds": 17844,
+        "Cash": 944137861
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 136,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1000,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1880,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 3018,
+            "Price": 1308384,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.08888888888888889,
+            "PaybackMinutes": 5.143738930706223
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5173,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7896,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14521,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20281,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27386,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2988
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9203
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27386
+          }
+        ],
+        "Power": 2500.0727272727304,
+        "Casts": 627,
+        "Income": 108000,
+        "Seed": 2095311,
+        "TrainingSeconds": 17950,
+        "Cash": 870479783
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 103,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 974,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1813,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2870,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4871,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7068,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13915,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20053,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26995,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2973
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9028
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26995
+          }
+        ],
+        "Power": 2500.125000000043,
+        "Casts": 618,
+        "Income": 132000,
+        "Seed": 2200040,
+        "TrainingSeconds": 17694,
+        "Cash": 1033111454
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 102,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 974,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 2015,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 3153,
+            "Price": 1308384,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.08888888888888889,
+            "PaybackMinutes": 5.143738930706223
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5190,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7743,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14327,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20425,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27300,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1025
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 3063
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9242
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27300
+          }
+        ],
+        "Power": 2500.0161616161854,
+        "Casts": 625,
+        "Income": 132000,
+        "Seed": 2304769,
+        "TrainingSeconds": 17894,
+        "Cash": 934838670
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 106,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 463,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 997,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1858,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2750,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4635,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6972,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14713,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21502,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27348,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1040
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2995
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8936
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27348
+          }
+        ],
+        "Power": 2500.111111111087,
+        "Casts": 626,
+        "Income": 132000,
+        "Seed": 2409498,
+        "TrainingSeconds": 17927,
+        "Cash": 854689769
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 110,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 395,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 803,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1853,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2901,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5139,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7550,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14610,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20955,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27404,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 998
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2979
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9165
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27404
+          }
+        ],
+        "Power": 2500.072727272722,
+        "Casts": 627,
+        "Income": 156000,
+        "Seed": 2514227,
+        "TrainingSeconds": 17968,
+        "Cash": 1041230691
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 102,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 416,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 929,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1789,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2836,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4625,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7102,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14064,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20652,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27008,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1024
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2960
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8906
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27008
+          }
+        ],
+        "Power": 2500.0383838384064,
+        "Casts": 619,
+        "Income": 120000,
+        "Seed": 2618956,
+        "TrainingSeconds": 17692,
+        "Cash": 946650634
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 106,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 479,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1127,
+            "Price": 76464,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.125,
+            "PaybackMinutes": 1.8576734611684156
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1910,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2905,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 5054,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7676,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 13835,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 19505,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27003,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1037
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 3029
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9155
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27003
+          }
+        ],
+        "Power": 2500.052272727331,
+        "Casts": 618,
+        "Income": 120000,
+        "Seed": 2723685,
+        "TrainingSeconds": 17702,
+        "Cash": 1053694329
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 91,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 136,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 464,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1052,
+            "Price": 76464,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.125,
+            "PaybackMinutes": 1.8576734611684156
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1785,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2811,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4759,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6846,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14635,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 21806,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27308,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1037
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2959
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8965
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27308
+          }
+        ],
+        "Power": 2500.052272727258,
+        "Casts": 624,
+        "Income": 120000,
+        "Seed": 2828414,
+        "TrainingSeconds": 17917,
+        "Cash": 723751061
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 61,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 101,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 434,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 1022,
+            "Price": 76464,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.125,
+            "PaybackMinutes": 1.8576734611684156
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1723,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2572,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4847,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7477,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14095,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 19643,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27068,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1022
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2928
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 9008
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27068
+          }
+        ],
+        "Power": 2500.1088383838674,
+        "Casts": 620,
+        "Income": 120000,
+        "Seed": 2933143,
+        "TrainingSeconds": 17737,
+        "Cash": 1057093643
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 112,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 398,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 819,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1642,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2576,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4896,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 7477,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14260,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20471,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 27143,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1000
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2867
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8995
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 27143
+          }
+        ],
+        "Power": 2500.0383838383973,
+        "Casts": 621,
+        "Income": 132000,
+        "Seed": 3037872,
+        "TrainingSeconds": 17797,
+        "Cash": 938525983
+      },
+      {
+        "Purchases": [
+          {
+            "PriceMinutes": 1,
+            "Seconds": 76,
+            "Price": 180,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.25,
+            "Name": "Focused Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.5
+          },
+          {
+            "PriceMinutes": 1.5,
+            "Seconds": 117,
+            "Price": 270,
+            "Biome": "Junkyard",
+            "TrainingRateBefore": 0.5,
+            "Name": "Pink Slip",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.5,
+            "PaybackMinutes": 6.278350515463912
+          },
+          {
+            "PriceMinutes": 2,
+            "Seconds": 399,
+            "Price": 25488,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.1111111111111111,
+            "Name": "Weighted Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.2222222222222222
+          },
+          {
+            "PriceMinutes": 6,
+            "Seconds": 839,
+            "Price": 76464,
+            "Biome": "Suburbs",
+            "TrainingRateBefore": 0.2222222222222222,
+            "Name": "Parking Fine",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.2222222222222222,
+            "PaybackMinutes": 13.072879344641974
+          },
+          {
+            "PriceMinutes": 8,
+            "Seconds": 1648,
+            "Price": 697805,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.125,
+            "Name": "Intense Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.25
+          },
+          {
+            "PriceMinutes": 15,
+            "Seconds": 2665,
+            "Price": 1308384,
+            "Biome": "Downtown",
+            "TrainingRateBefore": 0.25,
+            "Name": "Court Summons",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.25,
+            "PaybackMinutes": 31.875174499767326
+          },
+          {
+            "PriceMinutes": 25,
+            "Seconds": 4551,
+            "Price": 13593600,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.08888888888888889,
+            "Name": "Elite Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.17777777777777778
+          },
+          {
+            "PriceMinutes": 40,
+            "Seconds": 6616,
+            "Price": 21749760,
+            "Biome": "Sports Track",
+            "TrainingRateBefore": 0.17777777777777778,
+            "Name": "Golden Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.17777777777777778,
+            "PaybackMinutes": 88.89444181188486
+          },
+          {
+            "PriceMinutes": 90,
+            "Seconds": 14104,
+            "Price": 293112000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.07272727272727272,
+            "Name": "Master Training",
+            "Kind": "Exercise",
+            "TrainingRateAfter": 0.14545454545454545
+          },
+          {
+            "PriceMinutes": 120,
+            "Seconds": 20403,
+            "Price": 390816000,
+            "Biome": "Luxury Classics",
+            "TrainingRateBefore": 0.14545454545454545,
+            "Name": "Diamond Ticket",
+            "Kind": "Buy",
+            "TrainingRateAfter": 0.14545454545454545,
+            "PaybackMinutes": 73.58266476931904
+          }
+        ],
+        "Seconds": 26980,
+        "Biomes": [
+          {
+            "Name": "Junkyard",
+            "Seconds": 0
+          },
+          {
+            "Name": "Suburbs",
+            "Seconds": 164
+          },
+          {
+            "Name": "Downtown",
+            "Seconds": 1000
+          },
+          {
+            "Name": "Sports Track",
+            "Seconds": 2870
+          },
+          {
+            "Name": "Luxury Classics",
+            "Seconds": 8824
+          },
+          {
+            "Name": "Hypercar Island",
+            "Seconds": 26980
+          }
+        ],
+        "Power": 2500.000000000014,
+        "Casts": 617,
+        "Income": 120000,
+        "Seed": 3142601,
+        "TrainingSeconds": 17694,
+        "Cash": 938198340
+      }
+    ]
+  },
+  "Representative": {
+    "Purchases": [
+      {
+        "PriceMinutes": 1,
+        "Seconds": 76,
+        "Price": 180,
+        "Biome": "Junkyard",
+        "TrainingRateBefore": 0.25,
+        "Name": "Focused Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.5
+      },
+      {
+        "PriceMinutes": 1.5,
+        "Seconds": 103,
+        "Price": 270,
+        "Biome": "Junkyard",
+        "TrainingRateBefore": 0.5,
+        "Name": "Pink Slip",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.5,
+        "PaybackMinutes": 6.278350515463912
+      },
+      {
+        "PriceMinutes": 2,
+        "Seconds": 434,
+        "Price": 25488,
+        "Biome": "Suburbs",
+        "TrainingRateBefore": 0.1111111111111111,
+        "Name": "Weighted Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.2222222222222222
+      },
+      {
+        "PriceMinutes": 6,
+        "Seconds": 974,
+        "Price": 76464,
+        "Biome": "Suburbs",
+        "TrainingRateBefore": 0.2222222222222222,
+        "Name": "Parking Fine",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.2222222222222222,
+        "PaybackMinutes": 13.072879344641974
+      },
+      {
+        "PriceMinutes": 8,
+        "Seconds": 1813,
+        "Price": 697805,
+        "Biome": "Downtown",
+        "TrainingRateBefore": 0.125,
+        "Name": "Intense Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.25
+      },
+      {
+        "PriceMinutes": 15,
+        "Seconds": 2870,
+        "Price": 1308384,
+        "Biome": "Downtown",
+        "TrainingRateBefore": 0.25,
+        "Name": "Court Summons",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.25,
+        "PaybackMinutes": 31.875174499767326
+      },
+      {
+        "PriceMinutes": 25,
+        "Seconds": 4871,
+        "Price": 13593600,
+        "Biome": "Sports Track",
+        "TrainingRateBefore": 0.08888888888888889,
+        "Name": "Elite Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.17777777777777778
+      },
+      {
+        "PriceMinutes": 40,
+        "Seconds": 7068,
+        "Price": 21749760,
+        "Biome": "Sports Track",
+        "TrainingRateBefore": 0.17777777777777778,
+        "Name": "Golden Ticket",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.17777777777777778,
+        "PaybackMinutes": 88.89444181188486
+      },
+      {
+        "PriceMinutes": 90,
+        "Seconds": 13915,
+        "Price": 293112000,
+        "Biome": "Luxury Classics",
+        "TrainingRateBefore": 0.07272727272727272,
+        "Name": "Master Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.14545454545454545
+      },
+      {
+        "PriceMinutes": 120,
+        "Seconds": 20053,
+        "Price": 390816000,
+        "Biome": "Luxury Classics",
+        "TrainingRateBefore": 0.14545454545454545,
+        "Name": "Diamond Ticket",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.14545454545454545,
+        "PaybackMinutes": 73.58266476931904
+      }
+    ],
+    "Seconds": 26995,
+    "Biomes": [
+      {
+        "Name": "Junkyard",
+        "Seconds": 0
+      },
+      {
+        "Name": "Suburbs",
+        "Seconds": 164
+      },
+      {
+        "Name": "Downtown",
+        "Seconds": 1025
+      },
+      {
+        "Name": "Sports Track",
+        "Seconds": 2973
+      },
+      {
+        "Name": "Luxury Classics",
+        "Seconds": 9028
+      },
+      {
+        "Name": "Hypercar Island",
+        "Seconds": 26995
+      }
+    ],
+    "Power": 2500.125000000043,
+    "Casts": 618,
+    "Income": 132000,
+    "Seed": 2200040,
+    "TrainingSeconds": 17694,
+    "Cash": 1033111454
+  }
+}

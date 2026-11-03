@@ -7,3 +7,6 @@
 6. 02.11.2026 — użytkownik zlecił reguły kolorów/cen sklepu, HUD do ok. 12% ekranu i rząd SHOP/TRAIN/THROW, usunięcie wiaduktów oraz mocniej zniszczony Rusty Sedan v2; wygląd próbek nadal do zatwierdzenia.
 7. 02.11.2026 — USER APPROVED: Mandaty NIE zmieniają zasięgu; dają tylko szansę na lepsze auto w biomie.
 8. 02.11.2026 — USER APPROVED: Pętla: rzut z animacją → trafienie w jadące auto → laweta → teleport na działkę → auto w ekwipunku (postaw / sprzedaj / zostaw).
+
+9. 03.11.2026 — USER APPROVED w zakresie działania: użytkownik potwierdził pętlę rzut → laweta → działka → ekwipunek oraz zapis iteracji 6; bez zatwierdzenia nowego balansu i wyglądu.
+10. 03.11.2026 — użytkownik zlecił balans wg LihFolk: zakup ćwiczenia 60–90 s i biomy do 6–10 h, ceny w minutach dochodu, zarobek biom × rzadkość × mandat; rozszerza punkt 7 o bonus dochodu, nadal bez bonusu zasięgu; balans NOT FINAL.

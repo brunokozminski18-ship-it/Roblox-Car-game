@@ -32,12 +32,31 @@ function Rules.rarityWeights(ticketId: string): any
 	for i,r in Config.Rarities do out[i]={Weight=r.Weight*(if i==1 then 1 else 1+luck)} end
 	return out
 end
+function Rules.exercise(id: any): (any,number?)
+ for i,x in Config.Exercises do if x.Id==id then return x,i end end
+ return nil,nil
+end
+function Rules.trainingRate(power: number,exercise: number): number
+ local x=Config.Exercises[exercise];if not x then return 0 end
+ return x.Work/Config.Economy.TrainingWorkPerPower[Rules.biome(Rules.distance(power))]
+end
 function Rules.shop(data: any,action: any,id: any): string
+ if action=="Exercise"then
+  if typeof(id)~="string"or #id>24 then return "Invalid exercise!"end
+  local x,index=Rules.exercise(id);if not x then return "Invalid exercise!"end
+  if index<=data.Exercise then return "Already owned!"end
+  if index~=data.Exercise+1 then return "Buy the previous exercise first!"end
+  if Rules.biome(Rules.distance(data.Power))<x.UnlockBiome then return "Reach "..Config.Biomes[x.UnlockBiome].Name.." first!"end
+  if data.Cash<x.Price then return "Not enough Cash!"end
+  data.Cash-=x.Price;data.Exercise=index
+  return "Bought "..x.Name.."!"
+ end
 	if typeof(id)~="string" or #id>24 then return "Invalid ticket!" end
 	local ticket,index=Rules.ticket(id);if ticket.Id~=id then return "Invalid ticket!" end
 	if action=="Buy" then
 		if data.Owned[id] then return "Already owned!" end
 		if index>1 and not data.Owned[Config.Tickets[index-1].Id]then return "Buy the previous ticket first!" end
+		if Rules.biome(Rules.distance(data.Power))<ticket.UnlockBiome then return "Reach "..Config.Biomes[ticket.UnlockBiome].Name.." first!"end
 		if data.Cash<ticket.Price then return "Not enough Cash!" end
 		data.Cash-=ticket.Price;data.Owned[id]=true
 		return "Bought "..ticket.Name.."!"
@@ -50,7 +69,7 @@ end
 function Rules.savedReward(record: any): any
 	if typeof(record)~="table" or not Rules.finiteNumber(record.Biome) or record.Biome%1~=0 or not Rules.finiteNumber(record.Rarity)or record.Rarity%1~=0 then return nil end
 	local b=Config.Biomes[record.Biome];if not b or not Config.Rarities[record.Rarity] then return nil end
-	for i,c in b.Cars do if c.Name==record.Name then return Rules.reward(record.Biome,record.Rarity,i) end end
+	for i,c in b.Cars do if c.Name==record.Name then local t=Rules.ticket(record.Ticket);if t.Id~=record.Ticket then return nil end;return Rules.reward(record.Biome,record.Rarity,i,record.Ticket) end end
 	return nil
 end
 function Rules.weighted(entries: any, roll: number): number
@@ -62,9 +81,10 @@ function Rules.weighted(entries: any, roll: number): number
 	for i,entry in entries do sum+=entry.Weight; if target<sum then return i end end
 	return #entries
 end
-function Rules.reward(biome: number, rarity: number, car: number): any
+function Rules.reward(biome: number, rarity: number, car: number, ticketId: string?): any
 	local b,r=Config.Biomes[biome],Config.Rarities[rarity]
-	return {Biome=biome,Rarity=rarity,Name=b.Cars[car].Name,Income=b.BaseIncome*r.Multiplier}
+	local ticket=Rules.ticket(ticketId or "paper")
+	return {Biome=biome,Rarity=rarity,Name=b.Cars[car].Name,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier))}
 end
 function Rules.salePrice(income: number): number
 	return math.floor(income*Config.SaleIncomeSeconds)

@@ -32,3 +32,9 @@
 - Iteracja 6: pełny ekwipunek wymaga niezależnego powrotu na działkę (MY PLOT), inaczej blokada rzutu odcina jedyną drogę do sprzedaży.
 - Iteracja 6: kamera filmowa potrzebuje ścieżki anulowania przy śmierci/odrodzeniu. W PC zabicie w locie przywróciło Custom i nowy Humanoid bez utraty łupu.
 - Iteracja 6: 78 asercji i Studio telefon/PC potwierdzają mechanikę; nie dowodzą zabawy, działania na urządzeniu ani izolacji działek wielu graczy.
+
+- Iteracja 7 (03.11): ceny w minutach referencyjnego dochodu pozwoliły równocześnie stroić pule aut i zakupy; benchmark startowy musi uwzględniać zapełnianie działki, nie pełny parking od pierwszej sekundy.
+- Iteracja 7: payback wykazał słabość końcowego mandatu mimo dużego nominalnego bonusu. Dopasowano korzyść, nie samą cenę; model obejmuje też sprzedaż za 3 min dochodu, ważny aktywny faucet.
+- Iteracja 7: 30 symulacji wspólnych reguł i 151 s rzeczywistego telefonu dały różne, ale zgodne z celami czasy; założenia czasu transportu/obsługi trzeba oddzielić od pomiaru UI.
+- Iteracja 7: ułamkowy Power wymaga jednocześnie zmiany whitelisty zapisu i zaokrąglenia HUD; inaczej ekran pokazuje długi ogon cyfr. Save/rejoin zachował dokładną wartość i bonus mandatu przypisany do auta.
+- Iteracja 7: LihFolk Vault V2 (CC BY 4.0) podaje metodę cen/pacingu/payback, a nie gotowe liczby tej gry. Horyzont120 min i polityka zachłanna są naszymi założeniami; długi grind nadal wymaga ludzi.

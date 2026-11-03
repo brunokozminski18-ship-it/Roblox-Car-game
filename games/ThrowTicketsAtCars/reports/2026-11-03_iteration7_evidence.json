@@ -1,0 +1,411 @@
+{
+  "Date": "2026-11-03",
+  "Phone": {
+    "Events": [
+      {
+        "Power": 24,
+        "Seconds": 0.000010013580322265625,
+        "Name": "Start",
+        "Cash": 0
+      },
+      {
+        "Power": 24,
+        "Seconds": 5.712315082550049,
+        "Name": "Car cycle",
+        "Cash": 0
+      },
+      {
+        "Power": 24,
+        "Seconds": 20.344226121902466,
+        "Name": "Car cycle",
+        "Cash": 31
+      },
+      {
+        "Power": 24,
+        "Seconds": 34.76262903213501,
+        "Name": "Car cycle",
+        "Cash": 73
+      },
+      {
+        "Power": 24,
+        "Seconds": 48.89529514312744,
+        "Name": "Car cycle",
+        "Cash": 129
+      },
+      {
+        "Power": 24,
+        "Seconds": 63.5469970703125,
+        "Name": "Car cycle",
+        "Cash": 199
+      },
+      {
+        "Power": 24,
+        "Seconds": 71.04299116134644,
+        "Name": "Bought focused",
+        "Cash": 67
+      },
+      {
+        "Power": 24,
+        "Seconds": 78.96358013153076,
+        "Name": "Car cycle",
+        "Cash": 116
+      },
+      {
+        "Power": 32,
+        "Seconds": 101.79536414146423,
+        "Name": "Bought pink",
+        "Cash": 0
+      },
+      {
+        "Power": 39.5,
+        "Seconds": 122.69148206710815,
+        "Name": "Car cycle",
+        "Cash": 867
+      },
+      {
+        "Power": 50,
+        "Seconds": 151.47539710998535,
+        "Name": "Suburbs",
+        "Cash": 1070
+      }
+    ],
+    "Errors": [],
+    "Device": "iPhone 7 landscape",
+    "TotalSeconds": 151.4754569530487,
+    "Complete": true,
+    "NoGrants": true
+  },
+  "BeforeRejoin": {
+    "location": "Plot",
+    "distance": 59.55555555555583,
+    "saved": "saved",
+    "pinkCars": 1,
+    "lastIncome": 9,
+    "data": {
+      "Cars": {
+        "1": {
+          "Rarity": 2,
+          "Slot": 1,
+          "Id": "6c8e2198-d147-41af-918e-f0d8c43bc9f8",
+          "Ticket": "paper",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "2": {
+          "Rarity": 1,
+          "Slot": 2,
+          "Id": "9697d53f-7823-404d-8a02-26aa12d35093",
+          "Ticket": "paper",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "3": {
+          "Rarity": 1,
+          "Slot": 3,
+          "Id": "f6e621ae-2a60-45e2-8e33-c5a9857f3ae7",
+          "Ticket": "paper",
+          "Name": "Old Van",
+          "Biome": 1
+        },
+        "4": {
+          "Rarity": 1,
+          "Slot": 4,
+          "Id": "1682b0b6-e5ed-4cb0-813c-fe204c3fdace",
+          "Ticket": "paper",
+          "Name": "Old Van",
+          "Biome": 1
+        },
+        "5": {
+          "Rarity": 1,
+          "Slot": 5,
+          "Id": "6e54d31a-405d-4d3f-8cd6-2251d5afd630",
+          "Ticket": "paper",
+          "Name": "Old Van",
+          "Biome": 1
+        },
+        "6": {
+          "Rarity": 1,
+          "Slot": 6,
+          "Id": "75978f77-d879-4969-819e-8e708828d8bd",
+          "Ticket": "paper",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "7": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "acd1a1f3-0043-4df3-b185-14235655c874",
+          "Ticket": "pink",
+          "Name": "Minivan",
+          "Biome": 2
+        }
+      },
+      "Power": 59.55555555555583,
+      "Owned": {
+        "pink": true,
+        "paper": true
+      },
+      "Exercise": 2,
+      "Equipped": "pink",
+      "Cash": 2015
+    },
+    "biome": 2
+  },
+  "AfterRejoin": {
+    "inventory": 1,
+    "income": 7,
+    "data": {
+      "Cars": {
+        "1": {
+          "Rarity": 2,
+          "Slot": 1,
+          "Id": "6c8e2198-d147-41af-918e-f0d8c43bc9f8",
+          "Ticket": "paper",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "2": {
+          "Rarity": 1,
+          "Slot": 2,
+          "Id": "9697d53f-7823-404d-8a02-26aa12d35093",
+          "Ticket": "paper",
+          "Name": "Rusty Sedan",
+          "Biome": 1
+        },
+        "3": {
+          "Rarity": 1,
+          "Slot": 3,
+          "Id": "f6e621ae-2a60-45e2-8e33-c5a9857f3ae7",
+          "Ticket": "paper",
+          "Name": "Old Van",
+          "Biome": 1
+        },
+        "4": {
+          "Rarity": 1,
+          "Slot": 4,
+          "Id": "1682b0b6-e5ed-4cb0-813c-fe204c3fdace",
+          "Ticket": "paper",
+          "Name": "Old Van",
+          "Biome": 1
+        },
+        "5": {
+          "Rarity": 1,
+          "Slot": 5,
+          "Id": "6e54d31a-405d-4d3f-8cd6-2251d5afd630",
+          "Ticket": "paper",
+          "Name": "Old Van",
+          "Biome": 1
+        },
+        "6": {
+          "Rarity": 1,
+          "Slot": 6,
+          "Id": "75978f77-d879-4969-819e-8e708828d8bd",
+          "Ticket": "paper",
+          "Name": "Broken Pickup",
+          "Biome": 1
+        },
+        "7": {
+          "Rarity": 1,
+          "Slot": 0,
+          "Id": "acd1a1f3-0043-4df3-b185-14235655c874",
+          "Ticket": "pink",
+          "Name": "Minivan",
+          "Biome": 2
+        }
+      },
+      "Power": 59.55555555555583,
+      "Owned": {
+        "pink": true,
+        "paper": true
+      },
+      "Exercise": 2,
+      "Equipped": "pink",
+      "Cash": 2267
+    },
+    "errors": []
+  },
+  "DevCommands": {
+    "serverOnly": true,
+    "invalidRejected": true,
+    "remotes": {
+      "1": "Throw",
+      "2": "Train",
+      "3": "Feedback",
+      "4": "Ticket",
+      "5": "Shop",
+      "6": "Garage",
+      "7": "InventorySnapshot",
+      "8": "Travel"
+    },
+    "data": {
+      "Cars": [],
+      "Power": 29,
+      "Owned": {
+        "paper": true
+      },
+      "Exercise": 1,
+      "Equipped": "paper",
+      "Cash": 1000
+    },
+    "reset": "saved"
+  },
+  "Tests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"basic\":\"7 basic assertions passed\",\"v6\":\"62 iteration-6 assertions passed\",\"pacing\":\"512 pacing acceptance assertions passed\",\"v7\":\"34 iteration-7 assertions passed\",\"profiles\":\"9 profile safety assertions passed\"}"
+      }
+    ],
+    "isError": false
+  },
+  "PairedFull": {
+    "Purchases": [
+      {
+        "PriceMinutes": 1,
+        "Seconds": 91,
+        "Price": 180,
+        "Biome": "Junkyard",
+        "TrainingRateBefore": 0.25,
+        "Name": "Focused Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.5
+      },
+      {
+        "PriceMinutes": 1.5,
+        "Seconds": 136,
+        "Price": 270,
+        "Biome": "Junkyard",
+        "TrainingRateBefore": 0.5,
+        "Name": "Pink Slip",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.5,
+        "PaybackMinutes": 6.278350515463912
+      },
+      {
+        "PriceMinutes": 2,
+        "Seconds": 495,
+        "Price": 25488,
+        "Biome": "Suburbs",
+        "TrainingRateBefore": 0.1111111111111111,
+        "Name": "Weighted Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.2222222222222222
+      },
+      {
+        "PriceMinutes": 6,
+        "Seconds": 1120,
+        "Price": 76464,
+        "Biome": "Downtown",
+        "TrainingRateBefore": 0.125,
+        "Name": "Parking Fine",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.125,
+        "PaybackMinutes": 1.8576734611684156
+      },
+      {
+        "PriceMinutes": 8,
+        "Seconds": 2038,
+        "Price": 697805,
+        "Biome": "Downtown",
+        "TrainingRateBefore": 0.125,
+        "Name": "Intense Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.25
+      },
+      {
+        "PriceMinutes": 15,
+        "Seconds": 3161,
+        "Price": 1308384,
+        "Biome": "Sports Track",
+        "TrainingRateBefore": 0.08888888888888889,
+        "Name": "Court Summons",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.08888888888888889,
+        "PaybackMinutes": 5.143738930706223
+      },
+      {
+        "PriceMinutes": 25,
+        "Seconds": 5114,
+        "Price": 13593600,
+        "Biome": "Sports Track",
+        "TrainingRateBefore": 0.08888888888888889,
+        "Name": "Elite Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.17777777777777778
+      },
+      {
+        "PriceMinutes": 40,
+        "Seconds": 7499,
+        "Price": 21749760,
+        "Biome": "Sports Track",
+        "TrainingRateBefore": 0.17777777777777778,
+        "Name": "Golden Ticket",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.17777777777777778,
+        "PaybackMinutes": 88.89444181188486
+      },
+      {
+        "PriceMinutes": 90,
+        "Seconds": 14095,
+        "Price": 293112000,
+        "Biome": "Luxury Classics",
+        "TrainingRateBefore": 0.07272727272727272,
+        "Name": "Master Training",
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.14545454545454545
+      },
+      {
+        "PriceMinutes": 120,
+        "Seconds": 20510,
+        "Price": 390816000,
+        "Biome": "Luxury Classics",
+        "TrainingRateBefore": 0.14545454545454545,
+        "Name": "Diamond Ticket",
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.14545454545454545,
+        "PaybackMinutes": 73.58266476931904
+      }
+    ],
+    "Seconds": 27179,
+    "Biomes": [
+      {
+        "Name": "Junkyard",
+        "Seconds": 0
+      },
+      {
+        "Name": "Suburbs",
+        "Seconds": 164
+      },
+      {
+        "Name": "Downtown",
+        "Seconds": 1045
+      },
+      {
+        "Name": "Sports Track",
+        "Seconds": 3086
+      },
+      {
+        "Name": "Luxury Classics",
+        "Seconds": 9215
+      },
+      {
+        "Name": "Hypercar Island",
+        "Seconds": 27179
+      }
+    ],
+    "Power": 2500.0727272727695,
+    "Casts": 622,
+    "Income": 108000,
+    "Seed": 731,
+    "TrainingSeconds": 17818,
+    "Cash": 863214785
+  },
+  "ActualShopChecks": {
+    "Unaffordable": "Not enough Cash!",
+    "Locked": "Buy the previous exercise first!",
+    "Bought": "Bought Weighted Training!",
+    "Duplicate": "Already owned!",
+    "ExerciseAfterBuy": 3,
+    "Note": "Dev Cash was added only after the unboosted timed run and rejoin."
+  }
+}

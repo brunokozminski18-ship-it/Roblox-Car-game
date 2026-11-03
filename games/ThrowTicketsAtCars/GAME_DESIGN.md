@@ -1,24 +1,25 @@
-# THROW TICKETS AT CARS! — iteracja 6
-- USER APPROVED 02.11.2026: Mandaty NIE zmieniają zasięgu; dają tylko szansę na lepsze auto w biomie.
-- USER APPROVED 02.11.2026: Pętla: rzut z animacją → trafienie w jadące auto → laweta → teleport na działkę → auto w ekwipunku (postaw / sprzedaj / zostaw).
-- Power rośnie tylko podczas ćwiczeń TRAIN (+1/s w Config). Dystans=min(Power,koniec mapy).
-- Serwer ustala biom i losuje rzadkość + nazwę z jego puli. Mandaty modyfikują tylko wagi Rare+.
-- 6 mandatów i ceny zachowane: Paper/Pink/Parking/Court/Golden/Diamond. Sklep pokazuje tylko odds/luck.
-- Rzut: 0,45 s zamachu + 2 s lotu łukiem; kamera podąża, potem wraca do standardowej.
-- Serwer ma stan throwing do końca transportu. GUI wyszarza THROW; spam nie tworzy drugiego łupu.
-- Auta pokazowe jadą po stałych pasach bez fizyki; wynik jest osobnym autem dokładnie wylosowanego typu.
-- Trafienie: mandat na szybie, TICKETED!, nazwa/kolor rzadkości; laweta ok. 2 s.
-- Po transporcie teleport na własną działkę, auto trafia do własnego hotbara.
-- Działka: 6 miejsc. Wybierz auto, podejdź do miejsca, PLACE; postawione daje dochód co sekundę.
-- REMOVE oddaje auto do ekwipunku; SELL sprzedaje niepostawione. Bez automatycznej podmiany/sprzedaży.
-- Limit ekwipunku 20 (postawione auta poza limitem); pełny blokuje rzut/zdjęcie auta. Wszystkie limity w Config.
-- BACK TO ROAD teleportuje z własnej działki na linię rzutu; MY PLOT umożliwia powrót bez łapania auta. Auto można zostawić w hotbarze.
-- Serwer trzyma ID/typ/rarity/slot każdego auta; klient nie decyduje o własności, wypłacie i stawianiu.
-- Schema 2 migruje stare zaparkowane auta do tej samej własności/slotu; zachowuje Cash, Power i mandaty.
-- Zatwierdzony łup rezerwowany i trwale zapisywany przed animacją; po przerwaniu sesji pozostaje jeden egzemplarz w ekwipunku.
-- Jeden writer Profiles, lease+token, autosave/leave/shutdown; osobny magazyn Studio. Bez dochodu offline.
-- Biomy: Junkyard 0, Suburbs 50, Downtown 150, Sports Track 400, Luxury Classics 1000, Hypercar Island 2500.
-- Klockowa mapa, boczne tablice, tylko Rusty Sedan v2 jako model-próbka; inne auta proste.
-- Nowy hotbar i istniejący sklep/HUD: NOT FINAL. Balans cen i tempa treningu NOT FINAL.
-- Bez petów, Rebirth, Robux, kradzieży i publikacji.
-Źródło zasad implementacji: LihFolk Vault V2 (CC BY 4.0), playbook/ARCHITECTURE.
+# THROW TICKETS AT CARS! — iteracja 7
+- USER APPROVED 02.11: pętla rzut → jadące auto → laweta → własna działka → ekwipunek (postaw/sprzedaj/zostaw).
+- Użytkownik potwierdził 03.11 działanie tej pętli i zapisu. Nowy balans NOT FINAL.
+- Dystans=min(Power,koniec mapy). Mandaty NIE zwiększają dystansu.
+- Power rośnie tylko przy aktywnym TRAIN: Work ćwiczenia / koszt pracy biomu na sekundę; postęp ułamkowy zapisany, HUD pokazuje pełną liczbę.
+- Basic Training +5 kupowanych ulepszeń w istniejącym SHOP. Każde następne podwaja szybkość ćwiczenia, wymaga poprzedniego oraz biomu.
+- Mandaty dają luck Rare+ i mnożnik dochodu złapanego auta. Ticket przypisany przy złapaniu; późniejsze EQUIP nie zmienia starych aut.
+- Income=floor(BaseIncome biomu × mnożnik rzadkości × mnożnik mandatu), minimum1. Sprzedaż za180 s income.
+- Cena upgrade = Minutes × ReferenceIncomePerMinute biomu odblokowania, zaokrąglona do pełnych $. Wszystkie parametry w Config.
+- Minuty cen ćwiczeń: 0/1/2/8/25/90; mandatów: 0/1,5/6/15/40/120. Korzyść/cena i payback testowane na ścieżce zachłannej.
+- Cele od zera, aktywnie: zakup60–90 s; Suburbs2–3 min, Downtown15 min, Sports45–60 min, Luxury2–3 h, Hypercar6–10 h; ±25%.
+- Zamach0,45 s + łuk/spin/kamera2 s. Wynik serwera wjeżdża na pas; TICKETED!, nazwa i rarity, laweta2 s.
+- Serwer blokuje THROW do końca transportu. Po dostawie teleport na własną działkę; łup w ekwipunku.
+- 6 miejsc i limit20 aut w ekwipunku. Wybierz kartę, podejdź do własnego slotu, PLACE. Tylko postawione auta dają pasywny Cash/s.
+- REMOVE oddaje do ekwipunku, SELL sprzedaje niepostawione. Bez automatycznej podmiany/sprzedaży.
+- BACK TO ROAD wraca na linię rzutu; MY PLOT umożliwia powrót bez rzutu, także przy pełnym ekwipunku.
+- Serwer ustala własność, losowanie, koszt, nagrody, pojemność i dystans. Klient tylko prosi oraz pokazuje efekty.
+- Schema3: Cash, Power, Exercise, Owned/Equipped i Cars z ID/Biome/Rarity/Name/Ticket/Slot. Migracja zachowuje poprzedni profil.
+- Zatwierdzony łup zapisywany przed animacją, rezerwuje limit. Przerwanie sesji nie daje drugiego egzemplarza.
+- Jeden writer Profiles, lease/token, autosave/leave/shutdown; Studio ma osobny magazyn. Brak dochodu offline.
+- Biomy/progi: Junkyard0, Suburbs50, Downtown150, Sports400, Luxury1000, Hypercar2500; klockowa mapa i stałe pasy bez fizyki.
+- Tylko Rusty Sedan v2 jako próbka modelu. Wygląd sklepu/HUD/hotbara/modelu i balans NOT FINAL.
+- Dev Reset/+Cash/+Power tylko w Studio, przez ServerStorage; brak takich remotes.
+- Bez nowych modeli, petów, Rebirth, Robux, kradzieży i publikacji.
+Źródło metod: LihFolk Vault V2 (CC BY4.0), wskazane sekcje Progression and Pacing Design / Pricing Curves and Upgrade Costs.

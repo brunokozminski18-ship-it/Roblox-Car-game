@@ -1,9 +1,11 @@
 # Błędy i ograniczenia
-- Końcowy świeży przebieg Studio 02.11.2026: 0 błędów gry na kliencie i serwerze.
-- NOT FINAL: hotbar, sklep/HUD, Rusty Sedan, ceny, luck i tempo treningu.
-- NEEDS VERIFICATION: fizyczny telefon, swobodny ruch na urządzeniu i wielu graczy. QA stabilizował postać na potrzeby klików/zrzutów.
-- Trwały zapis łupu poprzedza animację; opóźnienie backendu może wydłużyć fazę przygotowania. Sama sekwencja animacji+lawety ok. 4,45 s.
-- Awaria/niejednoznaczny zapis testowane przez wstrzyknięty magazyn; rzeczywista awaria backendu niebadana.
-- Przy utracie sesji może obowiązywać lease do 90 s; gracz dostaje komunikat o bezpiecznym ponownym wejściu.
-- Brak dochodu offline; auta w ekwipunku nie zarabiają.
-- Naprawiono: mnożniki mandatów, brak ćwiczeń, brak powrotu do działki przy pełnym ekwipunku, dekoracje nachodzące na miejsca pierwszej działki.
+- Końcowe testy Studio03.11.2026: brak błędów gry klienta i serwera; pomiar telefonu71 s/151 s i save/rejoin PASS.
+- Balans NOT FINAL: ceny w minutach, benchmark dochodu, trening, rzadkości i bonusy mandatów wymagają playtestu.
+- Późne biomy (do ok.7,5 h aktywnie) sprawdzone wyłącznie w symulacji, bez rozegrania tych godzin.
+- Model zakłada cykl14 s, odświeżenie45 s i aktywne wybieranie najlepszych aut. Inny styl/losowanie/latencja zmienią czasy.
+- Fizyczny telefon, wielu graczy i rzeczywista awaria backendu nieprzetestowane.
+- Zapis łupu poprzedza animację; wolny backend wydłuża przygotowanie. Lease po awarii może trwać do90 s.
+- Brak dochodu offline. Zmiana mandatu nie zwiększa dochodu już złapanych aut.
+- Dochód auta zaokrąglany w dół do pełnych $/s; najtańsze Common mogą nie dostać pełnego nominalnego bonusu x1,5.
+- Studio CaptureControls może blokować środek przycisku przy VirtualInput; testy klikały lewy fragment. Nie dotyczy to źródła nagród.
+- Wygląd sklepu/HUD/hotbara/Rusty Sedan nadal NOT FINAL.

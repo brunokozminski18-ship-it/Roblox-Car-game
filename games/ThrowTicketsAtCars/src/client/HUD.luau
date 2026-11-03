@@ -7,7 +7,7 @@ local function short(n: number): string
  for _,v in {{1e12,"T"},{1e9,"B"},{1e6,"M"},{1e3,"K"}}do
   if n>=v[1]then return string.format("%.1f%s",math.floor(n/v[1]*10)/10,v[2])end
  end
- return tostring(n)
+ return tostring(math.floor(n))
 end
 function HUD.mount(parent: Instance): any
  local gui=Instance.new("ScreenGui");gui.Name,gui.ResetOnSpawn,gui.DisplayOrder="TicketHUD",false,10
@@ -36,7 +36,7 @@ function HUD.mount(parent: Instance): any
  end
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize()
  return {gui=gui,top=top,throw=throw,train=train,shop=shop,message=message,
-  render=function(cash: number,power: number,equipped: string?,training: boolean)
+  render=function(cash: number,power: number,equipped: string?,training: boolean,rate: number)
    local distance=Rules.distance(power);local b=Config.Biomes[Rules.biome(distance)]
    stats.Text=string.format('CASH <font color="#B2FFAD">$%s</font>  |  POWER <font color="#FFF2A6">%s</font>  |  %s',short(cash),short(power),b.Name:upper())
    local nextIndex,need=Rules.nextBiome(power)
@@ -44,7 +44,7 @@ function HUD.mount(parent: Instance): any
     local nextBiome=Config.Biomes[nextIndex];fill.Size=UDim2.fromScale(math.clamp((distance-b.MinPower)/(nextBiome.MinPower-b.MinPower),0,1),1)
     track:SetAttribute("NextBiome",nextBiome.Name);track:SetAttribute("NeedPower",need)
    else fill.Size=UDim2.fromScale(1,1);track:SetAttribute("NextBiome","MAX");track:SetAttribute("NeedPower",0)end
-   train.Text=if training then "TRAIN ON"else string.format("TRAIN +%d",Config.TrainGain)
+   train.Text=if training then "TRAIN ON"else "TRAIN"
    local gradient=train:FindFirstChildOfClass("UIGradient")::UIGradient
    gradient.Color=if training then ColorSequence.new(Color3.fromHex("8CF27C"),Color3.fromHex("22B24A"))else ColorSequence.new(Color3.fromHex("D98BFF"),Color3.fromHex("7B2BE6"))
   end,

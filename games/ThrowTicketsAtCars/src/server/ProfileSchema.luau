@@ -3,7 +3,7 @@ local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local Schema={}
 function Schema.default(): any
- return {Cash=0,Power=Config.StartPower,Owned={paper=true},Equipped="paper",Cars={}}
+ return {Cash=0,Power=Config.StartPower,Owned={paper=true},Equipped="paper",Exercise=1,Cars={}}
 end
 function Schema.copy(value: any): any
  if typeof(value)~="table"then return value end
@@ -24,8 +24,13 @@ function Schema.prepare(raw: any): (any,string?)
    table.insert(d.Cars,{Id="legacy_"..tostring(c.Slot),Biome=c.Biome,Rarity=c.Rarity,Name=c.Name,Slot=c.Slot})
   end
  end
+ if raw.Schema<3 then
+  d.Exercise=1
+  if typeof(d.Cars)=="table"then for _,c in d.Cars do if typeof(c)=="table"then c.Ticket="paper"end end end
+ end
+ if not Rules.finiteNumber(d.Exercise)or d.Exercise%1~=0 or not Config.Exercises[d.Exercise]then return nil,"Invalid exercise"end
  if not Rules.finiteNumber(d.Cash)or d.Cash<0 or d.Cash>Config.MaxCash or d.Cash%1~=0 then return nil,"Invalid Cash"end
- if not Rules.finiteNumber(d.Power)or d.Power<0 or d.Power>Config.MaxPower or d.Power%1~=0 then return nil,"Invalid Power"end
+ if not Rules.finiteNumber(d.Power)or d.Power<0 or d.Power>Config.MaxPower then return nil,"Invalid Power"end
  if typeof(d.Owned)~="table"or typeof(d.Cars)~="table"or typeof(d.Equipped)~="string"then return nil,"Invalid inventory"end
  local owned={};local gap=false
  for _,t in Config.Tickets do if d.Owned[t.Id]==true then if gap then return nil,"Invalid unlock sequence"end;owned[t.Id]=true else gap=true end end
@@ -39,9 +44,9 @@ function Schema.prepare(raw: any): (any,string?)
   if c.Slot>0 then if slots[c.Slot]then return nil,"Duplicate slot"end;slots[c.Slot]=true else inventory+=1 end
   ids[c.Id]=true
   -- A committed pending catch becomes visible inventory on reconnect, exactly once.
-  table.insert(cars,{Id=c.Id,Biome=c.Biome,Rarity=c.Rarity,Name=c.Name,Slot=c.Slot})
+  table.insert(cars,{Id=c.Id,Biome=c.Biome,Rarity=c.Rarity,Name=c.Name,Ticket=c.Ticket,Slot=c.Slot})
  end
  if count~=#d.Cars or inventory>Config.InventoryLimit then return nil,"Inventory capacity exceeded"end
- return {Cash=d.Cash,Power=d.Power,Owned=owned,Equipped=d.Equipped,Cars=cars}
+ return {Cash=d.Cash,Power=d.Power,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars}
 end
 return Schema

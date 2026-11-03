@@ -15,7 +15,7 @@ end
 function Garage.add(data: any,reward: any,id: string,pending: boolean): (boolean,string)
  if Garage.inventoryCount(data)>=Config.InventoryLimit then return false,"Inventory full!"end
  if Garage.find(data,id)then return false,"Duplicate car!"end
- table.insert(data.Cars,{Id=id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,Slot=0,Pending=if pending then true else nil})
+ table.insert(data.Cars,{Id=id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,Ticket=reward.Ticket,Slot=0,Pending=if pending then true else nil})
  return true,"Car added!"
 end
 function Garage.act(data: any,action: any,id: any,slot: any): (boolean,string)

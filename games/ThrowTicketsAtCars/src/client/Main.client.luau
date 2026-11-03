@@ -47,15 +47,15 @@ end)
 Effects.watchParking(world:WaitForChild("Parking"));Effects.watchTows(world:WaitForChild("Tows"))
 local previousPower=p:GetAttribute("ThrowPower")or Config.StartPower
 local function updateStats()
- hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("Training")==true)
+ hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("Training")==true,p:GetAttribute("TrainingRate")or 0)
  hud.mode(p:GetAttribute("Location")or "Road",p:GetAttribute("Throwing")==true,p:GetAttribute("ThrowPhase")or "Idle")
 end
 p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
-	local power=p:GetAttribute("ThrowPower")or 0;local gain=power-previousPower;previousPower=power;updateStats()
+	local power=p:GetAttribute("ThrowPower")or 0;local gain=math.floor(power)-math.floor(previousPower);previousPower=power;updateStats()
 	local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")::BasePart?
-	if gain>0 and gain<=Config.TrainGain and root then Effects.popup(root,string.format("+%d Power",gain),Color3.fromRGB(140,210,255),"PowerPopup")end
+	if gain>0 and gain<=Config.Exercises[#Config.Exercises].Work and root then Effects.popup(root,string.format("+%d Power",gain),Color3.fromRGB(140,210,255),"PowerPopup")end
 end)
-for _,attr in {"Training","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
+for _,attr in {"Training","Exercise","TrainingRate","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
 cash.Changed:Connect(updateStats);updateStats()
 -- Default camera outside a bounded throw cinematic; Cinematics restores on every exit.
 local function restoreCamera(character: Model)

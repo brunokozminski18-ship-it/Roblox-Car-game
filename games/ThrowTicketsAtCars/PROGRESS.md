@@ -1,21 +1,21 @@
 # Stan — THROW TICKETS AT CARS!
-- VERIFIED — 02.11.2026, iteracja 6: Studio, 1 gracz; telefon poziomo (666×374) oraz PC (1406×761).
-- Power jest jedynym źródłem zasięgu; wszystkie 6 mandatów daje tylko luck. Sklep bez mnożników dystansu.
-- Iteracja 5 nie występowała w folderze/gicie/Studio; zastana 4b nadal miała mnożniki w Config, Rules i Shop.
-- TRAIN: ćwiczenie ramion i +1 Power/s; samo stanie na płytce nie trenuje.
-- Zamach 0,45 s + lot 2 s z kamerą; trafienie dokładnie wylosowanego jadącego auta; laweta 2 s.
-- Serwer blokuje spam do końca transportu; zmierzona sekwencja po akceptacji 4,43–4,47 s; potem teleport na własną działkę.
-- Ruch aut na pasach bez fizyki, klient 30 Hz z ograniczeniem odległości renderowania.
-- Własna działka 6 miejsc; ekwipunek 20 aut. Hotbar, PLACE/REMOVE/SELL, BACK TO ROAD i MY PLOT.
-- Tylko postawione auta zarabiają; brak automatycznej podmiany i sprzedaży.
-- Zapis Schema 2: stabilne ID i Slot; migracja starego parkingu zachowuje Cash/Power/mandaty/auta.
-- Przyznanie łupu zapisane przed animacją. Rezerwacja limitu, walidacja własności i odległości po stronie serwera.
-- 78 asercji: 62 pętla/migracja/limity, 9 bezpieczeństwo profilu, 7 podstawowe reguły.
-- Telefon: przyciski, spam, Power 24 z Paper/Diamond, PLACE/REMOVE/SELL, dochód, pełny ekwipunek i powrót.
-- PC: Power 150 → Downtown, jeden wynik mimo spamu, śmierć w locie przywraca kamerę i zachowuje łup, operacje na aucie.
-- Dwa save/rejoin: zachowane ID/typy/rarity/sloty, Power i wyposażenie. Końcowy świeży klient/serwer bez błędów gry.
-- QA osobno; postęp użytkownika nieresetowany. Emulator i QA wyłączone, Studio Edit, HTTP off.
-- 18 źródeł przez Rojo; pełna kopia lokalna assets/SavedStudio_2026-11-02.rbxlx.
-- Sklep/HUD/hotbar/Rusty Sedan i balans NOT FINAL. Nowy hotbar to jedna próbka do oceny użytkownika.
-- Ograniczenia: fizyczny telefon i wielu graczy niebadane; zapis przed rzutem może wydłużyć oczekiwanie.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration6]].
+- USER APPROVED — 03.11.2026: użytkownik potwierdził działanie pętli i zapisu iteracji6. Wygląd i nowy balans nadal NOT FINAL.
+- VERIFIED — 03.11.2026, iteracja7: 30 symulacji produkcyjnych reguł, telefon iPhone7 poziomo666×374, save/rejoin jednego gracza.
+- Power pochodzi tylko z TRAIN; mandaty nie zmieniają dystansu. 5 płatnych ćwiczeń w istniejącym SHOP, każde podwaja tempo ćwiczeń.
+- Cena każdego ćwiczenia/mandatu wyliczana z Minutes × ReferenceIncomePerMinute w biomie odblokowania. Bez cen $ wpisanych ręcznie.
+- Ćwiczenia: 0/1/2/8/25/90 min; mandaty: 0/1,5/6/15/40/120 min. Payback i korzyść/cena sprawdzone w modelu.
+- Auta: biom × rzadkość × mandat przy złapaniu, zaokrąglone do pełnych $/s. Sprzedaż = 180 s dochodu. Tylko postawione auta zarabiają pasywnie.
+- Telefon od zera: pierwsze ćwiczenie po71,04 s, Suburbs po151,48 s; bez przyznawania zasobów, faktyczne kliknięcia i chodzenie.
+- Symulacja, mediany: Suburbs 2.73 min; Downtown 17.08 min; Sports Track 49.47 min; Luxury Classics 150.32 min; Hypercar Island 453.73 min.
+- Wszystkie 30 przebiegów mieszczą się w ±25% celów. Dokładne zakresy i każdy zakup w raporcie.
+- 112 asercji reguł/profili +512 akceptacji tempa PASS. Sprawdzono brak Cash, poprzednika, duplikat i dev Reset/+Cash/+Power.
+- Schema3: Exercise, ułamkowy Power i Ticket auta; migracja zachowuje Cash/mandaty/ID/sloty. Dotychczasowe auta mają Paper Ticket.
+- Save/rejoin: dokładnie te same 7 aut/slotów/Ticket, ćwiczenie2, Pink i Power59,555…; 6 postawionych +1 w ekwipunku.
+- Zachowana pętla: zamach+lot2,45 s → trafienie jadącego wyniku → laweta2 s → własna działka → ekwipunek.
+- Zachowane limity20+6, PLACE/REMOVE/SELL, MY PLOT/BACK TO ROAD i serwerowa własność. Zatwierdzony łup zapisany przed animacją.
+- Końcowe logi klienta/serwera bez błędów gry. QA osobno, postępu użytkownika nieresetowano.
+- 18 źródeł Rojo; pełna lokalna kopia assets/SavedStudio_2026-11-03.rbxlx. Studio Edit, emulator/HTTP off, QA usunięte.
+- Źródło: LihFolk Vault V2, wskazane sekcje o tempie i payback; tylko odczyt lokalny z powodu braku MCP Obsidiana.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration7]].
+- Dalsze godziny są estymacją modelu. Fizyczny telefon, wielu graczy i dłuższy test zabawy pozostają do zrobienia.
+- Sklep/HUD/hotbar/Rusty Sedan i balans NOT FINAL. Bez publikacji, Rebirth, petów i Robux.

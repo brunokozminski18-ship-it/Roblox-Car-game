@@ -1,19 +1,29 @@
 --!strict
 -- Prototype tuning: NOT FINAL. All progression, rewards and world dimensions live here.
-return table.freeze({
-	StartPower=24, TrainGain=1, TickSeconds=1,
+local Config={
+	StartPower=24, TickSeconds=1,
+ Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond"},TrainingWorkPerPower={4,18,32,90,220,220}},
+ Simulation={CatchLoopSeconds=14,RefreshSeconds=45,PurchaseSeconds=2,MaxSeconds=86400},
+ Exercises={
+ {Id="basic",Name="Basic Training",Work=1,Minutes=0,UnlockBiome=1},
+ {Id="focused",Name="Focused Training",Work=2,Minutes=1,UnlockBiome=1},
+ {Id="weighted",Name="Weighted Training",Work=4,Minutes=2,UnlockBiome=2},
+ {Id="intense",Name="Intense Training",Work=8,Minutes=8,UnlockBiome=3},
+ {Id="elite",Name="Elite Training",Work=16,Minutes=25,UnlockBiome=4},
+ {Id="master",Name="Master Training",Work=32,Minutes=90,UnlockBiome=5},
+ },
  InventoryLimit=20, GarageRequestInterval=.15, TravelRequestInterval=.5, PlacementDistance=9, PlotInteractRadius=30,
  ThrowWindupSeconds=.45, CameraReturnHold=.3, CaptureApproachDistance=32, CaptureLaneX=7,
  TrafficHz=30, TrafficSpeed=22, TrafficLaneX=7, TrafficRenderDistance=450,
 	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
-	Data={StoreName="ThrowTicketsAtCars_v1",Schema=2,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=3,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
 	Tickets={
-		{Id="paper",Name="Paper Ticket",Price=0,Luck=0,Color=Color3.fromRGB(255,244,180)},
-		{Id="pink",Name="Pink Slip",Price=100,Luck=0.05,Color=Color3.fromRGB(255,133,199)},
-		{Id="parking",Name="Parking Fine",Price=1200,Luck=0.10,Color=Color3.fromRGB(124,230,255)},
-		{Id="court",Name="Court Summons",Price=12000,Luck=0.15,Color=Color3.fromRGB(194,139,255)},
-		{Id="gold",Name="Golden Ticket",Price=90000,Luck=0.20,Color=Color3.fromRGB(255,208,66)},
-		{Id="diamond",Name="Diamond Ticket",Price=600000,Luck=0.25,Color=Color3.fromRGB(165,255,243)},
+		{Id="paper",Name="Paper Ticket",Minutes=0,UnlockBiome=1,IncomeMultiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
+		{Id="pink",Name="Pink Slip",Minutes=1.5,UnlockBiome=1,IncomeMultiplier=1.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},
+		{Id="parking",Name="Parking Fine",Minutes=6,UnlockBiome=2,IncomeMultiplier=2.2,Luck=0.10,Color=Color3.fromRGB(124,230,255)},
+		{Id="court",Name="Court Summons",Minutes=15,UnlockBiome=3,IncomeMultiplier=3.2,Luck=0.15,Color=Color3.fromRGB(194,139,255)},
+		{Id="gold",Name="Golden Ticket",Minutes=40,UnlockBiome=4,IncomeMultiplier=4.6,Luck=0.20,Color=Color3.fromRGB(255,208,66)},
+		{Id="diamond",Name="Diamond Ticket",Minutes=120,UnlockBiome=5,IncomeMultiplier=12,Luck=0.25,Color=Color3.fromRGB(165,255,243)},
 	},
 	ThrowCooldown=0.2, RequestInterval=0.12, TrainRequestInterval=0.3,
 	MapEnd=3200, RoadWidth=24, GroundWidth=88, MapPadding=18,
@@ -21,7 +31,7 @@ return table.freeze({
 	TicketFlightSeconds=2, TicketArcHeight=8, TicketArcFactor=0.16, TicketArcMax=200,
 	TicketSize=Vector3.new(0.8,0.08,1.2), MessageSeconds=3,
 	TowApproachSeconds=0.5, TowLoadSeconds=0.2, TowReturnSeconds=1.3,
-	RespawnSeconds=3, SaleIncomeSeconds=10,
+	RespawnSeconds=3, SaleIncomeSeconds=180,
 	ParkingSlots=6, ParkingColumns=2,
 	ParkingSpacing=Vector3.new(11,0,12), ParkingOrigin=Vector3.new(-54,0,-6), PlayerPlotSpacing=54,
 	CarSize=Vector3.new(7,2.5,9), RoofSize=Vector3.new(5.5,1.4,4.5), CarHeight=1.4, RoofOffset=1.85,
@@ -41,16 +51,29 @@ return table.freeze({
 	StickerSeconds=3, HookWidth=0.18,
 	Rarities={
 		{Name="Common",Weight=70,Multiplier=1,Color=Color3.fromRGB(205,210,215)},
-		{Name="Rare",Weight=22,Multiplier=3,Color=Color3.fromRGB(70,160,255)},
-		{Name="Epic",Weight=7,Multiplier=8,Color=Color3.fromRGB(185,95,250)},
-		{Name="Legendary",Weight=1,Multiplier=20,Color=Color3.fromRGB(255,205,65)},
+		{Name="Rare",Weight=22,Multiplier=2,Color=Color3.fromRGB(70,160,255)},
+		{Name="Epic",Weight=7,Multiplier=3,Color=Color3.fromRGB(185,95,250)},
+		{Name="Legendary",Weight=1,Multiplier=5,Color=Color3.fromRGB(255,205,65)},
 	},
 	Biomes={
 		{Name="Junkyard",MinPower=0,BaseIncome=1,Color=Color3.fromRGB(145,118,91),Cars={{Name="Rusty Sedan",Weight=1},{Name="Old Van",Weight=1},{Name="Broken Pickup",Weight=1}}},
-		{Name="Suburbs",MinPower=50,BaseIncome=5,Color=Color3.fromRGB(122,153,111),Cars={{Name="Family Car",Weight=1},{Name="Minivan",Weight=1},{Name="Hatchback",Weight=1}}},
-		{Name="Downtown",MinPower=150,BaseIncome=20,Color=Color3.fromRGB(112,132,153),Cars={{Name="Taxi",Weight=1},{Name="Police Cruiser",Weight=1},{Name="Limo",Weight=1}}},
-		{Name="Sports Track",MinPower=400,BaseIncome=70,Color=Color3.fromRGB(171,105,98),Cars={{Name="Sports Coupe",Weight=1},{Name="Rally Car",Weight=1},{Name="Muscle Car",Weight=1}}},
-		{Name="Luxury Classics",MinPower=1000,BaseIncome=220,Color=Color3.fromRGB(184,166,122),Cars={{Name="Vintage Roadster",Weight=1},{Name="Gold-Trim Classic",Weight=1}}},
-		{Name="Hypercar Island",MinPower=2500,BaseIncome=700,Color=Color3.fromRGB(91,164,176),Cars={{Name="Hypercar",Weight=1},{Name="Golden Hypercar",Weight=1},{Name="Rocket Car",Weight=1}}},
+		{Name="Suburbs",MinPower=50,BaseIncome=6,Color=Color3.fromRGB(122,153,111),Cars={{Name="Family Car",Weight=1},{Name="Minivan",Weight=1},{Name="Hatchback",Weight=1}}},
+		{Name="Downtown",MinPower=150,BaseIncome=28,Color=Color3.fromRGB(112,132,153),Cars={{Name="Taxi",Weight=1},{Name="Police Cruiser",Weight=1},{Name="Limo",Weight=1}}},
+		{Name="Sports Track",MinPower=400,BaseIncome=120,Color=Color3.fromRGB(171,105,98),Cars={{Name="Sports Coupe",Weight=1},{Name="Rally Car",Weight=1},{Name="Muscle Car",Weight=1}}},
+		{Name="Luxury Classics",MinPower=1000,BaseIncome=500,Color=Color3.fromRGB(184,166,122),Cars={{Name="Vintage Roadster",Weight=1},{Name="Gold-Trim Classic",Weight=1}}},
+		{Name="Hypercar Island",MinPower=2500,BaseIncome=2200,Color=Color3.fromRGB(91,164,176),Cars={{Name="Hypercar",Weight=1},{Name="Golden Hypercar",Weight=1},{Name="Rocket Car",Weight=1}}},
 	},
-})
+}
+-- Prices are authored in minutes. Reference includes a six-car park and active sales.
+-- Starter benchmark is the measured ramp-up rather than an already full rare park.
+local rarityTotal,rarityWeight=0,0
+for _,r in Config.Rarities do rarityTotal+=r.Weight*r.Multiplier;rarityWeight+=r.Weight end
+for i,b in Config.Biomes do
+ local ticket=Config.Tickets[i]
+ local equivalents=if i==1 then Config.Economy.StarterIncomeCars else Config.ParkingSlots*Config.Economy.ReferenceParkedRarity+(Config.SaleIncomeSeconds/Config.Economy.ReferenceCatchSeconds)*(rarityTotal/rarityWeight)
+ b.ReferenceIncomePerMinute=b.BaseIncome*ticket.IncomeMultiplier*equivalents*60
+end
+for _,items in {Config.Exercises,Config.Tickets}do for _,item in items do
+ item.Price=math.floor(item.Minutes*Config.Biomes[item.UnlockBiome].ReferenceIncomePerMinute+.5)
+end end
+return table.freeze(Config)

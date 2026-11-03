@@ -1,15 +1,16 @@
-# Current Task — iteracja 6: pełna pętla
-- Właściciel: Codex; 02.11.2026. Status: VERIFIED (Studio, 1 gracz, telefon poziomo + PC).
-- Przyczyna punktu 0: folder, git i Studio nadal miały 4b. Brak implementacji/raportu/commitu iteracji 5; stare Tickets.Multiplier → Rules.distance → opis Shop nadal mnożyły zasięg.
-- Zrobione: [x] reguły/schemat; [x] serwer; [x] ruch/animacja/kamera; [x] hotbar/PLACE/REMOVE/SELL/BACK; [x] telefon+PC/save/rejoin; [x] raport.
-- Zasięg wyłącznie Power; mandaty tylko luck. TRAIN uruchamia ćwiczenie i +1/s, samo stanie nie daje Power.
-- Zamach+lot 2,45 s, laweta 2 s, potem własna działka i auto w ekwipunku. Serwer blokuje rzuty do końca transportu.
-- Schema 2: stare Parking migruje do Cars ze stabilnym ID i Slot; Cash/Power/mandaty zachowane.
-- Zatwierdzony łup zapisywany przed animacją; po przerwaniu sesji zostaje jeden egzemplarz.
-- Limit 20 w ekwipunku + 6 postawionych. Serwer waliduje własność, slot, odległość i pojemność.
-- MY PLOT umożliwia powrót po zapełnieniu ekwipunku; BACK TO ROAD wraca na linię rzutu.
-- Test: 78 asercji reguł/profili; rzeczywiste przyciski, spam, limit, dochód, śmierć w locie i dwa save/rejoin. Końcowy klient/serwer: 0 błędów gry.
-- Profil użytkownika nieresetowany; QA w osobnym kluczu. Kopia przed migracją w assets/PreIteration6_*.json.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration6]].
-- Następny krok: ocena jednej próbki hotbara, fizyczny telefon i test wieloosobowy. Wygląd/balans NOT FINAL.
-- Bez petów, Rebirth, Robux, kradzieży i publikacji.
+# Current Task — iteracja 7: tempo wg LihFolk
+- Właściciel: Codex; 03.11.2026. Status: VERIFIED — 30 symulacji, telefon poziomo (pierwsze minuty), save/rejoin. Balans NOT FINAL.
+- USER APPROVED 03.11: użytkownik potwierdził działanie pętli i zapisu iteracji 6; nie jest to akceptacja nowego balansu.
+- Źródła: LihFolk Vault V2, Progression and Pacing Design TL;DR/sekcja3 oraz Pricing Curves and Upgrade Costs TL;DR/payback. MCP Obsidiana niedostępne; lokalny odczyt, bez zapisów w bibliotece.
+- Zrobione: [x] test RED; [x] Config w minutach; [x] zakup ćwiczeń w istniejącym SHOP; [x] schema3; [x] 30 seedów; [x] zegar telefonu; [x] raport i źródła do commitu.
+- Ceny = minuty × referencyjny aktywny dochód biomu. Ćwiczenia 0/1/2/8/25/90 min, mandaty 0/1,5/6/15/40/120 min.
+- Ćwiczenia podwajają szybkość treningu; tempo bazowe zależy od biomu. Dystans nadal równy wyłącznie Power.
+- Mandat daje luck i bonus dochodu auta przy złapaniu; sprzedaż za 3 min jego dochodu. Brak wstecznego bonusu starych aut po EQUIP.
+- Schema3 zapisuje ćwiczenie, ułamkowy Power i Ticket każdego auta; zachowuje dotychczasową własność.
+- Telefon od zera bez grantów: Focused Training 71,04 s; Suburbs 151,48 s. Faktyczne GUI i chodzenie, nie teleporty QA.
+- Symulacja: wszystkie 30 przebiegów w ±25% celów; 112 asercji reguł/profili +512 akceptacji tempa PASS.
+- Save/rejoin zachował 7 aut/sloty/Ticket, ćwiczenie2, Pink i ułamkowy Power. Końcowe logi gry bez błędów.
+- Dev tylko Studio: Reset, AddCash, AddPower w ServerStorage.ThrowTicketsQA; sprawdzone na QA po pomiarze.
+- Postępu użytkownika nieresetowano. Studio Edit, emulator/HTTP off, QA key usunięty; pełna kopia assets/SavedStudio_2026-11-03.rbxlx.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration7]].
+- Następny krok: ocena tempa przez użytkownika i dłuższy playtest. Późne godziny to prognoza, nie rozegrana sesja.

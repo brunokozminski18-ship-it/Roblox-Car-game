@@ -32,6 +32,7 @@ local function mirror(p: Player,s: any)
  p.leaderstats.Cash.Value=s.data.Cash;p:SetAttribute("ThrowPower",s.data.Power)
  p:SetAttribute("EquippedTicket",s.data.Equipped);p:SetAttribute("EffectiveDistance",Rules.distance(s.data.Power))
  for _,t in Config.Tickets do p:SetAttribute("Own_"..t.Id,s.data.Owned[t.Id]==true)end
+ p:SetAttribute("Exercise",s.data.Exercise);p:SetAttribute("TrainingRate",Rules.trainingRate(s.data.Power,s.data.Exercise))
  p:SetAttribute("InventoryCount",GarageRules.inventoryCount(s.data));p:SetAttribute("Income",s.income)
 end
 local function snapshot(p: Player,s: any)
@@ -126,7 +127,7 @@ Throw.OnServerEvent:Connect(function(p: Player,...: any)
  if p:GetAttribute("Location")~="Road"or not Rules.inBox(r.Position,Config.LaunchCenter,Config.LaunchHalfX,Config.LaunchHalfZ,Config.LaunchHeightTolerance)then result(p,"Stand on the THROW line!");return end
  if GarageRules.inventoryCount(s.data)>=Config.InventoryLimit then result(p,"Inventory full!");return end
  local distance=Rules.distance(s.data.Power);local biome=Rules.biome(distance)
- local reward=Rules.reward(biome,Rules.weighted(Rules.rarityWeights(s.data.Equipped),rng:NextNumber()),Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber()))
+ local reward=Rules.reward(biome,Rules.weighted(Rules.rarityWeights(s.data.Equipped),rng:NextNumber()),Rules.weighted(Config.Biomes[biome].Cars,rng:NextNumber()),s.data.Equipped)
  local id=Http:GenerateGUID(false)
  assert(GarageRules.add(s.data,reward,id,true))
  s.lastThrow=now;p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Windup")
@@ -228,7 +229,7 @@ task.spawn(function()
    s.data.Cash=math.min(Config.MaxCash,s.data.Cash+s.income)
    local training=rootOf(p)~=nil and not s.job and p:GetAttribute("Location")=="Road"and p:GetAttribute("Training")==true
    p:SetAttribute("TrainingActive",training)
-   if training then s.data.Power=math.min(Config.MaxPower,s.data.Power+Config.TrainGain)end
+   if training then s.data.Power=math.min(Config.MaxPower,s.data.Power+Rules.trainingRate(s.data.Power,s.data.Exercise)*Config.TickSeconds)end
    if training or s.income>0 then profiles:touch(s.profile)end;mirror(p,s)
    if os.clock()>=s.profile.NextSave and not s.profile.Saving then
     if s.profile.Dirty or os.clock()-s.profile.LastSave>=Config.Data.LeaseSeconds/3 then
@@ -243,6 +244,12 @@ if RunService:IsStudio()then
  qa.OnInvoke=function(command: string,value: any,target: Player?)
   local p=target or Players:GetPlayers()[1];local s=states[p];if not s then return nil end
   if command=="Inspect"then return Schema.copy(s.data)
+  elseif command=="Reset"and not s.job then
+   s.data=Schema.default();s.profile.Data=s.data;teleport(p,s,false);publish(p,s);return save(p,s,false)
+  elseif command=="AddCash"and Rules.finiteNumber(value)and value>0 then
+   s.data.Cash=math.min(Config.MaxCash,s.data.Cash+math.floor(value));publish(p,s);return true
+  elseif command=="AddPower"and Rules.finiteNumber(value)and value>0 then
+   s.data.Power=math.min(Config.MaxPower,s.data.Power+value);publish(p,s);return true
   elseif command=="SetCash"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxCash then s.data.Cash=math.floor(value);publish(p,s);return true
   elseif command=="SetPower"and Rules.finiteNumber(value)and value>=0 and value<=Config.MaxPower then s.data.Power=math.floor(value);publish(p,s);return true
   elseif command=="GiveCar"then
@@ -255,4 +262,4 @@ if RunService:IsStudio()then
   return nil
  end
 end
-print("[ThrowTickets] Iteration 6: power-only catches, traffic, garage and schema 2 ready.")
+print("[ThrowTickets] Iteration 7: timed prices, training upgrades and schema 3 ready.")

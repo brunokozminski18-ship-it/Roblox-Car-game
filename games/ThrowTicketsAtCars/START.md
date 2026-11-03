@@ -1,23 +1,24 @@
 # Start — THROW TICKETS AT CARS!
-## Test w 2 minuty
-1. Play w miejscu 74773184167716; API Services włączone. THROW: zamach, lot, trafienie, laweta, teleport na własną działkę.
-2. W hotbarze wybierz auto. Podejdź do wolnego miejsca i PLACE; Cash rośnie. REMOVE oddaje auto; SELL sprzedaje wybrane auto z ekwipunku.
-3. BACK TO ROAD, TRAIN +1: postać ćwiczy, Power rośnie. THROW podczas transportu jest zablokowany.
-4. SHOP: mandat zwiększa tylko luck, dystans pozostaje równy Power. MY PLOT pozwala wrócić bez kolejnego rzutu.
-5. Stop/Play: wracają Cash, Power, mandaty, ekwipunek i miejsca aut. Studio używa osobnego magazynu.
+## Pierwsze minuty
+1. Play w miejscu74773184167716, API Services włączone. THROW → laweta → własna działka.
+2. Wybierz kartę, podejdź do wolnego miejsca i PLACE. BACK TO ROAD. Złap/postaw pierwsze auta.
+3. SHOP → Focused Training ($180), potem TRAIN. Pierwszy zakup w pomiarze71 s, Suburbs po2:31.
+4. Mandaty zwiększają luck i dochód nowo złapanych aut. Dystans nadal równy Power.
+5. REMOVE/SELL/MY PLOT pozostają dostępne. Stop/Play zachowuje auta, ćwiczenie, mandaty i ułamkowy Power.
 
-## Źródła i kopia
-- src/ i Config to źródło prawdy; 18 plików źródłowych. Pełna lokalna kopia: assets/SavedStudio_2026-11-02.rbxlx.
-- Test API wykonuj w powiązanym miejscu, nie w nowym nieopublikowanym pliku. Duże assets/ poza gitem.
-- Rusty Sedan v2 to jedyny model-próbka; reszta aut jest klockowa. Wygląd/balans NOT FINAL.
+## Źródło i kopia
+- src/ i Config są źródłem prawdy; 18 plików Rojo. Kopia lokalna assets/SavedStudio_2026-11-03.rbxlx.
+- Ceny edytuj jako Minutes/UnlockBiome, nie Price. Referencyjny dochód i tempo ćwiczeń są w Config.Economy.
+- Lokalny plik jest kopią kodu/mapy; test API wykonuj w powiązanym miejscu. Duże assets/ poza gitem.
+- Wygląd i balans NOT FINAL. Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration7]].
 
-## Rojo i QA
-- rojo serve default.project.json --port 34873; połącz plugin.
-- Alternatywa MCP: python tools/rojo_snapshot.py → tools/SyncStudio.luau w Edit, tymczasowo HTTP on.
+## Rojo i testy
+- rojo serve default.project.json --port34873; alternatywa MCP: python tools/rojo_snapshot.py i tools/SyncStudio.luau w Edit z chwilowym HTTP on.
 - Build: python tools/rojo_snapshot.py --build-only. PreviewStudio odtwarza mapę z World.
-- Osobne QA: ServerStorage.TestProfileKey przed Play; dotyczy tylko Studio. Nigdy nie zmieniaj klucza U_ użytkownika w teście.
-- Testy reguł: rules.spec(Rules), iteration6.spec(Rules,Config,Schema,GarageRules), profiles.spec(Profiles,Schema); razem 78 asercji.
-- Studio-only ServerStorage.ThrowTicketsQA: Inspect, SetCash, SetPower, GiveCar(biom), TeleportSlot(n), Save, Exit. Nie jest dostępne klientowi.
-- Historyczny test iteration4b.client obejmuje stany sklepu; bieżący pełny scenariusz i wyniki są w raporcie 6.
-- Po teście usuń TestProfileKey, StopSimulationAsync, HTTP off, pozostaw Edit. Bez publikacji.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-02_iteration6]].
+- QA: ServerStorage.TestProfileKey ustaw w Edit przed Play. Nie resetuj użytkownika podczas testów.
+- Server Command Bar w Play: game.ServerStorage.ThrowTicketsQA:Invoke("Reset"), :Invoke("AddCash",1000), :Invoke("AddPower",5).
+- Reset zeruje aktywny profil; na potrzeby testu użyj oddzielnego klucza QA. Bindable istnieje tylko w Studio i nie jest widoczny klientowi.
+- rules/iteration6/iteration7/profiles.spec:112 asercji. BalanceSimulation(Config,Rules,GarageRules,seed) i pacing.spec(runs,phone):30 seedów/512 kontroli tempa.
+- PhonePacing.client.luau uruchamiaj w Client na świeżym QA; potrzebuje VirtualInput. Nie przyznaje zasobów ani nie teleportuje przez QA.
+- Helper testu klika lewy fragment, bo CaptureControls może zasłonić środek. Pomiar wyników w atrybucie gracza QAPaceResults.
+- Po teście Stop Play, TestProfileKey nil, StopSimulationAsync, HTTP off, Studio Edit. Bez publikacji.
