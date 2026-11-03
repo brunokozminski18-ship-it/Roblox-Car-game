@@ -16,3 +16,4 @@
 14. 03.11.2026 — USER APPROVED: wejście na białą płytkę startuje TAP TO THROW, serwer liczy bonus -5%..+10%, timeout ok.3 s, ochrona przed spamem; usuń THROW.
 15. 03.11.2026 — USER APPROVED: referencje to wzór działania/układu, bez kopiowania grafiki/nazw; własny styl; wygląd nowej próbki do oceny.
 16. 03.11.2026 — USER APPROVED: użytkownik zaakceptował pokazaną próbkę My Cars na telefonie i polecił dokończyć hotbar oraz pasek siły w tym samym stylu; nie zatwierdza to finalnych modeli ani balansu.
+17. 03.11.2026 — użytkownik zlecił naprawę braku wzrostu Power podczas treningu oraz możliwość kupowania lepszego treningu dającego większy przyrost; bez zlecenia zmiany cen lub całego balansu.

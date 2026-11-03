@@ -33,6 +33,10 @@ local function rootOf(p: Player): BasePart?
  return if h and h.Health>0 and r and r:IsA("BasePart")then r else nil
 end
 local function mutable(s: any): boolean return s~=nil and s.profile.Status=="active"end
+local function trainingNow(p: Player,s: any,enabled: boolean): boolean
+ local root=rootOf(p);local pad=s.folder:FindFirstChild("TrainingPad")
+ return Rules.trainingActive(if root then root.Position else nil,if pad then pad.Position else nil,enabled,s.job~=nil or s.meter~=nil)
+end
 local function mirror(p: Player,s: any)
  p.leaderstats.Cash.Value=s.data.Cash;p:SetAttribute("ThrowPower",s.data.Power)
  p:SetAttribute("EquippedTicket",s.data.Equipped);p:SetAttribute("EffectiveDistance",Rules.distance(s.data.Power))
@@ -164,8 +168,8 @@ Train.OnServerEvent:Connect(function(p: Player,...: any)
  local s=states[p];if not mutable(s)or select("#",...)~=1 or s.job then return end
  local now=os.clock();if now-s.lastTrain<Config.TrainRequestInterval then return end;s.lastTrain=now
  local enabled=...;if typeof(enabled)~="boolean"or not rootOf(p)or s.meter then return end
- if enabled and not s.onTrainingPad then result(p,"Stand on your training pad!");return end
- p:SetAttribute("Training",enabled)
+ if enabled and not trainingNow(p,s,true)then result(p,"Stand on your training pad!");return end
+ p:SetAttribute("Training",enabled);p:SetAttribute("TrainingActive",trainingNow(p,s,enabled))
 end)
 Shop.OnServerEvent:Connect(function(p: Player,...: any)
  local s=states[p];if not mutable(s)or s.job or s.meter or select("#",...)~=2 then return end
@@ -202,10 +206,11 @@ RunService.Heartbeat:Connect(function(dt)
   elseif inside and s.padArmed and not s.job and os.clock()-s.lastThrow>=Config.ThrowCooldown and GarageRules.inventoryCount(s.data)<Config.InventoryLimit then
    s.padArmed=false;s.meter=workspace:GetServerTimeNow();p:SetAttribute("MeterStart",s.meter);p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Meter")
   end
-  local pad=s.folder:FindFirstChild("TrainingPad")
-  local onPad=r and pad and Rules.inBox(r.Position,pad.Position,Config.TrainingRadius,Config.TrainingRadius,Config.TrainingHeightTolerance)
+  local onPad=trainingNow(p,s,true)
   if onPad and not s.onTrainingPad and not s.job and not s.meter then p:SetAttribute("Training",true)end
+  if not onPad then p:SetAttribute("Training",false)end
   s.onTrainingPad=onPad
+  p:SetAttribute("TrainingActive",trainingNow(p,s,p:GetAttribute("Training")==true))
  end end
 end)
 local function joined(p: Player)
@@ -249,7 +254,7 @@ task.spawn(function()
  while not closing do task.wait(Config.TickSeconds)
   for p,s in states do if mutable(s)then
    s.data.Cash=math.min(Config.MaxCash,s.data.Cash+s.income)
-   local training=rootOf(p)~=nil and not s.job and not s.meter and s.onTrainingPad and p:GetAttribute("Training")==true
+   local training=trainingNow(p,s,p:GetAttribute("Training")==true)
    p:SetAttribute("TrainingActive",training)
    if training then s.data.Power=math.min(Config.MaxPower,s.data.Power+Rules.trainingRate(s.data.Power,s.data.Exercise)*Config.TickSeconds)end
    if training or s.income>0 then profiles:touch(s.profile)end;mirror(p,s)

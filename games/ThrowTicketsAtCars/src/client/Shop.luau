@@ -21,9 +21,9 @@ local function isUnlocked(p,item)
  local previous=if item.Kind=="Exercise"then item.Tier==1 or (p:GetAttribute("Exercise")or 1)>=item.Tier-1 else item.Tier==1 or p:GetAttribute("Own_"..Config.Tickets[item.Tier-1].Id)==true
  return previous and Rules.biome(Rules.distance(p:GetAttribute("ThrowPower")or 0))>=item.Data.UnlockBiome
 end
-local function perk(item)
+local function perk(item,power: number)
  local x=item.Data
- return if item.Kind=="Exercise"then string.format("x%d training",x.Work)elseif x.Luck>0 then string.format("+%d%% luck | x%g income",math.round(x.Luck*100),x.IncomeMultiplier)else "Standard odds"
+ return if item.Kind=="Exercise"then "+"..Rules.powerText(Rules.trainingRate(power,item.Tier)).." Power/s | x"..x.Work elseif x.Luck>0 then string.format("+%d%% luck | x%g income",math.round(x.Luck*100),x.IncomeMultiplier)else "Standard odds"
 end
 local Style=require(script.Parent.Style)
 local INK,FONT,Motion=Style.INK,Style.FONT,Style.Motion
@@ -49,12 +49,16 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  local balance=text(panel,"Balance","",18,UDim2.fromOffset(88,48),UDim2.new(1,-170,0,24));balance.TextColor3=Color3.fromHex("FFD24A")
  local close=button(panel,"Close","X",UDim2.fromOffset(52,52),UDim2.new(1,-18,0,8));close.AnchorPoint=Vector2.new(1,0)
  close.TextColor3=Color3.new(1,1,1);gradient(close,Color3.fromHex("FF6B6B"),Color3.fromHex("E0202F"))
- local list=Instance.new("ScrollingFrame");list.Name="Tickets";list.Position=UDim2.fromOffset(16,80);list.Size=UDim2.new(1,-32,1,-122)
+ local category="Exercise"
+ local trainingTab=button(panel,"TrainingTab","TRAINING",UDim2.new(.5,-26,0,44),UDim2.fromOffset(18,76))
+ local ticketTab=button(panel,"TicketsTab","TICKETS",UDim2.new(.5,-26,0,44),UDim2.new(.5,8,0,76))
+ gradient(trainingTab,Color3.fromHex("FFF4A0"),Color3.fromHex("FFD24A"));gradient(ticketTab,Color3.fromHex("74E6FF"),Color3.fromHex("1E95F0"))
+ local list=Instance.new("ScrollingFrame");list.Name="Tickets";list.Position=UDim2.fromOffset(16,132);list.Size=UDim2.new(1,-32,1,-174)
  list.BackgroundTransparency,list.BorderSizePixel,list.ScrollBarThickness=1,0,6;list.ScrollBarImageColor3=Color3.fromHex("74E6FF")
  list.CanvasSize=UDim2.new();list.AutomaticCanvasSize=Enum.AutomaticSize.Y;list.ScrollingDirection=Enum.ScrollingDirection.Y;list.Parent=panel
  local layout=Instance.new("UIListLayout");layout.Padding=UDim.new(0,8);layout.SortOrder=Enum.SortOrder.LayoutOrder;layout.Parent=list
  local padding=Instance.new("UIPadding");padding.PaddingTop,padding.PaddingBottom=UDim.new(0,4),UDim.new(0,4);padding.PaddingLeft=UDim.new(0,4);padding.PaddingRight=UDim.new(0,12);padding.Parent=list
- local notice=text(panel,"Notice","Training grows Power. Tickets boost luck and captured income.",16,UDim2.new(0,22,1,-34),UDim2.new(1,-44,0,26));notice.TextXAlignment=Enum.TextXAlignment.Center
+ local notice=text(panel,"Notice","Training upgrades double your Power gain.",16,UDim2.new(0,22,1,-34),UDim2.new(1,-44,0,26));notice.TextXAlignment=Enum.TextXAlignment.Center
  local rows={};local opened=false;local pulse: Tween?=nil;local pulsing=false
  for i,item in items do
   local t=item.Data
@@ -63,7 +67,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   local stripes=Instance.new("Frame");stripes.Name="Stripe";stripes.Size=UDim2.fromOffset(42,180);stripes.Position=UDim2.new(.55,0,.5,-90);stripes.Rotation=30;stripes.BackgroundColor3=Color3.new(1,1,1);stripes.BackgroundTransparency=.9;stripes.BorderSizePixel=0;stripes.Parent=row
   local icon=ticketIcon(row,t.Color or Color3.fromHex("D98BFF"),52,UDim2.fromOffset(20,15))
   local name=text(row,"Name",t.Name,23,UDim2.fromOffset(76,9),UDim2.new(1,-220,0,28))
-  local perk=text(row,"Perk",perk(item),17,UDim2.fromOffset(76,40),UDim2.new(1,-220,0,26))
+  local perk=text(row,"Perk",perk(item,p:GetAttribute("ThrowPower")or 0),17,UDim2.fromOffset(76,40),UDim2.new(1,-220,0,26))
   local action=button(row,"Action","",UDim2.fromOffset(130,56),UDim2.new(1,-8,.5,0));action.AnchorPoint=Vector2.new(1,.5);action.TextSize=17
   local price=text(action,"Price","",22,UDim2.new(0,0,1,-29),UDim2.new(1,0,0,26));price.TextXAlignment=Enum.TextXAlignment.Center;price.TextStrokeTransparency=1;price.TextColor3=INK
   local lock=Instance.new("Frame");lock.Name="Lock";lock.Size=UDim2.fromOffset(20,24);lock.Position=UDim2.new(0,8,.5,-12);lock.BackgroundTransparency=1;lock.Parent=action
@@ -72,8 +76,8 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   action.Activated:Connect(function()if not p:GetAttribute("DataReady")then return end;remote:FireServer(if item.Kind=="Exercise"then "Exercise"elseif p:GetAttribute("Own_"..t.Id)then "Equip"else "Buy",t.Id)end)
   rows[i]={root=row,gradient=g,action=action,price=price,name=name,perk=perk,icon=icon,lock=lock,stripes=stripes,pulsing=false}
  end
- local function nextTicket(affordable: boolean?): number?
-  for i,item in items do if not isOwned(p,item)and isUnlocked(p,item)and(not affordable or cash.Value>=item.Data.Price)then return i end end;return nil
+ local function nextTicket(affordable: boolean?,kind: string?): number?
+  for i,item in items do if (not kind or item.Kind==kind)and not isOwned(p,item)and isUnlocked(p,item)and(not affordable or cash.Value>=item.Data.Price)then return i end end;return nil
  end
  local function buyPulses()
   for _,row in rows do
@@ -96,11 +100,11 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   if should and not GuiService.ReducedMotionEnabled then pulse=Tween:Create(pulseScale,Motion.pulse,{Scale=1.06});pulse:Play()end
  end
  local function refresh()
-  balance.Text="CASH $"..short(cash.Value).."   •   POWER "..tostring(math.floor(p:GetAttribute("ThrowPower")or 0))
+  balance.Text="CASH $"..short(cash.Value).."   •   POWER "..Rules.powerText(p:GetAttribute("ThrowPower")or 0)
   local nextIndex=nextTicket()
   for i,item in items do
    local t=item.Data
-   local row=rows[i];local owned=isOwned(p,item);local equipped=if item.Kind=="Exercise"then p:GetAttribute("Exercise")==item.Tier else p:GetAttribute("EquippedTicket")==t.Id
+   local row=rows[i];row.root.Visible=item.Kind==category;local owned=isOwned(p,item);local equipped=if item.Kind=="Exercise"then p:GetAttribute("Exercise")==item.Tier else p:GetAttribute("EquippedTicket")==t.Id
    local unlocked=isUnlocked(p,item);local affordable=cash.Value>=t.Price
    local state=if equipped then "Equipped"elseif owned then "Owned"elseif not unlocked then "Locked"elseif affordable then "Affordable"else "Unaffordable"
    row.root:SetAttribute("State",state)
@@ -119,7 +123,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
     local previous=if item.Kind=="Exercise"then Config.Exercises[item.Tier-1]else Config.Tickets[item.Tier-1]
     local previousOwned=if item.Kind=="Exercise"then (p:GetAttribute("Exercise")or 1)>=item.Tier-1 else previous==nil or p:GetAttribute("Own_"..previous.Id)==true
     row.perk.Text=if previous and not previousOwned then "Buy "..previous.Name.." first"else "Reach "..Config.Biomes[t.UnlockBiome].Name.." first"
-   else row.perk.Text=perk(item)end
+   else row.perk.Text=perk(item,p:GetAttribute("ThrowPower")or 0)end
 
   end
   updatePulse()
@@ -130,8 +134,8 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
    refresh();GuiService.SelectedObject=if game:GetService("UserInputService"):GetLastInputType().Name:find("Gamepad")then close else nil
    task.defer(function()
     game:GetService("RunService").RenderStepped:Wait()
-    local index=nextTicket()or 1
-    list.CanvasPosition=Vector2.new(0,math.min(math.max(0,list.AbsoluteCanvasSize.Y-list.AbsoluteSize.Y),math.max(0,(index-1)*90)))
+    local index=nextTicket(nil,category);local tier=if index then items[index].Tier else 1
+    list.CanvasPosition=Vector2.new(0,math.min(math.max(0,list.AbsoluteCanvasSize.Y-list.AbsoluteSize.Y),math.max(0,(tier-1)*90)))
    end)
   else GuiService.SelectedObject=nil end
   updatePulse()
@@ -141,6 +145,19 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   title.TextSize=if gui.AbsoluteSize.Y<400 then 30 else 40
   for _,row in rows do row.name.TextSize=if gui.AbsoluteSize.X<600 then 20 else 23;row.perk.TextSize=if gui.AbsoluteSize.X<600 then 15 else 17 end
  end
+ local function chooseCategory(kind: string)
+  category=kind
+  for _,entry in {{trainingTab,"Exercise"},{ticketTab,"Ticket"}}do
+   local active=kind==entry[2];local g=entry[1]:FindFirstChildOfClass("UIGradient")
+   g.Color=if active then ColorSequence.new(Color3.fromHex("FFF4A0"),Color3.fromHex("FFD24A"))else ColorSequence.new(Color3.fromHex("74E6FF"),Color3.fromHex("1E95F0"))
+   entry[1]:SetAttribute("Selected",active)
+  end
+  notice.Text=if kind=="Exercise"then "Training upgrades double your Power gain."else "Tickets boost luck and captured income."
+  list.CanvasPosition=Vector2.zero;refresh()
+ end
+ trainingTab.Activated:Connect(function()chooseCategory("Exercise")end)
+ ticketTab.Activated:Connect(function()chooseCategory("Ticket")end)
+ chooseCategory("Exercise")
  launch.Activated:Connect(function()setOpen(not opened)end);close.Activated:Connect(function()setOpen(false)end);dim.Activated:Connect(function()setOpen(false)end)
  feedback.OnClientEvent:Connect(function(value)if opened then notice.Text=value end end)
  cash.Changed:Connect(refresh)

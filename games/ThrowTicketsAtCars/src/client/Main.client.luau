@@ -25,7 +25,7 @@ local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedb
 local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars)
 require(script.Parent.ThrowMeterUI).mount(Throw)
 Exercises.mount();require(script.Parent.Traffic).mount(world)
-trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("Training"))end)
+trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("TrainingActive"))end)
 local version=0
 Feedback.OnClientEvent:Connect(function(text: string)
 	version+=1;local current=version;message.Text=text;message.Visible=true
@@ -41,9 +41,9 @@ local function updateStats()
  hud.mode(p:GetAttribute("Location")or "Road",p:GetAttribute("Throwing")==true,p:GetAttribute("ThrowPhase")or "Idle")
 end
 p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
-	local power=p:GetAttribute("ThrowPower")or 0;local gain=math.floor(power)-math.floor(previousPower);previousPower=power;updateStats()
+	local power=p:GetAttribute("ThrowPower")or 0;local gain=power-previousPower;previousPower=power;updateStats()
 	local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")::BasePart?
-	if gain>0 and gain<=Config.Exercises[#Config.Exercises].Work and root then Effects.popup(root,string.format("+%d Power",gain),Color3.fromRGB(140,210,255),"PowerPopup")end
+	if gain>0 and gain<=Config.Exercises[#Config.Exercises].Work and root then Effects.popup(root,"+"..Rules.powerText(gain).." Power",Color3.fromRGB(140,210,255),"PowerPopup")end
 end)
 for _,attr in {"Training","TrainingActive","Exercise","TrainingRate","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
 cash.Changed:Connect(updateStats);updateStats()

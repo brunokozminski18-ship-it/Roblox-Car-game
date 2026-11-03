@@ -27,6 +27,8 @@ function HUD.mount(parent: Instance): any
  local cars=action("Cars",88,48,12,{"74E6FF","1E95F0"});cars.TextSize=22
  local train=action("Train",88,48,112,{"D98BFF","7B2BE6"});train.TextSize=17
  local shop=action("Shop",88,48,212,{"FF86CF","E2338C"});shop.TextSize=22
+ local trainingStatus=S.text(gui,"TrainingStatus","",15,UDim2.new(1,-12,0,101),UDim2.fromOffset(300,24))
+ trainingStatus.AnchorPoint=Vector2.new(1,0);trainingStatus.TextXAlignment=Enum.TextXAlignment.Right;trainingStatus.TextColor3=Color3.fromHex("B2FFAD");trainingStatus.Visible=false
  local message=S.text(gui,"Message","",16,UDim2.new(.5,0,1,-88),UDim2.new(1,-120,0,26))
  message.AnchorPoint=Vector2.new(.5,1);message.TextXAlignment=Enum.TextXAlignment.Center;message.Visible=false
  message.BackgroundTransparency=.15;message.BackgroundColor3=Color3.fromHex("16348F");S.corner(message,13)
@@ -38,13 +40,14 @@ function HUD.mount(parent: Instance): any
  return {gui=gui,top=top,cars=cars,train=train,shop=shop,message=message,
   render=function(cash: number,power: number,equipped: string?,training: boolean,rate: number)
    local distance=Rules.distance(power);local b=Config.Biomes[Rules.biome(distance)]
-   stats.Text=string.format('CASH <font color="#B2FFAD">$%s</font>  |  POWER <font color="#FFF2A6">%s</font>  |  %s',short(cash),short(power),b.Name:upper())
+   stats.Text=string.format('CASH <font color="#B2FFAD">$%s</font>  |  POWER <font color="#FFF2A6">%s</font>  |  %s',short(cash),Rules.powerText(power),b.Name:upper())
    local nextIndex,need=Rules.nextBiome(power)
    if nextIndex then
     local nextBiome=Config.Biomes[nextIndex];fill.Size=UDim2.fromScale(math.clamp((distance-b.MinPower)/(nextBiome.MinPower-b.MinPower),0,1),1)
     track:SetAttribute("NextBiome",nextBiome.Name);track:SetAttribute("NeedPower",need)
    else fill.Size=UDim2.fromScale(1,1);track:SetAttribute("NextBiome","MAX");track:SetAttribute("NeedPower",0)end
-   train.Text=if training then "TRAIN ON"else "TRAIN"
+   train.Text=if training then "STOP"else "TRAIN"
+   trainingStatus.Text="TRAINING +"..Rules.powerText(rate).." POWER/s";trainingStatus.Visible=training
    local gradient=train:FindFirstChildOfClass("UIGradient")::UIGradient
    gradient.Color=if training then ColorSequence.new(Color3.fromHex("8CF27C"),Color3.fromHex("22B24A"))else ColorSequence.new(Color3.fromHex("D98BFF"),Color3.fromHex("7B2BE6"))
   end,

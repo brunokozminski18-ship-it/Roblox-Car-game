@@ -40,6 +40,14 @@ function Rules.trainingRate(power: number,exercise: number): number
  local x=Config.Exercises[exercise];if not x then return 0 end
  return x.Work/Config.Economy.TrainingWorkPerPower[Rules.biome(Rules.distance(power))]
 end
+function Rules.trainingActive(position: Vector3?,center: Vector3?,enabled: boolean,busy: boolean): boolean
+ return enabled and not busy and position~=nil and center~=nil and Rules.inBox(position,center,Config.TrainingRadius,Config.TrainingRadius,Config.TrainingHeightTolerance)
+end
+function Rules.powerText(power: number): string
+ if not Rules.finiteNumber(power)then return "0"end
+ local value=math.floor(math.max(0,power)*1000+1e-7)/1000
+ return (string.format("%.3f",value):gsub("%.?0+$",""))
+end
 function Rules.shop(data: any,action: any,id: any): string
  if action=="Exercise"then
   if typeof(id)~="string"or #id>24 then return "Invalid exercise!"end

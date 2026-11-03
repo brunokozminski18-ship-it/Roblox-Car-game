@@ -17,3 +17,7 @@
 - Schema3 zachowana; autosave/leave/shutdown i zapis łupu przed animacją. Tools odtwarzane z danych, nie zapisywane jako instancje.
 -24 źródła Rojo, Studio Edit, emulator/HTTP off, QA usunięte. Bez publikacji, resetu użytkownika i wydatków Robux.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8]]. Wygląd modeli i balans NOT FINAL.
+- Poprawka treningu03.11: natychmiastowy TrainingActive z bieżącej pozycji, TRAIN/STOP, Power do3 miejsc i każdy tick widoczny; stare ukrywanie ułamków usunięte.
+- SHOP ma osobne TRAINING/TICKETS; ceny i rzeczywiste Power/s. Focused2×, Weighted4× bazowego; pozostałe ćwiczenia bez zmiany Config.
+- VERIFIED telefon+PC: zakup180/25488,0.05555→0.11111→0.22222 Power/s, STOP/START/zejście, brak podwójnej opłaty, blokada biomu;197 asercji PASS,0 błędów klienta, review bez uwag.
+- Save/rejoin poprawki zachował Exercise3, Cash74332 i dokładny Power98.55555555555614 na QA; dane użytkownika bez grantów/resetu.

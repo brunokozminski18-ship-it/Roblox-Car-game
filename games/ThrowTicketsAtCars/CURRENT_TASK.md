@@ -1,17 +1,16 @@
-# Current Task — iteracja 8
-- Właściciel: Codex; 03.11.2026. Status: IMPLEMENTED; VERIFIED w zakresie testów poniżej.
-- USER APPROVED: zakres iteracji 8 oraz pokazana próbka My Cars; bez Rebirth/petów/Robux/finalnej grafiki/biomów.
-- Źródła: MCP Obsidiana, LihFolk Vault V2 — cztery wskazane TL;DR; biblioteka wyłącznie odczyt.
-- [x] Profil jest własnością; Tools w Backpack/Character, trzymany model, hotbar 5 slotów ViewportFrame/$/s/numer.
-- [x] My Cars: stabilny sort dochodu+Id, liczniki, PLACE wyposaża, PICK UP, SELL z serwerowym potwierdzeniem Epic+, Equip Best.
-- [x] Place car/Pick up przez prompty; hold0.5 s, właściciel/dystans/stan/cooldown; publiczne Place nie omija hold.
-- [x] Bez BACK TO ROAD, ekranowych PLACE/REMOVE/SELL i THROW; Location nie blokuje ruchu/treningu/rzutu.
-- [x] Własny trening przy działce; układ60 działek bez nakładania, maks.13.42 s marszu przy WalkSpeed16.
-- [x] Płytka rzutu: zegar serwera, tap tylko czas, bonus -5%..+10%, timeout3 s, rearm po zejściu.
-- VERIFIED03.11: 153 asercje; iPhone13Pro/iPhone7 poziomo i PC, E place/pickup, My Cars/sell/equip best, zegar/spam, śmierć, save/rejoin.
-- Save/rejoin: dokładnie8 aut,6 miejsc+2 w plecaku, Ticket/Power/ćwiczenie/mandaty zachowane.
-- NEEDS VERIFICATION: fizyczne dotykowe przytrzymanie systemowego promptu. InputHoldBegin/End w emulatorze PASS; klik MCP nie dał wiarygodnego wyniku, natywny podgląd okna timeout.
-- LogService: 0 MessageError klient/serwer; ostrzeżenia Studio/iniekcji i ContentId203785492 odnotowane w raporcie.
-- Studio Edit; emulator/HTTP off; klucz QA usunięty. Nie zmieniano profilu użytkownika i nie publikowano.
-- Raport/zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8]].
-- Następny krok: ręczny touch-hold i playtest balansu. Finalny wygląd modeli i balans NOT FINAL.
+# Current Task — poprawka treningu po iteracji 8
+- Właściciel: Codex; 03.11.2026. Status: VERIFIED — telefon poziomo, PC,197 asercji, zakup i save/rejoin.
+- Zlecenie użytkownika: naprawić brak wzrostu Power i umożliwić kupowanie lepszego treningu.
+- Diagnoza live: gracz na własnej płytce, Training=false; auto-start i opóźnione TrainingActive myliły toggle TRAIN. HUD dodatkowo ukrywał ułamki Power.
+- [x] TrainingActive aktualizowane od razu; TRAIN/STOP jednoznacznie pokazuje akcję; serwer nalicza z bieżącej pozycji na własnej płytce.
+- [x] Power do3 miejsc po przecinku i popup każdego ticka; na HUD rzeczywiste Power/s.
+- [x] SHOP → TRAINING/TICKETS, ceny i rzeczywiste stawki; istniejące6 ćwiczeń x1/2/4/8/16/32.
+- VERIFIED: Focused Training$180 zwiększyło0.05555→0.11111 Power/s; Weighted Training$25488 zwiększyło do0.22222 Power/s.
+- VERIFIED: STOP nie nalicza, TRAIN wznawia, zejście z płytki zatrzymuje, próba treningu poza nią odrzucona; ponowny zakup nie zabiera Cash.
+- VERIFIED: po rejoin dokładnie ten sam Exercise3, Cash74332 i Power98.55555555555614.
+- Nowa regresja RED→GREEN44 kontroli; pełny zestaw197 PASS. Finalne LogService klienta0 MessageError; review bez istotnych uwag.
+- Źródło: LihFolk Vault V2, Progression and Pacing Design/Pricing Curves and Upgrade Costs TL;DR przez MCP, tylko odczyt.
+- Ceny, Work i tempo Config zachowane. Testy na oddzielnym QA, bez resetu/grantów profilu użytkownika i publikacji.
+- Studio Edit, emulator/HTTP off, TestProfileKey nil.
+- Raport/zrzuty: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8#Poprawka treningu — 03.11.2026]].
+- Następny krok: użytkownik testuje SHOP → TRAINING i płytkę; balans nadal NOT FINAL. Ręczny touch-hold promptu z iteracji8 pozostaje NEEDS VERIFICATION.

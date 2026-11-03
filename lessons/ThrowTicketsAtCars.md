@@ -45,3 +45,4 @@
 - Iteracja8: nazwa urządzenia nie gwarantuje wiarygodnych współrzędnych automatyzacji. iPhone7/iPhone13 miały różne powierzchnie wejścia; cel GUI działał lepiej niż skopiowany offset.
 - Iteracja8: oddzielaj test silnikowego InputHoldBegin/End od fizycznego dotyku promptu. Timeout natywnego capture nie dowodzi błędu gry ani PASS interakcji.
 - Iteracja8: pierwotne odsuwanie kolejnych działek w jednej linii łamie krótki powrót przy MaxPlayers60. Siatka po obu stronach drogi ograniczyła bezpośredni marsz do13.42 s; nie jest to test60 klientów.
+- Poprawka treningu03.11: stan żądany i aktywny muszą trafiać na HUD razem. Auto-start plus toggle oparty o ukrytą flagę wyłączał trening przed pierwszym tickiem. Sprawdzaj bieżącą pozycję przy nagrodzie i pokazuj ułamki, gdy tick daje mniej niż1 Power.

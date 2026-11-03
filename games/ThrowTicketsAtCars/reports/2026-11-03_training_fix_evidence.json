@@ -1,0 +1,65 @@
+{
+  "unit": {
+    "rules": {
+      "ok": true,
+      "result": "7 basic assertions passed"
+    },
+    "iteration8": {
+      "ok": true,
+      "result": "40 iteration-8 assertions passed"
+    },
+    "iteration6": {
+      "ok": true,
+      "result": "62 iteration-6 assertions passed"
+    },
+    "iteration7": {
+      "ok": true,
+      "result": "34 iteration-7 assertions passed"
+    },
+    "garage-security": {
+      "ok": true,
+      "result": "1 garage security assertion passed"
+    },
+    "training-fix": {
+      "ok": true,
+      "result": "44 training-fix assertions passed"
+    },
+    "profiles": {
+      "ok": true,
+      "result": "9 profile safety assertions passed"
+    }
+  },
+  "saveBefore": {
+    "Cars": [],
+    "Power": 98.55555555555614,
+    "Owned": {
+      "paper": true
+    },
+    "Exercise": 3,
+    "Equipped": "paper",
+    "Cash": 74332
+  },
+  "saveAfter": {
+    "Cars": [],
+    "Power": 98.55555555555614,
+    "Owned": {
+      "paper": true
+    },
+    "Exercise": 3,
+    "Equipped": "paper",
+    "Cash": 74332
+  },
+  "measure": {
+    "before": 83.88888888888906,
+    "after": 84.77777777777797,
+    "exercise": 3,
+    "gain": 0.8888888888889142,
+    "result": "Bought Weighted Training!",
+    "rate": 0.2222222222222222,
+    "cash": 74332
+  },
+  "logs": {
+    "errors": []
+  },
+  "review": "No actionable findings"
+}

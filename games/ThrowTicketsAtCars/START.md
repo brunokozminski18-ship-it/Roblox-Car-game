@@ -16,3 +16,4 @@
 - tests/Iteration8.client.luau: trening, rzeczywisty marsz, zielony/czerwony/timeout,40 powtórzeń, bez ustawiania bonusu z klienta.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8]]. Ręczny touch-hold nadal NEEDS VERIFICATION.
 - Po testach: Edit, StopSimulationAsync, TestProfileKey nil, HTTP off. Nie publikuj bez zgody.
+- Trening: wejdź na swoją płytkę; STOP=trening trwa, TRAIN=wznów. SHOP → TRAINING → BUY kupuje i aktywuje wyższe ćwiczenie, każde2× poprzednie. Power rośnie również ułamkowo, HUD pokazuje przyrost co tick.

@@ -17,3 +17,4 @@
 - Jeden writer Profiles, lease/token, autosave/leave/shutdown; osobne klucze QA. Łup zapisany przed animacją, przerwanie sesji odtwarza jeden egzemplarz.
 - Biomy bez zmian:0/50/150/400/1000/2500. Klockowa mapa; Rusty Sedan jako próbka modelu.
 - Źródło: LihFolk Vault V2 (CC BY4.0), cztery wskazane TL;DR inventory/persistence/prompt/QoL, tylko odczyt MCP.
+- Poprawka treningu03.11: TRAIN/STOP steruje ćwiczeniem na własnej płytce; stan aktualny od razu, Power i przyrosty pokazują ułamki. SHOP rozdziela TRAINING/TICKETS, każda karta treningu podaje rzeczywiste Power/s; zakup wyższego ćwiczenia automatycznie je aktywuje.
