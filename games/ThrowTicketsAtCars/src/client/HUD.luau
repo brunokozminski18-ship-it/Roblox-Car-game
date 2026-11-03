@@ -47,7 +47,7 @@ function HUD.mount(parent: Instance): any
     track:SetAttribute("NextBiome",nextBiome.Name);track:SetAttribute("NeedPower",need)
    else fill.Size=UDim2.fromScale(1,1);track:SetAttribute("NextBiome","MAX");track:SetAttribute("NeedPower",0)end
    train.Text=if training then "STOP"else "TRAIN"
-   trainingStatus.Text="TRAINING +"..Rules.powerText(rate).." POWER/s";trainingStatus.Visible=training
+   trainingStatus.Text="TRAINING +"..Rules.powerText(rate*Config.Progression.XPPerLevel).." XP/s";trainingStatus.Visible=training
    local gradient=train:FindFirstChildOfClass("UIGradient")::UIGradient
    gradient.Color=if training then ColorSequence.new(Color3.fromHex("8CF27C"),Color3.fromHex("22B24A"))else ColorSequence.new(Color3.fromHex("D98BFF"),Color3.fromHex("7B2BE6"))
   end,

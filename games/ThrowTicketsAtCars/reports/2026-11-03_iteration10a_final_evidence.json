@@ -1,0 +1,686 @@
+{
+  "Date": "2026-11-03",
+  "Scope": "Iteration10a test version; no final art or balance approval",
+  "Phone": {
+    "AudioPlayed": {
+      "Letter": 22,
+      "Boost": 1,
+      "LevelUp": 16,
+      "Impact": 2,
+      "Rare": 1,
+      "Throw": 2,
+      "Purchase": 1,
+      "Tap": 11,
+      "Toast": 8,
+      "Brake": 2,
+      "XP": 52,
+      "Counter": 51
+    },
+    "NativePreload": {
+      "Letter": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Boost": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Counter": {
+        "Id": "rbxassetid://138309872562566",
+        "Length": 0.4975,
+        "Loaded": true
+      },
+      "Rare": {
+        "Id": "rbxassetid://134821092416328",
+        "Length": 2.482312925170068,
+        "Loaded": true
+      },
+      "Impact": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Brake": {
+        "Id": "rbxassetid://9126103903",
+        "Length": 2.6431458333333335,
+        "Loaded": true
+      },
+      "Purchase": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Throw": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Toast": {
+        "Id": "rbxassetid://106553517979212",
+        "Length": 0.9701587301587301,
+        "Loaded": true
+      },
+      "Tap": {
+        "Id": "rbxassetid://106623224876186",
+        "Length": 0.153125,
+        "Loaded": true
+      },
+      "XP": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "LevelUp": {
+        "Id": "rbxassetid://112485797063762",
+        "Length": 1.5400208333333334,
+        "Loaded": true
+      }
+    },
+    "Viewport": "666, 374",
+    "Flight": {
+      "1": {
+        "Luck": "LUCK 0.09x",
+        "Time": 1793726671.342111,
+        "Biome": "JUNKYARD"
+      },
+      "2": {
+        "Luck": "LUCK 0.13x",
+        "Time": 1793726671.458825,
+        "Biome": "JUNKYARD"
+      },
+      "3": {
+        "Luck": "LUCK 0.19x",
+        "Time": 1793726671.574897,
+        "Biome": "JUNKYARD"
+      },
+      "4": {
+        "Luck": "LUCK 0.26x",
+        "Time": 1793726671.691208,
+        "Biome": "SUBURBS"
+      },
+      "5": {
+        "Luck": "LUCK 0.33x",
+        "Time": 1793726671.807304,
+        "Biome": "SUBURBS"
+      },
+      "6": {
+        "Luck": "LUCK 0.36x",
+        "Time": 1793726671.908513,
+        "Biome": "SUBURBS"
+      },
+      "7": {
+        "Luck": "LUCK 0.43x",
+        "Time": 1793726672.008648,
+        "Biome": "SUBURBS"
+      },
+      "8": {
+        "Luck": "LUCK 0.46x",
+        "Time": 1793726672.124728,
+        "Biome": "SUBURBS"
+      },
+      "9": {
+        "Luck": "LUCK 0.53x",
+        "Time": 1793726672.225562,
+        "Biome": "SUBURBS"
+      },
+      "10": {
+        "Luck": "LUCK 0.59x",
+        "Time": 1793726672.341197,
+        "Biome": "SUBURBS"
+      },
+      "11": {
+        "Luck": "LUCK 0.63x",
+        "Time": 1793726672.441654,
+        "Biome": "SUBURBS"
+      },
+      "12": {
+        "Luck": "LUCK 0.69x",
+        "Time": 1793726672.558358,
+        "Biome": "DOWNTOWN"
+      },
+      "13": {
+        "Luck": "LUCK 0.76x",
+        "Time": 1793726672.674969,
+        "Biome": "DOWNTOWN"
+      },
+      "14": {
+        "Luck": "LUCK 0.79x",
+        "Time": 1793726672.792025,
+        "Biome": "DOWNTOWN"
+      },
+      "15": {
+        "Luck": "LUCK 0.86x",
+        "Time": 1793726672.908457,
+        "Biome": "DOWNTOWN"
+      },
+      "16": {
+        "Luck": "LUCK 0.93x",
+        "Time": 1793726673.025043,
+        "Biome": "DOWNTOWN"
+      },
+      "17": {
+        "Luck": "LUCK 0.96x",
+        "Time": 1793726673.125178,
+        "Biome": "DOWNTOWN"
+      },
+      "18": {
+        "Luck": "LUCK 1.00x",
+        "Time": 1793726673.241643,
+        "Biome": "DOWNTOWN"
+      }
+    },
+    "Events": {
+      "1": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": false,
+          "BonusPower": 2.5249999999999995
+        },
+        "Time": 1793726488.284035
+      },
+      "2": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -137.84500122070312",
+          "Reveal": true,
+          "Income": 6,
+          "StartTime": 1793726488.246465,
+          "Odds": 4,
+          "Rarity": 1,
+          "Id": "4f0110eb-6e87-431f-9d96-cbae76b7f3dc",
+          "Biome": 2,
+          "Perfect": false,
+          "FlightSeconds": 2,
+          "Name": "Family Car",
+          "BonusPower": 2.5249999999999995,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": true,
+          "Position": "7, 1.399999976158142, -105.84500122070312"
+        },
+        "Time": 1793726491.014967
+      },
+      "3": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "33dd6366-b617-4e9a-8767-8eecb5619f24",
+          "ExpiresAt": 1793726510.062686
+        },
+        "Time": 1793726506.096872
+      },
+      "4": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "5ed154f1-a973-49d5-a8fd-fc9610513ba0",
+          "ExpiresAt": 1793726522.228642
+        },
+        "Time": 1793726518.265817
+      },
+      "5": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": true,
+          "BonusPower": 9.979798483848572
+        },
+        "Time": 1793726525.783775
+      },
+      "6": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -145.2998046875",
+          "Reveal": true,
+          "Income": 18,
+          "StartTime": 1793726525.745101,
+          "Odds": 43,
+          "Rarity": 3,
+          "Id": "667b9d47-0006-463d-9fcc-a9ea54d4ceb9",
+          "Biome": 2,
+          "Perfect": true,
+          "FlightSeconds": 2,
+          "Name": "Family Car",
+          "BonusPower": 9.979798483848572,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": true,
+          "Position": "7, 1.399999976158142, -113.29979705810547"
+        },
+        "Time": 1793726528.550279
+      },
+      "7": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "fd82be09-7bac-4c30-8538-9c896ee6c742",
+          "ExpiresAt": 1793726543.544353
+        },
+        "Time": 1793726539.581634
+      },
+      "8": {
+        "Kind": "Gear",
+        "Data": {
+          "Name": "Focused Training",
+          "Effect": "x2 training",
+          "Id": "focused",
+          "Kind": "Exercise",
+          "Price": 180,
+          "ExpiresAt": 1793726556.727748
+        },
+        "Time": 1793726549.781021
+      },
+      "9": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 25,
+          "Amount": 25,
+          "Level": 2,
+          "XP": 5,
+          "Gain": 1
+        },
+        "Time": 1793726550.711359
+      },
+      "10": {
+        "Kind": "GearOpen",
+        "Data": {
+          "Name": "Focused Training",
+          "Effect": "x2 training",
+          "Id": "focused",
+          "Kind": "Exercise",
+          "Price": 180
+        },
+        "Time": 1793726550.795702
+      },
+      "11": {
+        "Kind": "Gear",
+        "Data": {
+          "Name": "Pink Slip",
+          "Effect": "+5% luck / x1.5 income",
+          "Id": "pink",
+          "Kind": "Ticket",
+          "Price": 270,
+          "ExpiresAt": 1793726563.777306
+        },
+        "Time": 1793726556.811455
+      },
+      "12": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "23cdd54b-0e85-4cc2-89bf-e2388c498804",
+          "ExpiresAt": 1793726576.959519
+        },
+        "Time": 1793726572.994335
+      },
+      "13": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 26,
+          "Amount": 50,
+          "Level": 3,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726572.994435
+      },
+      "14": {
+        "Kind": "BoostStarted",
+        "Data": {
+          "Until": 1793726576.026393
+        },
+        "Time": 1793726574.059828
+      },
+      "15": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": true,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 27,
+          "Amount": 100,
+          "Level": 4,
+          "XP": 90,
+          "Gain": 1
+        },
+        "Time": 1793726575.027827
+      },
+      "16": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": true,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 28,
+          "Amount": 100,
+          "Level": 5,
+          "XP": 90,
+          "Gain": 1
+        },
+        "Time": 1793726576.028228
+      },
+      "17": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 29,
+          "Amount": 50,
+          "Level": 6,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726577.045629
+      },
+      "18": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 30,
+          "Amount": 50,
+          "Level": 7,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726579.079291
+      },
+      "19": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 31,
+          "Amount": 50,
+          "Level": 8,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726581.093484
+      },
+      "20": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 32,
+          "Amount": 50,
+          "Level": 9,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726583.127215
+      },
+      "21": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 33,
+          "Amount": 50,
+          "Level": 10,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726585.162121
+      },
+      "22": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "f409fe8e-4fed-4886-a298-8c955e9a58b6",
+          "ExpiresAt": 1793726590.142257
+        },
+        "Time": 1793726586.179771
+      },
+      "23": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 34,
+          "Amount": 50,
+          "Level": 11,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726587.196057
+      },
+      "24": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 35,
+          "Amount": 50,
+          "Level": 12,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726589.228753
+      },
+      "25": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 36,
+          "Amount": 50,
+          "Level": 13,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726591.242211
+      },
+      "26": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 37,
+          "Amount": 50,
+          "Level": 14,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726593.27592
+      },
+      "27": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 38,
+          "Amount": 50,
+          "Level": 15,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726595.295388
+      },
+      "28": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 39,
+          "Amount": 50,
+          "Level": 16,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726597.329895
+      },
+      "29": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "8ee03e67-bf74-474d-aff1-07abd2cfcb5c",
+          "ExpiresAt": 1793726602.292664
+        },
+        "Time": 1793726598.329732
+      },
+      "30": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": false,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 40,
+          "Amount": 50,
+          "Level": 17,
+          "XP": 40,
+          "Gain": 1
+        },
+        "Time": 1793726599.345818
+      },
+      "31": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": true,
+          "BonusPower": 19.905880519321986
+        },
+        "Time": 1793726670.724922
+      },
+      "32": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -254.22589111328125",
+          "Reveal": true,
+          "Income": 28,
+          "StartTime": 1793726670.689676,
+          "Odds": 4,
+          "Rarity": 1,
+          "Id": "bf5ba216-59ae-4f6d-ae99-21d4b1cfdbcb",
+          "Biome": 3,
+          "Perfect": true,
+          "FlightSeconds": 2,
+          "Name": "Police Cruiser",
+          "BonusPower": 19.905880519321986,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": true,
+          "Position": "7, 1.399999976158142, -222.22589111328125"
+        },
+        "Time": 1793726673.457414
+      },
+      "33": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "fb3db721-cd89-4899-887a-43fe9481f3f6",
+          "ExpiresAt": 1793726683.18864
+        },
+        "Time": 1793726679.226428
+      }
+    }
+  },
+  "SaveBefore": {
+    "Cars": {
+      "1": {
+        "Rarity": 1,
+        "Slot": 3,
+        "Id": "4f0110eb-6e87-431f-9d96-cbae76b7f3dc",
+        "Ticket": "paper",
+        "Name": "Family Car",
+        "Biome": 2
+      },
+      "2": {
+        "Rarity": 3,
+        "Slot": 2,
+        "Id": "667b9d47-0006-463d-9fcc-a9ea54d4ceb9",
+        "Ticket": "paper",
+        "Name": "Family Car",
+        "Biome": 2
+      },
+      "3": {
+        "Rarity": 1,
+        "Slot": 1,
+        "Id": "bf5ba216-59ae-4f6d-ae99-21d4b1cfdbcb",
+        "Ticket": "paper",
+        "Name": "Police Cruiser",
+        "Biome": 3
+      }
+    },
+    "Owned": {
+      "paper": true
+    },
+    "TrainingXP": 75,
+    "Power": 200,
+    "TrainingLevel": 177,
+    "Exercise": 2,
+    "Equipped": "paper",
+    "Cash": 872
+  },
+  "SaveAfter": {
+    "Cars": {
+      "1": {
+        "Rarity": 1,
+        "Slot": 3,
+        "Id": "4f0110eb-6e87-431f-9d96-cbae76b7f3dc",
+        "Ticket": "paper",
+        "Name": "Family Car",
+        "Biome": 2
+      },
+      "2": {
+        "Rarity": 3,
+        "Slot": 2,
+        "Id": "667b9d47-0006-463d-9fcc-a9ea54d4ceb9",
+        "Ticket": "paper",
+        "Name": "Family Car",
+        "Biome": 2
+      },
+      "3": {
+        "Rarity": 1,
+        "Slot": 1,
+        "Id": "bf5ba216-59ae-4f6d-ae99-21d4b1cfdbcb",
+        "Ticket": "paper",
+        "Name": "Police Cruiser",
+        "Biome": 3
+      }
+    },
+    "Owned": {
+      "paper": true
+    },
+    "TrainingXP": 75,
+    "Power": 200,
+    "TrainingLevel": 177,
+    "Exercise": 2,
+    "Equipped": "paper",
+    "Cash": 1392
+  },
+  "SaveComparison": {
+    "CarsIdentical": true,
+    "PowerEqual": true,
+    "XPLevelEqual": true,
+    "ExerciseEqual": true,
+    "OwnedEqual": true,
+    "EquippedEqual": true,
+    "CashAtLeastSaved": true
+  },
+  "PureTests": {
+    "profiles.spec.luau": "9 profile safety assertions passed",
+    "progression10a.spec.luau": "54 progression10a assertions passed",
+    "rules.spec.luau": "7 basic assertions passed",
+    "iteration6.spec.luau": "62 iteration-6 assertions passed",
+    "training-fix.spec.luau": "44 training-fix assertions passed",
+    "garage-security.spec.luau": "1 garage security assertion passed",
+    "juice10a.spec.luau": "13 juice assertions passed",
+    "iteration8.spec.luau": "40 iteration-8 assertions passed",
+    "iteration7.spec.luau": "34 iteration-7 assertions passed"
+  }
+}

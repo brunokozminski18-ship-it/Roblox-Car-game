@@ -1,27 +1,21 @@
 # Stan — THROW TICKETS AT CARS!
-- IMPLEMENTED — iteracja8,03.11.2026; zakres i próbka My Cars USER APPROVED.
-- Auta: profil+stabilneId, Tools w plecaku, mały model w ręce,5-slotowy hotbar z ViewportFrame i dochodem.
-- My Cars: sort malejący dochodu+Id, liczniki6/6 i x/20, PLACE wyposaża, PICK UP oddaje, SELL; Epic+ wymaga jednorazowego tokenu potwierdzenia.
-- EQUIP BEST atomowo rozdziela najlepsze6 aut; pełny plecak nie blokuje zamiany, nic nie sprzedaje.
-- ProximityPrompt Place car/Pick up, hold0.5 s; serwer sprawdza właściciela, dystans, stan, czas hold i cooldown.
-- Usunięto BACK TO ROAD oraz stare ekranowe karty/akcje i THROW. Stan Location nie blokuje mechanik.
-- Własny trening przy działce.60 działek w hubie: prostokąty nie nakładają się; maks.13.42 s bezpośredniego marszu do płytki przy szybkości16.
-- Wejście na białą płytkę startuje zegar serwera. Tap to tylko czas; bonus -5%..+10%, timeout3 s daje+2.5%; ponowne uzbrojenie po zejściu.
-- VERIFIED03.11:153 asercje reguł/profili/bezpieczeństwa; telefon iPhone13Pro/iPhone7 poziomo+PC; UI, E, trening, spam, śmierć, save/rejoin.
-- Pomiar zegara: zielony+9.863%, czerwony-4.719%, timeout+2.5%.40 powtórek zaakceptowano tylko raz na cykl.
-- Save/rejoin zachował dokładnie8 aut,6 miejsc+2 w plecaku, Power111.11111111111143, ćwiczenie i mandaty.
-- NEEDS VERIFICATION: ręczne dotykowe przytrzymanie promptu; silnikowa ścieżka InputHoldBegin/End w emulatorze PASS, automatyczny klik/natywny podgląd niezweryfikowane.
-- Kod/server review: poprawiono obejście hold przez publiczne Place; regresja RED→GREEN. Brak dalszych konkretnych uwag.
-- LogService0 MessageError. Dwa ostrzeżenia Studio/ContentId, opisane w raporcie.
-- Ceny nadal z minut dochodu iteracji7; nowy czas chodzenia/pasek zmieniają rytm, wcześniejsza symulacja nie dowodzi balansu iteracji8.
-- Schema3 zachowana; autosave/leave/shutdown i zapis łupu przed animacją. Tools odtwarzane z danych, nie zapisywane jako instancje.
--24 źródła Rojo, Studio Edit, emulator/HTTP off, QA usunięte. Bez publikacji, resetu użytkownika i wydatków Robux.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration8]]. Wygląd modeli i balans NOT FINAL.
-- Poprawka treningu03.11: natychmiastowy TrainingActive z bieżącej pozycji, TRAIN/STOP, Power do3 miejsc i każdy tick widoczny; stare ukrywanie ułamków usunięte.
-- SHOP ma osobne TRAINING/TICKETS; ceny i rzeczywiste Power/s. Focused2×, Weighted4× bazowego; pozostałe ćwiczenia bez zmiany Config.
-- VERIFIED telefon+PC: zakup180/25488,0.05555→0.11111→0.22222 Power/s, STOP/START/zejście, brak podwójnej opłaty, blokada biomu;197 asercji PASS,0 błędów klienta, review bez uwag.
-- Save/rejoin poprawki zachował Exercise3, Cash74332 i dokładny Power98.55555555555614 na QA; dane użytkownika bez grantów/resetu.
-- Iteracja10a częściowa: serwer reveal przed lawetą, selectedPower, XP/schema4/2x, GearVisit+stanowisko; jedna karta złapania i audio/camera feedback IMPLEMENTED.
--264 asercje PASS; native audio12/12 Loaded, schema4 save/rejoin4aut/Level185/XP81.25/Power208; PC Continue, common/Epic server flow. To nie jest pełne zaliczenie UI10a.
-- Czeka ocena próbki karty (AGENTS first sample). FlightHUD/slider/PERFECT UI, XPbar/2x/levelup, GearToast/open shop/shine i pełne testy nadal PLANNED.
--10a v2: po odrzuceniu v1 i analizie filmu zastąpiono panel sceną3D, kamera close→pullback, litery w losowej kolejności, statystyki po nazwie, tap na cały ekran. Telefon+PC i264 kontroli PASS; wygląd nadal czeka na ocenę.
+- Iteracja10a IMPLEMENTED i VERIFIED03.11.2026; próbka sceny v2 USER APPROVED wyłącznie jako wersja testowa. Wygląd i balans NOT FINAL.
+- Pętla: biała płytka → pasek/tap → lot mandatu/biom/LUCK → hamowanie i reveal → laweta → działka/Tool.
+- Catch: kamera przy aucie, sticker/shake/pisk, losowo odsłaniane litery, rarity/$/s/NEW BEST; Epic+ osobne większe ujęcie i1inX.
+- Rzut: wybór1..Power, Lands in/MAX, PERFECT i chwilowy bonusPower. Serwer liczy czas i ogranicza bonus -5%..+10%; timeout3 s daje+2.5%.
+- Trening: XP100/level i+1 Power, pasek XP/level/+XP/level-up, czasowe2x z ofertą4 s i boostem2 s; lepsze ćwiczenia zwiększają XP/s.
+- SHOP: TRAINING/TICKETS, rzeczywiste XP/s, zakupy serwerowe; NEW GEAR z ceną/efektem/czasem i teleportem do własnego stanowiska.
+- Next gear w świecie ma czerwony/zielony koszt; sklep pokazuje białą smugę co5 s (Reduced Motion ją wyłącza).
+- Auta: stabilneId, odtwarzalne Tools w Backpack, mały trzymany model,5-slotowy hotbar ViewportFrame/$/s/numer, reszta w My Cars.
+- My Cars: sort dochodu+Id, parking6/6 i plecak20, PLACE wyposaża, PICK UP oddaje; Epic+ SELL wymaga tokenu potwierdzenia.
+- EQUIP BEST atomowo rozdziela najlepsze6 aut, bez sprzedaży i utraty przy pełnym plecaku.
+- Place car/Pick up przez hold0.5 s; serwer kontroluje własność, dystans, stan, hold i cooldown. Bez BACK TO ROAD/THROW i blokady Plot.
+- Własny trening przy działce;60 działek w hubie, maks.13.42 s bezpośredniego marszu do płytki przy szybkości16.
+- Schema4: migracja zachowuje stare Power/auta/zakupy; XP/level dopisane. Zapis łupu przed animacją, lease/token/autosave/leave/shutdown.
+- VERIFIED03.11:264 asercje; telefon iPhone7 poziomo orazPC: common/Epic, earlier biome/MAX, PERFECT,2x/level, gear/zakupy/shine i native audio12/12.
+- Zapis/rejoin ostatniej serii zachował3 auta ze slotami, Power200/Level177/XP75, Exercise2, Owned/Equipped. Osobny QA key, bez zmiany danych użytkownika.
+-40 powtórek tapu uruchomiło1 rzut. Green111.00/red95.99 przy wybranych101; niefinity/over-power/spoofedContinue odrzucone.
+- Końcowy LogService klient+serwer:0 MessageError. Pozostają ostrzeżenia Studio injection/ContentId opisane w BUGS.
+-32 źródła Rojo; Studio Edit, QA/emulator/HTTP off. Bez publikacji i Robux.
+- NEEDS VERIFICATION: fizyczny touch-hold promptu, fizyczny telefon/multiplayer, subiektywne brzmienie i balans; nie zastępuje ich test automatyczny.
+- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a]]. Wnioski: [[lessons/ThrowTicketsAtCars]].

@@ -20,7 +20,7 @@ local function restore(s: any)
  if s.touch and s.touch.Parent then s.touch.Enabled=s.touchEnabled end
  local humanoid=p.Character and p.Character:FindFirstChildOfClass("Humanoid")
  if s.camera and s.camera.Parent then
-  s.camera.CFrame=s.frame;s.camera.FieldOfView=s.fov
+  s.camera.CFrame=s.frame;s.camera.Focus=s.focus;s.camera.FieldOfView=s.fov
   s.camera.CameraSubject=if s.subject and s.subject.Parent then s.subject else humanoid
   s.camera.CameraType=if s.subject and s.subject.Parent then s.kind else Enum.CameraType.Custom
  end
@@ -36,7 +36,7 @@ function C.play(origin: Vector3,destination: Vector3,car: Model?,owner: number,i
  local session: any=nil
  if mine and p.Character and p.Character:FindFirstChildOfClass("Humanoid")then
   C.cancel();local camera=workspace.CurrentCamera
-  session={closed=false,camera=camera,frame=camera.CFrame,fov=camera.FieldOfView,subject=camera.CameraSubject,kind=camera.CameraType,connections={}};active=session
+  session={closed=false,camera=camera,frame=camera.CFrame,focus=camera.Focus,fov=camera.FieldOfView,subject=camera.CameraSubject,kind=camera.CameraType,connections={}};active=session
   local current=session;current.hidden={};current.touch=p.PlayerGui:FindFirstChild("TouchGui");if current.touch then current.touchEnabled=current.touch.Enabled;current.touch.Enabled=false end
   local humanoid=p.Character:FindFirstChildOfClass("Humanoid")
   table.insert(current.connections,humanoid.Died:Connect(function()restore(current)end))

@@ -3,6 +3,7 @@ local Players=game:GetService("Players")
 local RunService=game:GetService("RunService")
 local UIS=game:GetService("UserInputService")
 local Meter=require(game.ReplicatedStorage.ThrowTickets.ThrowMeter)
+local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local S=require(script.Parent.Style)
 local UI={}
 function UI.mount(remote: RemoteEvent)
@@ -14,7 +15,7 @@ function UI.mount(remote: RemoteEvent)
  local gradient=Instance.new("UIGradient");gradient.Rotation=90;gradient.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromHex("58EB6B")),ColorSequenceKeypoint.new(.5,Color3.fromHex("FFE55D")),ColorSequenceKeypoint.new(1,Color3.fromHex("F0544D"))});gradient.Parent=bar
  for _,y in {.25,.5,.75}do local line=Instance.new("Frame");line.Size=UDim2.new(1,0,0,2);line.Position=UDim2.fromScale(0,y);line.BackgroundColor3=S.INK;line.BackgroundTransparency=.5;line.BorderSizePixel=0;line.Parent=bar end
  local marker=Instance.new("Frame");marker.Name="Slider";marker.AnchorPoint=Vector2.new(.5,.5);marker.Size=UDim2.new(1,20,0,16);marker.Position=UDim2.fromScale(.5,1);marker.BorderSizePixel=0;marker.BackgroundColor3=Color3.new(1,1,1);marker.Parent=bar;S.corner(marker,8);S.stroke(marker,3)
- local bonus=S.text(bar,"Bonus","",30,UDim2.new(1,20,.5,-24),UDim2.fromOffset(140,48))
+ local bonus=S.text(bar,"Bonus","",24,UDim2.new(1,20,.5,-24),UDim2.fromOffset(180,48));bonus.TextWrapped=true
  local label=S.text(tap,"Instruction","TAP TO THROW!",32,UDim2.fromScale(.5,.88),UDim2.new(1,-24,0,46));label.AnchorPoint=Vector2.new(.5,.5);label.TextXAlignment=Enum.TextXAlignment.Center
  local sent: number?=nil;local frozen=0
  local function throw()
@@ -27,8 +28,8 @@ function UI.mount(remote: RemoteEvent)
   local start=p:GetAttribute("MeterStart");gui.Enabled=typeof(start)=="number"
   if not gui.Enabled then sent=nil;return end
   local position=if sent==start then frozen else Meter.position(workspace:GetServerTimeNow()-start)
-  marker.Position=UDim2.fromScale(.5,position);bonus.Text=string.format("%+.1f%%",Meter.bonus(position)*100)
-  label.Text=if sent==start then "THROWING!"else "TAP TO THROW!"
+  marker.Position=UDim2.fromScale(.5,position);bonus.Text=string.format("%+.1f\nPOWER",(p:GetAttribute("ThrowSelection")or p:GetAttribute("ThrowPower")or 0)*Meter.bonus(position))
+  label.Text=if sent==start then (if frozen<=Config.Juice.PerfectPosition then "PERFECT!"else "THROWING!")else "TAP TO THROW!"
   bar.Size=UDim2.fromOffset(54,math.clamp(gui.AbsoluteSize.Y*.67,120,380));label.TextSize=if gui.AbsoluteSize.X<600 then 26 else 32
  end)
  gui.Enabled=false

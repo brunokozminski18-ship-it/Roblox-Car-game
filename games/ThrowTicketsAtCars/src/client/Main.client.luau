@@ -25,23 +25,23 @@ local cash=p:WaitForChild("leaderstats"):WaitForChild("Cash")::IntValue
 local hud=require(script.Parent.HUD).mount(p:WaitForChild("PlayerGui"))
 local gui,trainButton,message=hud.gui,hud.train,hud.message
 local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedback,hud.shop)
+local juice=require(script.Parent.JuiceHUD).mount(remotes,shop)
+Cinematics.setFeedback(juice.feedback)
 local reveal=require(script.Parent.CatchReveal).mount(p:WaitForChild("PlayerGui"),Audio.play)
 remotes:WaitForChild("Juice").OnClientEvent:Connect(function(kind,data)
  if kind=="Reveal"then reveal.show(data,function()remotes.ContinueCatch:FireServer(data.Id)end)
- elseif kind=="XP"then
-  local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")
-  if root then Effects.popup(root,"+"..Rules.powerText(data.Amount).." XP",Color3.fromRGB(145,215,255),"XPPopup")end
-  Audio.play("XP");if data.Levels>0 then Audio.play("LevelUp")end
- end
+ else juice.feedback(kind,data)end
 end)
 p.CharacterRemoving:Connect(reveal.hide)
 p:GetAttributeChangedSignal("ThrowPhase"):Connect(function()local phase=p:GetAttribute("ThrowPhase");if phase=="Idle"or phase=="Tow"then reveal.hide()end end)
 local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars)
 require(script.Parent.ThrowMeterUI).mount(Throw)
+require(script.Parent.PowerSelector).mount(remotes:WaitForChild("SelectPower")::RemoteEvent)
 Exercises.mount();require(script.Parent.Traffic).mount(world)
 trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("TrainingActive"))end)
 local version=0
 Feedback.OnClientEvent:Connect(function(text: string)
+	if string.sub(text,1,6)=="Bought"then Audio.play("Purchase")end
 	version+=1;local current=version;message.Text=text;message.Visible=true
 	task.delay(Config.MessageSeconds,function()if version==current then message.Text="";message.Visible=false end end)
 end)
@@ -49,18 +49,16 @@ Ticket.OnClientEvent:Connect(function(origin: Vector3,destination: Vector3,car: 
 	Cinematics.play(origin,destination,car,owner,income,metadata)
 end)
 Effects.watchParking(world:WaitForChild("Parking"));Effects.watchTows(world:WaitForChild("Tows"))
-local previousPower=p:GetAttribute("ThrowPower")or Config.StartPower
 local function updateStats()
- hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("TrainingActive")==true,p:GetAttribute("TrainingRate")or 0)
+ local boosted=workspace:GetServerTimeNow()<(p:GetAttribute("BoostUntil")or 0)
+ hud.render(cash.Value,p:GetAttribute("ThrowPower")or 0,p:GetAttribute("EquippedTicket"),p:GetAttribute("TrainingActive")==true,(p:GetAttribute("TrainingRate")or 0)*(if boosted then 2 else 1))
  hud.mode(p:GetAttribute("Location")or "Road",p:GetAttribute("Throwing")==true,p:GetAttribute("ThrowPhase")or "Idle")
  local phase=p:GetAttribute("ThrowPhase");hud.top.Visible=phase~="Flying"and phase~="Hit"and phase~="Reveal"
 end
 p:GetAttributeChangedSignal("ThrowPower"):Connect(function()
-	local power=p:GetAttribute("ThrowPower")or 0;local gain=power-previousPower;previousPower=power;updateStats()
-	local root=p.Character and p.Character:FindFirstChild("HumanoidRootPart")::BasePart?
-	if gain>0 and gain<=Config.Exercises[#Config.Exercises].Work and root then Effects.popup(root,"+"..Rules.powerText(gain).." Power",Color3.fromRGB(140,210,255),"PowerPopup")end
+	updateStats()
 end)
-for _,attr in {"Training","TrainingActive","Exercise","TrainingRate","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
+for _,attr in {"Training","TrainingActive","TrainingXP","BoostUntil","Exercise","TrainingRate","ParkingUsed","EquippedTicket","Location","Throwing","ThrowPhase"}do p:GetAttributeChangedSignal(attr):Connect(updateStats)end
 cash.Changed:Connect(updateStats);updateStats()
 -- Default camera outside a bounded throw cinematic; Cinematics restores on every exit.
 local function restoreCamera(character: Model)

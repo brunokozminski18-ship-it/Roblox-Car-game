@@ -23,7 +23,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
  end
  view=require(script.Parent.MyCarsView).mount(playerGui,send)
  local gui=Instance.new("ScreenGui");gui.Name="CarHotbar";gui.ResetOnSpawn=false;gui.DisplayOrder=15;gui.ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets;gui.Parent=playerGui
- local bar=Instance.new("Frame");bar.Name="Slots";bar.AnchorPoint=Vector2.new(.5,1);bar.Position=UDim2.new(.5,0,1,-8);bar.BackgroundTransparency=1;bar.Parent=gui
+ local bar=Instance.new("Frame");bar.Name="Slots";bar.AnchorPoint=Vector2.new(.5,1);bar.Position=UDim2.new(.5,0,1,-46);bar.BackgroundTransparency=1;bar.Parent=gui
  local layout=Instance.new("UIListLayout");layout.FillDirection=Enum.FillDirection.Horizontal;layout.HorizontalAlignment=Enum.HorizontalAlignment.Center;layout.Padding=UDim.new(0,7);layout.SortOrder=Enum.SortOrder.LayoutOrder;layout.Parent=bar
  local function busy(): boolean
   local shop=playerGui:FindFirstChild("TicketShop");return p:GetAttribute("Throwing")==true or(shop~=nil and shop:GetAttribute("Open")==true)
@@ -51,7 +51,7 @@ function Inventory.mount(world: Instance,garage: RemoteEvent,snapshots: RemoteEv
    elseif not c and slot then slot.button:Destroy();hotbars[i]=nil;slot=nil end
    if slot then slot.button.Size=UDim2.fromOffset(size,size);local outline=slot.button:FindFirstChildOfClass("UIStroke");outline.Color=if equipped==slot.id then Color3.fromHex("FFD24A")else S.INK;outline.Thickness=if equipped==slot.id then 4 else 2 end
   end
-  bar.Visible=not busy()and not view.isOpen()
+  bar.Visible=not busy()and not view.isOpen()and not p:GetAttribute("PowerSelectorVisible")
   if p:GetAttribute("MeterStart")then view.open(false)end
  end
  launch.Activated:Connect(function()if not busy()then view.open(not view.isOpen());render()end end)

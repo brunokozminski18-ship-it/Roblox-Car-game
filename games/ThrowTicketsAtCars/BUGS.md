@@ -1,13 +1,13 @@
 # Błędy i ograniczenia
-- Iteracja8: brak MessageError klienta/serwera w końcowych LogService;153 asercje PASS.
-- NEEDS VERIFICATION: ręczny touch-hold promptu. Domyślny BillboardGui nie jest wiarygodnie obsługiwany przez klik MCP; natywny capture Studio dwukrotnie timeout. InputHoldBegin/End na telefonie uruchamia tę samą walidację i działa.
-- Studio ostrzega o nieudanej iniekcji skryptu i ContentId203785492 (niezgodny typ assetu); to MessageWarning, bez błędu w skryptach gry. Nie zmieniano obcych pluginów.
-- Balans NOT FINAL. Ceny/ćwiczenia zachowano; tempo iteracji7 nie jest pomiarem nowej pętli chodzenia i paska.
+- Iteracja10a: końcowy LogService klient+serwer0 MessageError;264 asercje PASS, telefon landscape+PC.
+- NEEDS VERIFICATION: fizyczny touch-hold promptu; InputHoldBegin/End w emulatorze przeszedł walidację serwera w iteracji8.
+- Studio ostrzega o nieudanej iniekcji skryptu i ContentId203785492 (niezgodny typ assetu); MessageWarning, poza źródłami tej gry. Nie zmieniano obcych pluginów.
+- Wygląd/próbka10a zaakceptowane wyłącznie jako wersja testowa; finalna grafika, brzmienie i balans NOT FINAL.
 - Fizyczny telefon, wielu równoczesnych graczy i awaria backendu nieprzetestowane.60 działek sprawdzono geometrycznie, nie60 klientami.
 - Zapis łupu poprzedza animację; wolny backend wydłuża przygotowanie. Lease po awarii do90 s.
-- Akcje garażu zaznaczają profil dirty; zapis przez budżetowany autosave/leave/shutdown, bez zapisu przy każdym kliknięciu.
-- Brak dochodu offline. Mnożnik mandatu przypisany przy złapaniu; nie przelicza starych aut.
-- Domyślny hotbar Roblox ukryty; narzędzia odtwarzają się po śmierci/rejoin. Wybór wyposażonego auta nie jest częścią zapisu.
-- Zatwierdzona próbka My Cars; modele i finalny balans nadal NOT FINAL.
-- Naprawiono03.11: TRAIN mógł wyłączyć auto-start zanim TrainingActive trafiło na HUD; przyrost1/18 Power/s był niewidoczny po obcięciu do całości. Aktualny stan/STOP, ułamki i jawna stawka przeszły telefon/PC oraz197 kontroli.
-- Iteracja10a NIEUKOŃCZONA: sample karty czeka na ocenę; nowe UI dla flight/slider/PERFECT/XPbar/2x/GearToast/shine nie jest jeszcze podłączone. Serwer i karta działają, reszta wymaga kontynuacji.
+- Garaż zapisuje przez budżetowany autosave/leave/shutdown; brak dochodu offline. Mnożnik mandatu nie zmienia starych aut.
+- Tools odtwarzają się po śmierci/rejoin; wybór wyposażonego auta i suwaka nie są trwałym zapisem.
+- Trening daje XP, Power dopiero przy levelu.100 XP/level,+1 Power; wzrost skokowy jest widoczny na pasku i w LEVEL UP.
+- Native audio12/12 ładuje się i emituje Played w przepływie; onset/latencja odsłuchowa niezmierzone, ocena jakości wymaga odsłuchu gracza.
+- Naprawione: stan TRAIN/STOP i ukrywane ułamki; ghost sticker/proxy reveal; anulowany tween nie chowa nowej smugi; kamera przywraca również Focus.
+- Automatyzacja PC raz nie uzbroiła paska, bo teleport wrócił przed heartbeat wyjścia. Jawne zejście0.4 s i ponowne wejście uruchomiło rzut poprawnie; zasad gry nie zmieniano pod test.

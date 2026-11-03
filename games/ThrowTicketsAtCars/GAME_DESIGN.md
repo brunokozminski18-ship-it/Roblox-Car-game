@@ -1,21 +1,23 @@
-# THROW TICKETS AT CARS! — iteracja8
-- USER APPROVED03.11: zakres iteracji8 i próbka My Cars; bez Rebirth/petów/Robux/finalnej grafiki/nowych biomów.
-- Pętla: wejdź na białą płytkę → zatrzymaj pasek → mandat trafia jadące auto → laweta → działka → Tool auta.
-- Dystans=min(koniec mapy,Power×(1+bonus paska)); bonus od-5% do+10%. Mandaty nie zmieniają dystansu.
-- Serwer startuje zegar, okres1.4 s, timeout3 s daje+2.5%. Klient przesyła tylko czas tapnięcia, walidowany z ograniczoną tolerancją ping.
-- Nowy rzut wymaga opuszczenia i ponownego wejścia na płytkę; job blokuje konkurujące żądania.
-- Profil jest źródłem własności; niepostawione auta mają odtwarzalne Tools w Backpack/Character. Trzymany mały model, hotbar5 slotów z ikoną3D/$/s/numerem.
-- CARS → My Cars, sort dochodu malejąco+Id, wszystkie auta, liczniki parkingu i plecaka20.
-- PLACE w oknie wyposaża. Wolne miejsce ma Place car przy trzymanym aucie; postawione ma Pick up. Hold0.5 s i walidacja serwera.
-- PICK UP w My Cars działa w zasięgu miejsca. SELL działa dla własnego auta również postawionego; Epic+ wymaga potwierdzenia serwera ważnego15 s.
-- EQUIP BEST przy działce parkuje najlepsze6 aut, zamienia słabsze i zachowuje limit20 bez sprzedaży.
-- Działki obok rzutu; własna płytka treningu. Gracz wraca pieszo, bez BACK TO ROAD i blokady Plot.
-- Power: aktywne ćwiczenie na własnej płytce, Work/koszt pracy biomu na sekundę; ćwiczenia kupowane w SHOP, postęp ułamkowy zapisany.
-- Mandaty: luck Rare+ i mnożnik dochodu nowego auta. Income=floor(biom×rzadkość×mandat), minimum1; sprzedaż za180 s dochodu.
-- Ceny upgrade=Minutes×ReferenceIncomePerMinute biomu. Tempo iteracji8 wymaga playtestu; nie przenosić wcześniejszego wyniku71/151 s jako pomiaru tej iteracji.
-- Schema3: Cash/Power/Exercise/Owned/Equipped/Cars(Id,Biome,Rarity,Name,Ticket,Slot). Tylko postawione auta zarabiają, brak offline.
-- Jeden writer Profiles, lease/token, autosave/leave/shutdown; osobne klucze QA. Łup zapisany przed animacją, przerwanie sesji odtwarza jeden egzemplarz.
-- Biomy bez zmian:0/50/150/400/1000/2500. Klockowa mapa; Rusty Sedan jako próbka modelu.
-- Źródło: LihFolk Vault V2 (CC BY4.0), cztery wskazane TL;DR inventory/persistence/prompt/QoL, tylko odczyt MCP.
-- Poprawka treningu03.11: TRAIN/STOP steruje ćwiczeniem na własnej płytce; stan aktualny od razu, Power i przyrosty pokazują ułamki. SHOP rozdziela TRAINING/TICKETS, każda karta treningu podaje rzeczywiste Power/s; zakup wyższego ćwiczenia automatycznie je aktywuje.
-- Iteracja10a częściowo IMPLEMENTED: schema4 dodaje TrainingLevel/TrainingXP bez utraty starego Power;100 XP→+1 Power, XP/sek=stara stawka×100, oferta2x co12 s ważna4 s, boost2 s. Wybrana siła1..Power z dotychczasowym małym bonusem. Reveal przed lawetą z minimum1.3/2.5 s i limitem12 s. Pozostały UI PLANNED, patrz CURRENT_TASK.
+# THROW TICKETS AT CARS! — iteracja10a
+- USER APPROVED03.11: zakres8/10a, My Cars i scena złapania v2 wyłącznie testowa. Bez Rebirth/petów/Robux/nowych biomów/publikacji.
+- Pętla: wybierz siłę → wejdź na białą płytkę → tap paska → mandat/biom/LUCK → hit/reveal → laweta → działka/Tool.
+- Dystans=min(koniec mapy,wybranaSiła×(1+bonus)); siła1..Power, MAX śledzi aktualny Power; bonus -5%..+10%, PERFECT szczyt6%.
+- Serwer startuje zegar, okres1.4 s, timeout3 s daje+2.5%; klient wysyła tylko czas tapu. Nowy rzut po opuszczeniu i wejściu na płytkę.
+- Lot pokazuje rzeczywisty biom pozycji i animowany licznik do luck mandatu. Licznik nie dodaje ukrytych mnożników szans.
+- Trafienie: hamowanie0.3 s, pisk/impact/sticker/shake, close→pullback, nazwa losowymi literami0.18 s (Epic×1.35), rarity/$/s/NEW BEST.
+- NEW BEST: ścisły rekord dochodu w posiadanych autach. Epic+1inX to zaokrąglone rzeczywiste odds konkretnego auta, z wagami mandatu.
+- Continue wymaga jobId i upływu minimum common2.4/Epic3.3 s oraz czasu nazwy; timeout12 s. Potem dotychczasowa laweta/teleport.
+- XP/sek=Work/koszt pracy biomu×100.100 XP→level+1 iPower+1; nowe ćwiczenie podwaja XP względem poprzedniego, ceny zachowane.
+- Oferta2x co12 s aktywnego treningu, ważna4 s; klik zId uruchamia2 s boosta na serwerze, bez stackowania. Pasek XP, +XP iLEVEL UP.
+- NEW GEAR: pierwszy osiągalny next exercise/ticket z ceną/efektem/timerem7 s; akcja teleportuje do własnego stanowiska i otwiera kategorię sklepu, nie kupuje.
+- Next exercise w świecie ma cenę zieloną/czerwoną; SHOP TRAINING/TICKETS, biała smuga co5 s, Reduced Motion respektowane.
+- Profil kontroluje własność; auta Slot0 odtwarzają Tools w Backpack/Character. Hotbar5 slotów z3D/$/s/numerem ponad XPbar; CARS otwiera pełny ekwipunek20.
+- My Cars: dochód malejąco+Id, parking6/6; PLACE wyposaża, PICK UP przy miejscu; Epic+ SELL przez token15 s, EQUIP BEST atomowo parkuje najlepsze6.
+- Wolne miejsce: Place car tylko przy trzymanym aucie; postawione: Pick up. Hold0.5 s i walidacja własności/dystansu/stanu/cooldownu.
+- Działki obok rzutu i własny trening; powrót pieszo, bez BACK TO ROAD/blokady Plot.
+- Income=floor(biom×rzadkość×mandat), min1; sprzedaż180 s dochodu. Mandaty zwiększają luck/income nowego auta, bez mnożnika dystansu.
+- Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/400/1000/2500. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
+- Schema4: Cash/Power/TrainingLevel/TrainingXP/Exercise/Owned/Equipped/Cars(Id,Biome,Rarity,Name,Ticket,Slot); tylko parking zarabia, brak offline.
+- Jeden writer/lease/token/autosave/leave/shutdown; łup zapisany przed animacją. Boost i aktualne wyposażenie/suwak są stanem sesji.
+- Audio12 cue/9 ID Creator Store, preload/pooling/cap12, losowanie pitch i choke; kamera jeden owner z cleanup/FOV/Focus i ograniczonym shake.
+- Źródło: LihFolk Vault V2(CC BY4.0), MCP tylko odczyt; referencja użytkownika ThrowFoodForAnimals [A/B/C/D/H] i film, własne nazwy/grafiki.

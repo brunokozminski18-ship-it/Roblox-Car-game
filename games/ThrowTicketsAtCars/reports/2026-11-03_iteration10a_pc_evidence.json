@@ -1,0 +1,428 @@
+{
+  "Date": "2026-11-03",
+  "PC": {
+    "Camera": {
+      "Phase": "Idle",
+      "Look": "-0, -0.4472135901451111, -0.8944271802902222"
+    },
+    "Events": {
+      "1": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": true,
+          "BonusPower": 9.999945419175281
+        },
+        "Time": 1793726800.388338
+      },
+      "2": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -145.3199462890625",
+          "Reveal": true,
+          "Income": 6,
+          "StartTime": 1793726800.349747,
+          "Odds": 4,
+          "Rarity": 1,
+          "Id": "bbf0c608-3604-48a9-bdf6-543f6025a367",
+          "Biome": 2,
+          "Perfect": true,
+          "FlightSeconds": 2,
+          "Name": "Family Car",
+          "BonusPower": 9.999945419175281,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": false,
+          "Position": "7, 1.399999976158142, -113.3199462890625"
+        },
+        "Time": 1793726803.118866
+      },
+      "3": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "b12e36a5-161b-4848-a98b-6fd90ffe4fc8",
+          "ExpiresAt": 1793726813.33419
+        },
+        "Time": 1793726809.370343
+      },
+      "4": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": false,
+          "BonusPower": 2.5249999999999995
+        },
+        "Time": 1793726855.332625
+      },
+      "5": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -137.84500122070312",
+          "Reveal": true,
+          "Income": 18,
+          "StartTime": 1793726855.297014,
+          "Odds": 43,
+          "Rarity": 3,
+          "Id": "d5ee4bf5-07e1-47a1-bfc5-fd2cef4e436b",
+          "Biome": 2,
+          "Perfect": false,
+          "FlightSeconds": 2,
+          "Name": "Minivan",
+          "BonusPower": 2.5249999999999995,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": false,
+          "Position": "7, 1.399999976158142, -105.84500122070312"
+        },
+        "Time": 1793726858.069897
+      },
+      "6": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "c14e7cc6-3641-477c-a54b-fdb8eeb497d1",
+          "ExpiresAt": 1793726868.998348
+        },
+        "Time": 1793726865.035479
+      },
+      "7": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "3bcbbc6d-5094-443f-a74c-f46a623bf6c5",
+          "ExpiresAt": 1793726881.131204
+        },
+        "Time": 1793726877.166274
+      },
+      "8": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": false,
+          "BonusPower": -5.006364474977762
+        },
+        "Time": 1793726884.031922
+      },
+      "9": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -130.31362915039062",
+          "Reveal": true,
+          "Income": 6,
+          "StartTime": 1793726883.996102,
+          "Odds": 4,
+          "Rarity": 1,
+          "Id": "e316d53a-1840-42cc-8966-3ceb9a6f8bd5",
+          "Biome": 2,
+          "Perfect": false,
+          "FlightSeconds": 2,
+          "Name": "Hatchback",
+          "BonusPower": -5.006364474977762,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": false,
+          "Position": "7, 1.399999976158142, -98.31363677978516"
+        },
+        "Time": 1793726886.769325
+      },
+      "10": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "96f65ea5-46ee-4bd3-9e68-d1d333e9a71a",
+          "ExpiresAt": 1793726896.314128
+        },
+        "Time": 1793726892.347817
+      },
+      "11": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "e64f9d87-326a-4035-987a-2a91266cdbdc",
+          "ExpiresAt": 1793726908.446272
+        },
+        "Time": 1793726904.483415
+      },
+      "12": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "20c772c2-87bd-4449-8a25-1f837c8cee59",
+          "ExpiresAt": 1793726920.579799
+        },
+        "Time": 1793726916.615016
+      },
+      "13": {
+        "Kind": "Gear",
+        "Data": {
+          "Name": "Weighted Training",
+          "Effect": "x4 training",
+          "Id": "weighted",
+          "Kind": "Exercise",
+          "Price": 25488,
+          "ExpiresAt": 1793726926.095984
+        },
+        "Time": 1793726919.149183
+      },
+      "14": {
+        "Kind": "GearOpen",
+        "Data": {
+          "Name": "Weighted Training",
+          "Effect": "x4 training",
+          "Id": "weighted",
+          "Kind": "Exercise",
+          "Price": 25488
+        },
+        "Time": 1793726920.298367
+      },
+      "15": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "87ef929c-053c-4af1-be78-9fc77262389e",
+          "ExpiresAt": 1793726932.694504
+        },
+        "Time": 1793726928.730624
+      },
+      "16": {
+        "Kind": "BoostStarted",
+        "Data": {
+          "Until": 1793726931.461885
+        },
+        "Time": 1793726929.496299
+      },
+      "17": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": true,
+          "Levels": 0,
+          "Needed": 100,
+          "Power": 52,
+          "Amount": 44.44444444444444,
+          "Level": 29,
+          "XP": 95,
+          "Gain": 0
+        },
+        "Time": 1793726929.728863
+      },
+      "18": {
+        "Kind": "XP",
+        "Data": {
+          "Boosted": true,
+          "Levels": 1,
+          "Needed": 100,
+          "Power": 53,
+          "Amount": 44.44444444444444,
+          "Level": 30,
+          "XP": 39.44444444444446,
+          "Gain": 1
+        },
+        "Time": 1793726930.746939
+      },
+      "19": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "892a6ab7-c80a-4303-93c2-c1813ae9894b",
+          "ExpiresAt": 1793726945.811877
+        },
+        "Time": 1793726941.846137
+      },
+      "20": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "80ee62f6-1954-402c-96ca-f33db5c4d891",
+          "ExpiresAt": 1793726957.961692
+        },
+        "Time": 1793726953.999945
+      },
+      "21": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "9c5f9756-c9a9-4d87-b10b-c5ade1ce0120",
+          "ExpiresAt": 1793726970.109682
+        },
+        "Time": 1793726966.1449
+      },
+      "22": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "8b4e3a63-8ace-4100-9020-93990f5f34a3",
+          "ExpiresAt": 1793726982.226926
+        },
+        "Time": 1793726978.260985
+      },
+      "23": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "f2281102-731b-4bcc-81a0-decdf598d6aa",
+          "ExpiresAt": 1793726994.426388
+        },
+        "Time": 1793726990.462625
+      },
+      "24": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "ccbb3f4a-e6ba-447c-b822-217667bfb9f7",
+          "ExpiresAt": 1793727006.575675
+        },
+        "Time": 1793727002.609894
+      },
+      "25": {
+        "Kind": "ThrowResult",
+        "Data": {
+          "Perfect": true,
+          "BonusPower": 6.757044792175291
+        },
+        "Time": 1793727011.028217
+      },
+      "26": {
+        "Kind": "Reveal",
+        "Data": {
+          "TicketId": "paper",
+          "ApproachFrom": "7, 1.399999976158142, -111.07704162597656",
+          "Reveal": true,
+          "Income": 6,
+          "StartTime": 1793727010.992489,
+          "Odds": 4,
+          "Rarity": 1,
+          "Id": "6468ea93-212c-4712-bbc1-522eaca95fff",
+          "Biome": 2,
+          "Perfect": true,
+          "FlightSeconds": 2,
+          "Name": "Minivan",
+          "BonusPower": 6.757044792175291,
+          "WindupSeconds": 0.45,
+          "Luck": 1,
+          "NewBest": false,
+          "Position": "7, 1.399999976158142, -79.07704162597656"
+        },
+        "Time": 1793727013.77697
+      },
+      "27": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "ceaa06b4-bd54-4234-8148-4519764b7e7d",
+          "ExpiresAt": 1793727022.791676
+        },
+        "Time": 1793727018.826695
+      },
+      "28": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "04d5192b-5319-442b-becb-e3681c5a2eb4",
+          "ExpiresAt": 1793727034.907462
+        },
+        "Time": 1793727030.942277
+      },
+      "29": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "efe8dbb2-fcae-48a4-9792-f1ca161cff7e",
+          "ExpiresAt": 1793727047.008046
+        },
+        "Time": 1793727043.046346
+      },
+      "30": {
+        "Kind": "BoostOffer",
+        "Data": {
+          "Id": "74e317ed-71a4-4f46-bc0e-3fddfb1dd00b",
+          "ExpiresAt": 1793727059.157754
+        },
+        "Time": 1793727055.192868
+      }
+    },
+    "Errors": {
+      "1": "PlayerModule is not a valid member of PlayerScripts \"Players.FPG40.PlayerScripts\""
+    },
+    "NativePreload": "{\"Letter\":{\"Loaded\":true,\"Length\":0.1579375,\"Id\":\"rbxassetid://106984966606682\"},\"Boost\":{\"Loaded\":true,\"Length\":0.9226666666666666,\"Id\":\"rbxassetid://80984744279155\"},\"LevelUp\":{\"Loaded\":true,\"Length\":1.5400208333333335,\"Id\":\"rbxassetid://112485797063762\"},\"Impact\":{\"Loaded\":true,\"Length\":0.1579375,\"Id\":\"rbxassetid://106984966606682\"},\"Brake\":{\"Loaded\":true,\"Length\":2.6431458333333337,\"Id\":\"rbxassetid://9126103903\"},\"Tap\":{\"Loaded\":true,\"Length\":0.153125,\"Id\":\"rbxassetid://106623224876186\"},\"Purchase\":{\"Loaded\":true,\"Length\":0.4974166666666667,\"Id\":\"rbxassetid://130378474223829\"},\"Throw\":{\"Loaded\":true,\"Length\":0.9226666666666666,\"Id\":\"rbxassetid://80984744279155\"},\"Toast\":{\"Loaded\":true,\"Length\":0.9701587301587301,\"Id\":\"rbxassetid://106553517979212\"},\"Rare\":{\"Loaded\":true,\"Length\":2.482312925170068,\"Id\":\"rbxassetid://134821092416328\"},\"XP\":{\"Loaded\":true,\"Length\":0.4974166666666667,\"Id\":\"rbxassetid://130378474223829\"},\"Counter\":{\"Loaded\":true,\"Length\":0.4975,\"Id\":\"rbxassetid://138309872562566\"}}",
+    "Audio": {
+      "Brake": 4,
+      "Boost": 1,
+      "LevelUp": 32,
+      "Impact": 4,
+      "Letter": 32,
+      "Tap": 12,
+      "Purchase": 1,
+      "Throw": 4,
+      "Toast": 21,
+      "Rare": 1,
+      "XP": 175,
+      "Counter": 91
+    }
+  },
+  "FinalPhone": {
+    "Preload": {
+      "Letter": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Boost": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Counter": {
+        "Id": "rbxassetid://138309872562566",
+        "Length": 0.4975,
+        "Loaded": true
+      },
+      "Rare": {
+        "Id": "rbxassetid://134821092416328",
+        "Length": 2.482312925170068,
+        "Loaded": true
+      },
+      "Impact": {
+        "Id": "rbxassetid://106984966606682",
+        "Length": 0.1579375,
+        "Loaded": true
+      },
+      "Brake": {
+        "Id": "rbxassetid://9126103903",
+        "Length": 2.6431458333333335,
+        "Loaded": true
+      },
+      "Purchase": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "Throw": {
+        "Id": "rbxassetid://80984744279155",
+        "Length": 0.9226666666666666,
+        "Loaded": true
+      },
+      "Toast": {
+        "Id": "rbxassetid://106553517979212",
+        "Length": 0.9701587301587301,
+        "Loaded": true
+      },
+      "Tap": {
+        "Id": "rbxassetid://106623224876186",
+        "Length": 0.153125,
+        "Loaded": true
+      },
+      "XP": {
+        "Id": "rbxassetid://130378474223829",
+        "Length": 0.4974166666666667,
+        "Loaded": true
+      },
+      "LevelUp": {
+        "Id": "rbxassetid://112485797063762",
+        "Length": 1.5400208333333334,
+        "Loaded": true
+      }
+    },
+    "Errors": [],
+    "Status": "TRAINING +25 XP/s",
+    "Boost": "2x!",
+    "Viewport": "666, 374"
+  },
+  "FinalServer": {
+    "Errors": []
+  },
+  "MeterComparison": {
+    "Selection": 101,
+    "Green": 110.99994541917529,
+    "Red": 95.99363552502224,
+    "RedTapSeconds": 1.4020161628723145,
+    "RedBonus": -0.04956796509878972,
+    "RepeatedRequests": 40,
+    "ThrowsCreated": 1
+  },
+  "Review": "No concrete remaining findings; targeted final Focus/boost-rate review passed"
+}

@@ -48,3 +48,8 @@
 - Poprawka treningu03.11: stan żądany i aktywny muszą trafiać na HUD razem. Auto-start plus toggle oparty o ukrytą flagę wyłączał trening przed pierwszym tickiem. Sprawdzaj bieżącą pozycję przy nagrodzie i pokazuj ułamki, gdy tick daje mniej niż1 Power.
 - Iteracja10a etap serwera: wydłużenie reveal wymaga wydłużenia proxy przy streamingu, ale sticker musi znikać z body, a nie po samym nowym timeout. W review znaleziono oba lifecycle przypadki; ghost sticker odtworzono1→0.
 -10a v2: słowo karta nie musi oznaczać okna. Film pokazał scenę3D i teksty na tle świata; statyczny panel z miniaturą pomijał główne napięcie kamery i odsłaniania. Warto przed próbką obejrzeć pełny przebieg, a nie wyłącznie końcowy zrzut.
+-10a ukończenie03.11: akceptacja „tylko wersja testowa” pozwala kontynuować serię, ale nie zatwierdza finalnej grafiki/brzmienia/balansu. Statusy dokumentacji muszą to rozróżniać.
+-10a: suwak na telefonie wymaga zapamiętania ostatniego InputChanged; MouseButton1 InputObject na release nie musi mieć nowej pozycji. Drag/MAX potwierdzono przez atrybuty serwera, nie sam tekst podglądu.
+-10a: sprawdzanie Sound.Played i natywnego preload dowodzi ścieżki odtworzenia; osobny require z MCP nie mierzy tego samego modułu i nie dowodzi odsłuchowej jakości.
+-10a: handler Tween.Completed musi odrzucać Cancelled, inaczej anulowanie starego przebiegu potrafi ukryć nowy. LihFolk SYMPTOMS wskazał ten wzorzec; cykl smugi potwierdzono w telefonie iPC.
+-10a: automat powracający na płytkę przed heartbeat wyjścia nie symuluje zejścia gracza. Uzbrój obserwatora nowego MeterStart i zachowaj rzeczywisty odstęp wyjścia; inaczej timeout można omyłkowo nazwać czerwonym tapem.

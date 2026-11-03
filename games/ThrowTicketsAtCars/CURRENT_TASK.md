@@ -1,19 +1,19 @@
-# Current Task — iteracja 10a: feedback złapania, rzutu i treningu
-- Właściciel: Codex;03.11.2026. Status: IMPLEMENTED częściowo; pełna iteracja NIE jest ukończona.
-- Specyfikacja: research/ThrowFoodForAnimals [A/B/C/D/H], własne grafiki/nazwy, bez Rebirth/Robux/publikacji.
-- Źródła: MCP Obsidiana tylko odczyt; przed pracą juice/feedback/sound design/camera i6 wskazanych TL;DR, raport poniżej.
-- Próbka v1 odrzucona. Film3:40 przeanalizowany wizualnie; v2 IMPLEMENTED: scena3D na drodze, zbliżenie/pullback, losowe litery, statystyki na dole. Próbka v2 czeka na ocenę, NOT FINAL.
-- [x] Serwer: wybór siły<=Power, PERFECT/bonus metadata, reveal przed lawetą, obce/wczesne/powtórne Continue odrzucane, limit12 s.
-- [x] Scena złapania: ViewportFrame, litery+dźwięk, rarity/income/newbest, Epic odds count-up i Tap to continue; hit kamera/brake/sticker/shake.
-- [x] XP/level, schema4 i migracja zachowująca stary Power; boost2 s z ofertą4 s sterowane serwerem; Gear toast/visit serwer i stanowisko next sprzętu.
-- [x] Audio:12 cue/9 ID Creator Store, preload wszystkich w natywnym kliencie Loaded=true i Length>0, pule/górny limit12 głosów.
-- [ ] Po ocenie próbki: FlightHUD biom/LUCK, PERFECT/+POWER UI i suwak/MAX, XP bar/Level up/2x button, GearToast+shop open i smuga sklepu.
-- [ ] Pełny test nowych UI na telefonie/PC: obecne testy nie są zaliczeniem całej listy użytkownika.
-- VERIFIED03.11 tylko zakres obecny:264 asercje; serwer common/Epic→reveal→laweta, wcześniejszy biom, boost, GearVisit, rejoin; PC rzeczywisty Continue.
-- V2 VERIFIED: telefon+PC, przywrócenie Custom/TouchGui i ruchu; późny atrybut Display ukrywa auto i zostaje przywrócony.264 kontroli PASS.
-- Review: brak usterek security/data; poprawione sticker ghost po dostawie i zbyt krótki proxy podczas reveal; sticker RED1→GREEN0.
-- Save/rejoin zachował4 auta/Id/Slot/Ticket, Power208, Level185, XP81.25, Cash1000 na QA; nie resetowano/grantowano danych użytkownika.
-- Stan końcowy Studio Edit, QA/emulator/HTTP off; pełna iteracja wymaga dalszej pracy.
-- Parametry:100 XP/level,+1 Power/level; litera0.18 s, minimum common2.4/Epic3.3 s; średnie tempo i wygląd NOT FINAL.
+# Current Task — iteracja10a: złapanie, rzut i trening
+- Właściciel: Codex;03.11.2026. Status: IMPLEMENTED, VERIFIED03.11 w zakresie testów poniżej.
+- USER APPROVED03.11: próbka sceny v2 wyłącznie jako wersja testowa. Grafika, dźwięk i balans NOT FINAL.
+- Zakres: research/ThrowFoodForAnimals [A/B/C/D/H], własne nazwy/grafiki; bez Rebirth/Robux/publikacji.
+- [x] Lot: biome banner, rosnący LUCK i counter sound; trafienie: kamera close→pullback, brake/impact, sticker i skończony shake.
+- [x] Reveal w świecie: losowo odsłaniane litery, rarity/$/s, NEW BEST, Epic+ większe ujęcie i1inX, Tap to continue → laweta → działka.
+- [x] PERFECT/+POWER i suwak1..Power, Lands in/MAX, serwerowa walidacja siły/czasu, bonus -5%..+10%, timeout3 s i ponowne wejście.
+- [x] XP/level/schema4, dolny pasek, +XP/LEVEL UP; oferta2x i2 s boosta na zegarze serwera. Zakup ćwiczenia zwiększa XP/s.
+- [x] NEW GEAR cena/efekt/timer/teleport+sklep; własne stanowisko next gear z czerwonym/zielonym kosztem, smuga sklepu.
+- [x] Audio12 cue/9 ID Creator Store: native preload Loaded+Length>0, Played zaobserwowane dla każdego cue podczas przebiegu.
+- VERIFIED:264 asercje; iPhone7 poziomo666×374 +PC1914×761, common/Epic, Continue, flight/slider/MAX, boost/level, toast/zakup/shine.
+- Zegar: Power200, wybrane101 → green111.00, red95.99;40 tapów=1 rzut. Nadmiar siły/NaN/inf i obcy Continue odrzucone.
+- Save/rejoin:3 auta z tymi samymi Id/Slot/Ticket, Power200/Level177/XP75, Exercise2 i mandat zachowane; cash rośnie od parkingu.
+- Review bez dalszych istotnych uwag; naprawione Cancelled→hide smugi i komplet przywracania kamery z Focus.
+- Studio Edit, emulator/HTTP off, TestProfileKey usunięty; repo/Rojo32 źródła. Dane użytkownika bez resetów/grantów.
+- Źródła: LihFolk Vault V2, MCP tylko odczyt; juice/feedback/sound design/camera, patrz raport.
+- Ograniczenia: fizyczny telefon, multiplayer i subiektywna ocena brzmienia/balansu nadal do playtestu; techniczny PASS nie zatwierdza wyglądu.
 - Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10a]].
-- Następny krok: ocena sceny v2; potem pozostały UI10a. GIF podglądu bez dźwięku: assets/reveal_v2_preview/preview.gif (poza gitem).
+- Następny krok: test zabawy użytkownika na tej wersji testowej; dalsze strojenie na podstawie uwag.

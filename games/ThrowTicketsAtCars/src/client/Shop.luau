@@ -3,6 +3,7 @@
 local Players=game:GetService("Players")
 local Tween=game:GetService("TweenService")
 local GuiService=game:GetService("GuiService")
+local RunService=game:GetService("RunService")
 local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local Shop={}
@@ -23,7 +24,7 @@ local function isUnlocked(p,item)
 end
 local function perk(item,power: number)
  local x=item.Data
- return if item.Kind=="Exercise"then "+"..Rules.powerText(Rules.trainingRate(power,item.Tier)).." Power/s | x"..x.Work elseif x.Luck>0 then string.format("+%d%% luck | x%g income",math.round(x.Luck*100),x.IncomeMultiplier)else "Standard odds"
+ return if item.Kind=="Exercise"then "+"..Rules.powerText(Rules.trainingRate(power,item.Tier)*100).." XP/s | x"..x.Work elseif x.Luck>0 then string.format("+%d%% luck | x%g income",math.round(x.Luck*100),x.IncomeMultiplier)else "Standard odds"
 end
 local Style=require(script.Parent.Style)
 local INK,FONT,Motion=Style.INK,Style.FONT,Style.Motion
@@ -58,8 +59,22 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  list.CanvasSize=UDim2.new();list.AutomaticCanvasSize=Enum.AutomaticSize.Y;list.ScrollingDirection=Enum.ScrollingDirection.Y;list.Parent=panel
  local layout=Instance.new("UIListLayout");layout.Padding=UDim.new(0,8);layout.SortOrder=Enum.SortOrder.LayoutOrder;layout.Parent=list
  local padding=Instance.new("UIPadding");padding.PaddingTop,padding.PaddingBottom=UDim.new(0,4),UDim.new(0,4);padding.PaddingLeft=UDim.new(0,4);padding.PaddingRight=UDim.new(0,12);padding.Parent=list
- local notice=text(panel,"Notice","Training upgrades double your Power gain.",16,UDim2.new(0,22,1,-34),UDim2.new(1,-44,0,26));notice.TextXAlignment=Enum.TextXAlignment.Center
+ local notice=text(panel,"Notice","Training upgrades double your XP gain.",16,UDim2.new(0,22,1,-34),UDim2.new(1,-44,0,26));notice.TextXAlignment=Enum.TextXAlignment.Center
  local rows={};local opened=false;local pulse: Tween?=nil;local pulsing=false
+ -- One reusable, non-interactive shine layer and one tween for the whole window.
+ local shineLayer=Instance.new("Frame");shineLayer.Name="ShineLayer";shineLayer.Size=UDim2.new(1,-10,1,-10);shineLayer.Position=UDim2.fromOffset(5,5)
+ shineLayer.BackgroundTransparency=1;shineLayer.BorderSizePixel=0;shineLayer.Active=false;shineLayer.Selectable=false;shineLayer.ClipsDescendants=true;shineLayer.ZIndex=100;shineLayer.Parent=panel;corner(shineLayer,31)
+ local shine=Instance.new("Frame");shine.Name="Shine";shine.AnchorPoint=Vector2.new(.5,.5);shine.Size=UDim2.fromScale(.18,2);shine.Position=UDim2.fromScale(-.4,.5)
+ shine.BackgroundColor3=Color3.new(1,1,1);shine.BackgroundTransparency=.9;shine.BorderSizePixel=0;shine.Rotation=22;shine.Active=false;shine.Selectable=false;shine.Visible=false;shine.ZIndex=100;shine.Parent=shineLayer
+ local shineGradient=gradient(shine,Color3.new(1,1,1),Color3.new(1,1,1));shineGradient.Rotation=0
+ shineGradient.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.5,0),NumberSequenceKeypoint.new(1,1)})
+ local shineTween=Tween:Create(shine,TweenInfo.new(.85,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position=UDim2.fromScale(1.4,.5)})
+ local nextShine=os.clock()+Config.Juice.ShineEvery
+ local function stopShine()shineTween:Cancel();shine.Visible=false end
+ -- Cancel also fires Completed; deferred cancellation must not hide a new sweep.
+ shineTween.Completed:Connect(function(state: Enum.PlaybackState)
+  if state==Enum.PlaybackState.Completed and shineTween.PlaybackState==Enum.PlaybackState.Completed then shine.Visible=false end
+ end)
  for i,item in items do
   local t=item.Data
   local row=Instance.new("Frame");row.Name=t.Id;row.LayoutOrder=i;row.Size=UDim2.new(1,0,0,82);row.BorderSizePixel=0;row.BackgroundColor3=Color3.new(1,1,1);row.ClipsDescendants=true;row.Parent=list;corner(row,24);stroke(row,3)
@@ -130,6 +145,7 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  end
  local function setOpen(value: boolean)
   opened=value;dim.Visible,panel.Visible=value,value;gui:SetAttribute("Open",value)
+  stopShine();nextShine=os.clock()+Config.Juice.ShineEvery
   if value then
    refresh();GuiService.SelectedObject=if game:GetService("UserInputService"):GetLastInputType().Name:find("Gamepad")then close else nil
    task.defer(function()
@@ -152,8 +168,13 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
    g.Color=if active then ColorSequence.new(Color3.fromHex("FFF4A0"),Color3.fromHex("FFD24A"))else ColorSequence.new(Color3.fromHex("74E6FF"),Color3.fromHex("1E95F0"))
    entry[1]:SetAttribute("Selected",active)
   end
-  notice.Text=if kind=="Exercise"then "Training upgrades double your Power gain."else "Tickets boost luck and captured income."
+  notice.Text=if kind=="Exercise"then "Training upgrades double your XP gain."else "Tickets boost luck and captured income."
   list.CanvasPosition=Vector2.zero;refresh()
+ end
+ local function openCategory(kind: string)
+  if kind=="Gear"or kind=="Training"then kind="Exercise"end
+  if kind~="Exercise"and kind~="Ticket"then return end
+  chooseCategory(kind);setOpen(true)
  end
  trainingTab.Activated:Connect(function()chooseCategory("Exercise")end)
  ticketTab.Activated:Connect(function()chooseCategory("Ticket")end)
@@ -163,8 +184,14 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  cash.Changed:Connect(refresh)
  for _,attribute in {"EquippedTicket","Exercise","ThrowPower","DataReady"}do p:GetAttributeChangedSignal(attribute):Connect(refresh)end
  for _,t in Config.Tickets do p:GetAttributeChangedSignal("Own_"..t.Id):Connect(refresh)end
- GuiService:GetPropertyChangedSignal("ReducedMotionEnabled"):Connect(function()pulsing=not pulsing;updatePulse()end)
+ GuiService:GetPropertyChangedSignal("ReducedMotionEnabled"):Connect(function()stopShine();nextShine=os.clock()+Config.Juice.ShineEvery;pulsing=not pulsing;updatePulse()end)
+ local shineConnection=RunService.Heartbeat:Connect(function()
+  if not opened or GuiService.ReducedMotionEnabled or os.clock()<nextShine then return end
+  nextShine=os.clock()+Config.Juice.ShineEvery
+  shineTween:Cancel();shine.Position=UDim2.fromScale(-.4,.5);shine.Visible=true;shineTween:Play()
+ end)
+ gui.Destroying:Connect(function()shineConnection:Disconnect();stopShine();shineTween:Destroy()end)
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(resize);resize();refresh()
- return {isOpen=function()return opened end,close=function()setOpen(false)end}
+ return {isOpen=function()return opened end,close=function()setOpen(false)end,openCategory=openCategory}
 end
 return Shop
