@@ -1,6 +1,8 @@
 --!strict
 local Config = require(game:GetService("ReplicatedStorage").ThrowTickets.Config)
 local CarBuilder=require(game.ReplicatedStorage.ThrowTickets.CarBuilder)
+local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
+local Props=require(script.Parent.BiomeProps)
 local World = {}
 function World.part(parent: Instance,name: string,size: Vector3,position: Vector3,color: Color3): Part
 	local p=Instance.new("Part")
@@ -22,6 +24,7 @@ function World.label(parent: BasePart,text: string,offset: number?)
 	return gui
 end
 World.car=CarBuilder.create
+World.ticketOffset=CarBuilder.ticketOffset
 function World.plotOrigin(plot: number): Vector3
  local group=math.floor((plot-1)/2)
  local side=if plot%2==1 then -1 else 1
@@ -36,7 +39,7 @@ function World.viewPosition(biome: number,slot: number): Vector3
 end
 function World.viewCar(root: Folder,biome: number,slot: number): Model
 	local b=Config.Biomes[biome]
-	local reward={Biome=biome,Rarity=1,Income=b.BaseIncome,Name=b.Cars[(slot-1)%#b.Cars+1].Name}
+	local index=(slot-1)%#b.Cars+1;local reward=Rules.reward(biome,b.Cars[index].Rarity,index,"paper")
 	local m=World.car(root.Cars,"View_"..biome.."_"..slot,reward,World.viewPosition(biome,slot))
 	m:SetAttribute("Display",true);m:SetAttribute("DisplaySlot",slot)
 	return m
@@ -73,21 +76,31 @@ function World.build(biomeCount: number?): Folder
 	local old=workspace:FindFirstChild("TicketPrototype");if old then old:Destroy() end
 	local root=Instance.new("Folder");root.Name="TicketPrototype"
 	for _,name in {"Cars","Parking","Tows","Gates","Biomes"} do local f=Instance.new("Folder");f.Name,f.Parent=name,root end
+	root.Parent=workspace
 	local count=biomeCount or #Config.Biomes
 	for i=1,count do
 		local b=Config.Biomes[i]
 		local finish=if Config.Biomes[i+1] then Config.Biomes[i+1].MinPower else Config.MapEnd
 		local length=finish-b.MinPower
 		local node=Instance.new("Folder");node.Name=b.Name;node.Parent=root.Biomes
-		World.part(node,"Ground",Vector3.new(Config.GroundWidth,1,length),Vector3.new(0,-0.55,-b.MinPower-length/2),b.Color)
-		World.part(node,"Road",Vector3.new(Config.RoadWidth,0.2,length),Vector3.new(0,0,-b.MinPower-length/2),Color3.fromRGB(91,95,100))
-		for k=1,Config.DecorationCount do
-			local height=if i==4 then 2 else (2+i)*((k%3)+1)
-			local x=if k%2==0 then Config.DecorX else -Config.DecorX
-			World.part(node,"GreyBlock"..k,Vector3.new(6,height,6),Vector3.new(x,height/2,-b.MinPower-length*k/(Config.DecorationCount+1)),Color3.fromRGB(124,124,124))
+		for start=b.MinPower,finish-1,1000 do
+		 local span=math.min(1000,finish-start);local z=-start-span/2
+		 World.part(node,"Ground",Vector3.new(Config.GroundWidth,1,span),Vector3.new(0,-.55,z),b.Color)
+		 World.part(node,"Road",Vector3.new(Config.RoadWidth,.2,span),Vector3.new(0,0,z),Color3.fromRGB(91,95,100))
 		end
+		Props.build(node,b,World.part)
 		gate(root,i)
 		for slot=1,Config.ViewCarsPerBiome do World.viewCar(root,i,slot) end
+		task.wait()
+	end
+	local locked=Instance.new("Folder");locked.Name="ComingSoon";locked.Parent=root
+	for i,b in Config.ComingSoon do
+	 local start=Config.MapEnd+10+(i-1)*350;local f=Instance.new("Folder");f.Name=b.Name;f.Parent=locked;f:SetAttribute("Locked",true)
+	 World.part(f,"Ground",Vector3.new(Config.GroundWidth,1,340),Vector3.new(0,-.55,-start-170),b.Color)
+	 World.part(f,"Road",Vector3.new(Config.RoadWidth,.2,340),Vector3.new(0,0,-start-170),Color3.fromRGB(85,85,93))
+	 World.part(f,"Barrier",Vector3.new(Config.GroundWidth,15,2),Vector3.new(0,7,-start),Color3.fromRGB(75,70,94)).Transparency=.2
+	 local sign=World.part(f,"Sign",Vector3.new(24,6,.8),Vector3.new(0,10,-start+1.5),Color3.fromRGB(46,42,66))
+	 local label=World.label(sign,b.Name.."\nCOMING SOON",4);label.MaxDistance=150;label.AlwaysOnTop=true
 	end
 	World.part(root,"StartApron",Vector3.new(Config.GroundWidth,1,Config.MapPadding),Vector3.new(0,-0.55,Config.MapPadding/2),Config.Biomes[1].Color)
 	World.part(root,"ParkingHubGround",Vector3.new(420,1,300),Vector3.new(0,-.65,0),Config.Biomes[1].Color)

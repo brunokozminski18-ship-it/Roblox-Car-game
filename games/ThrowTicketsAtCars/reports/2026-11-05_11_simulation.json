@@ -1,0 +1,1377 @@
+{
+  "Test": "201 pacing assertions passed",
+  "Slow": {
+    "Purchases": [
+      {
+        "PriceMinutes": 1,
+        "Seconds": 106,
+        "Name": "Focused Training",
+        "Price": 180,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.5,
+        "TrainingRateBefore": 0.25
+      },
+      {
+        "PriceMinutes": 1.5,
+        "Seconds": 149,
+        "Name": "Pink Slip",
+        "Price": 270,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.5,
+        "TrainingRateBefore": 0.5
+      },
+      {
+        "PriceMinutes": 2,
+        "Seconds": 518,
+        "Name": "Weighted Training",
+        "Price": 21240,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.5,
+        "TrainingRateBefore": 0.25
+      },
+      {
+        "PriceMinutes": 3,
+        "Seconds": 786,
+        "Name": "Parking Fine",
+        "Price": 31860,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.25,
+        "TrainingRateBefore": 0.25
+      },
+      {
+        "PriceMinutes": 3,
+        "Seconds": 1112,
+        "Name": "Intense Training",
+        "Price": 205603,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.5,
+        "TrainingRateBefore": 0.25
+      },
+      {
+        "PriceMinutes": 4,
+        "Seconds": 1392,
+        "Name": "Court Summons",
+        "Price": 274138,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.5,
+        "TrainingRateBefore": 0.5
+      },
+      {
+        "PriceMinutes": 4,
+        "Seconds": 1942,
+        "Name": "Elite Training",
+        "Price": 1631232,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.45714285714285713,
+        "TrainingRateBefore": 0.22857142857142856
+      },
+      {
+        "PriceMinutes": 5,
+        "Seconds": 2362,
+        "Name": "Golden Ticket",
+        "Price": 2039040,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.45714285714285713,
+        "TrainingRateBefore": 0.45714285714285713
+      },
+      {
+        "PriceMinutes": 5,
+        "Seconds": 3095,
+        "Name": "Master Training",
+        "Price": 11724480,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.35555555555555557,
+        "TrainingRateBefore": 0.17777777777777778
+      },
+      {
+        "PriceMinutes": 6,
+        "Seconds": 3594,
+        "Name": "Diamond Ticket",
+        "Price": 14069376,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.35555555555555557,
+        "TrainingRateBefore": 0.35555555555555557
+      },
+      {
+        "PriceMinutes": 6,
+        "Seconds": 4976,
+        "Name": "Arctic Training",
+        "Price": 142732800,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.4266666666666667,
+        "TrainingRateBefore": 0.21333333333333335
+      },
+      {
+        "PriceMinutes": 8,
+        "Seconds": 5641,
+        "Name": "Solar Ticket",
+        "Price": 190310400,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.4266666666666667,
+        "TrainingRateBefore": 0.4266666666666667
+      },
+      {
+        "PriceMinutes": 7,
+        "Seconds": 7011,
+        "Name": "Racing Training",
+        "Price": 981288000,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.32,
+        "TrainingRateBefore": 0.16
+      },
+      {
+        "PriceMinutes": 10,
+        "Seconds": 7769,
+        "Name": "Neon Ticket",
+        "Price": 1401840000,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.32,
+        "TrainingRateBefore": 0.32
+      },
+      {
+        "PriceMinutes": 8,
+        "Seconds": 10711,
+        "Name": "Champion Training",
+        "Price": 6422976000,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.32,
+        "TrainingRateBefore": 0.16
+      },
+      {
+        "PriceMinutes": 12,
+        "Seconds": 11537,
+        "Name": "Cosmic Ticket",
+        "Price": 9634464000,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.32,
+        "TrainingRateBefore": 0.32
+      },
+      {
+        "PriceMinutes": 10,
+        "Seconds": 16609,
+        "Name": "Hyper Training",
+        "Price": 45312000000,
+        "Kind": "Exercise",
+        "TrainingRateAfter": 0.28444444444444444,
+        "TrainingRateBefore": 0.14222222222222222
+      },
+      {
+        "PriceMinutes": 15,
+        "Seconds": 16612,
+        "Name": "Quantum Ticket",
+        "Price": 67968000000,
+        "Kind": "Buy",
+        "TrainingRateAfter": 0.28444444444444444,
+        "TrainingRateBefore": 0.28444444444444444
+      }
+    ],
+    "Seconds": 25390,
+    "Biomes": [
+      {
+        "Name": "Junkyard",
+        "Seconds": 0
+      },
+      {
+        "Name": "Suburbs",
+        "Seconds": 206
+      },
+      {
+        "Name": "Downtown",
+        "Seconds": 723
+      },
+      {
+        "Name": "Farm Roads",
+        "Seconds": 1456
+      },
+      {
+        "Name": "Desert Highway",
+        "Seconds": 2609
+      },
+      {
+        "Name": "Snowy Pass",
+        "Seconds": 4430
+      },
+      {
+        "Name": "Sports Track",
+        "Seconds": 6563
+      },
+      {
+        "Name": "Millionaire Hills",
+        "Seconds": 10711
+      },
+      {
+        "Name": "Hypercar Island",
+        "Seconds": 16609
+      },
+      {
+        "Name": "Future City",
+        "Seconds": 25390
+      }
+    ],
+    "Power": 5000,
+    "Casts": 456,
+    "Income": 172800000,
+    "Seed": 1110,
+    "TrainingSeconds": 15759,
+    "Cash": 1557693586052
+  },
+  "Zones": [
+    {
+      "Name": "Junkyard",
+      "Power": 0,
+      "Color": "91765b",
+      "Work": 4,
+      "Cars": 6,
+      "Income": 1
+    },
+    {
+      "Name": "Suburbs",
+      "Power": 50,
+      "Color": "7a996f",
+      "Work": 8,
+      "Cars": 6,
+      "Income": 5
+    },
+    {
+      "Name": "Downtown",
+      "Power": 150,
+      "Color": "708499",
+      "Work": 16,
+      "Cars": 7,
+      "Income": 22
+    },
+    {
+      "Name": "Farm Roads",
+      "Power": 300,
+      "Color": "859b53",
+      "Work": 35,
+      "Cars": 7,
+      "Income": 90
+    },
+    {
+      "Name": "Desert Highway",
+      "Power": 550,
+      "Color": "d8b77c",
+      "Work": 90,
+      "Cars": 8,
+      "Income": 360
+    },
+    {
+      "Name": "Snowy Pass",
+      "Power": 900,
+      "Color": "d6e8ed",
+      "Work": 150,
+      "Cars": 8,
+      "Income": 1400
+    },
+    {
+      "Name": "Sports Track",
+      "Power": 1400,
+      "Color": "a66860",
+      "Work": 400,
+      "Cars": 8,
+      "Income": 5500
+    },
+    {
+      "Name": "Millionaire Hills",
+      "Power": 2200,
+      "Color": "b8a67a",
+      "Work": 800,
+      "Cars": 8,
+      "Income": 21000
+    },
+    {
+      "Name": "Hypercar Island",
+      "Power": 3400,
+      "Color": "5ba4b0",
+      "Work": 1800,
+      "Cars": 8,
+      "Income": 80000
+    },
+    {
+      "Name": "Future City",
+      "Power": 5000,
+      "Color": "585b92",
+      "Work": 2500,
+      "Cars": 8,
+      "Income": 300000
+    }
+  ],
+  "Runs": [
+    {
+      "Purchases": [
+        {
+          "PriceMinutes": 1,
+          "Seconds": 61,
+          "Name": "Focused Training",
+          "Price": 180,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 1.5,
+          "Seconds": 94,
+          "Name": "Pink Slip",
+          "Price": 270,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.5
+        },
+        {
+          "PriceMinutes": 2,
+          "Seconds": 453,
+          "Name": "Weighted Training",
+          "Price": 21240,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 722,
+          "Name": "Parking Fine",
+          "Price": 31860,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.25,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 1097,
+          "Name": "Intense Training",
+          "Price": 205603,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1416,
+          "Name": "Court Summons",
+          "Price": 274138,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.22857142857142856,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1884,
+          "Name": "Elite Training",
+          "Price": 1631232,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2244,
+          "Name": "Golden Ticket",
+          "Price": 2039040,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.45714285714285713
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2886,
+          "Name": "Master Training",
+          "Price": 11724480,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.17777777777777778
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 3243,
+          "Name": "Diamond Ticket",
+          "Price": 14069376,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.35555555555555557
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 4560,
+          "Name": "Arctic Training",
+          "Price": 142732800,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.21333333333333335
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 5183,
+          "Name": "Solar Ticket",
+          "Price": 190310400,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.4266666666666667
+        },
+        {
+          "PriceMinutes": 7,
+          "Seconds": 6477,
+          "Name": "Racing Training",
+          "Price": 981288000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 7077,
+          "Name": "Neon Ticket",
+          "Price": 1401840000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 10137,
+          "Name": "Champion Training",
+          "Price": 6422976000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 12,
+          "Seconds": 10680,
+          "Name": "Cosmic Ticket",
+          "Price": 9634464000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 15858,
+          "Name": "Hyper Training",
+          "Price": 45312000000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.14222222222222222
+        },
+        {
+          "PriceMinutes": 15,
+          "Seconds": 15861,
+          "Name": "Quantum Ticket",
+          "Price": 67968000000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.28444444444444444
+        }
+      ],
+      "Seconds": 24384,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 164
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 662
+        },
+        {
+          "Name": "Farm Roads",
+          "Seconds": 1386
+        },
+        {
+          "Name": "Desert Highway",
+          "Seconds": 2497
+        },
+        {
+          "Name": "Snowy Pass",
+          "Seconds": 4222
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 6207
+        },
+        {
+          "Name": "Millionaire Hills",
+          "Seconds": 10137
+        },
+        {
+          "Name": "Hypercar Island",
+          "Seconds": 15858
+        },
+        {
+          "Name": "Future City",
+          "Seconds": 24384
+        }
+      ],
+      "Power": 5000,
+      "Casts": 575,
+      "Income": 201600000,
+      "Seed": 1101,
+      "TrainingSeconds": 15704,
+      "Cash": 1616225907864
+    },
+    {
+      "Purchases": [
+        {
+          "PriceMinutes": 1,
+          "Seconds": 61,
+          "Name": "Focused Training",
+          "Price": 180,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 1.5,
+          "Seconds": 94,
+          "Name": "Pink Slip",
+          "Price": 270,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.5
+        },
+        {
+          "PriceMinutes": 2,
+          "Seconds": 389,
+          "Name": "Weighted Training",
+          "Price": 21240,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 637,
+          "Name": "Parking Fine",
+          "Price": 31860,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.25,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 1030,
+          "Name": "Intense Training",
+          "Price": 205603,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1333,
+          "Name": "Court Summons",
+          "Price": 274138,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.22857142857142856,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1726,
+          "Name": "Elite Training",
+          "Price": 1631232,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2108,
+          "Name": "Golden Ticket",
+          "Price": 2039040,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.45714285714285713
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2795,
+          "Name": "Master Training",
+          "Price": 11724480,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.17777777777777778
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 3239,
+          "Name": "Diamond Ticket",
+          "Price": 14069376,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.35555555555555557
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 4428,
+          "Name": "Arctic Training",
+          "Price": 142732800,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.21333333333333335
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 4878,
+          "Name": "Solar Ticket",
+          "Price": 190310400,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.4266666666666667
+        },
+        {
+          "PriceMinutes": 7,
+          "Seconds": 6071,
+          "Name": "Racing Training",
+          "Price": 981288000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 6704,
+          "Name": "Neon Ticket",
+          "Price": 1401840000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 9911,
+          "Name": "Champion Training",
+          "Price": 6422976000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 12,
+          "Seconds": 10274,
+          "Name": "Cosmic Ticket",
+          "Price": 9634464000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 15632,
+          "Name": "Hyper Training",
+          "Price": 45312000000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.14222222222222222
+        },
+        {
+          "PriceMinutes": 15,
+          "Seconds": 15635,
+          "Name": "Quantum Ticket",
+          "Price": 67968000000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.28444444444444444
+        }
+      ],
+      "Seconds": 24158,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 164
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 622
+        },
+        {
+          "Name": "Farm Roads",
+          "Seconds": 1318
+        },
+        {
+          "Name": "Desert Highway",
+          "Seconds": 2384
+        },
+        {
+          "Name": "Snowy Pass",
+          "Seconds": 4113
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 6071
+        },
+        {
+          "Name": "Millionaire Hills",
+          "Seconds": 9911
+        },
+        {
+          "Name": "Hypercar Island",
+          "Seconds": 15632
+        },
+        {
+          "Name": "Future City",
+          "Seconds": 24158
+        }
+      ],
+      "Power": 5000,
+      "Casts": 569,
+      "Income": 225600000,
+      "Seed": 1102,
+      "TrainingSeconds": 15568,
+      "Cash": 1521651126266
+    },
+    {
+      "Purchases": [
+        {
+          "PriceMinutes": 1,
+          "Seconds": 76,
+          "Name": "Focused Training",
+          "Price": 180,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 1.5,
+          "Seconds": 108,
+          "Name": "Pink Slip",
+          "Price": 270,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.5
+        },
+        {
+          "PriceMinutes": 2,
+          "Seconds": 434,
+          "Name": "Weighted Training",
+          "Price": 21240,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 682,
+          "Name": "Parking Fine",
+          "Price": 31860,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.25,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 1045,
+          "Name": "Intense Training",
+          "Price": 205603,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1378,
+          "Name": "Court Summons",
+          "Price": 274138,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.22857142857142856,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1876,
+          "Name": "Elite Training",
+          "Price": 1631232,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2335,
+          "Name": "Golden Ticket",
+          "Price": 2039040,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.45714285714285713
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2924,
+          "Name": "Master Training",
+          "Price": 11724480,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.17777777777777778
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 3374,
+          "Name": "Diamond Ticket",
+          "Price": 14069376,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.35555555555555557
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 4513,
+          "Name": "Arctic Training",
+          "Price": 142732800,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.21333333333333335
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 5089,
+          "Name": "Solar Ticket",
+          "Price": 190310400,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.4266666666666667
+        },
+        {
+          "PriceMinutes": 7,
+          "Seconds": 6558,
+          "Name": "Racing Training",
+          "Price": 981288000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 7484,
+          "Name": "Neon Ticket",
+          "Price": 1401840000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 10165,
+          "Name": "Champion Training",
+          "Price": 6422976000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 12,
+          "Seconds": 10769,
+          "Name": "Cosmic Ticket",
+          "Price": 9634464000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 15886,
+          "Name": "Hyper Training",
+          "Price": 45312000000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.14222222222222222
+        },
+        {
+          "PriceMinutes": 15,
+          "Seconds": 16024,
+          "Name": "Quantum Ticket",
+          "Price": 67968000000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.28444444444444444
+        }
+      ],
+      "Seconds": 24412,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 164
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 637
+        },
+        {
+          "Name": "Farm Roads",
+          "Seconds": 1333
+        },
+        {
+          "Name": "Desert Highway",
+          "Seconds": 2474
+        },
+        {
+          "Name": "Snowy Pass",
+          "Seconds": 4230
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 6179
+        },
+        {
+          "Name": "Millionaire Hills",
+          "Seconds": 10165
+        },
+        {
+          "Name": "Hypercar Island",
+          "Seconds": 15886
+        },
+        {
+          "Name": "Future City",
+          "Seconds": 24412
+        }
+      ],
+      "Power": 5000,
+      "Casts": 575,
+      "Income": 144000000,
+      "Seed": 1103,
+      "TrainingSeconds": 15732,
+      "Cash": 1281327321339
+    },
+    {
+      "Purchases": [
+        {
+          "PriceMinutes": 1,
+          "Seconds": 76,
+          "Name": "Focused Training",
+          "Price": 180,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 1.5,
+          "Seconds": 95,
+          "Name": "Pink Slip",
+          "Price": 270,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.5
+        },
+        {
+          "PriceMinutes": 2,
+          "Seconds": 389,
+          "Name": "Weighted Training",
+          "Price": 21240,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 637,
+          "Name": "Parking Fine",
+          "Price": 31860,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.25,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 995,
+          "Name": "Intense Training",
+          "Price": 205603,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1353,
+          "Name": "Court Summons",
+          "Price": 274138,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.22857142857142856,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1585,
+          "Name": "Elite Training",
+          "Price": 1631232,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 1806,
+          "Name": "Golden Ticket",
+          "Price": 2039040,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.45714285714285713
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2541,
+          "Name": "Master Training",
+          "Price": 11724480,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.17777777777777778
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 2946,
+          "Name": "Diamond Ticket",
+          "Price": 14069376,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.35555555555555557
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 4267,
+          "Name": "Arctic Training",
+          "Price": 142732800,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.21333333333333335
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 4856,
+          "Name": "Solar Ticket",
+          "Price": 190310400,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.4266666666666667
+        },
+        {
+          "PriceMinutes": 7,
+          "Seconds": 6249,
+          "Name": "Racing Training",
+          "Price": 981288000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 6720,
+          "Name": "Neon Ticket",
+          "Price": 1401840000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 9882,
+          "Name": "Champion Training",
+          "Price": 6422976000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 12,
+          "Seconds": 9885,
+          "Name": "Cosmic Ticket",
+          "Price": 9634464000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 15588,
+          "Name": "Hyper Training",
+          "Price": 45312000000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.14222222222222222
+        },
+        {
+          "PriceMinutes": 15,
+          "Seconds": 15591,
+          "Name": "Quantum Ticket",
+          "Price": 67968000000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.28444444444444444
+        }
+      ],
+      "Seconds": 24114,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 164
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 622
+        },
+        {
+          "Name": "Farm Roads",
+          "Seconds": 1308
+        },
+        {
+          "Name": "Desert Highway",
+          "Seconds": 2316
+        },
+        {
+          "Name": "Snowy Pass",
+          "Seconds": 3952
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 5910
+        },
+        {
+          "Name": "Millionaire Hills",
+          "Seconds": 9882
+        },
+        {
+          "Name": "Hypercar Island",
+          "Seconds": 15588
+        },
+        {
+          "Name": "Future City",
+          "Seconds": 24114
+        }
+      ],
+      "Power": 5000,
+      "Casts": 568,
+      "Income": 134400000,
+      "Seed": 1104,
+      "TrainingSeconds": 15539,
+      "Cash": 1201394783824
+    },
+    {
+      "Purchases": [
+        {
+          "PriceMinutes": 1,
+          "Seconds": 76,
+          "Name": "Focused Training",
+          "Price": 180,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 1.5,
+          "Seconds": 94,
+          "Name": "Pink Slip",
+          "Price": 270,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.5
+        },
+        {
+          "PriceMinutes": 2,
+          "Seconds": 389,
+          "Name": "Weighted Training",
+          "Price": 21240,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 652,
+          "Name": "Parking Fine",
+          "Price": 31860,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.25,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 3,
+          "Seconds": 994,
+          "Name": "Intense Training",
+          "Price": 205603,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.5,
+          "TrainingRateBefore": 0.25
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1338,
+          "Name": "Court Summons",
+          "Price": 274138,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.22857142857142856,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 4,
+          "Seconds": 1806,
+          "Name": "Elite Training",
+          "Price": 1631232,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.22857142857142856
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2211,
+          "Name": "Golden Ticket",
+          "Price": 2039040,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.45714285714285713,
+          "TrainingRateBefore": 0.45714285714285713
+        },
+        {
+          "PriceMinutes": 5,
+          "Seconds": 2851,
+          "Name": "Master Training",
+          "Price": 11724480,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.17777777777777778
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 3185,
+          "Name": "Diamond Ticket",
+          "Price": 14069376,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.35555555555555557,
+          "TrainingRateBefore": 0.35555555555555557
+        },
+        {
+          "PriceMinutes": 6,
+          "Seconds": 4478,
+          "Name": "Arctic Training",
+          "Price": 142732800,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.21333333333333335
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 5193,
+          "Name": "Solar Ticket",
+          "Price": 190310400,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.4266666666666667,
+          "TrainingRateBefore": 0.4266666666666667
+        },
+        {
+          "PriceMinutes": 7,
+          "Seconds": 6504,
+          "Name": "Racing Training",
+          "Price": 981288000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 7219,
+          "Name": "Neon Ticket",
+          "Price": 1401840000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 8,
+          "Seconds": 10107,
+          "Name": "Champion Training",
+          "Price": 6422976000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.16
+        },
+        {
+          "PriceMinutes": 12,
+          "Seconds": 10170,
+          "Name": "Cosmic Ticket",
+          "Price": 9634464000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.32,
+          "TrainingRateBefore": 0.32
+        },
+        {
+          "PriceMinutes": 10,
+          "Seconds": 15813,
+          "Name": "Hyper Training",
+          "Price": 45312000000,
+          "Kind": "Exercise",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.14222222222222222
+        },
+        {
+          "PriceMinutes": 15,
+          "Seconds": 15816,
+          "Name": "Quantum Ticket",
+          "Price": 67968000000,
+          "Kind": "Buy",
+          "TrainingRateAfter": 0.28444444444444444,
+          "TrainingRateBefore": 0.28444444444444444
+        }
+      ],
+      "Seconds": 24339,
+      "Biomes": [
+        {
+          "Name": "Junkyard",
+          "Seconds": 0
+        },
+        {
+          "Name": "Suburbs",
+          "Seconds": 164
+        },
+        {
+          "Name": "Downtown",
+          "Seconds": 622
+        },
+        {
+          "Name": "Farm Roads",
+          "Seconds": 1308
+        },
+        {
+          "Name": "Desert Highway",
+          "Seconds": 2419
+        },
+        {
+          "Name": "Snowy Pass",
+          "Seconds": 4158
+        },
+        {
+          "Name": "Sports Track",
+          "Seconds": 6118
+        },
+        {
+          "Name": "Millionaire Hills",
+          "Seconds": 10107
+        },
+        {
+          "Name": "Hypercar Island",
+          "Seconds": 15813
+        },
+        {
+          "Name": "Future City",
+          "Seconds": 24339
+        }
+      ],
+      "Power": 5000,
+      "Casts": 572,
+      "Income": 196800000,
+      "Seed": 1105,
+      "TrainingSeconds": 15704,
+      "Cash": 1488452688214
+    }
+  ]
+}

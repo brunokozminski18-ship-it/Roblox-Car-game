@@ -1,20 +1,26 @@
 --!strict
 -- Prototype tuning: NOT FINAL. All progression, rewards and world dimensions live here.
+local Catalog=require(script.Parent.CarCatalog)
 local Config={
 	Returns={OfflineFraction=.4,OfflineCapSeconds=8*3600,OfflineMinSeconds=60,FreeCarSeconds=15*60,LikeSeconds=10*60},
 	Boards={RefreshSeconds=60,WriteSeconds=120,Count=10,StorePrefix="TTAC_Boards_v2",BudgetReserve=1},
 	StartPower=24, TickSeconds=1,
  Progression={XPPerLevel=100,PowerPerLevel=1,OfferEvery=12,OfferLifetime=4,BoostSeconds=2},
  Juice={LetterSeconds=.18,CommonRevealMin=2.4,RareRevealMin=5,RareLetterMultiplier=1.8,RevealTimeout=16,PerfectPosition=.06,ToastSeconds=7,ShineEvery=5,BrakeSeconds=.3},
- Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond"},TrainingWorkPerPower={4,18,32,90,220,220}},
+ Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond","solar","neon","cosmic","quantum"},TrainingWorkPerPower={4,8,16,35,90,150,400,800,1800,2500}},
  Simulation={CatchLoopSeconds=14,RefreshSeconds=45,PurchaseSeconds=2,MaxSeconds=86400},
  Exercises={
  {Id="basic",Name="Basic Training",Work=1,Minutes=0,UnlockBiome=1},
  {Id="focused",Name="Focused Training",Work=2,Minutes=1,UnlockBiome=1},
  {Id="weighted",Name="Weighted Training",Work=4,Minutes=2,UnlockBiome=2},
- {Id="intense",Name="Intense Training",Work=8,Minutes=8,UnlockBiome=3},
- {Id="elite",Name="Elite Training",Work=16,Minutes=25,UnlockBiome=4},
- {Id="master",Name="Master Training",Work=32,Minutes=90,UnlockBiome=5},
+ {Id="intense",Name="Intense Training",Work=8,Minutes=3,UnlockBiome=3},
+ {Id="elite",Name="Elite Training",Work=16,Minutes=4,UnlockBiome=4},
+ {Id="master",Name="Master Training",Work=32,Minutes=5,UnlockBiome=5},
+ {Id="arctic",Name="Arctic Training",Work=64,Minutes=6,UnlockBiome=6},
+ {Id="racing",Name="Racing Training",Work=128,Minutes=7,UnlockBiome=7},
+ {Id="champion",Name="Champion Training",Work=256,Minutes=8,UnlockBiome=8},
+ {Id="hyper",Name="Hyper Training",Work=512,Minutes=10,UnlockBiome=9},
+ {Id="future",Name="Future Training",Work=1024,Minutes=12,UnlockBiome=10},
  },
  InventoryLimit=20, HotbarSlots=5, GarageRequestInterval=.15, PlacementDistance=9, PlotInteractRadius=36,
  ThrowMeter={Period=1.4,Timeout=3,MinBonus=-.05,MaxBonus=.10,MaxPingTolerance=.25,PollSeconds=.08},
@@ -22,17 +28,22 @@ local Config={
  ThrowWindupSeconds=.45, CameraReturnHold=.3, CaptureApproachDistance=32, CaptureLaneX=7,
  TrafficHz=30, TrafficSpeed=22, TrafficLaneX=7, TrafficRenderDistance=450,
 	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
-	Data={StoreName="ThrowTicketsAtCars_v1",Schema=6,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=7,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
 	Tickets={
 		{Id="paper",Name="Paper Ticket",Minutes=0,UnlockBiome=1,IncomeMultiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
 		{Id="pink",Name="Pink Slip",Minutes=1.5,UnlockBiome=1,IncomeMultiplier=1.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},
-		{Id="parking",Name="Parking Fine",Minutes=6,UnlockBiome=2,IncomeMultiplier=2.2,Luck=0.10,Color=Color3.fromRGB(124,230,255)},
-		{Id="court",Name="Court Summons",Minutes=15,UnlockBiome=3,IncomeMultiplier=3.2,Luck=0.15,Color=Color3.fromRGB(194,139,255)},
-		{Id="gold",Name="Golden Ticket",Minutes=40,UnlockBiome=4,IncomeMultiplier=4.6,Luck=0.20,Color=Color3.fromRGB(255,208,66)},
-		{Id="diamond",Name="Diamond Ticket",Minutes=120,UnlockBiome=5,IncomeMultiplier=12,Luck=0.25,Color=Color3.fromRGB(165,255,243)},
+		{Id="parking",Name="Parking Fine",Minutes=3,UnlockBiome=2,IncomeMultiplier=2.2,Luck=0.10,Color=Color3.fromRGB(124,230,255)},
+		{Id="court",Name="Court Summons",Minutes=4,UnlockBiome=3,IncomeMultiplier=3.2,Luck=0.15,Color=Color3.fromRGB(194,139,255)},
+		{Id="gold",Name="Golden Ticket",Minutes=5,UnlockBiome=4,IncomeMultiplier=4.6,Luck=0.20,Color=Color3.fromRGB(255,208,66)},
+		{Id="diamond",Name="Diamond Ticket",Minutes=6,UnlockBiome=5,IncomeMultiplier=12,Luck=0.25,Color=Color3.fromRGB(165,255,243)},
+  {Id="solar",Name="Solar Ticket",Minutes=8,UnlockBiome=6,IncomeMultiplier=18,Luck=0.3,Color=Color3.fromHex("FFB35C")},
+  {Id="neon",Name="Neon Ticket",Minutes=10,UnlockBiome=7,IncomeMultiplier=27,Luck=0.35,Color=Color3.fromHex("81FFB8")},
+  {Id="cosmic",Name="Cosmic Ticket",Minutes=12,UnlockBiome=8,IncomeMultiplier=40,Luck=0.4,Color=Color3.fromHex("CBA0FF")},
+  {Id="quantum",Name="Quantum Ticket",Minutes=15,UnlockBiome=9,IncomeMultiplier=60,Luck=0.45,Color=Color3.fromHex("8CDDFF")},
+  {Id="temporal",Name="Temporal Ticket",Minutes=20,UnlockBiome=10,IncomeMultiplier=90,Luck=0.5,Color=Color3.fromHex("F3A4F4")},
 	},
 	ThrowCooldown=0.2, RequestInterval=0.12, TrainRequestInterval=0.3,
-	MapEnd=3200, RoadWidth=24, GroundWidth=88, MapPadding=18,
+	MapEnd=6000, RoadWidth=24, GroundWidth=88, MapPadding=18,
 	ThrowOrigin=Vector3.new(0,3.25,0), LandingHeight=3.25,
 	TicketFlightSeconds=2, TicketArcHeight=8, TicketArcFactor=0.16, TicketArcMax=200,
 	TicketSize=Vector3.new(0.8,0.08,1.2), MessageSeconds=3,
@@ -62,35 +73,14 @@ local Config={
 		{Name="Epic",Weight=7,Multiplier=3,Color=Color3.fromRGB(185,95,250)},
 		{Name="Legendary",Weight=1,Multiplier=5,Color=Color3.fromRGB(255,205,65)},
 	},
-	Biomes={
-		{Name="Junkyard",MinPower=0,BaseIncome=1,Color=Color3.fromRGB(145,118,91),Cars={{Name="Rusty Sedan",Weight=1},{Name="Old Van",Weight=1},{Name="Broken Pickup",Weight=1}}},
-		{Name="Suburbs",MinPower=50,BaseIncome=6,Color=Color3.fromRGB(122,153,111),Cars={{Name="Family Car",Weight=1},{Name="Minivan",Weight=1},{Name="Hatchback",Weight=1}}},
-		{Name="Downtown",MinPower=150,BaseIncome=28,Color=Color3.fromRGB(112,132,153),Cars={{Name="Taxi",Weight=1},{Name="Police Cruiser",Weight=1},{Name="Limo",Weight=1}}},
-		{Name="Sports Track",MinPower=400,BaseIncome=120,Color=Color3.fromRGB(171,105,98),Cars={{Name="Sports Coupe",Weight=1},{Name="Rally Car",Weight=1},{Name="Muscle Car",Weight=1}}},
-		{Name="Luxury Classics",MinPower=1000,BaseIncome=500,Color=Color3.fromRGB(184,166,122),Cars={{Name="Vintage Roadster",Weight=1},{Name="Gold-Trim Classic",Weight=1}}},
-		{Name="Hypercar Island",MinPower=2500,BaseIncome=2200,Color=Color3.fromRGB(91,164,176),Cars={{Name="Hypercar",Weight=1},{Name="Golden Hypercar",Weight=1},{Name="Rocket Car",Weight=1}}},
-	},
+	Biomes=Catalog.Biomes, ComingSoon=Catalog.ComingSoon,
 }
 -- Prices are authored in minutes. Reference includes a six-car park and active sales.
 -- Starter benchmark is the measured ramp-up rather than an already full rare park.
-local names={
- {"Rusty Hatch","Grandma Sedan","Duct Tape Van","Puddle Pickup","Squeaky Wagon","Tin Can Turbo","Scrap Baron","Junkyard Royal"},
- {"School Run","Coupon Coupe","Lawn Van","Weekend Wagon","Snack Shuttle","Driveway Deluxe","Sprinkler GT","Suburban Crown"},
- {"Meter Muncher","Lunch Taxi","Alley Hatch","Siren Sedan","Late Limo","Rush Hour RS","Midnight Meter","Gridlock King"},
- {"Pit Potato","Lap Wagon","Cone Crusher","Apex Buggy","Rally Rumble","Paddock Phantom","Track Taco","Lap Lord"},
- {"Velvet Wagon","Sunday Coupe","Teacup Tourer","Pearl Phaeton","Ribbon Roadster","Chrome Duke","Silk Sprint","Gilded Duchess"},
- {"Island Dart","Palm Coupe","Reef Rocket","Tide Turbo","Lagoon GT","Solar Slip","Coral Comet","Island Emperor"},
-}
-for i,b in Config.Biomes do
- b.LegacyCars=b.Cars
- b.Cars={}
- for style,name in names[i] do
-  b.Cars[style]={Id=string.format("b%d_car%d",i,style),Name=name,Rarity=if style<=3 then 1 elseif style<=5 then 2 elseif style<=7 then 3 else 4,Weight=1,Style=style}
- end
-end
 local rarityTotal,rarityWeight=0,0
 for _,r in Config.Rarities do rarityTotal+=r.Weight*r.Multiplier;rarityWeight+=r.Weight end
 for i,b in Config.Biomes do
+ b.EndPower=if Config.Biomes[i+1]then Config.Biomes[i+1].MinPower else Config.MapEnd
  local ticket=Config.Tickets[i]
  local equivalents=if i==1 then Config.Economy.StarterIncomeCars else Config.ParkingSlots*Config.Economy.ReferenceParkedRarity+(Config.SaleIncomeSeconds/Config.Economy.ReferenceCatchSeconds)*(rarityTotal/rarityWeight)
  b.ReferenceIncomePerMinute=b.BaseIncome*ticket.IncomeMultiplier*equivalents*60

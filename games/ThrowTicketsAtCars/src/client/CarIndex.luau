@@ -135,8 +135,17 @@ function Index.mount(playerGui: Instance, launchButton: GuiButton): any
 		end
 		table.insert(sections, {root = section, tile = tile, cards = cards, progress = progress, track=track,fill = fill, index = index})
 	end
+	for i,biome in Config.ComingSoon do
+	 local section=frame(list,"ComingSoon"..i,Style.INK);section.BackgroundTransparency=1
+	 local tile=frame(section,"BiomeTile",biome.Color:Lerp(Style.INK,.4));Style.corner(tile,16)
+	 local title=label(tile,"BiomeName",17);title.Text=biome.Name;title.TextWrapped=true;title.Size=UDim2.fromScale(1,1)
+	 local track=frame(section,"Track",Style.INK);local fill=frame(track,"Fill",GOLD)
+	 local progress=label(section,"Progress",19);progress.Text="COMING SOON";progress.TextColor3=GOLD
+	 table.insert(sections,{root=section,tile=tile,cards={},progress=progress,track=track,fill=fill,coming=true})
+	end
 
 	local function paintSection(section: any)
+		if section.coming then section.progress.Text="COMING SOON";section.fill.Size=UDim2.fromScale(0,1);return 0 end
 		local count = 0
 		for _, card in section.cards do
 			local unlocked = discovered[card.data.Id] == true
@@ -181,7 +190,7 @@ function Index.mount(playerGui: Instance, launchButton: GuiButton): any
 		local cellWidth = math.floor((width - 32 - tileWidth - GAP * 4) / 4)
 		local y = 4
 		for _, section in sections do
-			local rowCount = math.max(2, math.ceil(#section.cards / 4))
+			local rowCount = if section.coming then 1 else math.max(2, math.ceil(#section.cards / 4))
 			local cardsHeight=rowCount*(cellHeight+GAP)-GAP
 			local sectionHeight = cardsHeight+24
 			section.top, section.height = y, sectionHeight

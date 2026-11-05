@@ -23,6 +23,7 @@ return function(Returns,Schema,Rules,Garage,Config)
  Returns.claimOffline(restored);restored=Schema.prepare({Schema=Config.Data.Schema,Data=restored});Returns.arrive(restored,4700)
  check(restored.Returns.PendingCash==0 and restored.Cash==14400,"Claimed vault cannot return after rejoin")
  local legacy=Schema.default();legacy.Returns=nil;local reward=Rules.reward(2,3,1);Garage.add(legacy,reward,"legacy-car",false)
+ legacy.Cars[1].CatalogId="b2_car6"
  local migrated=Schema.prepare({Schema=5,Data=legacy})
  check(migrated.Returns.Tutorial and migrated.Returns.LastSeen==0 and migrated.Returns.PendingCash==0,"Legacy tutorial inferred, no invented offline time")
  check(migrated.Returns.BestOdds>0,"Legacy best catch migrated from owned cars")

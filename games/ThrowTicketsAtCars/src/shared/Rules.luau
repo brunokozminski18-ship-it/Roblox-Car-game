@@ -82,7 +82,7 @@ function Rules.savedReward(record: any): any
 	 -- CatalogId is stable; the player-facing name can change after the test.
 	 for i,c in b.Cars do if c.Id==record.CatalogId and c.Rarity==record.Rarity and Rules.extra(Config.Variants,record.Variant)then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket,record.Variant)end end
 	else
-	 for i,c in b.LegacyCars do if c.Name==record.Name then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket)end end
+	 for i,c in b.LegacyCars or {} do if c.Name==record.Name then return Rules.reward(record.Biome,record.Rarity,i,record.Ticket)end end
 	end
 	return nil
 end
@@ -106,6 +106,7 @@ function Rules.extraWeights(entries: any,ticketId: string): any
 end
 function Rules.reward(biome: number, rarity: number, car: number, ticketId: string?,variant: string?): any
 	local b,r=Config.Biomes[biome],Config.Rarities[rarity]
+	if not b or not r then return nil end
 	local ticket=Rules.ticket(ticketId or "paper")
 	local model=b.Cars[car]
 	if not model or model.Rarity~=rarity then
@@ -116,6 +117,7 @@ function Rules.reward(biome: number, rarity: number, car: number, ticketId: stri
 	return {Biome=biome,Rarity=rarity,Name=model.Name,CatalogId=model.Id,Style=model.Style,Variant=v.Id,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier*v.Multiplier))}
 end
 function Rules.rollCar(biome: number,ticket: string,rng: Random,force: any?): any
+ if not Config.Biomes[biome]then return nil end
  local f=force or {};local rarity=f.Rarity or Rules.weighted(Rules.rarityWeights(ticket),rng:NextNumber());local pool={}
  for i,c in Config.Biomes[biome].Cars do if c.Rarity==rarity then table.insert(pool,{Index=i,Weight=c.Weight})end end
  local idx=pool[Rules.weighted(pool,rng:NextNumber())].Index

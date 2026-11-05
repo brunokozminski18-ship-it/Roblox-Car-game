@@ -23,3 +23,4 @@
 21. 03.11.2026 — użytkownik zlecił9 poprawek po teście10a: suwak tylko z ikony/MAX i pamięć wyboru, mocniejsze Epic+, płynna laweta, centralne losowe2x/pop/poświata bez timera, QA gear bez spamu, gradient shine, mobile44+/safe-area i audio cichsze40–50%; całość testowa/NOT FINAL, bez Rebirth/Robux/publikacji.
 22. 03.11.2026 — użytkownik usunął rozmiary aut BIG/GIANT, bo nie pasują do gry. Istniejące auta zostają, dochód jest przeliczany bez mnożnika rozmiaru, a Gold/Diamond/Neon pozostają.
 23. 05.11.2026 — USER APPROVED kierunek próbki Welcome Back na telefonie dla pozostałych elementów iteracji 10c; całość nadal wersją testową, wygląd NOT FINAL, bez Rebirth/Robux/publikacji.
+24. 05.11.2026 — USER APPROVED wyłącznie robocza lista10 biomów i74 aut z research/CarList_draft.md jako zakres iteracji11; lista i wygląd NOT FINAL, cztery próbki modeli wymagają osobnej akceptacji przed dopracowaniem pozostałych.

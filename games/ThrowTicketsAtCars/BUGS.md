@@ -14,3 +14,4 @@
 - Automatyzacja PC raz nie uzbroiła paska, bo teleport wrócił przed heartbeat wyjścia. Jawne zejście0.4 s i ponowne wejście uruchomiło rzut poprawnie; zasad gry nie zmieniano pod test.
 - Nowe poprawki: kamera utrzymana przezTow/fade i normalizacja starego Scriptable snapshot; stanCustom po końcu potwierdzony32 klatkami natywnymi. Gear czeka na gotowy klient, smuga rzeczywiście widoczna.
 - Pamięć suwaka i wyświetlonych toastów jest stanem sesji; nowa sesja startuje z MAX. Brak preset568×320 w obecnej liście Studio; przetestowano666×374, inne urządzenia wymagają testu.
+- Iteracja11: 4 próbki i70 prostszych brył NOT FINAL; szczegółowe cechy wszystkich aut do dopracowania po akceptacji kierunku. FPS na słabym telefonie i tempo z człowiekiem NEEDS VERIFICATION; 6–10h to cel potwierdzony symulacją, nie sesją gracza.

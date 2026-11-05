@@ -64,3 +64,6 @@
 -10c: test rankingu musi przeplatać queue z trwającym zapisem. Deduplikujemy parę wynik+generacja, nie tylko wynik; nowszy identyczny wynik też stanowi barierę dla starego serwera. OrderedDataStore wymaga kodowania obu liczb w bezpieczny integer i kontroli budżetu read+write dla UpdateAsync.
 -10c: po każdym yield podczas inicjalizacji ponownie sprawdzamy, czy gracz nadal jest w tym stanie/profilu. Wyjście podczas arrive nie może wznowić montowania zniszczonej działki.
 -10c: powrót po 2h14m, nieodebrany bank, kolejna doba, double CLAIM i krótki rejoin sprawdzono na osobnym QA. Offset zegara rozgrywki nigdy nie przesuwa lease ani czasu aktywnej gry do toastów.
+-11 (05.11): po rozszerzeniu listy biomów migruj po znaczeniu, nie numerze; stary Sports Track4 staje się7. Wszystkie stare CatalogId sprawdzaj osobno, aby zmniejszenie liczby modeli nie usuwało egzemplarzy.
+-11: model o innej wysokości potrzebuje własnego anchora mandatu. Zachowaj wysokość Root względem drogi, a landing.Y oblicz z Root+anchor; test samej obecności Windshield nie wykrywa przesunięcia ani zapadniętych kół.
+-11: symulator musi używać prawdziwych losowań odmian oraz XP/level; po zmianie drabiny trzeba zaktualizować również test jej celów. Przed akceptacją czterech próbek pozostała seria zostaje uproszczona.

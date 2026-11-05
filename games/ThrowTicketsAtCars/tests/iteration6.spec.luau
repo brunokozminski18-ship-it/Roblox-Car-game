@@ -3,7 +3,7 @@ return function(Rules,Config,Schema,Garage)
  for _,t in Config.Tickets do check(t.Multiplier==nil and Rules.distance(24,t.Id)==24,"Ticket never multiplies distance")end
  check(Rules.distance(99999)==Config.MapEnd,"Map limit")
  check(Rules.nextBiome(49)==2,"Power-only threshold")
- for _,pair in {{0,1},{49,1},{50,2},{149,2},{150,3},{399,3},{400,4},{999,4},{1000,5},{2499,5},{2500,6},{3200,6},{99999,6}}do check(Rules.biome(Rules.distance(pair[1]))==pair[2],"Biome boundary")end
+ for i,b in Config.Biomes do check(Rules.biome(b.MinPower)==i,"Biome boundary");if i>1 then check(Rules.biome(b.MinPower-1)==i-1,"Before biome boundary")end end
  check(Rules.trafficPosition(1,1,1)~=Rules.trafficPosition(1,1,1.25),"Traffic moves on fixed path")
  check(Config.ThrowWindupSeconds+Config.TicketFlightSeconds>=2 and Config.ThrowWindupSeconds+Config.TicketFlightSeconds<=3,"Cast duration")
  local old={Schema=1,Data={Cash=777,Power=84,Owned={paper=true,pink=true,parking=true,court=true},Equipped="court",Parking={{Slot=2,Biome=1,Rarity=3,Name="Rusty Sedan"}}}}

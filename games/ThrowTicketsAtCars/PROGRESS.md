@@ -1,15 +1,16 @@
 # Stan — THROW TICKETS AT CARS!
-- Iteracja 10c IMPLEMENTED i VERIFIED 05.11.2026 w zakresie raportu. Wersja testowa; grafika, balans i docelowe UI telefonu NOT FINAL.
+- Iteracja 11 IMPLEMENTED i VERIFIED 05.11.2026 w zakresie raportu. Wersja testowa; grafika, balans i docelowe UI telefonu NOT FINAL.
 - Pętla: wybór Power → płytka/tap → lot → hit → reveal → laweta → działka/Tool. Pierwszy tap przyspiesza reveal, drugi zatwierdza.
-- 6 biomów × 8 aut, rzadkości 3/2/2/1. Serwer liczy wynik i szanse z tych samych tabel; Gold/Diamond/Neon wpływają na dochód i wygląd, bez rozmiarów.
-- Car Index: 48 odkryć, sylwetki i kolor rzadkości, postęp biomu/całości; toast i kropka nowości. Odkrycia nie przepadają przy sprzedaży.
-- Schema 6: parking/odkrycia/auta plus trwałe Returns. Migracja zachowuje Id, miejsca i odmiany; dawne rozmiary są usuwane.
+- 10 biomów / 74 auta (6/6/7/7/8/8/8/8/8/8); rzadkości z roboczej listy. Serwer liczy wynik i szanse z tych samych tabel; Gold/Diamond/Neon wpływają na dochód i wygląd, bez rozmiarów.
+- Car Index: 74 odkrycia i dwie sekcje COMING SOON, sylwetki i kolor rzadkości, postęp biomu/całości; toast i kropka nowości. Odkrycia nie przepadają przy sprzedaży.
+- Schema 7: parking/odkrycia/auta plus trwałe Returns. Migracja zachowuje Id, miejsca i odmiany; dawne rozmiary są usuwane.
 - Parking 6→16 co 2; stanowisko kupna z ceną i walidacją własności, dystansu, hold, kasy oraz aktualnego stopnia. Auta mają etykiety.
 - My Cars: sekcje PARKED/BACKPACK, PICK UP / PLACE / SELL, EQUIP BEST do aktualnej pojemności; YES/NO Epic+/odmiana/GIANT.
 - Plecak 20, hotbar 5; pełny parking nie blokuje łapania, pełny plecak blokuje rzut przed Meter. Czerwony banner limitu i zielony banner sprzedaży.
 - Trening XP/level/2x i sprzęt zachowane; sklep z odświeżoną smugą przez ramkę. Kamera nadal płynnie przechodzi do lawety.
 - Offline 40%/8 h/60 s po tutorialu; bank i CLAIM atomowo zapisywane. FREE CAR co 15 min, biom wg Power, pełny plecak zachowuje nagrodę. Like co 10 min gry, poza catch i oknami.
 - 3 fizyczne rankingi top10 z avatarami, refresh/cache 60 s, budżetowane zapisy zmian. Historyczny rekord nie maleje, stary serwer nie nadpisuje nowej sesji.
-- 470 asercji PASS, w tym 10 000 losowań; izolowane QA offline/cap/double claim/rejoin/biom/plecak/rankingi. iPhone 7 landscape + PC; końcowe logi klient/serwer 0 MessageError.
-- 43 źródła Rojo zgodne ze Studio. Studio Edit, emulator/HTTP off; wcześniejszy klucz QA przywrócony, offset usunięty. Bez Rebirth/Robux/publikacji.
-- Raport i ograniczenia: [[games/ThrowTicketsAtCars/reports/2026-11-05_iteration10c]].
+- 3560 asercji PASS, w tym 40 000 losowań; izolowane QA offline/cap/double claim/rejoin/biom/plecak/rankingi. iPhone 7 landscape + PC; końcowe logi klient/serwer 0 MessageError.
+- 47 źródeł Rojo zgodne ze Studio. Studio Edit, emulator/HTTP off; wcześniejszy klucz QA=nil przywrócony, offset usunięty. Bez Rebirth/Robux/publikacji.
+- Raport i ograniczenia: [[games/ThrowTicketsAtCars/reports/2026-11-05_iteration11]].
+- Tempo symulacji5 seedów: Suburbs2:44, Desert38:36–41:37, Future6:42–6:47h. Cztery staranniejsze próbki NOT FINAL czekają na akceptację; pozostałe70 uproszczone.

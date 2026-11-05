@@ -1,4 +1,4 @@
-# THROW TICKETS AT CARS! — iteracja 10c
+# THROW TICKETS AT CARS! — iteracja 11
 - USER APPROVED03.11: zakres8/10a, My Cars i scena złapania v2 wyłącznie testowa. Bez Rebirth/petów/Robux/nowych biomów/publikacji.
 - Pętla: wybierz siłę → wejdź na białą płytkę → tap paska → mandat/biom/LUCK → hit/reveal → laweta → działka/Tool.
 - Dystans=min(koniec mapy,wybranaSiła×(1+bonus)); siła1..Power tylko z ikony przy Power, domyślnieMAX/schowany suwak, wybór pozostaje w sesji. Bonus -5%..+10%, PERFECT szczyt6%.
@@ -10,17 +10,17 @@
 - XP/sek=Work/koszt pracy biomu×100.100 XP→level+1 iPower+1; nowe ćwiczenie podwaja XP względem poprzedniego, ceny zachowane.
 - Oferta2x co12 s aktywnego treningu, ważna4 s; duży losowy centralny cel bez timera. Klik zId→pop/poświata2 s i boost serwera, bez stackowania. Telefon LEVEL UP na XPbar.
 - NEW GEAR: pierwszy osiągalny next exercise/ticket z ceną/efektem/timerem7 s; akcja teleportuje do własnego stanowiska i otwiera kategorię sklepu, nie kupuje.
-- Next exercise w świecie ma cenę zieloną/czerwoną; SHOP TRAINING/TICKETS, biała smuga co5 s, Reduced Motion respektowane.
+- Next exercise w świecie ma cenę zieloną/czerwoną; SHOP TRAINING/TICKETS/FREE CAR, biała smuga co5 s, Reduced Motion respektowane.
 - Profil kontroluje własność; auta Slot0 odtwarzają Tools w Backpack/Character. Hotbar5 slotów z3D/$/s/numerem ponad XPbar; CARS otwiera pełny ekwipunek20.
 - My Cars: PARKED / BACKPACK, w sekcji dochód malejąco i Id jako rozstrzygnięcie; PLACE wyposaża, PICK UP przy miejscu; przy zajętym slocie trzymane auto włącza Swap car (0,5 s), także przy pełnym plecaku; Epic+ lub każda odmiana wymagają YES/NO i tokenu 15 s. EQUIP BEST wypełnia aktualną pojemność.
 - Wolne miejsce: Place car tylko przy trzymanym aucie; postawione: Pick up. Hold0.5 s i walidacja własności/dystansu/stanu/cooldownu.
 - Działki obok rzutu i własny trening; powrót pieszo, bez BACK TO ROAD/blokady Plot.
-- Katalog: 8 aut w każdym z 6 biomów, 3 Common/2 Rare/2 Epic/1 Legendary. Losowanie serwera: rarity → model z tej grupy → variant. Odds uwzględniają rzadkość, model i odmianę.
+- Katalog: 74 auta w10 biomach (6/6/7/7/8/8/8/8/8/8), rzadkości zgodnie z research/CarList_draft.md. Losowanie serwera: rarity → model z tej grupy → variant. Odds uwzględniają rzadkość, model i odmianę.
 - Income=floor(biom×rzadkość×mandat×odmiana), min 1. Odmiany bazowo Gold 5% ×2, Diamond 1% ×4, Neon 0.25% ×8. Luck zwiększa wagi specjalnych wyników o (1+luck), nie zasięg. Sprzedaż 180 s dochodu.
 - Car Index zapisuje odkryte CatalogId, niezależnie od posiadania egzemplarza. Zablokowane modele są czarne, a karty mają kolor rzadkości.
 - Parking 6→8→10→12→14→16, cena 3/7/15/30/60 min startowego dochodu referencyjnego. Brak wolnych miejsc zostawia łup w plecaku; 20 aut w plecaku blokuje próbę przed rzutem.
-- Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/400/1000/2500. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
-- Schema 6: ParkingCapacity, Discovered, CatalogId/Variant i Returns (tutorial, offline/pending, free cooldown, playtime/like, BestOdds). Migracja zachowuje ID, biom, rzadkość, mandat, miejsce; usuwa dawne mnożniki rozmiaru.
+- Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/300/550/900/1400/2200/3400/5000, aktywna droga do6000. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
+- Schema 7: ParkingCapacity, Discovered, CatalogId/Variant i Returns (tutorial, offline/pending, free cooldown, playtime/like, BestOdds). Migracja zachowuje ID, biom, rzadkość, mandat, miejsce; usuwa dawne mnożniki rozmiaru.
 - Offline: 40% dochodu zaparkowanych aut z chwili wyjścia, max 8 h, min 60 s, po ukończonym pierwszym catch. Welcome Back pokazuje pending; kasa dopiero po CLAIM. Nieodebrane zarobki przechodzą przez rejoin, bank najwyżej 8 h; zaokrąglenie w dół na każdą nieobecność.
 - FREE CAR: co 900 s czasu serwera także między sesjami, bez kumulowania wielu nagród, losowy model/rarity/variant z aktualnego biomu postępu wg Power. Plecak pełny nie zużywa cooldownu. Darmowe auto nie zalicza tutorialu ani rekordu złapania.
 - Most Cars = aktualnie posiadane, Top Money = aktualna kasa, Luckiest Catch = największe historyczne rzeczywiste 1 in X z catch. Top10/avatary/cache 60 s. Indeks z generacją sesji odrzuca stare zapisy; Money >1M ma przybliżenie <3ppm, profil dokładny.
@@ -28,3 +28,8 @@
 - Jeden writer/lease/token/autosave/leave/shutdown; łup zapisany przed animacją. Boost i aktualne wyposażenie/suwak są stanem sesji.
 - Audio14 cue/5 ID Creator Store, testowy miks×0.52, ciche krótkie XP/litery, preload/pooling/cap12, pitch/choke. Kamera jeden owner do końcaTow z cleanup/FOV/Focus i ograniczonym shake.
 - Źródło: LihFolk Vault V2 (CC BY 4.0), MCP tylko odczyt; ThrowFoodForAnimals [E/F] dla 10b, własne nazwy i grafiki. Balans i wygląd NOT FINAL.
+
+- Biomy: Junkyard, Suburbs, Downtown, Farm Roads, Desert Highway, Snowy Pass, Sports Track, Millionaire Hills, Hypercar Island, Future City; dalej Moon Base/Candy Land zamknięte i COMING SOON, bez łapania.
+- 11 mandatów i11 ćwiczeń; stare Id zachowane, nowe dopisane. Tempo piłokształtne: spadek treningu na wejściu, x2 po ćwiczeniu; koszty w minutach dochodu. Roboczy cel2–3min/30–45min/6–10h dla biomów2/5/10.
+- Migracja: stare biomy1..6 →1/2/3/7/8/9, ta sama rzadkość, zachowane Id/Slot/Variant/Ticket; odkrycia mapowane. Dochód według nowego configu.
+- Modele: cztery staranniejsze próbki (Couch Cruiser, Grandma's Rocket, Monster Truck, UFO Car), pozostałe70 prostsze. Dalsza seria czeka na akceptację; wygląd wszystkich NOT FINAL.

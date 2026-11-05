@@ -1,6 +1,6 @@
 return function(Rules,Config,Schema,Garage)
  local n=0;local function check(ok,msg)assert(ok,msg);n+=1 end
- check(Config.Exercises and #Config.Exercises==6,"Six configured training tiers are required")
+ check(Config.Exercises and #Config.Exercises==11,"Eleven configured training tiers are required")
  local d=Schema.default();check(d.Exercise==1,"Starter training is saved")
  for _,items in {Config.Exercises,Config.Tickets}do for _,x in items do check(x.Price==math.floor(x.Minutes*Config.Biomes[x.UnlockBiome].ReferenceIncomePerMinute+.5),"Prices derived from minutes")end end
  local before=d.Cash;check(Rules.shop(d,"Exercise","focused")=="Not enough Cash!"and d.Cash==before,"Training affordability")

@@ -21,7 +21,7 @@ return function(Rules, Config, Schema, Garage, J)
 		catalog[car.Id] = car
 		catalogWeight[car.Rarity] = (catalogWeight[car.Rarity] or 0) + car.Weight
 	end
-	check(#biome.Cars == 8, "A biome offers eight collectible cars")
+	check(#biome.Cars == 6, "A biome offers six collectible cars")
 
 	local ticketId = "diamond"
 	local rarityWeights = Rules.rarityWeights(ticketId)
@@ -95,7 +95,7 @@ return function(Rules, Config, Schema, Garage, J)
 	check(migrated.ParkingCapacity >= oldCar.Slot and migrated.Discovered[oldCar.CatalogId] == true,
 		"Migration unlocks previously owned catalog entries and never shrinks occupied parking")
 	local renamed=Schema.copy(migrated);renamed.Cars[1].Name="Previous test name"
-	local normalized=Schema.prepare({Schema=5,Data=renamed})
+	local normalized=Schema.prepare({Schema=Config.Data.Schema,Data=renamed})
 	check(normalized and normalized.Cars[1].Name==oldCar.Name and normalized.Cars[1].CatalogId==oldCar.CatalogId,
 		"Future display-name changes preserve stable catalog ownership")
 	check(legacy.ParkingCapacity == nil and legacy.Discovered == nil and legacy.Cars[1].CatalogId == nil, "Migration leaves the source record untouched")
@@ -106,7 +106,7 @@ return function(Rules, Config, Schema, Garage, J)
 	check(data.Discovered[reward.CatalogId] == true, "A catch registers its catalog discovery")
 	check(Garage.act(data, "Sell", "rolled", 0), "Selling removes a registered car")
 	check(data.Discovered[reward.CatalogId] == true, "Discovery survives selling the last copy")
-	local restored, restoreReason = Schema.prepare({Schema = 5, Data = data})
+	local restored, restoreReason = Schema.prepare({Schema = Config.Data.Schema, Data = data})
 	check(restored and restored.Discovered[reward.CatalogId] == true, restoreReason or "An owned-then-sold discovery survives save/load")
 
 	local capacity = data.ParkingCapacity
@@ -131,9 +131,9 @@ return function(Rules, Config, Schema, Garage, J)
 	check(Garage.act(data, "Place", "next-slot", data.ParkingCapacity), "Can place in the newly purchased last slot")
 	local corrupt = Schema.copy(data)
 	corrupt.ParkingCapacity = data.ParkingCapacity - 1
-	check(Schema.prepare({Schema = 5, Data = corrupt}) == nil, "Schema 5 rejects occupied slots beyond saved capacity")
+	check(Schema.prepare({Schema = Config.Data.Schema, Data = corrupt}) == nil, "Schema 5 rejects occupied slots beyond saved capacity")
 	corrupt.ParkingCapacity = Config.ParkingMax + 1
-	check(Schema.prepare({Schema = 5, Data = corrupt}) == nil, "Schema 5 rejects capacity above the maximum")
+	check(Schema.prepare({Schema = Config.Data.Schema, Data = corrupt}) == nil, "Schema 5 rejects capacity above the maximum")
 
 	local full = Schema.default()
 	full.ParkingCapacity = Config.ParkingMax
@@ -144,7 +144,7 @@ return function(Rules, Config, Schema, Garage, J)
 	check(Garage.equipBest(full), "Equip best works with purchased parking slots and full inventory")
 	check(#full.Cars == Config.InventoryLimit and Garage.inventoryCount(full) == math.max(0, Config.InventoryLimit - Config.ParkingMax),
 		"Equip best fills all purchased parking slots without losing cars")
-	check(Schema.prepare({Schema = 5, Data = full}) ~= nil, "The expanded garage survives save/load")
+	check(Schema.prepare({Schema = Config.Data.Schema, Data = full}) ~= nil, "The expanded garage survives save/load")
 
 	check(not Garage.requiresConfirmation({Rarity = 1, Variant = Config.Variants[1].Id}),
 		"An ordinary Common car can be sold directly")
@@ -156,7 +156,7 @@ return function(Rules, Config, Schema, Garage, J)
  sized.Cars[1].Size="BIG"
  assert(Garage.add(sized,forced,"old-giant",false))
  sized.Cars[2].Size="GIANT"
- local stripped=Schema.prepare({Schema=5,Data=sized})
+ local stripped=Schema.prepare({Schema=Config.Data.Schema,Data=sized})
  check(stripped and stripped.Cars[1].Size==nil and stripped.Cars[2].Size==nil,"Old sizes are stripped on load")
  check(stripped.Cars[1].Id==oldCar.Id and stripped.Cars[1].Slot==6 and Rules.savedReward(stripped.Cars[1]).Income==3,"Old parked car keeps identity and base income")
  check(stripped.Cars[2].Variant=="Gold" and Rules.savedReward(stripped.Cars[2]).Income==72,"Old GIANT keeps Gold and loses the size multiplier")

@@ -180,10 +180,12 @@ local function performThrow(p: Player,bonus: number)
  assert(GarageRules.add(s.data,reward,id,true))
  s.data.Returns.BestOdds=math.max(s.data.Returns.BestOdds,math.floor(J.odds(reward,s.data.Equipped)))
  s.lastThrow=now;p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Windup")
- local landing=Vector3.new(Config.CaptureLaneX,Config.LandingHeight,-distance)
- local position=landing-Vector3.new(0,Config.RoofOffset,Config.WindshieldFront)
+ local car=World.car(world.Cars,"Ticketed_"..id,reward,Vector3.zero)
+ local offset=World.ticketOffset(car)
+ local landing=Vector3.new(Config.CaptureLaneX,Config.CarHeight+offset.Y,-distance)
+ local position=landing-offset
  local approach=position+Vector3.new(0,0,-Config.CaptureApproachDistance)
- local car=World.car(world.Cars,"Ticketed_"..id,reward,approach)
+ car:PivotTo(car:GetPivot()+approach-car.PrimaryPart.Position)
  car:SetAttribute("CarId",id);car:SetAttribute("Claimed",true);car:SetAttribute("OwnerId",p.UserId);car:SetAttribute("TicketId",s.data.Equipped);car:SetAttribute("Outcome","Inventory")
  local j={id=id,car=car,reward=reward,position=position,discovered=discovered,started=workspace:GetServerTimeNow()};s.job=j
  -- Confirm ownership durably before showing the accepted throw; the job blocks all competing actions while this yields.
@@ -411,4 +413,4 @@ if RunService:IsStudio()then
   return nil
  end
 end
-print("[ThrowTickets] Iteration 10c: returns and community ready (NOT FINAL).")
+print("[ThrowTickets] Iteration 11: ten biomes and 74 draft cars ready (NOT FINAL).")
