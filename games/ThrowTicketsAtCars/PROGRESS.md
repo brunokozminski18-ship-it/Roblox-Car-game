@@ -1,13 +1,15 @@
 # Stan — THROW TICKETS AT CARS!
-- Iteracja 10b IMPLEMENTED i VERIFIED 03.11.2026. Wersja testowa; grafika, balans i docelowe UI telefonu NOT FINAL.
+- Iteracja 10c IMPLEMENTED i VERIFIED 05.11.2026 w zakresie raportu. Wersja testowa; grafika, balans i docelowe UI telefonu NOT FINAL.
 - Pętla: wybór Power → płytka/tap → lot → hit → reveal → laweta → działka/Tool. Pierwszy tap przyspiesza reveal, drugi zatwierdza.
-- 6 biomów × 8 aut, stałe rzadkości 3/2/2/1. Serwer liczy wynik i szanse z tych samych tabel; odmiany/rozmiary wpływają na dochód i wygląd.
+- 6 biomów × 8 aut, rzadkości 3/2/2/1. Serwer liczy wynik i szanse z tych samych tabel; Gold/Diamond/Neon wpływają na dochód i wygląd, bez rozmiarów.
 - Car Index: 48 odkryć, sylwetki i kolor rzadkości, postęp biomu/całości; toast i kropka nowości. Odkrycia nie przepadają przy sprzedaży.
-- Schema 5: zachowany stary dochód aut, unikalne Id i miejsca; migracja przypisuje nowy model w tym samym biomie/rarity.
+- Schema 6: parking/odkrycia/auta plus trwałe Returns. Migracja zachowuje Id, miejsca i odmiany; dawne rozmiary są usuwane.
 - Parking 6→16 co 2; stanowisko kupna z ceną i walidacją własności, dystansu, hold, kasy oraz aktualnego stopnia. Auta mają etykiety.
 - My Cars: sekcje PARKED/BACKPACK, PICK UP / PLACE / SELL, EQUIP BEST do aktualnej pojemności; YES/NO Epic+/odmiana/GIANT.
 - Plecak 20, hotbar 5; pełny parking nie blokuje łapania, pełny plecak blokuje rzut przed Meter. Czerwony banner limitu i zielony banner sprzedaży.
 - Trening XP/level/2x i sprzęt zachowane; sklep z odświeżoną smugą przez ramkę. Kamera nadal płynnie przechodzi do lawety.
-- 392 kontroli PASS, w tym rozkład 10 000 losowań; QA schema4→5 i rejoin, zakup 6→8→10, pełne limity i sprzedaż. Telefon poziomo + PC, 0 błędów skryptów w kontrolach.
-- 34 źródła Rojo. Studio Edit, QA/emulator/HTTP off. Bez Rebirth/Robux/publikacji.
-- Raport: [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10b]].
+- Offline 40%/8 h/60 s po tutorialu; bank i CLAIM atomowo zapisywane. FREE CAR co 15 min, biom wg Power, pełny plecak zachowuje nagrodę. Like co 10 min gry, poza catch i oknami.
+- 3 fizyczne rankingi top10 z avatarami, refresh/cache 60 s, budżetowane zapisy zmian. Historyczny rekord nie maleje, stary serwer nie nadpisuje nowej sesji.
+- 470 asercji PASS, w tym 10 000 losowań; izolowane QA offline/cap/double claim/rejoin/biom/plecak/rankingi. iPhone 7 landscape + PC; końcowe logi klient/serwer 0 MessageError.
+- 43 źródła Rojo zgodne ze Studio. Studio Edit, emulator/HTTP off; wcześniejszy klucz QA przywrócony, offset usunięty. Bez Rebirth/Robux/publikacji.
+- Raport i ograniczenia: [[games/ThrowTicketsAtCars/reports/2026-11-05_iteration10c]].

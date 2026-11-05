@@ -18,6 +18,7 @@ return function(Profiles,Schema)
 	check(api:save(p,true)=="saved"and db.fresh.Session==nil,"Release saves complete state")
 	local restored=api:load("fresh",1)
 	check(restored and restored.Data.Cash==777 and restored.Data.Power==50,"Reload exact progress")
+	check(restored.Generation>p.Generation and db.fresh.Generation==restored.Generation,"Profile generations increase atomically across sessions")
 	local before=writes;fail=true
 	local bad,reason=api:load("failure",2)
 	check(not bad and reason=="failed"and writes==before and db.failure==nil,"Failed load never saves defaults")

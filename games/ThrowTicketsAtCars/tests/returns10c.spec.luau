@@ -1,0 +1,48 @@
+return function(Returns,Schema,Rules,Garage,Config)
+ local n=0;local function check(ok,msg)assert(ok,msg);n+=1 end
+ check(Returns~=nil and type(Returns.arrive)=="function","10c return rules required")
+ local function data()
+  local d=Schema.default();d.Returns=Returns.default();d.Returns.Tutorial=true
+  d.Returns.LastSeen=1000;d.Returns.OfflineRate=10
+  return d
+ end
+ local d=data();Returns.arrive(d,1059);check(d.Returns.PendingCash==0,"59 seconds pays nothing")
+ d=data();Returns.arrive(d,1060);check(d.Returns.PendingCash==240 and d.Cash==0,"60 seconds banks 40%, no early payout")
+ check(d.Returns.LastSeen==0,"Arrival consumes exit marker")
+ Returns.arrive(d,1060);check(d.Returns.PendingCash==240,"Repeated arrival cannot mint same absence")
+ check(Returns.claimOffline(d)==240 and d.Cash==240,"CLAIM pays once")
+ check(Returns.claimOffline(d)==0 and d.Cash==240,"Double CLAIM rejected")
+ d=data();Returns.arrive(d,1000+86400*400);check(d.Returns.PendingCash==115200 and d.Returns.PendingSeconds==28800,"400 day absence capped at 8 hours")
+ Returns.depart(d,999999);Returns.arrive(d,999999+90000);check(d.Returns.PendingCash==115200,"Unclaimed vault never exceeds one 8h bank")
+ d=data();Returns.arrive(d,999);check(d.Returns.PendingCash==0,"Backward clock safe")
+ d=data();d.Returns.Tutorial=false;Returns.arrive(d,4600);check(d.Returns.PendingCash==0,"Tutorial required")
+ d=data();d.Returns.OfflineRate=0;Returns.arrive(d,4600);check(d.Returns.PendingCash==0,"Unparked cars do not earn")
+ d=data();Returns.arrive(d,4600);local raw={Schema=Config.Data.Schema,Data=d};local restored=Schema.prepare(raw)
+ check(restored and restored.Returns.PendingCash==14400,"Pending survives whitelist/save/load")
+ Returns.arrive(restored,4700);check(restored.Returns.PendingCash==14400,"Rejoin preserves unclaimed bank")
+ Returns.claimOffline(restored);restored=Schema.prepare({Schema=Config.Data.Schema,Data=restored});Returns.arrive(restored,4700)
+ check(restored.Returns.PendingCash==0 and restored.Cash==14400,"Claimed vault cannot return after rejoin")
+ local legacy=Schema.default();legacy.Returns=nil;local reward=Rules.reward(2,3,1);Garage.add(legacy,reward,"legacy-car",false)
+ local migrated=Schema.prepare({Schema=5,Data=legacy})
+ check(migrated.Returns.Tutorial and migrated.Returns.LastSeen==0 and migrated.Returns.PendingCash==0,"Legacy tutorial inferred, no invented offline time")
+ check(migrated.Returns.BestOdds>0,"Legacy best catch migrated from owned cars")
+ local bad=Schema.copy(d);bad.Returns.PendingCash=0/0;check(Schema.prepare({Schema=Config.Data.Schema,Data=bad})==nil,"Reject corrupt return cash")
+ bad=Schema.copy(d);bad.Returns.PendingSeconds=28801;check(Schema.prepare({Schema=Config.Data.Schema,Data=bad})==nil,"Reject bank above cap")
+ d=Schema.default();Returns.arrive(d,1000);check(d.Returns.FreeAt==1900,"Initial free car after 15 minutes")
+ check(not Returns.freeReady(d,1899) and Returns.freeReady(d,1900),"Cooldown boundary inclusive")
+ check(Returns.claimFree(d,1900,reward,"free-car"),"Free car added")
+ check(#d.Cars==1 and d.Cars[1].Slot==0 and d.Cars[1].Biome==2 and d.Returns.FreeAt==2800,"Free car inventory, biome and cooldown")
+ check(not Returns.claimFree(d,1900,reward,"free-double") and #d.Cars==1,"Free double claim rejected")
+ check(not d.Returns.Tutorial and d.Returns.BestOdds==0,"Free car is not tutorial catch or luck record")
+ local freeRestored=Schema.prepare({Schema=Config.Data.Schema,Data=d});Returns.arrive(freeRestored,2000)
+ check(freeRestored.Returns.FreeAt==2800 and not Returns.freeReady(freeRestored,2000),"Free cooldown survives rejoin")
+ for i=2,Config.InventoryLimit do Garage.add(d,reward,"full-"..i,false)end
+ check(not Returns.claimFree(d,2800,reward,"overflow") and d.Returns.FreeAt==2800,"Full backpack preserves ready reward")
+ check(not Returns.likeDue(d,false),"No premature like")
+ d.Returns.PlaySeconds=600;check(not Returns.likeDue(d,true) and Returns.likeDue(d,false),"Like deferred during catch")
+ Returns.markLike(d);check(not Returns.likeDue(d,false),"Like cannot repeat immediately")
+ d.Returns.PlaySeconds=1199;check(not Returns.likeDue(d,false),"Like at least ten minutes apart")
+ d.Returns.PlaySeconds=1200;check(Returns.likeDue(d,false),"Second like after ten minutes")
+ local s=Returns.scores(migrated);check(s.MostCars==1 and s.TopMoney==0 and s.LuckiestCatch>0,"Board scores come from profile")
+ return n.." return assertions passed"
+end

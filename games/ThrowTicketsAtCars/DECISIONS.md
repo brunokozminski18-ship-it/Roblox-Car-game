@@ -22,3 +22,4 @@
 20. 03.11.2026 — USER APPROVED wyłącznie próbka testowa sceny złapania v2; użytkownik podkreślił, że to wersja testowa. Kontynuacja10a w tym stylu, grafika i balans NOT FINAL.
 21. 03.11.2026 — użytkownik zlecił9 poprawek po teście10a: suwak tylko z ikony/MAX i pamięć wyboru, mocniejsze Epic+, płynna laweta, centralne losowe2x/pop/poświata bez timera, QA gear bez spamu, gradient shine, mobile44+/safe-area i audio cichsze40–50%; całość testowa/NOT FINAL, bez Rebirth/Robux/publikacji.
 22. 03.11.2026 — użytkownik usunął rozmiary aut BIG/GIANT, bo nie pasują do gry. Istniejące auta zostają, dochód jest przeliczany bez mnożnika rozmiaru, a Gold/Diamond/Neon pozostają.
+23. 05.11.2026 — USER APPROVED kierunek próbki Welcome Back na telefonie dla pozostałych elementów iteracji 10c; całość nadal wersją testową, wygląd NOT FINAL, bez Rebirth/Robux/publikacji.

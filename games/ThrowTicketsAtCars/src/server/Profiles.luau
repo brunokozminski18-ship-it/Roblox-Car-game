@@ -20,7 +20,7 @@ function Profiles:load(key: string,userId: number,cancel: (() -> boolean)?): (an
 	local token=Http:GenerateGUID(false);local last="failed"
 	for attempt=1,self.options.Attempts or Config.Data.Attempts do
 		if cancel and cancel()then return nil,"left"end
-		local data=nil;local outcome="failed"
+		local data=nil;local outcome="failed";local generation=0
 		local ok,err=pcall(function()
 			self.store:UpdateAsync(key,function(old,keyInfo)
 				data=nil;outcome="failed"
@@ -29,12 +29,15 @@ function Profiles:load(key: string,userId: number,cancel: (() -> boolean)?): (an
 				if session and (typeof(session)~="table"or typeof(session.ExpiresAt)~="number"or typeof(session.Token)~="string")then return nil end
 				if session and session.Token~=token and session.ExpiresAt>os.time()then outcome="locked";return nil end
 				data=Schema.prepare(old);if not data then outcome="corrupt";return nil end
+				local previous=if old then old.Generation or 0 else 0
+				if typeof(previous)~="number"or previous%1~=0 or previous<0 or previous>=99999998 then outcome="corrupt";return nil end
+				generation=previous+1
 				outcome="ready"
-				return {Schema=Config.Data.Schema,Data=data,Session={Token=token,JobId=game.JobId,ExpiresAt=os.time()+Config.Data.LeaseSeconds}}, {userId}, if keyInfo then keyInfo:GetMetadata()else nil
+				return {Schema=Config.Data.Schema,Data=data,Generation=generation,Session={Token=token,JobId=game.JobId,ExpiresAt=os.time()+Config.Data.LeaseSeconds}}, {userId}, if keyInfo then keyInfo:GetMetadata()else nil
 			end)
 		end)
 		if ok and outcome=="ready"then
-			local p={Key=key,UserId=userId,Token=token,Data=data,Status="active",Saving=false,Revision=0,Dirty=false,LastSave=os.clock(),NextSave=os.clock()+Config.Data.AutosaveSeconds*(0.75+math.random()*0.25)}
+			local p={Key=key,UserId=userId,Token=token,Generation=generation,Data=data,Status="active",Saving=false,Revision=0,Dirty=false,LastSave=os.clock(),NextSave=os.clock()+Config.Data.AutosaveSeconds*(0.75+math.random()*0.25)}
 			if cancel and cancel()then self:save(p,true);return nil,"left"end
 			return p,"ready"
 		end
@@ -65,7 +68,7 @@ function Profiles:save(p: any,release: boolean): string
 				if typeof(old)=="table"and old.LastWrite==writeId then outcome="saved";return nil end
 				if typeof(old)~="table"or typeof(old.Session)~="table"or old.Session.Token~=p.Token then outcome="lost";return nil end
 				outcome="saved"
-				return {Schema=Config.Data.Schema,Data=snapshot,LastWrite=writeId,SavedAt=os.time(),Session=if release then nil else {Token=p.Token,JobId=game.JobId,ExpiresAt=os.time()+Config.Data.LeaseSeconds}}, {p.UserId}, if keyInfo then keyInfo:GetMetadata()else nil
+				return {Schema=Config.Data.Schema,Data=snapshot,Generation=p.Generation,LastWrite=writeId,SavedAt=os.time(),Session=if release then nil else {Token=p.Token,JobId=game.JobId,ExpiresAt=os.time()+Config.Data.LeaseSeconds}}, {p.UserId}, if keyInfo then keyInfo:GetMetadata()else nil
 			end)
 		end)
 		if ok then result=outcome;if result~="error"then break end elseif permanent(err)then break end

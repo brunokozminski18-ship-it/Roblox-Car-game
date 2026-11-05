@@ -1,9 +1,10 @@
-# Current Task — iteracja 10b, runda 2
-- 03.11.2026, Codex. IMPLEMENTED i VERIFIED w zakresie raportu. Wygląd i balans NOT FINAL.
-- Losowanie serwera: rzadkość → auto → odmiana. Gold, Diamond i Neon zostają. Rozmiary usunięto. Wczytanie schema 5 zachowuje Id, miejsce i odmianę, przeliczając dochód bez rozmiaru.
-- Rzadkie złapanie zatrzymuje licznik na zbliżeniu, następnie przyspiesza przez progi z filmu. Pierwszy tap kończy odsłanianie, drugi kontynuuje.
-- Zajęty slot pokazuje Swap car przy trzymanym aucie. Serwer atomowo zamienia auta po przytrzymaniu. PLACE przy pełnym parkingu podpowiada ulepszenie lub zamianę.
-- Ukośna smuga przechodzi przez nagłówek sklepu. Przycisk zakupu ma stały kolor.
-- Zweryfikowano 381 asercji, w tym 10 000 losowań, oraz test w Studio PC z izolowanym profilem QA. Następny krok to ocena efektów przez użytkownika.
-- Runda 2 sprawdzona w Studio PC (złapanie, tap, sklep) i iPhone 7 poziomo (sklep).
-- Porównania i lista do sprawdzenia w [[games/ThrowTicketsAtCars/reports/2026-11-03_iteration10b_round2]].
+# Current Task — iteracja 10c
+- 05.11.2026, Codex. IMPLEMENTED i VERIFIED w zakresie raportu. Wersja testowa, wygląd i balans NOT FINAL.
+- Offline: 40% dochodu parkingu, limit 8 h, minimum 60 s, po pierwszym ukończonym catch. Pending trwa przez rejoin; CLAIM zapisuje pieniądze i zużycie nagrody razem.
+- Spawn: Most Cars / Top Money / Luckiest Catch, top10, avatary, cache 60 s. Zapisy indeksu chronione generacją sesji i budżetem.
+- FREE CAR w Shop co 15 min: bieżący biom wg Power, plecak, cooldown zachowany po rejoin, czerwona kropka i licznik.
+- Like po 10 min czasu gry; odroczenie podczas łapania i okien.
+- USER APPROVED: kierunek próbki Welcome Back (05.11), nadal NOT FINAL. Bez Rebirth, Robux i publikacji; teksty EN.
+- LihFolk MCP Obsidiana tylko odczyt. 470 asercji PASS, 10 000 losowań, QA save/rejoin/8h/double claim/plecak/biomy/rankingi, telefon poziomo przed PC. Przegląd kodu zamknięty bez dalszych uwag w sprawdzonym zakresie.
+- Studio Edit, emulator i HTTP off; przywrócony wcześniejszy TestProfileKey=10b-my-test, offset QA usunięty. Profil użytkownika nietknięty.
+- Raport i lista do sprawdzenia: [[games/ThrowTicketsAtCars/reports/2026-11-05_iteration10c]]. Następny krok: ocena działania i wyglądu przez użytkownika.

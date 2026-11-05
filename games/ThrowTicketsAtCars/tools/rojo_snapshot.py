@@ -13,7 +13,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 os.chdir(ROOT)
 (ROOT / 'assets').mkdir(exist_ok=True)
-subprocess.run(['rojo', 'build', 'default.project.json', '--output', 'assets/Prototype.rbxlx'], check=True)
+subprocess.run([os.environ.get('ROJO_BIN', 'rojo'), 'build', 'default.project.json', '--output', 'assets/Prototype.rbxlx'], check=True)
 tree = ET.parse(ROOT / 'assets/Prototype.rbxlx')
 
 def convert(item):

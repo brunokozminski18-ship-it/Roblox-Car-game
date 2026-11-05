@@ -51,8 +51,17 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  local close=button(panel,"Close","X",UDim2.fromOffset(52,52),UDim2.new(1,-18,0,8));close.AnchorPoint=Vector2.new(1,0)
  close.TextColor3=Color3.new(1,1,1);gradient(close,Color3.fromHex("FF6B6B"),Color3.fromHex("E0202F"))
  local category="Exercise"
- local trainingTab=button(panel,"TrainingTab","TRAINING",UDim2.new(.5,-26,0,44),UDim2.fromOffset(18,76))
- local ticketTab=button(panel,"TicketsTab","TICKETS",UDim2.new(.5,-26,0,44),UDim2.new(.5,8,0,76))
+ local trainingTab=button(panel,"TrainingTab","TRAINING",UDim2.new(1/3,-18,0,44),UDim2.fromOffset(18,76))
+ local ticketTab=button(panel,"TicketsTab","TICKETS",UDim2.new(1/3,-18,0,44),UDim2.new(1/3,9,0,76))
+ local freeTab=button(panel,"FreeCarTab","FREE CAR",UDim2.new(1/3,-18,0,44),UDim2.new(2/3,0,0,76));gradient(freeTab,Color3.fromHex("74E6FF"),Color3.fromHex("1E95F0"))
+ local dot=Instance.new("Frame");dot.Name="FreeCarDot";dot.Size=UDim2.fromOffset(18,18);dot.Position=UDim2.new(1,-12,0,-3);dot.BackgroundColor3=Color3.fromHex("FF354F");dot.BorderSizePixel=0;dot.Visible=false;dot.Parent=launch;corner(dot,99);stroke(dot,2)
+ local freePanel=Instance.new("Frame");freePanel.Name="FreeCar";freePanel.BackgroundTransparency=1;freePanel.Position=UDim2.fromOffset(20,132);freePanel.Size=UDim2.new(1,-40,1,-174);freePanel.Visible=false;freePanel.Parent=panel
+ local freeName=text(freePanel,"Title","FREE RANDOM CAR",27,UDim2.fromScale(0,.02),UDim2.new(1,0,0,40));freeName.TextXAlignment=Enum.TextXAlignment.Center
+ local freeBiome=text(freePanel,"Biome","",20,UDim2.fromScale(0,.27),UDim2.new(1,0,0,30));freeBiome.TextXAlignment=Enum.TextXAlignment.Center
+ local freeCountdown=text(freePanel,"Countdown","",23,UDim2.fromScale(0,.48),UDim2.new(1,0,0,32));freeCountdown.TextXAlignment=Enum.TextXAlignment.Center;freeCountdown.TextColor3=Color3.fromHex("FFF4A0")
+ local freeClaim=button(freePanel,"Claim","CLAIM",UDim2.new(.8,0,0,54),UDim2.new(.1,0,1,-58));gradient(freeClaim,Color3.fromHex("8CF27C"),Color3.fromHex("22B24A"));freeClaim.TextSize=25
+ local freeRequest=0
+ freeClaim.Activated:Connect(function()if os.clock()>=freeRequest and p:GetAttribute("FreeCarReady")==true and p:GetAttribute("ReturnBusy")~=true then freeRequest=os.clock()+.5;remote.Parent.ReturnClaim:FireServer("FreeCar")end end)
  gradient(trainingTab,Color3.fromHex("FFF4A0"),Color3.fromHex("FFD24A"));gradient(ticketTab,Color3.fromHex("74E6FF"),Color3.fromHex("1E95F0"))
  local list=Instance.new("ScrollingFrame");list.Name="Tickets";list.Position=UDim2.fromOffset(16,132);list.Size=UDim2.new(1,-32,1,-174)
  list.BackgroundTransparency,list.BorderSizePixel,list.ScrollBarThickness=1,0,6;list.ScrollBarImageColor3=Color3.fromHex("74E6FF")
@@ -103,6 +112,13 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
   if should and not GuiService.ReducedMotionEnabled then pulse=Tween:Create(pulseScale,Motion.pulse,{Scale=1.06});pulse:Play()end
  end
  local function refresh()
+  dot.Visible=p:GetAttribute("FreeCarReady")==true
+  freePanel.Visible=category=="FreeCar";list.Visible=category~="FreeCar"
+  local biome=Config.Biomes[p:GetAttribute("FreeCarBiome")or 1];freeBiome.Text="From "..biome.Name.." • Backpack space required"
+  local remaining=math.max(0,(p:GetAttribute("FreeCarAt")or 0)-(p:GetAttribute("ReturnServerNow")or 0))
+  freeCountdown.Text=if p:GetAttribute("FreeCarReady")==true then "Your free car is ready!"else string.format("Next free car in %02d:%02d",remaining//60,remaining%60)
+  freeClaim.Text=if p:GetAttribute("ReturnBusy")==true then "CLAIMING..."elseif p:GetAttribute("FreeCarReady")==true then "CLAIM"else "NOT READY"
+  freeClaim.Active=p:GetAttribute("DataReady")==true and p:GetAttribute("FreeCarReady")==true and p:GetAttribute("ReturnBusy")~=true
   balance.Text="CASH $"..short(cash.Value).."   •   POWER "..Rules.powerText(p:GetAttribute("ThrowPower")or 0)
   local nextIndex=nextTicket()
   for i,item in items do
@@ -146,31 +162,38 @@ function Shop.mount(hud: ScreenGui,cash: IntValue,remote: RemoteEvent,feedback: 
  end
  local function resize()
   panel.Size=UDim2.fromOffset(math.min(760,gui.AbsoluteSize.X-32),math.min(662,gui.AbsoluteSize.Y-24))
+  local compact=gui.AbsoluteSize.Y<520
+  freeName.Visible=not compact
+  freeBiome.Position=if compact then UDim2.fromOffset(0,0)else UDim2.fromScale(0,.27)
+  freeCountdown.Position=if compact then UDim2.fromOffset(0,30)else UDim2.fromScale(0,.48)
+  freeCountdown.Size=UDim2.new(1,0,0,if compact then 26 else 32)
+  freeBiome.TextSize=if compact then 16 else 20
   title.TextSize=if gui.AbsoluteSize.Y<400 then 30 else 40
   for _,row in rows do row.name.TextSize=if gui.AbsoluteSize.X<600 then 20 else 23;row.perk.TextSize=if gui.AbsoluteSize.X<600 then 15 else 17 end
  end
  local function chooseCategory(kind: string)
   category=kind
-  for _,entry in {{trainingTab,"Exercise"},{ticketTab,"Ticket"}}do
+  for _,entry in {{trainingTab,"Exercise"},{ticketTab,"Ticket"},{freeTab,"FreeCar"}}do
    local active=kind==entry[2];local g=entry[1]:FindFirstChildOfClass("UIGradient")
    g.Color=if active then ColorSequence.new(Color3.fromHex("FFF4A0"),Color3.fromHex("FFD24A"))else ColorSequence.new(Color3.fromHex("74E6FF"),Color3.fromHex("1E95F0"))
    entry[1]:SetAttribute("Selected",active)
   end
-  notice.Text=if kind=="Exercise"then "Training upgrades double your XP gain."else "Tickets boost luck and captured income."
+  notice.Text=if kind=="Exercise"then "Training upgrades double your XP gain."elseif kind=="FreeCar"then string.format("A free random car every %d minutes. No purchase needed.",Config.Returns.FreeCarSeconds/60)else "Tickets boost luck and captured income."
   list.CanvasPosition=Vector2.zero;refresh()
  end
  local function openCategory(kind: string)
   if kind=="Gear"or kind=="Training"then kind="Exercise"end
-  if kind~="Exercise"and kind~="Ticket"then return end
+  if kind~="Exercise"and kind~="Ticket"and kind~="FreeCar"then return end
   chooseCategory(kind);setOpen(true)
  end
  trainingTab.Activated:Connect(function()chooseCategory("Exercise")end)
  ticketTab.Activated:Connect(function()chooseCategory("Ticket")end)
+ freeTab.Activated:Connect(function()chooseCategory("FreeCar")end)
  chooseCategory("Exercise")
  launch.Activated:Connect(function()setOpen(not opened)end);close.Activated:Connect(function()setOpen(false)end);dim.Activated:Connect(function()setOpen(false)end)
  feedback.OnClientEvent:Connect(function(value)if opened then notice.Text=value end end)
  cash.Changed:Connect(refresh)
- for _,attribute in {"EquippedTicket","Exercise","ThrowPower","DataReady"}do p:GetAttributeChangedSignal(attribute):Connect(refresh)end
+ for _,attribute in {"EquippedTicket","Exercise","ThrowPower","DataReady","FreeCarAt","FreeCarReady","FreeCarBiome","ReturnServerNow","ReturnBusy"}do p:GetAttributeChangedSignal(attribute):Connect(refresh)end
  p:GetAttributeChangedSignal("Throwing"):Connect(function()if p:GetAttribute("Throwing")==true then setOpen(false)end end)
  for _,t in Config.Tickets do p:GetAttributeChangedSignal("Own_"..t.Id):Connect(refresh)end
  GuiService:GetPropertyChangedSignal("ReducedMotionEnabled"):Connect(function()stopShine();nextShine=os.clock()+Config.Juice.ShineEvery;pulsing=not pulsing;updatePulse()end)

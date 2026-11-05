@@ -60,3 +60,7 @@
 -10b: identyfikator egzemplarza i CatalogId pełnią różne role. Sprzedaż usuwa egzemplarz, ale nie odkrycie; nazwa testowa może się zmienić bez odrzucenia zapisu.
 -10b: test migracji sprawdzał rzeczywisty stary zapis na osobnym kluczu QA, a następnie rejoin po sprzedaży i zakupie miejsc. Test funkcji migracji sam nie sprawdza sposobu zapisu i odbudowy GUI.
 -10b: pełna działka i pełny plecak to różne warunki. Ostatnie miejsce plecaka rezerwuje się przed animacją, a brak miejsca blokuje już wejście w Meter.
+-10c (05.11): pending reward i wypłata muszą być jednym zapisem. Przy nieznanym potwierdzeniu nie cofamy kasy w pamięci i nie pozwalamy dalej grać; rejoin odczytuje stan, a zapis jest idempotentny.
+-10c: test rankingu musi przeplatać queue z trwającym zapisem. Deduplikujemy parę wynik+generacja, nie tylko wynik; nowszy identyczny wynik też stanowi barierę dla starego serwera. OrderedDataStore wymaga kodowania obu liczb w bezpieczny integer i kontroli budżetu read+write dla UpdateAsync.
+-10c: po każdym yield podczas inicjalizacji ponownie sprawdzamy, czy gracz nadal jest w tym stanie/profilu. Wyjście podczas arrive nie może wznowić montowania zniszczonej działki.
+-10c: powrót po 2h14m, nieodebrany bank, kolejna doba, double CLAIM i krótki rejoin sprawdzono na osobnym QA. Offset zegara rozgrywki nigdy nie przesuwa lease ani czasu aktywnej gry do toastów.

@@ -6,7 +6,7 @@ return function(Rules, Config, Schema, Garage, J)
 	end
 
 	check(type(Rules.rollCar) == "function", "A single authoritative 10b car roll is required")
-	check(Config.Data.Schema == 5, "10b persists discoveries and parking capacity in schema 5")
+	check(Config.Data.Schema >= 5, "10b discovery and parking schema is supported")
 	local function sumWeights(entries)
 		local sum = 0
 		for _, entry in entries do sum += entry.Weight end

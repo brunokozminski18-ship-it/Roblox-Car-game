@@ -1,6 +1,8 @@
 --!strict
 -- Prototype tuning: NOT FINAL. All progression, rewards and world dimensions live here.
 local Config={
+	Returns={OfflineFraction=.4,OfflineCapSeconds=8*3600,OfflineMinSeconds=60,FreeCarSeconds=15*60,LikeSeconds=10*60},
+	Boards={RefreshSeconds=60,WriteSeconds=120,Count=10,StorePrefix="TTAC_Boards_v2",BudgetReserve=1},
 	StartPower=24, TickSeconds=1,
  Progression={XPPerLevel=100,PowerPerLevel=1,OfferEvery=12,OfferLifetime=4,BoostSeconds=2},
  Juice={LetterSeconds=.18,CommonRevealMin=2.4,RareRevealMin=5,RareLetterMultiplier=1.8,RevealTimeout=16,PerfectPosition=.06,ToastSeconds=7,ShineEvery=5,BrakeSeconds=.3},
@@ -20,7 +22,7 @@ local Config={
  ThrowWindupSeconds=.45, CameraReturnHold=.3, CaptureApproachDistance=32, CaptureLaneX=7,
  TrafficHz=30, TrafficSpeed=22, TrafficLaneX=7, TrafficRenderDistance=450,
 	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
-	Data={StoreName="ThrowTicketsAtCars_v1",Schema=5,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=6,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
 	Tickets={
 		{Id="paper",Name="Paper Ticket",Minutes=0,UnlockBiome=1,IncomeMultiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
 		{Id="pink",Name="Pink Slip",Minutes=1.5,UnlockBiome=1,IncomeMultiplier=1.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},

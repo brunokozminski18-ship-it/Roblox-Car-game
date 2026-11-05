@@ -2,9 +2,10 @@
 local Config=require(game.ReplicatedStorage.ThrowTickets.Config)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local Progression=require(game.ReplicatedStorage.ThrowTickets.Progression)
+local Returns=require(game.ReplicatedStorage.ThrowTickets.ReturnRules)
 local Schema={}
 function Schema.default(): any
- return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={},ParkingCapacity=Config.ParkingSlots,Discovered={}}
+ return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={},ParkingCapacity=Config.ParkingSlots,Discovered={},Returns=Returns.default()}
 end
 function Schema.copy(value: any): any
  if typeof(value)~="table"then return value end
@@ -42,14 +43,14 @@ function Schema.prepare(raw: any): (any,string?)
  if not owned.paper or not owned[d.Equipped]then return nil,"Invalid equipped ticket"end
  local capacity=if raw.Schema<5 then Config.ParkingSlots else d.ParkingCapacity
  if not Rules.finiteNumber(capacity)or capacity<Config.ParkingSlots or capacity>Config.ParkingMax or (capacity-Config.ParkingSlots)%2~=0 then return nil,"Invalid parking capacity"end
- if raw.Schema==5 and typeof(d.Discovered)~="table"then return nil,"Invalid discovery set"end
- local discovered={};for _,b in Config.Biomes do for _,c in b.Cars do if raw.Schema==5 and d.Discovered[c.Id]==true then discovered[c.Id]=true end end end
+ if raw.Schema>=5 and typeof(d.Discovered)~="table"then return nil,"Invalid discovery set"end
+ local discovered={};for _,b in Config.Biomes do for _,c in b.Cars do if raw.Schema>=5 and d.Discovered[c.Id]==true then discovered[c.Id]=true end end end
  local cars={};local ids={};local slots={};local count=0;local inventory=0
  for k,c in d.Cars do
   count+=1
   if typeof(k)~="number"or k%1~=0 or k<1 or k>#d.Cars or count>Config.InventoryLimit+capacity or typeof(c)~="table"then return nil,"Invalid cars array"end
   local reward=Rules.savedReward(c)
-  if typeof(c.Id)~="string"or #c.Id<1 or #c.Id>64 or ids[c.Id]or not reward or (raw.Schema==5 and not c.CatalogId)then return nil,"Invalid car identity"end
+  if typeof(c.Id)~="string"or #c.Id<1 or #c.Id>64 or ids[c.Id]or not reward or (raw.Schema>=5 and not c.CatalogId)then return nil,"Invalid car identity"end
   if not Rules.finiteNumber(c.Slot)or c.Slot%1~=0 or c.Slot<0 or c.Slot>capacity then return nil,"Invalid slot"end
   if c.Slot>0 then if slots[c.Slot]then return nil,"Duplicate slot"end;slots[c.Slot]=true else inventory+=1 end
   ids[c.Id]=true
@@ -58,6 +59,9 @@ function Schema.prepare(raw: any): (any,string?)
   table.insert(cars,{Id=c.Id,Biome=reward.Biome,Rarity=reward.Rarity,Name=reward.Name,CatalogId=reward.CatalogId,Variant=reward.Variant,Ticket=reward.Ticket,Slot=c.Slot})
  end
  if count~=#d.Cars or inventory>Config.InventoryLimit then return nil,"Inventory capacity exceeded"end
- return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered}
+ local returns=if raw.Schema<6 then Returns.migrate({Cars=cars,Discovered=discovered})else d.Returns
+ if not Returns.validate(returns)then return nil,"Invalid returns"end
+ local clean=Returns.default();for k in clean do clean[k]=returns[k]end
+ return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered,Returns=clean}
 end
 return Schema

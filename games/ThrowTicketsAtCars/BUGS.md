@@ -5,7 +5,8 @@
 - Wygląd/próbka10a zaakceptowane wyłącznie jako wersja testowa; finalna grafika, brzmienie i balans NOT FINAL.
 - Fizyczny telefon, wielu równoczesnych graczy i awaria backendu nieprzetestowane.60 działek sprawdzono geometrycznie, nie60 klientami.
 - Zapis łupu poprzedza animację; wolny backend wydłuża przygotowanie. Lease po awarii do90 s.
-- Garaż zapisuje przez budżetowany autosave/leave/shutdown; brak dochodu offline. Mnożnik mandatu nie zmienia starych aut.
+- Garaż zapisuje przez autosave/leave/shutdown; offline w 10c ma osobny trwały bank i CLAIM. Mnożnik mandatu nie zmienia starych aut.
+- 10c: Most Cars oznacza aktualnie posiadane auta. Top Money ponad $1M to przybliżenie indeksu (oznaczenie ≈, błąd <0,0003%); kasa w profilu jest dokładna. Dawny rekord sprzed migracji można odtworzyć tylko z zachowanych aut, nie ze sprzedanych.
 - Tools odtwarzają się po śmierci/rejoin; wybór wyposażonego auta i suwaka nie są trwałym zapisem.
 - Trening daje XP, Power dopiero przy levelu.100 XP/level,+1 Power; wzrost skokowy jest widoczny na pasku i w LEVEL UP.
 - Native audio14/14 ładuje się i emituje Played; głośność×0.52 i nowe miękkie cue. Onset/latencja odsłuchowa niezmierzone, jakość do oceny użytkownika.

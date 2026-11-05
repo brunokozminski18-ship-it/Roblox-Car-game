@@ -1,4 +1,4 @@
-# THROW TICKETS AT CARS! — iteracja 10b
+# THROW TICKETS AT CARS! — iteracja 10c
 - USER APPROVED03.11: zakres8/10a, My Cars i scena złapania v2 wyłącznie testowa. Bez Rebirth/petów/Robux/nowych biomów/publikacji.
 - Pętla: wybierz siłę → wejdź na białą płytkę → tap paska → mandat/biom/LUCK → hit/reveal → laweta → działka/Tool.
 - Dystans=min(koniec mapy,wybranaSiła×(1+bonus)); siła1..Power tylko z ikony przy Power, domyślnieMAX/schowany suwak, wybór pozostaje w sesji. Bonus -5%..+10%, PERFECT szczyt6%.
@@ -20,7 +20,11 @@
 - Car Index zapisuje odkryte CatalogId, niezależnie od posiadania egzemplarza. Zablokowane modele są czarne, a karty mają kolor rzadkości.
 - Parking 6→8→10→12→14→16, cena 3/7/15/30/60 min startowego dochodu referencyjnego. Brak wolnych miejsc zostawia łup w plecaku; 20 aut w plecaku blokuje próbę przed rzutem.
 - Ceny=Minutes×ReferenceIncomePerMinute. Biomy0/50/150/400/1000/2500. Balans wymaga ludzi, techniczny PASS nie dowodzi zabawy.
-- Schema 5: poprzednie pola plus ParkingCapacity, Discovered i CatalogId/Variant każdego auta. Migracja zachowuje ID, biom, rzadkość, mandat, miejsce. Starsze auta z rozmiarem zachowują odmianę i otrzymują dochód bez dawnego mnożnika; tylko parking zarabia, brak offline.
+- Schema 6: ParkingCapacity, Discovered, CatalogId/Variant i Returns (tutorial, offline/pending, free cooldown, playtime/like, BestOdds). Migracja zachowuje ID, biom, rzadkość, mandat, miejsce; usuwa dawne mnożniki rozmiaru.
+- Offline: 40% dochodu zaparkowanych aut z chwili wyjścia, max 8 h, min 60 s, po ukończonym pierwszym catch. Welcome Back pokazuje pending; kasa dopiero po CLAIM. Nieodebrane zarobki przechodzą przez rejoin, bank najwyżej 8 h; zaokrąglenie w dół na każdą nieobecność.
+- FREE CAR: co 900 s czasu serwera także między sesjami, bez kumulowania wielu nagród, losowy model/rarity/variant z aktualnego biomu postępu wg Power. Plecak pełny nie zużywa cooldownu. Darmowe auto nie zalicza tutorialu ani rekordu złapania.
+- Most Cars = aktualnie posiadane, Top Money = aktualna kasa, Luckiest Catch = największe historyczne rzeczywiste 1 in X z catch. Top10/avatary/cache 60 s. Indeks z generacją sesji odrzuca stare zapisy; Money >1M ma przybliżenie <3ppm, profil dokładny.
+- Toast like: nie częściej niż 600 s rzeczywistej gry, czas zapisany między sesjami, poza złapaniem i modalami. Bez nagrody i bez wymuszenia reakcji.
 - Jeden writer/lease/token/autosave/leave/shutdown; łup zapisany przed animacją. Boost i aktualne wyposażenie/suwak są stanem sesji.
 - Audio14 cue/5 ID Creator Store, testowy miks×0.52, ciche krótkie XP/litery, preload/pooling/cap12, pitch/choke. Kamera jeden owner do końcaTow z cleanup/FOV/Focus i ograniczonym shake.
 - Źródło: LihFolk Vault V2 (CC BY 4.0), MCP tylko odczyt; ThrowFoodForAnimals [E/F] dla 10b, własne nazwy i grafiki. Balans i wygląd NOT FINAL.

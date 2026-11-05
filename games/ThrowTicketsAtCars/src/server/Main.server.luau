@@ -18,6 +18,10 @@ local Progression=require(RS.ThrowTickets.Progression)
 local GearService=require(script.Parent.GearService)
 local GarageService=require(script.Parent.GarageService)
 local ParkingUpgrade=require(script.Parent.ParkingUpgrade)
+local ReturnRules=require(RS.ThrowTickets.ReturnRules)
+local ReturnClock=require(script.Parent.ReturnClock)
+local ReturnService=require(script.Parent.ReturnService)
+local Leaderboards=require(script.Parent.Leaderboards)
 local profiles=Profiles.new(game:GetService("DataStoreService"):GetDataStore(Config.Data.StoreName..(if RunService:IsStudio()then "_STUDIO"else "")))
 local world=World.build()
 local old=RS.ThrowTickets:FindFirstChild("Remotes");if old then old:Destroy()end
@@ -27,6 +31,9 @@ local Throw,Train,Feedback,Ticket,Shop,Garage,Snapshot=remote("Throw"),remote("T
 local ConfirmSale=remote("ConfirmSale")
 local Juice,SelectPower,ContinueCatch,TrainingBoost,GearVisit=remote("Juice"),remote("SelectPower"),remote("ContinueCatch"),remote("TrainingBoost"),remote("GearVisit")
 local JuiceReady=remote("JuiceReady")
+local ReturnClaim,Social=remote("ReturnClaim"),remote("Social")
+local returnService: any
+local boards: any
 local gearService: any
 local garageService: any
 local parkingUpgrade: any
@@ -40,7 +47,7 @@ local function rootOf(p: Player): BasePart?
  local c=p.Character;local h=c and c:FindFirstChildOfClass("Humanoid");local r=c and c:FindFirstChild("HumanoidRootPart")
  return if h and h.Health>0 and r and r:IsA("BasePart")then r else nil
 end
-local function mutable(s: any): boolean return s~=nil and s.profile.Status=="active"end
+local function mutable(s: any): boolean return s~=nil and s.profile.Status=="active"and not s.rewardBusy and not s.rewardFailed end
 local function trainingNow(p: Player,s: any,enabled: boolean): boolean
  local root=rootOf(p);local pad=s.folder:FindFirstChild("TrainingPad")
  return Rules.trainingActive(if root then root.Position else nil,if pad then pad.Position else nil,enabled,s.job~=nil or s.meter~=nil)
@@ -55,6 +62,7 @@ local function mirror(p: Player,s: any)
  p:SetAttribute("TrainingLevel",s.data.TrainingLevel);p:SetAttribute("TrainingXP",s.data.TrainingXP);p:SetAttribute("TrainingXPNeeded",Config.Progression.XPPerLevel);p:SetAttribute("ThrowSelection",selection(s));p:SetAttribute("SelectionMax",s.selectedMax~=false)
  if gearService then gearService.update(p,s)end
  if parkingUpgrade then parkingUpgrade.update(p,s)end
+ if returnService then returnService.update(p,s)end
 end
 local function snapshot(p: Player,s: any)
  local cards={};for _,c in s.data.Cars do if not c.Pending then local r=Rules.savedReward(c);table.insert(cards,{Id=c.Id,Name=c.Name,Biome=c.Biome,Rarity=c.Rarity,CatalogId=c.CatalogId,Variant=c.Variant,Income=r.Income,Slot=c.Slot})end end
@@ -122,6 +130,7 @@ local function completeCatch(p: Player,s: any,j: any)
  if states[p]~=s or not mutable(s)or s.job~=j then cleanJob(j);return end
  local record=GarageRules.find(s.data,j.id)
  if record then record.Pending=nil end
+ s.data.Returns.Tutorial=true
  cleanJob(j);s.job=nil;phase(p,s,"Idle")
  p:SetAttribute("LastCapturedId",j.id);p:SetAttribute("LastDeliverySeconds",workspace:GetServerTimeNow()-j.started)
  p:SetAttribute("Delivered",(p:GetAttribute("Delivered")or 0)+1)
@@ -169,6 +178,7 @@ local function performThrow(p: Player,bonus: number)
  local best=0;for _,owned in s.data.Cars do best=math.max(best,Rules.savedReward(owned).Income)end
  local id=Http:GenerateGUID(false)
  assert(GarageRules.add(s.data,reward,id,true))
+ s.data.Returns.BestOdds=math.max(s.data.Returns.BestOdds,math.floor(J.odds(reward,s.data.Equipped)))
  s.lastThrow=now;p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Windup")
  local landing=Vector3.new(Config.CaptureLaneX,Config.LandingHeight,-distance)
  local position=landing-Vector3.new(0,Config.RoofOffset,Config.WindshieldFront)
@@ -273,6 +283,16 @@ RunService.Heartbeat:Connect(function(dt)
  end end
 end)
 gearService=GearService.new({Juice=Juice,result=result,rootOf=rootOf,mutable=mutable})
+returnService=ReturnService.new({profiles=profiles,save=save,publish=publish,result=result,mutable=mutable,social=Social})
+boards=Leaderboards.new(world,states)
+ReturnClaim.OnServerEvent:Connect(function(p: Player,...: any)
+ if select("#",...)~=1 then return end
+ local s=states[p];if s then returnService.claim(p,s,...)end
+end)
+Social.OnServerEvent:Connect(function(p: Player,...: any)
+ local s=states[p];if not mutable(s)or select("#",...)~=1 then return end
+ local busy=...;if typeof(busy)=="boolean"then s.modal=busy end
+end)
 local function joined(p: Player)
  if closing then return end;loading+=1;p:SetAttribute("DataReady",false)
  local stats=Instance.new("Folder");stats.Name,stats.Parent="leaderstats",p
@@ -286,6 +306,11 @@ local function joined(p: Player)
  local entrance=positions[1]+Vector3.new(0,3,6)
  local s={profile=profile,data=profile.Data,plot=plot,folder=folder,positions=positions,entrance=entrance,center=folder.ParkingGround.Position,placed={},tools={},padArmed=true,income=0,phase="Idle",lastThrow=-math.huge,lastRequest=-math.huge,lastTrain=-math.huge,lastShop=-math.huge,lastGarage=-math.huge}
  states[p]=s;s.nextBoostOffer=workspace:GetServerTimeNow()+6
+ if not returnService.arrive(p,s)then
+  if states[p]==s and p.Parent then s.rewardFailed=true;p:Kick("Return rewards could not load safely. Please rejoin.")end
+  return
+ end
+ if states[p]~=s or not p.Parent or profile.Status~="active"or closing then return end
  gearService.mount(p,s)
  parkingUpgrade.mount(p,s)
  for i=1,Config.ParkingMax do garageService.prompt(p,s,folder["Slot"..i],"Place","",i)end
@@ -302,7 +327,11 @@ local function joined(p: Player)
  p.CharacterAdded:Connect(characterAdded);if p.Character then task.spawn(characterAdded,p.Character)end
 end
 local function release(p: Player)
- local s=states[p];if not s then return end;states[p]=nil;p:SetAttribute("DataReady",false);s.profile.Status="closing";leaving+=1
+ local s=states[p];if not s or s.releasing then return end;s.releasing=true;leaving+=1
+ while s.rewardBusy do task.wait(.05)end
+ states[p]=nil;p:SetAttribute("DataReady",false);s.profile.Status="closing"
+ ReturnRules.depart(s.data,ReturnClock.now());profiles:touch(s.profile)
+ boards.leaving(p,s)
  if s.job then cleanJob(s.job)end;s.folder:Destroy();plots[s.plot]=nil
  save(p,s,true);leaving-=1
 end
@@ -313,7 +342,9 @@ game:BindToClose(function()
  local deadline=os.clock()+Config.Data.ShutdownSeconds;while(leaving>0 or loading>0)and os.clock()<deadline do task.wait(.1)end
 end)
 task.spawn(function()
+ local previous=os.clock();local playFraction=0
  while not closing do task.wait(Config.TickSeconds)
+  local elapsed=os.clock()-previous;previous=os.clock();playFraction+=elapsed;local played=math.floor(playFraction);playFraction-=played
   for p,s in states do if mutable(s)then
    s.data.Cash=math.min(Config.MaxCash,s.data.Cash+s.income)
    local training=trainingNow(p,s,p:GetAttribute("Training")==true)
@@ -328,7 +359,8 @@ task.spawn(function()
     local levels,gain=Progression.addXP(s.data,amount)
     Juice:FireClient(p,"XP",{Amount=amount,Levels=levels,Gain=gain,Level=s.data.TrainingLevel,XP=s.data.TrainingXP,Needed=Config.Progression.XPPerLevel,Power=s.data.Power,Boosted=boosted})
    end
-   if training or s.income>0 then profiles:touch(s.profile)end;mirror(p,s)
+   returnService.tick(p,s,played)
+   if played>0 or training or s.income>0 then profiles:touch(s.profile)end;mirror(p,s)
    if os.clock()>=s.profile.NextSave and not s.profile.Saving then
     if s.profile.Dirty or os.clock()-s.profile.LastSave>=Config.Data.LeaseSeconds/3 then
      if game:GetService("DataStoreService"):GetRequestBudgetForRequestType(Enum.DataStoreRequestType.UpdateAsync)>0 then s.profile.NextSave=os.clock()+Config.Data.AutosaveSeconds;task.spawn(save,p,s,false)end
@@ -343,7 +375,7 @@ if RunService:IsStudio()then
   local p=target or Players:GetPlayers()[1];local s=states[p];if not s or not RunService:IsStudio()or not string.match(s.profile.Key,"^QA_")then return nil end
   if command=="Inspect"then return Schema.copy(s.data)
   elseif command=="Reset"and not s.job then
-   s.data=Schema.default();s.profile.Data=s.data;teleport(p,s,false);publish(p,s);return save(p,s,false)
+   s.data=Schema.default();s.profile.Data=s.data;ReturnRules.arrive(s.data,ReturnClock.now());teleport(p,s,false);publish(p,s);return save(p,s,false)
   elseif command=="AddCash"and Rules.finiteNumber(value)and value>0 then
    s.data.Cash=math.min(Config.MaxCash,s.data.Cash+math.floor(value));publish(p,s);return true
   elseif command=="AddPower"and Rules.finiteNumber(value)and value>0 then
@@ -369,8 +401,14 @@ if RunService:IsStudio()then
    s.nextRoll={Rarity=rarity,Variant=variant};return true
   elseif command=="SetXP"and Rules.finiteNumber(value)and value>=0 and value<Config.Progression.XPPerLevel then s.data.TrainingXP=value;publish(p,s);return true
   elseif command=="Save"then return save(p,s,false)
+  elseif command=="AdvanceTime"and Rules.finiteNumber(value)and math.abs(value)<=86400*500 then
+   SS:SetAttribute("ReturnQAOffset",(SS:GetAttribute("ReturnQAOffset")or 0)+value);returnService.update(p,s);return ReturnClock.now()
+  elseif command=="Tutorial"and typeof(value)=="boolean"then s.data.Returns.Tutorial=value;publish(p,s);return true
+  elseif command=="PlaySeconds"and Rules.finiteNumber(value)and value>=0 then s.data.Returns.PlaySeconds=math.floor(value);s.data.Returns.LastLike=0;return true
+  elseif command=="Claim"then returnService.claim(p,s,value);return Schema.copy(s.data.Returns)
+  elseif command=="Boards"then return boards.qa(value)
   elseif command=="Exit"then release(p);return true end
   return nil
  end
 end
-print("[ThrowTickets] Iteration 10b: catalog, variants and expandable parking ready.")
+print("[ThrowTickets] Iteration 10c: returns and community ready (NOT FINAL).")
