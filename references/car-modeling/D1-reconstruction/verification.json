@@ -1,0 +1,11 @@
+{
+  "ownTriangles": 1694,
+  "model": "Workspace.D1_Rebuilt_From_Analysis",
+  "ownMeshIds": {
+    "": true
+  },
+  "status": "NOT FINAL - geometry differs from source",
+  "checkedSourceParts": 30,
+  "sourceFailures": [],
+  "ownMeshParts": 29
+}
