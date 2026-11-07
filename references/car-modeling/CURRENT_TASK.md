@@ -1,0 +1,11 @@
+# Car Pack — baza wiedzy
+- Cel: szczegółowa analiza wszystkich aut w otwartym Car Pack.rbxl i trwały skill `car-modeling`.
+- Właściciel: Codex, 07–08.11.2026.
+- Zakres: odczyt Workspace, pomiary, zrzuty wielu perspektyw, sprawdzenie eksportu, narzędzia Blender Python i QA.
+- Status: VERIFIED — inwentarz 95 aut, 68 zrzutów, atlas 19 baz, materiały/proporcje/hierarchia i cztery odmiany; narzędzia Blender i QA na figurach testowych.
+- Oryginalne auta bez zmian: porównanie właściwości i hierarchii 95/95 PASS. Studio Edit, kamera i zaznaczenie przywrócone.
+- Luka: brak dostępu do wierzchołków źródłowych; dokładna topologia, trójkąty i UV niezmierzone. Eksport opisany wraz z ograniczeniami.
+- Skill zainstalowany: `C:/Users/bruno/.codex/skills/car-modeling/SKILL.md` (komplet dokumentacji, dowodów i skryptów).
+- Następny krok dopiero na nowe zlecenie: jedna oryginalna próbka samochodu i ocena użytkownika; bez tworzenia serii przed akceptacją.
+- Raport: [[references/car-modeling/evidence/validation]]. Bez publikacji i importu nowych samochodów; brak oceny nowego modelu.
+- Zadanie referencyjne, niezależne od wstrzymanej oceny próbek ThrowTicketsAtCars.

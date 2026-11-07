@@ -1,0 +1,4 @@
+interface:
+  display_name: "Car Modeling"
+  short_description: "Oryginalne auta w stylistyce Car Pack"
+  default_prompt: "Use $car-modeling to design one original car matching the measured Car Pack style and prepare comparable views and QA."

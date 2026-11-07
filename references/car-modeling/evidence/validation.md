@@ -1,0 +1,13 @@
+# Validation — 08.11.2026
+
+- Studio: Car Pack.rbxl, Edit. All 95 Models located within Workspace.Cars; full property inventories saved for five sets of 19.
+- Inventory: 2,340 visible MeshParts; 300 distinct MeshIds; no TextureID/SurfaceAppearance. All 76 variant mesh-ID/Size multisets match their bases.
+- Visual coverage: 68 persisted source PNGs, including 19×3 standard views, variant comparisons and wheel/front/top close-ups; three labelled contact sheets inspected. Side captures were repeated at a larger distance to include the whole silhouette. Top detail was repeated to include the full length.
+- Integrity: PASS for all 95 models' recorded part-property and descendant-hierarchy hashes versus the initial inventory, transform precision 1e-5 stud. See integrity.json. Original cars were not edited. Camera FOV/type/pose/focus and empty selection restored; Studio remains in Edit.
+- Blender MCP connected to 5.2.1 LTS; original unsaved scene remains EDIT_MESH with Camera/Cube/Light. Tests ran in independent background processes.
+- Helpers: 14 behavioral assertions PASS on synthetic panel/tire/rim fixtures. GLB round-trip preserves 3 meshes, 256 triangles and dimensions within .001 working stud. These figures describe the fixture, not Car Pack.
+- Audit input routes: synthetic OBJ import PASS (one tetrahedron, 4 triangles); synthetic GLB import PASS (3 meshes, 256 triangles). Audit reports evaluated geometry and intentionally open panel boundaries.
+- Skill frontmatter/name validation: bundled skill-creator quick_validate.py PASS. Four Markdown local file links resolve. Python files compile. Paginated Luau collector returns the requested 3 complete models.
+- Skill behavior: baseline using old CAR_PACK_STYLE gave a useful recipe but lacked source geometry, specific tire profile construction, an executable toolchain and full-car atlas. Independent fresh-context validation using the new skill produced a concrete SUV recipe with explicit PROPOSED proportions/budget, unknown source topology, original panel/wheel construction, material sidecar, single-sample approval and round-trip QA. It found no blocking gap. Its suggestions for repeatable lighting/camera and target-phone budget selection were added to modeling-and-qa.md.
+- Limitation: EditableMesh source access denied for the tested rim MeshId; native window export could not be completed. Original vertex counts, triangles, topology, normals and UV layout remain UNMEASURED. See export-probe.json and export-and-sources.md.
+- Technical package status: VERIFIED in the scopes above. No new finished car was produced; no appearance received USER APPROVED status. No publication/upload occurred.

@@ -1,0 +1,770 @@
+{
+  "date": "2026-11-08",
+  "method": "djb2 sorted-property hashes; transform precision 1e-5 stud; compared against initial inventory",
+  "status": "PASS",
+  "baseline": {
+    "Normal/Agro": {
+      "parts": 3174647380,
+      "hierarchy": 902604839
+    },
+    "Normal/Avetedor": {
+      "parts": 570668675,
+      "hierarchy": 3913501050
+    },
+    "Normal/BimmerN2": {
+      "parts": 553201487,
+      "hierarchy": 3096541271
+    },
+    "Normal/Curvett": {
+      "parts": 3104110251,
+      "hierarchy": 2135295029
+    },
+    "Normal/D1": {
+      "parts": 2879375247,
+      "hierarchy": 1334141972
+    },
+    "Normal/Divviti": {
+      "parts": 1153228920,
+      "hierarchy": 1444066828
+    },
+    "Normal/GTI40": {
+      "parts": 2038324874,
+      "hierarchy": 966145399
+    },
+    "Normal/Gulf": {
+      "parts": 1530064088,
+      "hierarchy": 3036732605
+    },
+    "Normal/Hurik": {
+      "parts": 1362286427,
+      "hierarchy": 3093369056
+    },
+    "Normal/HurikZ": {
+      "parts": 1550442825,
+      "hierarchy": 2156070502
+    },
+    "Normal/Jergo": {
+      "parts": 1881917139,
+      "hierarchy": 910493948
+    },
+    "Normal/RS3GT": {
+      "parts": 510290052,
+      "hierarchy": 1533567820
+    },
+    "Normal/Spali": {
+      "parts": 3085971170,
+      "hierarchy": 2700342505
+    },
+    "Normal/Supre": {
+      "parts": 3935299001,
+      "hierarchy": 1623934952
+    },
+    "Normal/Tribitti": {
+      "parts": 1357548023,
+      "hierarchy": 815238496
+    },
+    "Normal/TuboS": {
+      "parts": 2358245910,
+      "hierarchy": 1018478989
+    },
+    "Normal/W2": {
+      "parts": 1958509966,
+      "hierarchy": 553769634
+    },
+    "Normal/Zondik": {
+      "parts": 3075564284,
+      "hierarchy": 3531125939
+    },
+    "Normal/ZondikR": {
+      "parts": 4026793541,
+      "hierarchy": 3119772659
+    },
+    "Golden/Agro": {
+      "parts": 308241827,
+      "hierarchy": 2447193640
+    },
+    "Golden/Avetedor": {
+      "parts": 3678974143,
+      "hierarchy": 330729820
+    },
+    "Golden/BimmerN2": {
+      "parts": 1237571251,
+      "hierarchy": 2437034038
+    },
+    "Golden/Curvett": {
+      "parts": 183706060,
+      "hierarchy": 2400132734
+    },
+    "Golden/D1": {
+      "parts": 1566685437,
+      "hierarchy": 4285984681
+    },
+    "Golden/Divviti": {
+      "parts": 1657464097,
+      "hierarchy": 475057721
+    },
+    "Golden/GTI40": {
+      "parts": 3706830545,
+      "hierarchy": 1186803726
+    },
+    "Golden/Gulf": {
+      "parts": 2785799793,
+      "hierarchy": 3805199819
+    },
+    "Golden/Hurik": {
+      "parts": 2838895931,
+      "hierarchy": 1272618762
+    },
+    "Golden/HurikZ": {
+      "parts": 715634054,
+      "hierarchy": 101396894
+    },
+    "Golden/Jergo": {
+      "parts": 3228409277,
+      "hierarchy": 94916967
+    },
+    "Golden/RS3GT": {
+      "parts": 4277556043,
+      "hierarchy": 2023844833
+    },
+    "Golden/Spali": {
+      "parts": 845850282,
+      "hierarchy": 124031150
+    },
+    "Golden/Supre": {
+      "parts": 2502209993,
+      "hierarchy": 3337822929
+    },
+    "Golden/Tribitti": {
+      "parts": 2207283517,
+      "hierarchy": 1670461855
+    },
+    "Golden/TuboS": {
+      "parts": 2407913116,
+      "hierarchy": 661715464
+    },
+    "Golden/W2": {
+      "parts": 3931633012,
+      "hierarchy": 3982226937
+    },
+    "Golden/Zondik": {
+      "parts": 559789709,
+      "hierarchy": 95063792
+    },
+    "Golden/ZondikR": {
+      "parts": 2371961563,
+      "hierarchy": 948246160
+    },
+    "Diamond/Agro": {
+      "parts": 923270315,
+      "hierarchy": 2849868383
+    },
+    "Diamond/Avetedor": {
+      "parts": 3792131700,
+      "hierarchy": 2240041941
+    },
+    "Diamond/BimmerN2": {
+      "parts": 434348902,
+      "hierarchy": 615945257
+    },
+    "Diamond/Curvett": {
+      "parts": 2556253686,
+      "hierarchy": 385615301
+    },
+    "Diamond/D1": {
+      "parts": 1637835275,
+      "hierarchy": 4042163560
+    },
+    "Diamond/Divviti": {
+      "parts": 1784346859,
+      "hierarchy": 1763423496
+    },
+    "Diamond/GTI40": {
+      "parts": 1566198931,
+      "hierarchy": 616920241
+    },
+    "Diamond/Gulf": {
+      "parts": 813513494,
+      "hierarchy": 1200660444
+    },
+    "Diamond/Hurik": {
+      "parts": 3857145409,
+      "hierarchy": 4043690835
+    },
+    "Diamond/HurikZ": {
+      "parts": 1452417053,
+      "hierarchy": 3370686499
+    },
+    "Diamond/Jergo": {
+      "parts": 1375882732,
+      "hierarchy": 2157232146
+    },
+    "Diamond/RS3GT": {
+      "parts": 1323549624,
+      "hierarchy": 1652289152
+    },
+    "Diamond/Spali": {
+      "parts": 2504196327,
+      "hierarchy": 2897196685
+    },
+    "Diamond/Supre": {
+      "parts": 148278096,
+      "hierarchy": 1003920216
+    },
+    "Diamond/Tribitti": {
+      "parts": 2093720962,
+      "hierarchy": 1491668754
+    },
+    "Diamond/TuboS": {
+      "parts": 230157078,
+      "hierarchy": 958881395
+    },
+    "Diamond/W2": {
+      "parts": 3842500542,
+      "hierarchy": 3822641788
+    },
+    "Diamond/Zondik": {
+      "parts": 3336468171,
+      "hierarchy": 284204287
+    },
+    "Diamond/ZondikR": {
+      "parts": 1123606824,
+      "hierarchy": 39601247
+    },
+    "Ruby/Agro": {
+      "parts": 173774906,
+      "hierarchy": 2133158250
+    },
+    "Ruby/Avetedor": {
+      "parts": 3091879582,
+      "hierarchy": 2655972673
+    },
+    "Ruby/BimmerN2": {
+      "parts": 2345381222,
+      "hierarchy": 44624786
+    },
+    "Ruby/Curvett": {
+      "parts": 2188779245,
+      "hierarchy": 2008843224
+    },
+    "Ruby/D1": {
+      "parts": 873789168,
+      "hierarchy": 2889960359
+    },
+    "Ruby/Divviti": {
+      "parts": 1507310372,
+      "hierarchy": 244199839
+    },
+    "Ruby/GTI40": {
+      "parts": 2782284691,
+      "hierarchy": 312368978
+    },
+    "Ruby/Gulf": {
+      "parts": 2312143598,
+      "hierarchy": 3433200084
+    },
+    "Ruby/Hurik": {
+      "parts": 371200194,
+      "hierarchy": 1178953223
+    },
+    "Ruby/HurikZ": {
+      "parts": 2244608921,
+      "hierarchy": 2214061061
+    },
+    "Ruby/Jergo": {
+      "parts": 2270937841,
+      "hierarchy": 686646119
+    },
+    "Ruby/RS3GT": {
+      "parts": 3138942025,
+      "hierarchy": 2408431807
+    },
+    "Ruby/Spali": {
+      "parts": 3584331135,
+      "hierarchy": 3316948348
+    },
+    "Ruby/Supre": {
+      "parts": 4020173394,
+      "hierarchy": 3788569835
+    },
+    "Ruby/Tribitti": {
+      "parts": 4117202193,
+      "hierarchy": 2163856635
+    },
+    "Ruby/TuboS": {
+      "parts": 3552146470,
+      "hierarchy": 1061192632
+    },
+    "Ruby/W2": {
+      "parts": 1917081459,
+      "hierarchy": 3830597501
+    },
+    "Ruby/Zondik": {
+      "parts": 3981261446,
+      "hierarchy": 275719622
+    },
+    "Ruby/ZondikR": {
+      "parts": 384860230,
+      "hierarchy": 3767921606
+    },
+    "Neon/Agro": {
+      "parts": 3581767810,
+      "hierarchy": 902604839
+    },
+    "Neon/Avetedor": {
+      "parts": 123852436,
+      "hierarchy": 3913501050
+    },
+    "Neon/BimmerN2": {
+      "parts": 1820533703,
+      "hierarchy": 3096541271
+    },
+    "Neon/Curvett": {
+      "parts": 52975978,
+      "hierarchy": 2135295029
+    },
+    "Neon/D1": {
+      "parts": 177341440,
+      "hierarchy": 1334141972
+    },
+    "Neon/Divviti": {
+      "parts": 2097538281,
+      "hierarchy": 1444066828
+    },
+    "Neon/GTI40": {
+      "parts": 615667366,
+      "hierarchy": 966145399
+    },
+    "Neon/Gulf": {
+      "parts": 1346172387,
+      "hierarchy": 3036732605
+    },
+    "Neon/Hurik": {
+      "parts": 3316748854,
+      "hierarchy": 3093369056
+    },
+    "Neon/HurikZ": {
+      "parts": 2398196128,
+      "hierarchy": 2156070502
+    },
+    "Neon/Jergo": {
+      "parts": 4019516760,
+      "hierarchy": 910493948
+    },
+    "Neon/RS3GT": {
+      "parts": 624143338,
+      "hierarchy": 1533567820
+    },
+    "Neon/Spali": {
+      "parts": 1302808869,
+      "hierarchy": 2700342505
+    },
+    "Neon/Supre": {
+      "parts": 1047345020,
+      "hierarchy": 1623934952
+    },
+    "Neon/Tribitti": {
+      "parts": 3794126102,
+      "hierarchy": 815238496
+    },
+    "Neon/TuboS": {
+      "parts": 779915414,
+      "hierarchy": 1018478989
+    },
+    "Neon/W2": {
+      "parts": 792611995,
+      "hierarchy": 553769634
+    },
+    "Neon/Zondik": {
+      "parts": 2594016392,
+      "hierarchy": 3531125939
+    },
+    "Neon/ZondikR": {
+      "parts": 3347618005,
+      "hierarchy": 3119772659
+    }
+  },
+  "final": {
+    "Normal/Spali": {
+      "hierarchy": 2700342505,
+      "parts": 3085971170
+    },
+    "Ruby/Supre": {
+      "hierarchy": 3788569835,
+      "parts": 4020173394
+    },
+    "Normal/Curvett": {
+      "hierarchy": 2135295029,
+      "parts": 3104110251
+    },
+    "Golden/Avetedor": {
+      "hierarchy": 330729820,
+      "parts": 3678974143
+    },
+    "Diamond/Spali": {
+      "hierarchy": 2897196685,
+      "parts": 2504196327
+    },
+    "Ruby/Zondik": {
+      "hierarchy": 275719622,
+      "parts": 3981261446
+    },
+    "Diamond/W2": {
+      "hierarchy": 3822641788,
+      "parts": 3842500542
+    },
+    "Neon/Agro": {
+      "hierarchy": 902604839,
+      "parts": 3581767810
+    },
+    "Diamond/Gulf": {
+      "hierarchy": 1200660444,
+      "parts": 813513494
+    },
+    "Golden/GTI40": {
+      "hierarchy": 1186803726,
+      "parts": 3706830545
+    },
+    "Neon/Spali": {
+      "hierarchy": 2700342505,
+      "parts": 1302808869
+    },
+    "Diamond/Zondik": {
+      "hierarchy": 284204287,
+      "parts": 3336468171
+    },
+    "Diamond/Jergo": {
+      "hierarchy": 2157232146,
+      "parts": 1375882732
+    },
+    "Golden/Gulf": {
+      "hierarchy": 3805199819,
+      "parts": 2785799793
+    },
+    "Diamond/GTI40": {
+      "hierarchy": 616920241,
+      "parts": 1566198931
+    },
+    "Ruby/TuboS": {
+      "hierarchy": 1061192632,
+      "parts": 3552146470
+    },
+    "Normal/BimmerN2": {
+      "hierarchy": 3096541271,
+      "parts": 553201487
+    },
+    "Ruby/Hurik": {
+      "hierarchy": 1178953223,
+      "parts": 371200194
+    },
+    "Ruby/Agro": {
+      "hierarchy": 2133158250,
+      "parts": 173774906
+    },
+    "Neon/Hurik": {
+      "hierarchy": 3093369056,
+      "parts": 3316748854
+    },
+    "Golden/Tribitti": {
+      "hierarchy": 1670461855,
+      "parts": 2207283517
+    },
+    "Ruby/Avetedor": {
+      "hierarchy": 2655972673,
+      "parts": 3091879582
+    },
+    "Normal/GTI40": {
+      "hierarchy": 966145399,
+      "parts": 2038324874
+    },
+    "Golden/Supre": {
+      "hierarchy": 3337822929,
+      "parts": 2502209993
+    },
+    "Normal/Supre": {
+      "hierarchy": 1623934952,
+      "parts": 3935299001
+    },
+    "Ruby/GTI40": {
+      "hierarchy": 312368978,
+      "parts": 2782284691
+    },
+    "Normal/Hurik": {
+      "hierarchy": 3093369056,
+      "parts": 1362286427
+    },
+    "Ruby/Divviti": {
+      "hierarchy": 244199839,
+      "parts": 1507310372
+    },
+    "Diamond/Agro": {
+      "hierarchy": 2849868383,
+      "parts": 923270315
+    },
+    "Normal/D1": {
+      "hierarchy": 1334141972,
+      "parts": 2879375247
+    },
+    "Diamond/RS3GT": {
+      "hierarchy": 1652289152,
+      "parts": 1323549624
+    },
+    "Neon/HurikZ": {
+      "hierarchy": 2156070502,
+      "parts": 2398196128
+    },
+    "Ruby/Jergo": {
+      "hierarchy": 686646119,
+      "parts": 2270937841
+    },
+    "Diamond/TuboS": {
+      "hierarchy": 958881395,
+      "parts": 230157078
+    },
+    "Normal/W2": {
+      "hierarchy": 553769634,
+      "parts": 1958509966
+    },
+    "Ruby/Tribitti": {
+      "hierarchy": 2163856635,
+      "parts": 4117202193
+    },
+    "Diamond/Hurik": {
+      "hierarchy": 4043690835,
+      "parts": 3857145409
+    },
+    "Normal/HurikZ": {
+      "hierarchy": 2156070502,
+      "parts": 1550442825
+    },
+    "Ruby/D1": {
+      "hierarchy": 2889960359,
+      "parts": 873789168
+    },
+    "Neon/Supre": {
+      "hierarchy": 1623934952,
+      "parts": 1047345020
+    },
+    "Diamond/Supre": {
+      "hierarchy": 1003920216,
+      "parts": 148278096
+    },
+    "Neon/Curvett": {
+      "hierarchy": 2135295029,
+      "parts": 52975978
+    },
+    "Neon/GTI40": {
+      "hierarchy": 966145399,
+      "parts": 615667366
+    },
+    "Neon/TuboS": {
+      "hierarchy": 1018478989,
+      "parts": 779915414
+    },
+    "Golden/Zondik": {
+      "hierarchy": 95063792,
+      "parts": 559789709
+    },
+    "Neon/RS3GT": {
+      "hierarchy": 1533567820,
+      "parts": 624143338
+    },
+    "Neon/Avetedor": {
+      "hierarchy": 3913501050,
+      "parts": 123852436
+    },
+    "Neon/D1": {
+      "hierarchy": 1334141972,
+      "parts": 177341440
+    },
+    "Neon/Zondik": {
+      "hierarchy": 3531125939,
+      "parts": 2594016392
+    },
+    "Neon/ZondikR": {
+      "hierarchy": 3119772659,
+      "parts": 3347618005
+    },
+    "Diamond/ZondikR": {
+      "hierarchy": 39601247,
+      "parts": 1123606824
+    },
+    "Ruby/RS3GT": {
+      "hierarchy": 2408431807,
+      "parts": 3138942025
+    },
+    "Neon/W2": {
+      "hierarchy": 553769634,
+      "parts": 792611995
+    },
+    "Neon/Tribitti": {
+      "hierarchy": 815238496,
+      "parts": 3794126102
+    },
+    "Normal/Divviti": {
+      "hierarchy": 1444066828,
+      "parts": 1153228920
+    },
+    "Golden/D1": {
+      "hierarchy": 4285984681,
+      "parts": 1566685437
+    },
+    "Golden/Jergo": {
+      "hierarchy": 94916967,
+      "parts": 3228409277
+    },
+    "Neon/Jergo": {
+      "hierarchy": 910493948,
+      "parts": 4019516760
+    },
+    "Neon/Divviti": {
+      "hierarchy": 1444066828,
+      "parts": 2097538281
+    },
+    "Golden/Hurik": {
+      "hierarchy": 1272618762,
+      "parts": 2838895931
+    },
+    "Ruby/BimmerN2": {
+      "hierarchy": 44624786,
+      "parts": 2345381222
+    },
+    "Normal/Agro": {
+      "hierarchy": 902604839,
+      "parts": 3174647380
+    },
+    "Diamond/HurikZ": {
+      "hierarchy": 3370686499,
+      "parts": 1452417053
+    },
+    "Ruby/HurikZ": {
+      "hierarchy": 2214061061,
+      "parts": 2244608921
+    },
+    "Ruby/Curvett": {
+      "hierarchy": 2008843224,
+      "parts": 2188779245
+    },
+    "Diamond/D1": {
+      "hierarchy": 4042163560,
+      "parts": 1637835275
+    },
+    "Neon/BimmerN2": {
+      "hierarchy": 3096541271,
+      "parts": 1820533703
+    },
+    "Ruby/ZondikR": {
+      "hierarchy": 3767921606,
+      "parts": 384860230
+    },
+    "Diamond/Tribitti": {
+      "hierarchy": 1491668754,
+      "parts": 2093720962
+    },
+    "Golden/Agro": {
+      "hierarchy": 2447193640,
+      "parts": 308241827
+    },
+    "Diamond/Curvett": {
+      "hierarchy": 385615301,
+      "parts": 2556253686
+    },
+    "Golden/Curvett": {
+      "hierarchy": 2400132734,
+      "parts": 183706060
+    },
+    "Diamond/BimmerN2": {
+      "hierarchy": 615945257,
+      "parts": 434348902
+    },
+    "Diamond/Avetedor": {
+      "hierarchy": 2240041941,
+      "parts": 3792131700
+    },
+    "Normal/Gulf": {
+      "hierarchy": 3036732605,
+      "parts": 1530064088
+    },
+    "Ruby/W2": {
+      "hierarchy": 3830597501,
+      "parts": 1917081459
+    },
+    "Normal/TuboS": {
+      "hierarchy": 1018478989,
+      "parts": 2358245910
+    },
+    "Golden/Spali": {
+      "hierarchy": 124031150,
+      "parts": 845850282
+    },
+    "Golden/HurikZ": {
+      "hierarchy": 101396894,
+      "parts": 715634054
+    },
+    "Golden/Divviti": {
+      "hierarchy": 475057721,
+      "parts": 1657464097
+    },
+    "Ruby/Spali": {
+      "hierarchy": 3316948348,
+      "parts": 3584331135
+    },
+    "Golden/RS3GT": {
+      "hierarchy": 2023844833,
+      "parts": 4277556043
+    },
+    "Normal/Jergo": {
+      "hierarchy": 910493948,
+      "parts": 1881917139
+    },
+    "Normal/Avetedor": {
+      "hierarchy": 3913501050,
+      "parts": 570668675
+    },
+    "Golden/ZondikR": {
+      "hierarchy": 948246160,
+      "parts": 2371961563
+    },
+    "Ruby/Gulf": {
+      "hierarchy": 3433200084,
+      "parts": 2312143598
+    },
+    "Golden/TuboS": {
+      "hierarchy": 661715464,
+      "parts": 2407913116
+    },
+    "Normal/Zondik": {
+      "hierarchy": 3531125939,
+      "parts": 3075564284
+    },
+    "Diamond/Divviti": {
+      "hierarchy": 1763423496,
+      "parts": 1784346859
+    },
+    "Normal/ZondikR": {
+      "hierarchy": 3119772659,
+      "parts": 4026793541
+    },
+    "Normal/RS3GT": {
+      "hierarchy": 1533567820,
+      "parts": 510290052
+    },
+    "Normal/Tribitti": {
+      "hierarchy": 815238496,
+      "parts": 1357548023
+    },
+    "Neon/Gulf": {
+      "hierarchy": 3036732605,
+      "parts": 1346172387
+    },
+    "Golden/W2": {
+      "hierarchy": 3982226937,
+      "parts": 3931633012
+    },
+    "Golden/BimmerN2": {
+      "hierarchy": 2437034038,
+      "parts": 1237571251
+    }
+  },
+  "mismatches": []
+}

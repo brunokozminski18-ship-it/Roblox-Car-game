@@ -1,0 +1,50 @@
+{
+  "blender": "5.2.1 LTS",
+  "method": "evaluated vertices, world transforms; export topology may differ from authoring topology",
+  "mesh_count": 1,
+  "triangles": 4,
+  "dimensions_world_xyz": [
+    1.0,
+    1.0000000754979013,
+    1.0
+  ],
+  "objects": [
+    {
+      "name": "audit-fixture",
+      "vertices": 4,
+      "edges": 6,
+      "polygons": 4,
+      "triangles": 4,
+      "dimensions_world": [
+        1.0,
+        1.0000000754979013,
+        1.0
+      ],
+      "origin_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "negative_world_determinant": false,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rotation_euler": [
+        1.570796251296997,
+        -0.0,
+        0.0
+      ],
+      "material_slots": 0,
+      "materials": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "zero_area_triangles": 0,
+      "flat_polygons": 4,
+      "uv_layers": 0,
+      "uv_outside_01": 0,
+      "custom_properties": {}
+    }
+  ]
+}

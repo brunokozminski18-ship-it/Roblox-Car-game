@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "assertions": 14,
+  "report": {
+    "blender": "5.2.1 LTS",
+    "method": "evaluated vertices, world transforms; export topology may differ from authoring topology",
+    "mesh_count": 3,
+    "triangles": 256,
+    "dimensions_world_xyz": [
+      2.4000000953674316,
+      4.0,
+      1.9500000476837158
+    ],
+    "objects": [
+      {
+        "name": "TestTire",
+        "vertices": 72,
+        "edges": 144,
+        "polygons": 72,
+        "triangles": 144,
+        "dimensions_world": [
+          0.3199999928474426,
+          1.5,
+          1.5
+        ],
+        "origin_world": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "negative_world_determinant": false,
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "material_slots": 0,
+        "materials": [],
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_area_triangles": 0,
+        "flat_polygons": 72,
+        "uv_layers": 0,
+        "uv_outside_01": 0,
+        "custom_properties": {
+          "role": "tire",
+          "source_topology": "original proposal; not reconstructed source mesh"
+        }
+      },
+      {
+        "name": "TestPanel",
+        "vertices": 10,
+        "edges": 13,
+        "polygons": 4,
+        "triangles": 8,
+        "dimensions_world": [
+          2.4000000953674316,
+          4.0,
+          0.7000000476837158
+        ],
+        "origin_world": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "negative_world_determinant": false,
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "material_slots": 0,
+        "materials": [],
+        "boundary_edges": 10,
+        "nonmanifold_edges": 10,
+        "zero_area_triangles": 0,
+        "flat_polygons": 4,
+        "uv_layers": 0,
+        "uv_outside_01": 0,
+        "custom_properties": {}
+      },
+      {
+        "name": "TestRim",
+        "vertices": 64,
+        "edges": 96,
+        "polygons": 44,
+        "triangles": 104,
+        "dimensions_world": [
+          0.19200000166893005,
+          0.9290544390678406,
+          0.9065999090671539
+        ],
+        "origin_world": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "negative_world_determinant": false,
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "material_slots": 0,
+        "materials": [],
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "zero_area_triangles": 0,
+        "flat_polygons": 44,
+        "uv_layers": 0,
+        "uv_outside_01": 0,
+        "custom_properties": {
+          "role": "rim"
+        }
+      }
+    ]
+  },
+  "roundtrip": {
+    "dimensions_within_0_001_stud": true,
+    "triangles_equal": true,
+    "mesh_count_equal": true
+  }
+}

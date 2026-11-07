@@ -1,0 +1,2867 @@
+{
+  "method": "world-axis bounds of visible MeshPart OBB corners; excludes Handle; tire diameter is local max Size, not sampled vertices",
+  "models": [
+    {
+      "name": "Agro",
+      "meshparts": 20,
+      "length": 9.731839634478092,
+      "width": 4.973577976226807,
+      "height": 2.4782780408859253,
+      "width_length": 0.511062467429729,
+      "height_length": 0.2546566871186254,
+      "wheelbase": 6.031036376953125,
+      "wheelbase_length": 0.6197221289576421,
+      "tire_diameter_min": 1.4591459035873413,
+      "tire_diameter_max": 1.5266077518463135,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.052201211452484,
+      "rear_overhang": 1.648602046072483,
+      "bounds_min": [
+        -110.67878270149231,
+        1.0960026979446411,
+        26.638945639133453
+      ],
+      "bounds_max": [
+        -105.7052047252655,
+        3.5742807388305664,
+        36.370785273611546
+      ],
+      "palette": {
+        "#0989CF": 1,
+        "#2A2A30": 8,
+        "#37383E": 2,
+        "#FF5959": 1,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 20
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 20,
+        "MeshPart": 20
+      }
+    },
+    {
+      "name": "Avetedor",
+      "meshparts": 26,
+      "length": 10.016469299793243,
+      "width": 4.724717617034912,
+      "height": 2.375171661376953,
+      "width_length": 0.47169491320983115,
+      "height_length": 0.23712663517333205,
+      "wheelbase": 5.469512939453125,
+      "wheelbase_length": 0.5460519845616684,
+      "tire_diameter_min": 1.4293779134750366,
+      "tire_diameter_max": 1.567956805229187,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.503978908061981,
+      "rear_overhang": 2.042977452278137,
+      "bounds_min": [
+        -98.55430674552917,
+        1.0678426027297974,
+        26.496799290180206
+      ],
+      "bounds_max": [
+        -93.82958912849426,
+        3.4430142641067505,
+        36.51326858997345
+      ],
+      "palette": {
+        "#2A2A30": 7,
+        "#61616F": 4,
+        "#2D9A2D": 4,
+        "#37383E": 6,
+        "#FF5959": 1,
+        "#CACBD1": 1,
+        "#111111": 2,
+        "#6E99CA": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 26
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 26,
+        "MeshPart": 26
+      }
+    },
+    {
+      "name": "BimmerN2",
+      "meshparts": 22,
+      "length": 9.193708047270775,
+      "width": 4.393420219421387,
+      "height": 2.9907160997390747,
+      "width_length": 0.47787249680237653,
+      "height_length": 0.32530031238341234,
+      "wheelbase": 5.487701416015625,
+      "wheelbase_length": 0.5968975072734328,
+      "tire_diameter_min": 1.4464203119277954,
+      "tire_diameter_max": 1.516327142715454,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 1.6849379539489746,
+      "rear_overhang": 2.0210686773061752,
+      "bounds_min": [
+        -86.38877248764038,
+        1.0000026226043701,
+        26.908003330230713
+      ],
+      "bounds_max": [
+        -81.995352268219,
+        3.990718722343445,
+        36.10171137750149
+      ],
+      "palette": {
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#111111": 5,
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 22
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 22,
+        "MeshPart": 22
+      }
+    },
+    {
+      "name": "Curvett",
+      "meshparts": 22,
+      "length": 9.499606132507324,
+      "width": 4.2565765380859375,
+      "height": 2.5740439891815186,
+      "width_length": 0.4480792654676576,
+      "height_length": 0.27096323292533453,
+      "wheelbase": 5.73309326171875,
+      "wheelbase_length": 0.6035085225376137,
+      "tire_diameter_min": 1.4293779134750366,
+      "tire_diameter_max": 1.567956805229187,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 1.931535243988037,
+      "rear_overhang": 1.834977626800537,
+      "bounds_min": [
+        -74.32025146484375,
+        1.0480026006698608,
+        26.755186557769775
+      ],
+      "bounds_max": [
+        -70.06367492675781,
+        3.6220465898513794,
+        36.2547926902771
+      ],
+      "palette": {
+        "#C4281C": 1,
+        "#FF5959": 1,
+        "#2A2A30": 8,
+        "#B3B4BA": 1,
+        "#111111": 4,
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 22
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 22,
+        "MeshPart": 22
+      }
+    },
+    {
+      "name": "D1",
+      "meshparts": 29,
+      "length": 10.016552358865738,
+      "width": 4.404142379760742,
+      "height": 2.37477570772171,
+      "width_length": 0.43968645317993044,
+      "height_length": 0.23708513894202085,
+      "wheelbase": 5.799041748046875,
+      "wheelbase_length": 0.5789458828030877,
+      "tire_diameter_min": 1.4186264276504517,
+      "tire_diameter_max": 1.4879157543182373,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.3230347633361816,
+      "rear_overhang": 1.8944758474826813,
+      "bounds_min": [
+        -62.394076347351074,
+        1.0678428411483765,
+        26.49704885482788
+      ],
+      "bounds_max": [
+        -57.98993396759033,
+        3.4426185488700867,
+        36.51360121369362
+      ],
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#AA5500": 1,
+        "#37383E": 8,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 29
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 29,
+        "MeshPart": 29
+      }
+    },
+    {
+      "name": "Divviti",
+      "meshparts": 20,
+      "length": 9.328274726867676,
+      "width": 4.123744428157806,
+      "height": 2.318086087703705,
+      "width_length": 0.4420693589008941,
+      "height_length": 0.24850105250728294,
+      "wheelbase": 5.601348876953125,
+      "wheelbase_length": 0.6004699733831694,
+      "tire_diameter_min": 1.3634798526763916,
+      "tire_diameter_max": 1.5020583868026733,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 1.859053134918213,
+      "rear_overhang": 1.867872714996338,
+      "bounds_min": [
+        -50.25348064303398,
+        1.0960026383399963,
+        26.8412184715271
+      ],
+      "bounds_max": [
+        -46.129736214876175,
+        3.414088726043701,
+        36.169493198394775
+      ],
+      "palette": {
+        "#6E99CA": 1,
+        "#5B5B68": 1,
+        "#111111": 1,
+        "#2A2A30": 6,
+        "#37383E": 3,
+        "#0F0F11": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 20
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 20,
+        "MeshPart": 20
+      }
+    },
+    {
+      "name": "GTI40",
+      "meshparts": 20,
+      "length": 9.75291919708252,
+      "width": 4.297635555267334,
+      "height": 2.2340160608291626,
+      "width_length": 0.4406512007761661,
+      "height_length": 0.2290612703422627,
+      "wheelbase": 5.646453857421875,
+      "wheelbase_length": 0.5789501320908053,
+      "tire_diameter_min": 1.3917627334594727,
+      "tire_diameter_max": 1.526694655418396,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.3839974403381348,
+      "rear_overhang": 1.7224678993225098,
+      "bounds_min": [
+        -38.34069323539734,
+        1.058242678642273,
+        26.628530025482178
+      ],
+      "bounds_max": [
+        -34.043057680130005,
+        3.2922587394714355,
+        36.3814492225647
+      ],
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 4,
+        "#0D69AC": 1,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#970000": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      },
+      "render_fidelity": {
+        "Performance": 20
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 20,
+        "MeshPart": 20
+      }
+    },
+    {
+      "name": "Gulf",
+      "meshparts": 21,
+      "length": 9.65684449672699,
+      "width": 4.681264400482178,
+      "height": 3.474958598613739,
+      "width_length": 0.4847612905094212,
+      "height_length": 0.3598441084757565,
+      "wheelbase": 5.90728759765625,
+      "wheelbase_length": 0.6117202777427364,
+      "tire_diameter_min": 1.5422881841659546,
+      "tire_diameter_max": 1.6297712326049805,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 1.9757208824157715,
+      "rear_overhang": 1.7738360166549683,
+      "bounds_min": [
+        -26.532212018966675,
+        1.0775803923606873,
+        26.676607608795166
+      ],
+      "bounds_max": [
+        -21.850947618484497,
+        4.552538990974426,
+        36.333452105522156
+      ],
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 3,
+        "#1B2E60": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 3,
+        "#FF5959": 1,
+        "#37383E": 1
+      },
+      "materials": {
+        "Plastic": 19,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 21
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 21,
+        "MeshPart": 21
+      }
+    },
+    {
+      "name": "Hurik",
+      "meshparts": 26,
+      "length": 10.369790256023407,
+      "width": 4.97427225112915,
+      "height": 2.5910006761550903,
+      "width_length": 0.47968880067171943,
+      "height_length": 0.24986047086633012,
+      "wheelbase": 6.1285400390625,
+      "wheelbase_length": 0.5909994211794852,
+      "tire_diameter_min": 1.5713480710983276,
+      "tire_diameter_max": 1.6406370401382446,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.4159567952156067,
+      "rear_overhang": 1.8252934217453003,
+      "bounds_min": [
+        -14.678688287734985,
+        1.039682686328888,
+        26.320020377635956
+      ],
+      "bounds_max": [
+        -9.704416036605835,
+        3.6306833624839783,
+        36.68981063365936
+      ],
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#2154B9": 2,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 26
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 26,
+        "MeshPart": 26
+      }
+    },
+    {
+      "name": "HurikZ",
+      "meshparts": 33,
+      "length": 10.277476072311401,
+      "width": 4.929967403411865,
+      "height": 2.770683228969574,
+      "width_length": 0.4796865853761231,
+      "height_length": 0.26958790363269103,
+      "wheelbase": 6.104339599609375,
+      "wheelbase_length": 0.5939531803975789,
+      "tire_diameter_min": 1.5176013708114624,
+      "tire_diameter_max": 1.6487305164337158,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.39204865694046,
+      "rear_overhang": 1.7810878157615662,
+      "bounds_min": [
+        -2.6569288969039917,
+        1.0300740003585815,
+        26.366542041301727
+      ],
+      "bounds_max": [
+        2.2730385065078735,
+        3.8007572293281555,
+        36.64401811361313
+      ],
+      "palette": {
+        "#2A2A30": 15,
+        "#61616F": 4,
+        "#562424": 3,
+        "#37383E": 3,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#111111": 2,
+        "#FFB000": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 33
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 33,
+        "MeshPart": 33
+      }
+    },
+    {
+      "name": "Jergo",
+      "meshparts": 27,
+      "length": 9.52213704586029,
+      "width": 4.406483173370361,
+      "height": 2.580294653773308,
+      "width_length": 0.462761998923977,
+      "height_length": 0.27097852523505533,
+      "wheelbase": 5.627716064453125,
+      "wheelbase_length": 0.5910139748408422,
+      "tire_diameter_min": 1.4293779134750366,
+      "tire_diameter_max": 1.567956805229187,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.07607638835907,
+      "rear_overhang": 1.8183445930480957,
+      "bounds_min": [
+        9.6048743724823,
+        1.0448028445243835,
+        26.744251370429993
+      ],
+      "bounds_max": [
+        14.011357545852661,
+        3.6250974982976913,
+        36.26638841629028
+      ],
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#111111": 2,
+        "#CC8E69": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 25,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 27
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 27,
+        "MeshPart": 27
+      }
+    },
+    {
+      "name": "RS3GT",
+      "meshparts": 29,
+      "length": 10.016528010368347,
+      "width": 4.380988597869873,
+      "height": 2.987365558743477,
+      "width_length": 0.43737596433964016,
+      "height_length": 0.29824361851244097,
+      "wheelbase": 5.40362548828125,
+      "wheelbase_length": 0.5394709107474993,
+      "tire_diameter_min": 1.6145037412643433,
+      "tire_diameter_max": 1.7067610025405884,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.240364730358124,
+      "rear_overhang": 2.3725377917289734,
+      "bounds_min": [
+        21.617552042007446,
+        1.081282615661621,
+        26.49701625108719
+      ],
+      "bounds_max": [
+        25.99854063987732,
+        4.068648174405098,
+        36.513544261455536
+      ],
+      "palette": {
+        "#2A2A30": 14,
+        "#970000": 4,
+        "#5B5D69": 1,
+        "#9FA1AC": 3,
+        "#6E99CA": 5,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 29
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 29,
+        "MeshPart": 29
+      }
+    },
+    {
+      "name": "Spali",
+      "meshparts": 23,
+      "length": 9.84429931640625,
+      "width": 4.223758220672607,
+      "height": 2.2869625091552734,
+      "width_length": 0.42905625732381003,
+      "height_length": 0.232313386219767,
+      "wheelbase": 5.799072265625,
+      "wheelbase_length": 0.5890792304496897,
+      "tire_diameter_min": 1.4293779134750366,
+      "tire_diameter_max": 1.4293779134750366,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.593131959438324,
+      "rear_overhang": 1.452095091342926,
+      "bounds_min": [
+        33.696550607681274,
+        1.5920031666755676,
+        26.54280859231949
+      ],
+      "bounds_max": [
+        37.92030882835388,
+        3.878965675830841,
+        36.38710790872574
+      ],
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#37383E": 5,
+        "#750000": 3,
+        "#C4281C": 5,
+        "#111111": 2
+      },
+      "materials": {
+        "Plastic": 23
+      },
+      "render_fidelity": {
+        "Performance": 23
+      },
+      "hierarchy": {
+        "Part": 2,
+        "Weld": 47,
+        "MeshPart": 23
+      }
+    },
+    {
+      "name": "Supre",
+      "meshparts": 23,
+      "length": 10.016391217708588,
+      "width": 4.568178653717041,
+      "height": 2.6574596762657166,
+      "width_length": 0.45607031059656294,
+      "height_length": 0.2653110904421776,
+      "wheelbase": 5.601318359375,
+      "wheelbase_length": 0.5592152141054643,
+      "tire_diameter_min": 1.4293779134750366,
+      "tire_diameter_max": 1.4293779134750366,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.2311479449272156,
+      "rear_overhang": 2.183924913406372,
+      "bounds_min": [
+        45.52385973930359,
+        1.0864025950431824,
+        26.496955692768097
+      ],
+      "bounds_max": [
+        50.09203839302063,
+        3.743862271308899,
+        36.513346910476685
+      ],
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 5,
+        "#660000": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#37383E": 3
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 23
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 23,
+        "MeshPart": 23
+      }
+    },
+    {
+      "name": "Tribitti",
+      "meshparts": 23,
+      "length": 9.506129264831543,
+      "width": 4.215857982635498,
+      "height": 2.2395413517951965,
+      "width_length": 0.4434883920874399,
+      "height_length": 0.23558919612849208,
+      "wheelbase": 5.667236328125,
+      "wheelbase_length": 0.5961665542558165,
+      "tire_diameter_min": 1.4293779134750366,
+      "tire_diameter_max": 1.4986673593521118,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 1.9380316734313965,
+      "rear_overhang": 1.9008612632751465,
+      "bounds_min": [
+        57.70040154457092,
+        1.0556827783584595,
+        26.75183343887329
+      ],
+      "bounds_max": [
+        61.91625952720642,
+        3.295224130153656,
+        36.257962703704834
+      ],
+      "palette": {
+        "#0D69AC": 2,
+        "#2A2A30": 10,
+        "#FF5959": 1,
+        "#37383E": 1,
+        "#111111": 3,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 23
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 23,
+        "MeshPart": 23
+      }
+    },
+    {
+      "name": "TuboS",
+      "meshparts": 23,
+      "length": 10.194697082042694,
+      "width": 4.565737724304199,
+      "height": 2.957162082195282,
+      "width_length": 0.4478541821852121,
+      "height_length": 0.290068656125559,
+      "wheelbase": 5.4835205078125,
+      "wheelbase_length": 0.5378796901647397,
+      "tire_diameter_min": 1.6222692728042603,
+      "tire_diameter_max": 1.6938040256500244,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.326302707195282,
+      "rear_overhang": 2.384873867034912,
+      "bounds_min": [
+        69.52537393569946,
+        1.0963112711906433,
+        26.40772134065628
+      ],
+      "bounds_max": [
+        74.09111166000366,
+        4.053473353385925,
+        36.602418422698975
+      ],
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#9FA1AC": 1,
+        "#37383E": 4,
+        "#6E99CA": 1,
+        "#A3A2A5": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 2,
+        "#5B5D69": 1
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 3
+      },
+      "render_fidelity": {
+        "Performance": 23
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 23,
+        "MeshPart": 23
+      }
+    },
+    {
+      "name": "W2",
+      "meshparts": 20,
+      "length": 10.016398668289185,
+      "width": 4.329442977905273,
+      "height": 2.4512181878089905,
+      "width_length": 0.4322354891495896,
+      "height_length": 0.24472050973462922,
+      "wheelbase": 5.84295654296875,
+      "wheelbase_length": 0.5833390559290443,
+      "tire_diameter_min": 1.4186264276504517,
+      "tire_diameter_max": 1.5440070629119873,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.4340920448303223,
+      "rear_overhang": 1.7393500804901123,
+      "bounds_min": [
+        81.6433687210083,
+        1.0294427275657654,
+        26.49713659286499
+      ],
+      "bounds_max": [
+        85.97281169891357,
+        3.480660915374756,
+        36.513535261154175
+      ],
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#AA5500": 2,
+        "#111111": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#6E99CA": 2,
+        "#37383E": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 20
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 20,
+        "MeshPart": 20
+      }
+    },
+    {
+      "name": "Zondik",
+      "meshparts": 28,
+      "length": 9.48928439617157,
+      "width": 4.745176792144775,
+      "height": 2.451111376285553,
+      "width_length": 0.5000563366041813,
+      "height_length": 0.2583030789207296,
+      "wheelbase": 5.993255615234375,
+      "wheelbase_length": 0.6315814096216086,
+      "tire_diameter_min": 1.485432505607605,
+      "tire_diameter_max": 1.5510748624801636,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.139311969280243,
+      "rear_overhang": 1.356716811656952,
+      "bounds_min": [
+        93.43553233146667,
+        1.1093987822532654,
+        26.760269939899445
+      ],
+      "bounds_max": [
+        98.18070912361145,
+        3.5605101585388184,
+        36.249554336071014
+      ],
+      "palette": {
+        "#2A2A30": 6,
+        "#61616F": 4,
+        "#B3B4BA": 2,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 3,
+        "#4F5059": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 28
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 28,
+        "MeshPart": 28
+      }
+    },
+    {
+      "name": "ZondikR",
+      "meshparts": 33,
+      "length": 9.752807468175888,
+      "width": 4.901395797729492,
+      "height": 2.654834121465683,
+      "width_length": 0.5025625507037946,
+      "height_length": 0.27221229683130704,
+      "wheelbase": 5.993255615234375,
+      "wheelbase_length": 0.6145159365434824,
+      "tire_diameter_min": 1.4854323863983154,
+      "tire_diameter_max": 1.5510748624801636,
+      "tire_count_by_name_and_palette": 4,
+      "front_overhang": 2.2177510261535645,
+      "rear_overhang": 1.5418008267879486,
+      "bounds_min": [
+        105.35776615142822,
+        1.0876825451850891,
+        26.628699779510498
+      ],
+      "bounds_max": [
+        110.25916194915771,
+        3.742516666650772,
+        36.381507247686386
+      ],
+      "palette": {
+        "#2A2A30": 11,
+        "#61616F": 4,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#BA7526": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      },
+      "render_fidelity": {
+        "Performance": 33
+      },
+      "hierarchy": {
+        "Part": 1,
+        "Weld": 33,
+        "MeshPart": 33
+      }
+    }
+  ],
+  "variants": [
+    {
+      "variant": "Normal",
+      "name": "Agro",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#0989CF": 1,
+        "#2A2A30": 8,
+        "#37383E": 2,
+        "#FF5959": 1,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Avetedor",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 7,
+        "#61616F": 4,
+        "#2D9A2D": 4,
+        "#37383E": 6,
+        "#FF5959": 1,
+        "#CACBD1": 1,
+        "#111111": 2,
+        "#6E99CA": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "BimmerN2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#111111": 5,
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Curvett",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#C4281C": 1,
+        "#FF5959": 1,
+        "#2A2A30": 8,
+        "#B3B4BA": 1,
+        "#111111": 4,
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "D1",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#AA5500": 1,
+        "#37383E": 8,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Divviti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#6E99CA": 1,
+        "#5B5B68": 1,
+        "#111111": 1,
+        "#2A2A30": 6,
+        "#37383E": 3,
+        "#0F0F11": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "GTI40",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 4,
+        "#0D69AC": 1,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#970000": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Gulf",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 3,
+        "#1B2E60": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 3,
+        "#FF5959": 1,
+        "#37383E": 1
+      },
+      "materials": {
+        "Plastic": 19,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Hurik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#2154B9": 2,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "HurikZ",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 15,
+        "#61616F": 4,
+        "#562424": 3,
+        "#37383E": 3,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#111111": 2,
+        "#FFB000": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Jergo",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#111111": 2,
+        "#CC8E69": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 25,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "RS3GT",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 14,
+        "#970000": 4,
+        "#5B5D69": 1,
+        "#9FA1AC": 3,
+        "#6E99CA": 5,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Spali",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#37383E": 5,
+        "#750000": 3,
+        "#C4281C": 5,
+        "#111111": 2
+      },
+      "materials": {
+        "Plastic": 23
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Supre",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 5,
+        "#660000": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#37383E": 3
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Tribitti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#0D69AC": 2,
+        "#2A2A30": 10,
+        "#FF5959": 1,
+        "#37383E": 1,
+        "#111111": 3,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "TuboS",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#9FA1AC": 1,
+        "#37383E": 4,
+        "#6E99CA": 1,
+        "#A3A2A5": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 2,
+        "#5B5D69": 1
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "W2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#AA5500": 2,
+        "#111111": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#6E99CA": 2,
+        "#37383E": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "Zondik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 6,
+        "#61616F": 4,
+        "#B3B4BA": 2,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 3,
+        "#4F5059": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Normal",
+      "name": "ZondikR",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 11,
+        "#61616F": 4,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#BA7526": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Agro",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#FFB000": 1,
+        "#2A2A30": 8,
+        "#37383E": 2,
+        "#FF5959": 1,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Avetedor",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 7,
+        "#61616F": 4,
+        "#FFB000": 4,
+        "#37383E": 6,
+        "#FF5959": 1,
+        "#CACBD1": 1,
+        "#111111": 2,
+        "#6E99CA": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "BimmerN2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#FFB000": 1,
+        "#37383E": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#111111": 5,
+        "#6E99CA": 1,
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Curvett",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#FFB000": 1,
+        "#FF5959": 1,
+        "#2A2A30": 8,
+        "#B3B4BA": 1,
+        "#111111": 4,
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "D1",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#FFB000": 1,
+        "#37383E": 8,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Divviti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#6E99CA": 1,
+        "#5B5B68": 1,
+        "#111111": 1,
+        "#2A2A30": 5,
+        "#FFB000": 1,
+        "#37383E": 3,
+        "#0F0F11": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "GTI40",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 4,
+        "#FFB000": 1,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#970000": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Gulf",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 3,
+        "#FFB000": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 3,
+        "#FF5959": 1,
+        "#37383E": 1
+      },
+      "materials": {
+        "Plastic": 19,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Hurik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#FFB000": 1,
+        "#37383E": 9,
+        "#2154B9": 1,
+        "#6E99CA": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "HurikZ",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 15,
+        "#61616F": 4,
+        "#FFB000": 3,
+        "#37383E": 3,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#562424": 2,
+        "#111111": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Jergo",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#FFB000": 1,
+        "#111111": 2,
+        "#CC8E69": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 25,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "RS3GT",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 14,
+        "#970000": 4,
+        "#5B5D69": 1,
+        "#FFB000": 3,
+        "#6E99CA": 5,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Spali",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#37383E": 5,
+        "#FFB000": 3,
+        "#D5733D": 5,
+        "#111111": 2
+      },
+      "materials": {
+        "Plastic": 23
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Supre",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 5,
+        "#FFB000": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#37383E": 3
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Tribitti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#FFB000": 1,
+        "#0D69AC": 1,
+        "#2A2A30": 10,
+        "#FF5959": 1,
+        "#37383E": 1,
+        "#111111": 3,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "TuboS",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#FFB000": 1,
+        "#37383E": 4,
+        "#6E99CA": 1,
+        "#A3A2A5": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 2,
+        "#5B5D69": 1
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "W2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#FFB000": 1,
+        "#111111": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#6E99CA": 2,
+        "#37383E": 4,
+        "#AA5500": 1
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "Zondik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 6,
+        "#61616F": 4,
+        "#FFB000": 1,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 3,
+        "#4F5059": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Golden",
+      "name": "ZondikR",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 1,
+      "palette": {
+        "#2A2A30": 11,
+        "#61616F": 4,
+        "#FFB000": 1,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#BA7526": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Agro",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#04AFEC": 1,
+        "#2A2A30": 8,
+        "#37383E": 2,
+        "#FF5959": 1,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Avetedor",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 7,
+        "#61616F": 4,
+        "#04AFEC": 4,
+        "#37383E": 6,
+        "#FF5959": 1,
+        "#CACBD1": 1,
+        "#111111": 2,
+        "#6E99CA": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "BimmerN2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#04AFEC": 1,
+        "#37383E": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#111111": 5,
+        "#6E99CA": 1,
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Curvett",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#04AFEC": 1,
+        "#FF5959": 1,
+        "#2A2A30": 8,
+        "#B3B4BA": 1,
+        "#111111": 4,
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "D1",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#04AFEC": 1,
+        "#37383E": 8,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Divviti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#6E99CA": 1,
+        "#5B5B68": 1,
+        "#111111": 1,
+        "#2A2A30": 5,
+        "#04AFEC": 1,
+        "#37383E": 3,
+        "#0F0F11": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "GTI40",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 4,
+        "#04AFEC": 1,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#970000": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Gulf",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 3,
+        "#04AFEC": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 3,
+        "#FF5959": 1,
+        "#37383E": 1
+      },
+      "materials": {
+        "Plastic": 19,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Hurik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#04AFEC": 1,
+        "#37383E": 9,
+        "#2154B9": 1,
+        "#6E99CA": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "HurikZ",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 15,
+        "#61616F": 4,
+        "#04AFEC": 3,
+        "#37383E": 3,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#562424": 2,
+        "#111111": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Jergo",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#04AFEC": 1,
+        "#111111": 2,
+        "#CC8E69": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 25,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "RS3GT",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 14,
+        "#970000": 4,
+        "#5B5D69": 1,
+        "#04AFEC": 3,
+        "#6E99CA": 5,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Spali",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#37383E": 5,
+        "#04AFEC": 3,
+        "#0989CF": 5,
+        "#111111": 2
+      },
+      "materials": {
+        "Plastic": 23
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Supre",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 5,
+        "#04AFEC": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#37383E": 3
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Tribitti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#04AFEC": 1,
+        "#0D69AC": 1,
+        "#2A2A30": 10,
+        "#FF5959": 1,
+        "#37383E": 1,
+        "#111111": 3,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "TuboS",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#04AFEC": 1,
+        "#37383E": 4,
+        "#6E99CA": 1,
+        "#A3A2A5": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 2,
+        "#5B5D69": 1
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "W2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#04AFEC": 1,
+        "#111111": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#6E99CA": 2,
+        "#37383E": 4,
+        "#AA5500": 1
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "Zondik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 6,
+        "#61616F": 4,
+        "#04AFEC": 1,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 3,
+        "#4F5059": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Diamond",
+      "name": "ZondikR",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 3,
+      "palette": {
+        "#2A2A30": 11,
+        "#61616F": 4,
+        "#04AFEC": 1,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#BA7526": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Agro",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#FF4646": 1,
+        "#2A2A30": 8,
+        "#37383E": 2,
+        "#FF5959": 1,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Avetedor",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 7,
+        "#61616F": 4,
+        "#FF4646": 4,
+        "#37383E": 6,
+        "#FF5959": 1,
+        "#CACBD1": 1,
+        "#111111": 2,
+        "#6E99CA": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "BimmerN2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#FF4646": 1,
+        "#37383E": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#111111": 5,
+        "#6E99CA": 1,
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Curvett",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#FF4646": 1,
+        "#FF5959": 1,
+        "#2A2A30": 8,
+        "#B3B4BA": 1,
+        "#111111": 4,
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "D1",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#FF4646": 1,
+        "#37383E": 8,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Divviti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#6E99CA": 1,
+        "#5B5B68": 1,
+        "#111111": 1,
+        "#2A2A30": 5,
+        "#FF4646": 1,
+        "#37383E": 3,
+        "#0F0F11": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "GTI40",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 4,
+        "#FF4646": 1,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#970000": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Gulf",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 3,
+        "#FF4646": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 3,
+        "#FF5959": 1,
+        "#37383E": 1
+      },
+      "materials": {
+        "Plastic": 19,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Hurik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#FF4646": 1,
+        "#37383E": 9,
+        "#2154B9": 1,
+        "#6E99CA": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "HurikZ",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 15,
+        "#61616F": 4,
+        "#FF4646": 3,
+        "#37383E": 3,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#562424": 2,
+        "#111111": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Jergo",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#FF4646": 1,
+        "#111111": 2,
+        "#CC8E69": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 25,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "RS3GT",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 14,
+        "#970000": 4,
+        "#5B5D69": 1,
+        "#FF4646": 3,
+        "#6E99CA": 5,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 27,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Spali",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#37383E": 5,
+        "#FF4646": 3,
+        "#FF0000": 5,
+        "#111111": 2
+      },
+      "materials": {
+        "Plastic": 23
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Supre",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 5,
+        "#FF4646": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#37383E": 3
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Tribitti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#FF4646": 1,
+        "#0D69AC": 1,
+        "#2A2A30": 10,
+        "#FF5959": 1,
+        "#37383E": 1,
+        "#111111": 3,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 21,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "TuboS",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#FF4646": 1,
+        "#37383E": 4,
+        "#6E99CA": 1,
+        "#A3A2A5": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 2,
+        "#5B5D69": 1
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "W2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#FF4646": 1,
+        "#111111": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#6E99CA": 2,
+        "#37383E": 4,
+        "#AA5500": 1
+      },
+      "materials": {
+        "Plastic": 18,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "Zondik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 6,
+        "#61616F": 4,
+        "#FF4646": 1,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 3,
+        "#4F5059": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Ruby",
+      "name": "ZondikR",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 4,
+      "palette": {
+        "#2A2A30": 11,
+        "#61616F": 4,
+        "#FF4646": 1,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#BA7526": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 31,
+        "Neon": 2
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Agro",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#0989CF": 1,
+        "#2A2A30": 8,
+        "#37383E": 2,
+        "#FF5959": 1,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Neon": 3,
+        "Plastic": 17
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Avetedor",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 7,
+        "#61616F": 4,
+        "#2D9A2D": 4,
+        "#37383E": 6,
+        "#FF5959": 1,
+        "#CACBD1": 1,
+        "#111111": 2,
+        "#6E99CA": 1
+      },
+      "materials": {
+        "Plastic": 23,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "BimmerN2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#111111": 5,
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 4
+      },
+      "materials": {
+        "Neon": 3,
+        "Plastic": 19
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Curvett",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#C4281C": 1,
+        "#FF5959": 1,
+        "#2A2A30": 8,
+        "#B3B4BA": 1,
+        "#111111": 4,
+        "#6E99CA": 2,
+        "#37383E": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Neon": 3,
+        "Plastic": 19
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "D1",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#AA5500": 1,
+        "#37383E": 8,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Divviti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#6E99CA": 1,
+        "#5B5B68": 1,
+        "#111111": 1,
+        "#2A2A30": 6,
+        "#37383E": 3,
+        "#0F0F11": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "GTI40",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 4,
+        "#0D69AC": 1,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#970000": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 16,
+        "Neon": 4
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Gulf",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 3,
+        "#1B2E60": 2,
+        "#B3B4BA": 1,
+        "#6E99CA": 3,
+        "#FF5959": 1,
+        "#37383E": 1
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 4
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Hurik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#2154B9": 2,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 23,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "HurikZ",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 15,
+        "#61616F": 4,
+        "#562424": 3,
+        "#37383E": 3,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#111111": 2,
+        "#FFB000": 2,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 30,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Jergo",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 8,
+        "#61616F": 4,
+        "#37383E": 8,
+        "#6E99CA": 2,
+        "#B3B4BA": 1,
+        "#111111": 2,
+        "#CC8E69": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 24,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "RS3GT",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 14,
+        "#970000": 4,
+        "#5B5D69": 1,
+        "#9FA1AC": 3,
+        "#6E99CA": 5,
+        "#B3B4BA": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 26,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Spali",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#37383E": 5,
+        "#750000": 3,
+        "#C4281C": 5,
+        "#111111": 2
+      },
+      "materials": {
+        "Plastic": 22,
+        "Neon": 1
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Supre",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 4,
+        "#61616F": 4,
+        "#4A4B53": 2,
+        "#111111": 5,
+        "#660000": 1,
+        "#6E99CA": 2,
+        "#FF5959": 1,
+        "#B3B4BA": 1,
+        "#37383E": 3
+      },
+      "materials": {
+        "Plastic": 20,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Tribitti",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#0D69AC": 2,
+        "#2A2A30": 10,
+        "#FF5959": 1,
+        "#37383E": 1,
+        "#111111": 3,
+        "#6E99CA": 1,
+        "#B3B4BA": 1,
+        "#61616F": 4
+      },
+      "materials": {
+        "Neon": 3,
+        "Plastic": 20
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "TuboS",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#9FA1AC": 1,
+        "#37383E": 4,
+        "#6E99CA": 1,
+        "#A3A2A5": 2,
+        "#111111": 2,
+        "#B3B4BA": 1,
+        "#FF5959": 2,
+        "#5B5D69": 1
+      },
+      "materials": {
+        "Plastic": 19,
+        "Neon": 4
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "W2",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 5,
+        "#61616F": 4,
+        "#AA5500": 2,
+        "#111111": 1,
+        "#B3B4BA": 1,
+        "#FF5959": 1,
+        "#6E99CA": 2,
+        "#37383E": 4
+      },
+      "materials": {
+        "Plastic": 17,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "Zondik",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 6,
+        "#61616F": 4,
+        "#B3B4BA": 2,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 3,
+        "#4F5059": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 25,
+        "Neon": 3
+      }
+    },
+    {
+      "variant": "Neon",
+      "name": "ZondikR",
+      "mesh_asset_size_multiset_equal": true,
+      "emitters": 0,
+      "palette": {
+        "#2A2A30": 11,
+        "#61616F": 4,
+        "#37383E": 9,
+        "#6E99CA": 2,
+        "#111111": 4,
+        "#B3B4BA": 1,
+        "#BA7526": 1,
+        "#FF5959": 1
+      },
+      "materials": {
+        "Plastic": 30,
+        "Neon": 3
+      }
+    }
+  ],
+  "totals": {
+    "cars": 95,
+    "meshparts": 2340,
+    "unique_mesh_ids": 300,
+    "nonempty_textures": 0,
+    "surface_appearance": 0,
+    "variant_geometry_mismatches": 0
+  }
+}

@@ -1,0 +1,2810 @@
+[
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 20,
+      "Weld": 20
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Divviti",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiNoire_Plane.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 27,
+      "Weld": 27
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Jergo",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR33_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR33_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Circle"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Jesko_Cube.015"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 23,
+      "Weld": 23
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Tribitti",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cube.016"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Cylinder.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BugattiBolide1_Plane"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 2,
+      "MeshPart": 23,
+      "Weld": 47
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Root",
+        "anchored": true
+      },
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Spali",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Circle"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.012"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Root"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Handle"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.013"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.012"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.011"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.010"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.009"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.008"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.007"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.006"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.005"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.004"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.003"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.002"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube.001"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Cube"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Formula_Circle"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Meshes/Cars_Cylinder.004",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 20,
+      "Weld": 20
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Agro",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/AgeraR_Cube.017"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 33,
+      "Weld": 33
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "HurikZ",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.015"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.016"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.017"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.018"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.019"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.020"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cube.021"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayaraDinamicoEvo_Cylinder.002"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 26,
+      "Weld": 26
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Hurik",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiHuayara_Cylinder.002"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 20,
+      "Weld": 20
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "W2",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.017"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.018"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/W1_Cube.019"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 33,
+      "Weld": 33
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "ZondikR",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.017"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.018"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.020"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cylinder.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cylinder.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.015"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZondaB_Cube.016"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 28,
+      "Weld": 28
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Zondik",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.002 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.003 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.004 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.005 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.006 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.007 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.008 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.009 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.010 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.011 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.012 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.013 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cube.014 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cylinder (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cylinder.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cylinder.002 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cylinder.003 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/PaganiZonda_Cylinder.004 (1)"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 29,
+      "Weld": 29
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "D1",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.001 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.002 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.003 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.004 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.005 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.006 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.007 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.008 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.009 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.010 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.011 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.012 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.013 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.014 (2)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.015 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.016 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.017 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.018"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cube.019"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/MclarenP1_Cylinder (2)"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 26,
+      "Weld": 26
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Avetedor",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.013"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.014"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cube.016"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/SVJ_Cylinder.001"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 29,
+      "Weld": 29
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "RS3GT",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Cylinder (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.002 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.003 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.004 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.005 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.006 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.007 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.008 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.009 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.010 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.011 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.012 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.013 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.014 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.015 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.016 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.017 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.018 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GTR3S_Plane.019 (1)"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 23,
+      "Weld": 23
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "TuboS",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cube.012"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Turbo_Cylinder.002"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 20,
+      "Weld": 20
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "GTI40",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cube (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cube.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cube.002 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cube.006 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cube.007 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cube.008 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cylinder (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/FORDGT_Cylinder.001 (1)"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 21,
+      "Weld": 21
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Gulf",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR32_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR33_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/GolfR33_Cube.008"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 22,
+      "Weld": 22
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Curvett",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.002"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.003"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.008"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.009"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.010"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cube.011"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cylinder"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/C7_Cylinder.001"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 23,
+      "Weld": 23
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "Supre",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.002 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.003 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.004 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.005 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.006 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.007 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.008 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.009 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/ToyotaSupraMK5_Cube.010 (1)"
+      }
+    ]
+  },
+  {
+    "classes": {
+      "Part": 1,
+      "MeshPart": 22,
+      "Weld": 22
+    },
+    "nonMesh": [
+      {
+        "collide": false,
+        "transparency": 1,
+        "name": "Handle",
+        "anchored": true
+      }
+    ],
+    "name": "BimmerN2",
+    "joints": [
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BMWM2G87_Circle (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BMWM2G87_Circle.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BMWM2G87_Circle.005 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BMWM2G87_Circle.007 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BMWM2G87_Circle.008 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/BMWM2G87_Cube.001 (1)"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.004"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.005"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.006"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      },
+      {
+        "part0": "Handle",
+        "class": "Weld",
+        "part1": "Meshes/Cars_Cylinder.007"
+      }
+    ]
+  }
+]
