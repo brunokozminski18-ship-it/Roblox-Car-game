@@ -1,4 +1,4 @@
-Aktualny wynik i pliki: [[references/car-modeling/D1-reconstruction/POROWNANIE]]. Poniżej zachowano opis pierwszej próby.
+Najnowszy wynik i pliki opisano w [[references/car-modeling/D1-reconstruction/RAPORT_REWIZJI]]. Poniżej zachowano opis pierwszej próby.
 
 # D1 — stan próby odtworzenia, 08.11.2026
 

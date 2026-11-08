@@ -4,13 +4,16 @@ Run in background Blender. A contact correction requires a reference-coloured
 pixel and a nearby authored occluder. No changes are made to other regions.
 """
 import json
+import sys
 from pathlib import Path
 import numpy as np
 from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
 assets=Path(__file__).resolve().parents[1]/"assets"
-parts=json.loads((assets/"selected-mesh.json").read_text())
+args=sys.argv[sys.argv.index("--")+1:] if "--" in sys.argv else []
+source, target, *only = args or ["selected","contact"]
+parts=json.loads((assets/(source+"-mesh.json")).read_text())
 parts_by_id={p["index"]:p for p in parts}
 
 
@@ -26,6 +29,7 @@ refs=np.load(assets/"trim-masks.npz")
 support={k:tree(parts_by_id[k]) for k in (18,9,11,24,22,23)}
 stats={}
 for idx,views,blockers in [(10,[0,1],(18,11)),(12,[0,1,4],(18,)),(26,[3,5,6,7],(18,24,22,23))]:
+    if only and str(idx) not in only:continue
     p=parts_by_id[idx];xyz=world(p)
     original=xyz.copy()
     for step in range(3):
@@ -60,5 +64,5 @@ for idx,views,blockers in [(10,[0,1],(18,11)),(12,[0,1,4],(18,)),(26,[3,5,6,7],(
     p.update(centre=center.tolist(),size=np.ptp(local,axis=0).tolist(),vertices=(local-center).round(6).tolist())
     stats[str(idx)]=dict(max=float(np.linalg.norm(xyz-original,axis=1).max()),
                          moved=int((np.linalg.norm(xyz-original,axis=1)>.001).sum()))
-(assets/"contact-mesh.json").write_text(json.dumps(parts,separators=(",",":")))
-(assets/"contact-adjustment.json").write_text(json.dumps(stats,indent=2))
+(assets/(target+"-mesh.json")).write_text(json.dumps(parts,separators=(",",":")))
+(assets/(target+"-adjustment.json")).write_text(json.dumps(stats,indent=2))

@@ -15,6 +15,11 @@ Source vertex data was **not obtained**: EditableMesh denied asset access; UI ex
 
 ## Working procedure
 
+For every future Roblox car, use [modeling rules](modeling-rules.md), the
+[verified lessons](lessons-learned.md), and the [validation procedure](validation.md)
+with the measured reference atlas below. Select procedures by body and part
+role. Keep evidence from each accepted revision before changing a rule.
+
 1. Inspect the active task and the user's requested body type. Choose two relevant atlas references. Do not add emblems or distinctive reference geometry unless requested and permitted. Original designs should have their own lamp outlines, roofline and feature arrangement.
 2. Set **X width, Y length, Z up, front −Y, 1 Blender unit = 1 target stud** as the working convention; verify actual importer scale with a known dimension. Define wheel centres, overhangs, cowl, roof apex and roof end before details. A dimension is a target, not a new Roblox unit rule.
 3. Follow [the modeling recipe and QA](references/modeling-and-qa.md). First solve the side silhouette, front width and wheel placement. Then shape the bonnet, shoulder, arches, bumper, glazing and rear. Put subdivisions where they change the outline or visible plane breaks.

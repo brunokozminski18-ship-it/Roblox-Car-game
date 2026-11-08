@@ -19,4 +19,5 @@ for i,eye in enumerate(views):
     out[f"mask10_{i}"]=m["headlamp"]
     out[f"mask26_{i}"]=m["taillamp"]
     out[f"mask12_{i}"]=(r<119)&(g<130)&(b>g*.91)&(b>r*.95)
+    out[f"mask15_{i}"]=(r<42)&(g<53)&(b<68)&(b>1.12*g)&(g>1.06*r)
 np.savez_compressed(ASSETS/"trim-masks.npz",**out)

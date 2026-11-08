@@ -1,15 +1,16 @@
 """Preserve the verified positions, face normals, colours and independent wheels."""
-import bpy,json
+import bpy,json,sys
 from pathlib import Path
 from mathutils import Vector
 
 assets=Path(__file__).resolve().parents[1]/"assets"
-dest=assets/"D1 delivery"
+variant, folder = sys.argv[sys.argv.index("--")+1:] if "--" in sys.argv else ("contact", "D1 delivery")
+dest=assets/folder
 dest.mkdir(exist_ok=True)
 bpy.ops.wm.read_factory_settings(use_empty=True)
 collection=bpy.data.collections.new("D1")
 bpy.context.scene.collection.children.link(collection)
-for p in json.loads((assets/"contact-mesh.json").read_text()):
+for p in json.loads((assets/(variant+"-mesh.json")).read_text()):
     name=f"{p['index']:02d} {p['name']}"
     mesh=bpy.data.meshes.new(name)
     faces=[];face_normals=[];seen=set()

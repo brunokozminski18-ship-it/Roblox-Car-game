@@ -1,0 +1,12 @@
+# Verified observations from D1
+
+1. On the rear crossbar, a bounded local plane fit reduced median optical depth error from 0.01137 to 0.00593 studs, and p90 from 0.03404 to 0.02874 with all 5,063 measured rays retained. The same full correction increased the central front intake p90 from 0.00586 to 0.00689. Preserve the intake baseline.
+2. A plane fit improved the isolated front lens depth median from 0.00922 to 0.00723 studs. Once assembled with the corrected body, front-view lens overlap fell from 83.92% to 79.58%. Recheck lens visibility against its housing and neighbouring panels.
+3. Tracing both lamps from one assembled view reduced whole-car ray hits from 118,032 to 117,439 (rounded coverage 98.70%). The frontal contour alone leaves lateral surfaces underspecified. Retain independently measured side charts.
+4. Fitting the shell, glazing and lamp boundaries from corresponding photos improved D1 side-view paint overlap from 88.18% to 89.24%, rear three-quarter glazing from 87.23% to 89.16%, and rear lamp overlap from 71.30% to 79.55%. The oblique front lens regressed. Test the front and rear assemblies separately.
+5. Ray tests from photographed lens pixels located 51 front-shell vertices on triangles hiding the authored headlamp. Relieving the support raised assembled headlamp overlap from 85.66% to 91.67% front-on and from 84.07% to 88.77% obliquely. On the same experiment rear overlap fell from 81.10% to 74.67%. Keep the successful front correction and restore the rear support.
+6. On independent close-ups, the two front lamp scores rose from 85.07% and 83.15% before support relief to 89.29% and 88.39% afterward. The side camera showed that the intake contour already agreed closely; the later local boundary correction increased side intake overlap from 96.70% to 96.82%.
+7. A further hood support correction improved the frontal vent mask but reduced top-view overlap from 87.12% to 84.61% even after restoring the earlier vent geometry. Reverting the neighbouring support is part of rolling back a panel change.
+8. On the native display, reducing body and glass union batches from 160 wedges to 48 lowered the rear three-quarter glass score from 84.37% to 83.78% and side paint from 87.31% to 87.05%. The front lamp scores were unchanged. Restore the previous display. Compare renders at the same viewport dimensions as well as the same camera pose and FOV.
+
+Counts are measurements of this reconstruction against optical observations. Source vertex positions, hidden surface topology and UVs were unavailable.

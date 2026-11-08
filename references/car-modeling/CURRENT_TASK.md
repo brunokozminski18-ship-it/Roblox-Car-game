@@ -6,6 +6,6 @@
 - Oryginalne auta bez zmian: porównanie właściwości i hierarchii 95/95 PASS. Studio Edit, kamera i zaznaczenie przywrócone.
 - Luka: brak dostępu do wierzchołków źródłowych; dokładna topologia, trójkąty i UV niezmierzone. Eksport opisany wraz z ograniczeniami.
 - Skill zainstalowany: `C:/Users/bruno/.codex/skills/car-modeling/SKILL.md` (komplet dokumentacji, dowodów i skryptów).
-- Następny krok dopiero na nowe zlecenie: jedna oryginalna próbka samochodu i ocena użytkownika; bez tworzenia serii przed akceptacją.
-- Raport: [[references/car-modeling/evidence/validation]]. Bez publikacji i importu nowych samochodów; brak oceny nowego modelu.
+- Jedna próbka D1 po kolejnych korektach. Wyniki ponownego otwarcia projektu i kontroli Blendera zawiera [[references/car-modeling/D1-reconstruction/RAPORT_REWIZJI]].
+- Inwentarz paczki i pierwotna kontrola narzędzi są w [[references/car-modeling/evidence/validation]]. Ocenę wyglądu próbki pozostawiono użytkownikowi.
 - Zadanie referencyjne, niezależne od wstrzymanej oceny próbek ThrowTicketsAtCars.

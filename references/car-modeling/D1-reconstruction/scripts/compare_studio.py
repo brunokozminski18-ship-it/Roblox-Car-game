@@ -9,13 +9,17 @@ from fit_views import ASSETS, BASE, source_box
 from proof import CAMERAS
 
 
-def masks(img):
+def masks(img, trim=False):
     r,g,b=np.moveaxis(img.astype(float),-1,0)
     paint=(r>54)&(r>1.40*g)&(g>.28*r)&(b<.68*g)
     glass=(b>110)&(b>1.34*r)&(b>1.13*g)&(g>.96*r)
     front=(r>222)&(g>218)&(b>186)
     rear=(r>200)&(r>1.42*g)&(g>.32*r)&(b>.79*g)&(b>.34*r)&(b<1.21*g)
-    return dict(paint=paint,glass=glass,headlamp=front,taillamp=rear)
+    out=dict(paint=paint,glass=glass,headlamp=front,taillamp=rear)
+    if trim:
+        out["intake"]=(r<42)&(g<53)&(b<68)&(b>1.12*g)&(g>1.06*r)
+        out["vent"]=(r<119)&(g<130)&(b>g*.91)&(b>r*.95)
+    return out
 
 
 def region(ref,own):
@@ -28,11 +32,11 @@ def region(ref,own):
             max(0,xx.min()-38),min(ref.shape[1],xx.max()+39))
 
 
-def projected_region(key,view,shape):
+def projected_region(key,view,shape,pose=None):
     parts=json.loads((BASE/"source-parts.json").read_text())["parts"]
-    allowed=dict(glass=[19],headlamp=[10],taillamp=[26],paint=[18])[key]
-    eye=np.array(list(CAMERAS.values())[view],dtype=float)
-    if view==4:eye[2]=0
+    allowed=dict(glass=[19],headlamp=[10],taillamp=[26],paint=[18],intake=[15],vent=[12])[key]
+    eye=np.array(list(CAMERAS.values())[view] if pose is None else pose,dtype=float)
+    if view==4 and pose is None:eye[2]=0
     target=np.array([0,2.4,-.01 if view==4 else 0])
     f=target-eye;f/=np.linalg.norm(f)
     right=np.cross(f,[0,1,0]);right/=np.linalg.norm(right)
