@@ -67,7 +67,8 @@ function Exercises.mount()
 			local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 			if not humanoid or humanoid.Health <= 0 then continue end
 			local throwing = now < pose.windupEnd
-			local training = player == Players.LocalPlayer and player:GetAttribute("TrainingActive") == true
+			-- The Train clip replaces the procedural raise when it can play.
+			local training = player == Players.LocalPlayer and player:GetAttribute("TrainingActive") == true and not require(script.Parent.CharacterAnims).available("Train")
 			if not throwing and not training then continue end
 			-- A full forward arm raise every 1.25 seconds, with soft endpoints.
 			local raise = (1 - math.cos(now * math.pi * 2 / 1.25)) * 0.5
@@ -99,6 +100,8 @@ end
 function Exercises.windup(player: Player, seconds: number)
 	Exercises.mount()
 	if seconds <= 0 then return end
+	-- Trail and release burst for every thrower (each client renders its own copy).
+	require(script.Parent.Vfx).throw(player, seconds)
 	-- Local player: real throw animation when available (it replicates to everyone); procedural swing as fallback.
 	if player == Players.LocalPlayer and require(script.Parent.CharacterAnims).playTimed("Throw", seconds) then return end
 	-- Other players: their own client plays the uploaded clip and it replicates, so do not layer the swing on top.

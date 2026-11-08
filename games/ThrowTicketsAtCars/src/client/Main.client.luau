@@ -21,7 +21,7 @@ local Feedback=remotes:WaitForChild("Feedback")::RemoteEvent
 local Ticket=remotes:WaitForChild("Ticket")::RemoteEvent
 local world=workspace:WaitForChild("TicketPrototype")
 local gates=world:WaitForChild("Gates")
-local cash=p:WaitForChild("leaderstats"):WaitForChild("Cash")::IntValue
+local cash=(p:WaitForChild("leaderstats",math.huge)::Folder):WaitForChild("Cash",math.huge)::IntValue -- the profile load can take a few seconds
 local hud=require(script.Parent.HUD).mount(p:WaitForChild("PlayerGui"))
 local gui,trainButton,message=hud.gui,hud.train,hud.message
 local shop=ShopUI.mount(gui,cash,remotes:WaitForChild("Shop")::RemoteEvent,Feedback,hud.shop)
@@ -52,6 +52,7 @@ p:GetAttributeChangedSignal("Throwing"):Connect(function()if p:GetAttribute("Thr
 require(script.Parent.ThrowMeterUI).mount(Throw)
 require(script.Parent.PowerSelector).mount(remotes:WaitForChild("SelectPower")::RemoteEvent,hud.powerSettings)
 Exercises.mount();require(script.Parent.Traffic).mount(world)
+require(script.Parent.CharacterFx).mount(remotes:WaitForChild("Juice")::RemoteEvent)
 task.spawn(function()require(script.Parent.Onboarding).mount(world,remotes,hud,Audio.play)end)
 trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("TrainingActive"))end)
 local version=0;local messageDeadline=0
