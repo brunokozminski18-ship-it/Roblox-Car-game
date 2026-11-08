@@ -7,7 +7,7 @@ local Config={
 	StartPower=24, TickSeconds=1,
  Progression={XPPerLevel=100,PowerPerLevel=1,OfferEvery=12,OfferLifetime=4,BoostSeconds=2},
  Juice={LetterSeconds=.18,CommonRevealMin=2.4,RareRevealMin=5,RareLetterMultiplier=1.8,RevealTimeout=16,PerfectPosition=.06,ToastSeconds=7,ShineEvery=5,BrakeSeconds=.3},
- Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond","solar","neon","cosmic","quantum"},TrainingWorkPerPower={4,8,16,35,90,150,400,800,1800,2500}},
+ Economy={StarterIncomeCars=3,TicketPaybackHorizonMinutes=120,ReferenceParkedRarity=3,ReferenceCatchSeconds=45,ReferenceTicket={"paper","pink","parking","court","gold","diamond","solar","neon","cosmic","quantum","temporal","stellar","sugar","magma","toybox","spectral","fossil","abyssal","infinity"},TrainingWorkPerPower={4,8,16,35,90,150,400,800,1800,2500,3060,6190,11350,21470,39170,73630,136250,224920}},
  Simulation={CatchLoopSeconds=14,RefreshSeconds=45,PurchaseSeconds=2,MaxSeconds=86400},
  Exercises={
  {Id="basic",Name="Basic Training",Work=1,Minutes=0,UnlockBiome=1},
@@ -21,14 +21,22 @@ local Config={
  {Id="champion",Name="Champion Training",Work=256,Minutes=8,UnlockBiome=8},
  {Id="hyper",Name="Hyper Training",Work=512,Minutes=10,UnlockBiome=9},
  {Id="future",Name="Future Training",Work=1024,Minutes=12,UnlockBiome=10},
+ {Id="lunar",Name="Lunar Training",Work=2048,Minutes=12,UnlockBiome=11},
+ {Id="sugar",Name="Sugar Rush Training",Work=4096,Minutes=14,UnlockBiome=12},
+ {Id="magma",Name="Magma Training",Work=8192,Minutes=16,UnlockBiome=13},
+ {Id="toybox",Name="Toybox Training",Work=16384,Minutes=18,UnlockBiome=14},
+ {Id="spectral",Name="Spectral Training",Work=32768,Minutes=20,UnlockBiome=15},
+ {Id="primal",Name="Primal Training",Work=65536,Minutes=22,UnlockBiome=16},
+ {Id="tidal",Name="Tidal Training",Work=131072,Minutes=25,UnlockBiome=17},
+ {Id="cosmic",Name="Cosmic Training",Work=262144,Minutes=28,UnlockBiome=18},
  },
  InventoryLimit=20, HotbarSlots=5, GarageRequestInterval=.15, PlacementDistance=9, PlotInteractRadius=36,
  ThrowMeter={Period=1.4,Timeout=3,MinBonus=-.05,MaxBonus=.10,MaxPingTolerance=.25,PollSeconds=.08},
  PromptHoldSeconds=.5,
  ThrowWindupSeconds=.45, CameraReturnHold=.3, CaptureApproachDistance=32, CaptureLaneX=7,
  TrafficHz=30, TrafficSpeed=22, TrafficLaneX=7, TrafficRenderDistance=450,
-	ShopRequestInterval=0.3, MaxCash=1e15, MaxPower=1e9,
-	Data={StoreName="ThrowTicketsAtCars_v1",Schema=7,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
+	ShopRequestInterval=0.3, MaxCash=9e15, MaxPower=1e9,
+	Data={StoreName="ThrowTicketsAtCars_v1",Schema=8,LeaseSeconds=90,AutosaveSeconds=25,Attempts=4,SaveSoonSeconds=2,MinSaveGap=8,ShutdownSeconds=25},
 	Tickets={
 		{Id="paper",Name="Paper Ticket",Minutes=0,UnlockBiome=1,IncomeMultiplier=1,Luck=0,Color=Color3.fromRGB(255,244,180)},
 		{Id="pink",Name="Pink Slip",Minutes=1.5,UnlockBiome=1,IncomeMultiplier=1.5,Luck=0.05,Color=Color3.fromRGB(255,133,199)},
@@ -41,6 +49,14 @@ local Config={
   {Id="cosmic",Name="Cosmic Ticket",Minutes=12,UnlockBiome=8,IncomeMultiplier=40,Luck=0.4,Color=Color3.fromHex("CBA0FF")},
   {Id="quantum",Name="Quantum Ticket",Minutes=15,UnlockBiome=9,IncomeMultiplier=60,Luck=0.45,Color=Color3.fromHex("8CDDFF")},
   {Id="temporal",Name="Temporal Ticket",Minutes=20,UnlockBiome=10,IncomeMultiplier=90,Luck=0.5,Color=Color3.fromHex("F3A4F4")},
+  {Id="stellar",Name="Stellar Ticket",Minutes=22,UnlockBiome=11,IncomeMultiplier=103.5,Luck=0.57,Color=Color3.fromHex("C9D2F2")},
+  {Id="sugar",Name="Sugar Ticket",Minutes=25,UnlockBiome=12,IncomeMultiplier=119,Luck=0.64,Color=Color3.fromHex("F7A8D2")},
+  {Id="magma",Name="Magma Ticket",Minutes=28,UnlockBiome=13,IncomeMultiplier=136.8,Luck=0.71,Color=Color3.fromHex("FF7A3D")},
+  {Id="toybox",Name="Toybox Ticket",Minutes=31,UnlockBiome=14,IncomeMultiplier=157.3,Luck=0.78,Color=Color3.fromHex("FFD95C")},
+  {Id="spectral",Name="Spectral Ticket",Minutes=34,UnlockBiome=15,IncomeMultiplier=180.9,Luck=0.85,Color=Color3.fromHex("9CF2B8")},
+  {Id="fossil",Name="Fossil Ticket",Minutes=38,UnlockBiome=16,IncomeMultiplier=208,Luck=0.92,Color=Color3.fromHex("D9B98C")},
+  {Id="abyssal",Name="Abyssal Ticket",Minutes=42,UnlockBiome=17,IncomeMultiplier=239.2,Luck=0.99,Color=Color3.fromHex("5FB8E0")},
+  {Id="infinity",Name="Infinity Ticket",Minutes=45,UnlockBiome=18,IncomeMultiplier=275,Luck=1,Color=Color3.fromHex("E8E2FF")},
 	},
 	ThrowCooldown=0.2, RequestInterval=0.12, TrainRequestInterval=0.3,
 	MapEnd=6000, RoadWidth=24, GroundWidth=88, MapPadding=18,
@@ -74,18 +90,39 @@ local Config={
 		{Name="Legendary",Weight=1,Multiplier=5,Color=Color3.fromRGB(255,205,65)},
 	},
 	Biomes=Catalog.Biomes, ComingSoon=Catalog.ComingSoon,
+	-- 18 biomes are authored; only the first ReleasedBiomes are playable. An update raises this number.
+	Release={ReleasedBiomes=10,PreviewBiomes=2,BiomeLength=800,PowerEnd=60000},
+	Luck={Cap=1,LegendaryPity=120,GuaranteedRareCatch=3,GuaranteedEpicCatch=10},
+	Index={FreeCarAt=4,CompleteBonus=.02},
 }
+-- Release gating and world layout (research/Progression18.md).
+-- Biomes 1-10 keep their measured geometry: world start in studs = MinPower. Later biomes get a fixed road length,
+-- so Power can keep growing without a 60 km map. Rules.distance maps Power to studs piecewise-linearly.
+local all=Config.Biomes
+for i,b in all do
+ b.Start=if i<=10 then b.MinPower else all[10].MinPower+1000+(i-11)*Config.Release.BiomeLength
+end
+for i,b in all do b.Finish=if all[i+1]then all[i+1].Start else b.Start+Config.Release.BiomeLength end
+local released=math.clamp(Config.Release.ReleasedBiomes,1,#all)
+Config.AllBiomes=all
+Config.Biomes=table.move(all,1,released,1,{})
+Config.MapEnd=all[released].Finish
+local preview={};for i=released+1,math.min(#all,released+Config.Release.PreviewBiomes)do table.insert(preview,{Name=all[i].Name,Color=all[i].Color})end
+Config.ComingSoon=preview
+Config.AllExercises=Config.Exercises;Config.AllTickets=Config.Tickets
+local function releasedOnly(items)local out={};for _,x in items do if x.UnlockBiome<=released then table.insert(out,x)end end;return out end
 -- Prices are authored in minutes. Reference includes a six-car park and active sales.
 -- Starter benchmark is the measured ramp-up rather than an already full rare park.
 local rarityTotal,rarityWeight=0,0
 for _,r in Config.Rarities do rarityTotal+=r.Weight*r.Multiplier;rarityWeight+=r.Weight end
-for i,b in Config.Biomes do
- b.EndPower=if Config.Biomes[i+1]then Config.Biomes[i+1].MinPower else Config.MapEnd
- local ticket=Config.Tickets[i]
+for i,b in all do
+ b.EndPower=if all[i+1]then all[i+1].MinPower else Config.Release.PowerEnd
+ local ticket=Config.AllTickets[i]
  local equivalents=if i==1 then Config.Economy.StarterIncomeCars else Config.ParkingSlots*Config.Economy.ReferenceParkedRarity+(Config.SaleIncomeSeconds/Config.Economy.ReferenceCatchSeconds)*(rarityTotal/rarityWeight)
  b.ReferenceIncomePerMinute=b.BaseIncome*ticket.IncomeMultiplier*equivalents*60
 end
-for _,items in {Config.Exercises,Config.Tickets}do for _,item in items do
- item.Price=math.floor(item.Minutes*Config.Biomes[item.UnlockBiome].ReferenceIncomePerMinute+.5)
+for _,items in {Config.AllExercises,Config.AllTickets}do for _,item in items do
+ item.Price=math.min(Config.MaxCash,math.floor(item.Minutes*all[item.UnlockBiome].ReferenceIncomePerMinute+.5))
 end end
+Config.Exercises=releasedOnly(Config.AllExercises);Config.Tickets=releasedOnly(Config.AllTickets)
 return table.freeze(Config)

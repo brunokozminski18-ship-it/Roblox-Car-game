@@ -32,8 +32,8 @@ function World.plotOrigin(plot: number): Vector3
  return Vector3.new(side*(54+group%5*32),0,rows[math.floor(group/5)%#rows+1])
 end
 function World.viewPosition(biome: number,slot: number): Vector3
-	local start=Config.Biomes[biome].MinPower
-	local finish=if Config.Biomes[biome+1] then Config.Biomes[biome+1].MinPower else Config.MapEnd
+	local start=Config.Biomes[biome].Start
+	local finish=math.min(Config.Biomes[biome].Finish,Config.MapEnd)
 	local distance=start+(finish-start)*(slot-0.5)/Config.ViewCarsPerBiome
 	return Vector3.new(if slot%2==1 then -Config.ViewCarX else Config.ViewCarX,Config.CarHeight,-distance)
 end
@@ -48,9 +48,9 @@ local function gate(root: Folder,index: number)
 	local b=Config.Biomes[index]
 	local model=Instance.new("Model");model.Name="Gate"..index;model.ModelStreamingMode=Enum.ModelStreamingMode.Persistent;model:SetAttribute("Biome",index)
 	for _,offset in {-Config.GatePostSpacing,Config.GatePostSpacing} do
-		World.part(model,"Post",Vector3.new(0.8,Config.GateHeight,0.8),Vector3.new(Config.GateSignX+offset,Config.GateHeight/2,-b.MinPower),Color3.fromRGB(125,133,143))
+		World.part(model,"Post",Vector3.new(0.8,Config.GateHeight,0.8),Vector3.new(Config.GateSignX+offset,Config.GateHeight/2,-b.Start),Color3.fromRGB(125,133,143))
 	end
-	local beam=World.part(model,"Sign",Config.GateBeamSize,Vector3.new(Config.GateSignX,Config.GateHeight,-b.MinPower),Color3.fromRGB(52,74,109))
+	local beam=World.part(model,"Sign",Config.GateBeamSize,Vector3.new(Config.GateSignX,Config.GateHeight,-b.Start),Color3.fromRGB(52,74,109))
 	for _,face in {Enum.NormalId.Back,Enum.NormalId.Front} do
 		local gui=Instance.new("SurfaceGui");gui.Name="BiomeSign";gui.Face=face
 		gui.Active=false
@@ -80,10 +80,10 @@ function World.build(biomeCount: number?): Folder
 	local count=biomeCount or #Config.Biomes
 	for i=1,count do
 		local b=Config.Biomes[i]
-		local finish=if Config.Biomes[i+1] then Config.Biomes[i+1].MinPower else Config.MapEnd
-		local length=finish-b.MinPower
+		local finish=math.min(b.Finish,Config.MapEnd)
+		local length=finish-b.Start
 		local node=Instance.new("Folder");node.Name=b.Name;node.Parent=root.Biomes
-		for start=b.MinPower,finish-1,1000 do
+		for start=b.Start,finish-1,1000 do
 		 local span=math.min(1000,finish-start);local z=-start-span/2
 		 World.part(node,"Ground",Vector3.new(Config.GroundWidth,1,span),Vector3.new(0,-.55,z),b.Color)
 		 World.part(node,"Road",Vector3.new(Config.RoadWidth,.2,span),Vector3.new(0,0,z),Color3.fromRGB(91,95,100))

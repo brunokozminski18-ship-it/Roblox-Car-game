@@ -11,7 +11,7 @@ function J.selection(power: number,value: any): number?
  return value
 end
 function J.distance(power: number,selection: number,bonus: number): number
- return math.clamp(math.clamp(selection,0,power)*(1+math.clamp(bonus,Config.ThrowMeter.MinBonus,Config.ThrowMeter.MaxBonus)),0,Config.MapEnd)
+ return Rules.distance(math.clamp(selection,0,power)*(1+math.clamp(bonus,Config.ThrowMeter.MinBonus,Config.ThrowMeter.MaxBonus)))
 end
 function J.perfect(bonus: number): boolean
  return bonus>=Config.ThrowMeter.MaxBonus-(Config.ThrowMeter.MaxBonus-Config.ThrowMeter.MinBonus)*Config.Juice.PerfectPosition

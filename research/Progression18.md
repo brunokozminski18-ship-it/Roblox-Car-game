@@ -1,7 +1,9 @@
 # Progresja 18 biomów: balans i plan wydań (08.11.2026)
 
-Status: **PLANNED / NOT FINAL**. To projekt do akceptacji użytkownika, a nie decyzja. Do `DECISIONS` gry trafia dopiero po jego akceptacji.
-Autor: Claude (projekt i obliczenia). Wykonanie w kodzie: Codex, po akceptacji.
+Status: **IMPLEMENTED na gałęzi `claude/progression-18`** (08.11.2026), balans NOT FINAL do testu z ludźmi. Propozycje z punktu 4 USER APPROVED 08.11.2026 (DECISIONS 25–26).
+Autor: Claude (projekt, obliczenia i kod logiki). Grafika aut i biomów 11–18: Codex.
+
+**Jak wypuścić aktualizację:** w `Config.luau` zmień `Release.ReleasedBiomes` (10 → 12 → 14 → 16 → 18). Reszta (sklep, mapa, COMING SOON, Index) dopasowuje się sama.
 Lista aut: [[research/CarList_18biomes]]. Obliczenia: `research/progression18_sim.py` (uruchom: `python research/progression18_sim.py`).
 Źródła: LihFolk Vault V2 (CC BY 4.0): *Progression and Pacing Design*, *Rarity Ladders and Drop Pacing Math*, *RNG Drops and Luck Systems*, *Genre Playbook - RNG and Collection Games*, *Pricing Curves and Upgrade Costs*, *Update Cadence and Hype Cycles*. Stan gry: `CarCatalog.luau`, `Config.luau`, symulacja z iteracji 11.
 
@@ -71,7 +73,7 @@ Wnioski:
 - Komplet Indexu biomu to ok. 73–111 złapań. W biomach 1–5 gracz przechodzi dalej wcześniej, więc wraca tam suwakiem siły, co jest dobrym, dobrowolnym celem. W biomach 11–18 komplet zdobywa się w trakcie przejścia.
 
 **Propozycje do akceptacji użytkownika:**
-1. **Pity Legendary:** gwarantowane Legendary najpóźniej co 120 złapań (licznik na serwerze, zapisywany w profilu, zerowany przez każde Legendary). Nikt nie czeka dłużej niż ok. 90 min, a mediana się prawie nie zmienia. Wyświetlane „1 in X” liczymy z tabeli, a pity podajemy osobno.
+1. **Pity Legendary:** gwarantowane Legendary najpóźniej co 120 złapań (licznik na serwerze, zapisywany w profilu, zerowany przez każde Legendary). Nikt nie czeka dłużej niż ok. 90 min. Średnia częstość Legendary rośnie przez to z 1% do ok. 1,43% (100 × (1 − 0,99^120) ≈ 70 złapań na Legendary; zmierzone 1,42% na 200 000 losowań). Wyświetlane „1 in X” liczymy z tabeli, a pity podajemy osobno.
 2. **Pierwsza sesja:** trzecie złapanie w grze to gwarantowane Rare, a dziesiąte to gwarantowane Epic. Każdy nowy gracz ma wtedy „wow” w pierwszych 5 minutach (LihFolk, *FTUE*).
 3. **Limit luck = 1,0** (mandaty 12–18 dochodzą najwyżej do 0,99). Przyszłe źródła luck (eventy, Server Luck, płatne) sumujemy, a nie mnożymy, i obejmuje je ten sam limit.
 4. **Nagrody Indexu:** 4/8 aut biomu daje darmowe auto z tego biomu, a 8/8 daje odznakę biomu i +2% dochodu na stałe (sumuje się, maks. +36% przy 18 biomach). LihFolk: nagradzać po drodze, nie tylko za 100%.
@@ -95,10 +97,13 @@ Dziś miejsce lądowania to `min(MapEnd, Power×(1+bonus))` w studach, a MapEnd 
 - [ ] Do zrobienia przez Codexa: powtórzyć ten balans w jego symulatorze (dokładny model rzutów, sprzedaży i parkingu) i dopasować `WorkPerPower` 11–18 do celów czasowych z tabeli.
 - [ ] Test z ludźmi: czas do biomu 2 (cel 3 min), 5 (1 h) i 10 (5,5–6,5 h) oraz moment pierwszego Legendary.
 
-## 8. Zadania dla Codexa (po akceptacji, w tej kolejności)
-1. Premiera: 6 nowych aut w biomach 1–4 (lista w [[research/CarList_18biomes]]), żeby każdy biom miał 8. Index 80 aut.
-2. Propozycje z punktu 4, które użytkownik zatwierdzi: pity, gwarancje pierwszej sesji, limit luck i nagrody Indexu.
-3. MaxCash 9e15 i test tablic przy dużych liczbach.
-4. Funkcja Power → pozycja na mapie (punkt 6), jeszcze przed U1.
-5. U1–U4: dane z tabeli w punkcie 3 i auta z listy. Każda aktualizacja ma 2 biomy, a kolejne 2 widać jako COMING SOON.
-6. Po każdej zmianie: symulacja (czas na biom, mediana i p90 Legendary) i raport w `reports/`.
+## 8. Zrobione na gałęzi i zadania dla Codexa
+
+**Zrobione (Claude, 08.11.2026):** katalog 144 aut (dane), mandaty 12–19, ćwiczenia 12–19, `WorkPerPower` 11–18, MaxCash 9e15, mapa Power → studs (biomy 1–10 bez zmian, potem po 800 studów), blokada wydań `ReleasedBiomes`, pity 120, gwarancje 3/10, limit luck 1,0, nagrody Indexu (`IndexRewards.luau`, schema 8 z migracją), proste rekwizyty biomów 11–18, test `tests/progression18.spec.luau`. Raport: `games/ThrowTicketsAtCars/reports/2026-11-08_progression18.md`.
+
+**Dla Codexa (w tej kolejności):**
+1. Połączyć gałąź `claude/progression-18` z bieżącą pracą i uruchomić wszystkie testy w Studio (stare + `progression18.spec`).
+2. Modele 70 nowych aut w stylu Car Pack (pola `Kind` są tymczasowe, wybrane z istniejących kształtów).
+3. UI: komunikat o nagrodzie Indexu, pasek „x/8” z nagrodą przy 4/8 i 8/8, licznik pity (np. „Legendary guaranteed in 37 catches”).
+4. Test tablic przy kwotach rzędu 1e15 i ustawienie `ReleasedBiomes=18` w teście Studio (przejście całej mapy, streaming).
+5. Symulacja tempa w `BalanceSimulation` dla 18 biomów i raport.

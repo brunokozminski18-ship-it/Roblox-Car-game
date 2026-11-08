@@ -8,12 +8,21 @@ function Rules.ticket(id: any): (any,number)
 	for i,t in Config.Tickets do if t.Id==id then return t,i end end
 	return Config.Tickets[1],1
 end
+-- Power -> road position in studs. Biomes 1-10 are 1:1 (Start=MinPower); later biomes have a fixed road length.
 function Rules.distance(power: number): number
-	return if Rules.finiteNumber(power) then math.clamp(power,0,Config.MapEnd) else 0
+	if not Rules.finiteNumber(power) or power<=0 then return 0 end
+	local all=Config.AllBiomes;local studs=0
+	for i,b in all do
+		local nextPower=if all[i+1] then all[i+1].MinPower else Config.Release.PowerEnd
+		if power<nextPower or not all[i+1] then
+			studs=b.Start+(b.Finish-b.Start)*math.clamp((power-b.MinPower)/(nextPower-b.MinPower),0,1);break
+		end
+	end
+	return math.clamp(studs,0,Config.MapEnd)
 end
 function Rules.biome(distance: number): number
 	local index=1
-	for i,data in Config.Biomes do if distance>=data.MinPower then index=i else break end end
+	for i,data in Config.Biomes do if distance>=data.Start then index=i else break end end
 	return index
 end
 function Rules.nextBiome(power: number): (number?,number?)
@@ -21,14 +30,18 @@ function Rules.nextBiome(power: number): (number?,number?)
  return if b then nextIndex else nil, if b then math.max(0,b.MinPower-power)else nil
 end
 function Rules.trafficPosition(biome: number,slot: number,time: number): CFrame
- local start=Config.Biomes[biome].MinPower+9
- local finish=(if Config.Biomes[biome+1]then Config.Biomes[biome+1].MinPower else Config.MapEnd)-9
+ local start=Config.Biomes[biome].Start+9
+ local finish=math.min(Config.Biomes[biome].Finish,Config.MapEnd)-9
  local span=math.max(1,finish-start);local progress=(time*Config.TrafficSpeed+slot*11)%span
  local forward=slot%2==1;local distance=start+(if forward then span-progress else progress)
  return CFrame.new(if forward then -Config.TrafficLaneX else Config.TrafficLaneX,Config.CarHeight,-distance)*CFrame.Angles(0,if forward then 0 else math.pi,0)
 end
+-- All luck sources add up and stop at Config.Luck.Cap (research/Progression18.md, decision 08.11.2026).
+function Rules.luck(ticketId: string): number
+	return math.clamp(Rules.ticket(ticketId).Luck,0,Config.Luck.Cap)
+end
 function Rules.rarityWeights(ticketId: string): any
-	local luck=Rules.ticket(ticketId).Luck;local out={}
+	local luck=Rules.luck(ticketId);local out={}
 	for i,r in Config.Rarities do out[i]={Weight=r.Weight*(if i==1 then 1 else 1+luck)} end
 	return out
 end
@@ -100,7 +113,7 @@ function Rules.extra(entries: any,id: any): any
  return nil
 end
 function Rules.extraWeights(entries: any,ticketId: string): any
- local luck=Rules.ticket(ticketId).Luck;local out={}
+ local luck=Rules.luck(ticketId);local out={}
  for i,e in entries do out[i]={Id=e.Id,Weight=e.Weight*(if i==1 then 1 else 1+luck)}end
  return out
 end
@@ -116,9 +129,22 @@ function Rules.reward(biome: number, rarity: number, car: number, ticketId: stri
 	local v=Rules.extra(Config.Variants,variant)or Config.Variants[1]
 	return {Biome=biome,Rarity=rarity,Name=model.Name,CatalogId=model.Id,Style=model.Style,Variant=v.Id,Ticket=ticket.Id,Income=math.max(1,math.floor(b.BaseIncome*r.Multiplier*ticket.IncomeMultiplier*v.Multiplier))}
 end
-function Rules.rollCar(biome: number,ticket: string,rng: Random,force: any?): any
+-- Guarantees for thrown catches only: Legendary pity, Rare on catch 3, Epic on catch 10.
+-- Displayed "1 in X" odds stay the table odds; pity is shown separately.
+function Rules.guarantee(pity: any?,rarity: number): number
+ if not pity then return rarity end
+ local L=Config.Luck;local n=pity.Catches+1
+ if pity.SinceLegendary+1>=L.LegendaryPity then return 4 end
+ if n==L.GuaranteedEpicCatch then return math.max(rarity,3)end
+ if n==L.GuaranteedRareCatch then return math.max(rarity,2)end
+ return rarity
+end
+function Rules.notePity(pity: any,rarity: number)
+ pity.Catches=math.min(pity.Catches+1,1e9);pity.SinceLegendary=if rarity==4 then 0 else pity.SinceLegendary+1
+end
+function Rules.rollCar(biome: number,ticket: string,rng: Random,force: any?,pity: any?): any
  if not Config.Biomes[biome]then return nil end
- local f=force or {};local rarity=f.Rarity or Rules.weighted(Rules.rarityWeights(ticket),rng:NextNumber());local pool={}
+ local f=force or {};local rarity=f.Rarity or Rules.guarantee(pity,Rules.weighted(Rules.rarityWeights(ticket),rng:NextNumber()));local pool={}
  for i,c in Config.Biomes[biome].Cars do if c.Rarity==rarity then table.insert(pool,{Index=i,Weight=c.Weight})end end
  local idx=pool[Rules.weighted(pool,rng:NextNumber())].Index
  if f.Car and Config.Biomes[biome].Cars[f.Car] and Config.Biomes[biome].Cars[f.Car].Rarity==rarity then idx=f.Car end

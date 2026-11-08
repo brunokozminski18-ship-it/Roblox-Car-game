@@ -9,7 +9,7 @@ return function(Config,Rules,Schema,Garage,Builder)
   for i=1,4 do check(tiers[i]>0,"Each biome supports every rarity")end
   if bi>1 then check(b.MinPower>Config.Biomes[bi-1].MinPower and b.BaseIncome>Config.Biomes[bi-1].BaseIncome,"Monotonic biome thresholds and incomes")end
  end
- check(total==74,"Exactly 74 collectible cars")
+ check(total==80,"Exactly 80 collectible cars at launch (8 per released biome)")
  check(Rules.rollCar(11,"paper",Random.new(1))==nil and Rules.rollCar(12,"paper",Random.new(1))==nil,"Coming soon cannot grant cars")
  check(Rules.biome(Rules.distance(1e9))==10,"All server landing distances clamp to active map")
  local oldToNew={1,2,3,7,8,9}
@@ -45,5 +45,5 @@ return function(Config,Rules,Schema,Garage,Builder)
   m:Destroy()
  end end
  container:Destroy()
- return n.." iteration11 assertions passed, 30000 deterministic rolls and 74 model checks"
+ return n.." iteration11 assertions passed, 30000 deterministic rolls and 80 model checks"
 end

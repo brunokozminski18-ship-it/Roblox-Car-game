@@ -1,6 +1,7 @@
 --!strict
 local Config=require(script.Parent.Config)
 local Rules=require(script.Parent.Rules)
+local Index=require(script.Parent.IndexRewards)
 local Garage={}
 function Garage.requiresConfirmation(car: any): boolean
  return car.Rarity>=3 or (car.Variant~=nil and car.Variant~="Normal")
@@ -30,7 +31,9 @@ function Garage.inventoryCount(data: any): number
  local n=0;for _,c in data.Cars do if c.Slot==0 then n+=1 end end;return n
 end
 function Garage.income(data: any): number
- local total=0;for _,c in data.Cars do if c.Slot>0 then total+=Rules.savedReward(c).Income end end;return total
+ local total=0;for _,c in data.Cars do if c.Slot>0 then total+=Rules.savedReward(c).Income end end
+ -- Completed Index biomes add +2% each; Cash stays an integer.
+ return math.floor(total*(if data.Discovered and data.IndexClaims then Index.incomeMultiplier(data)else 1))
 end
 function Garage.add(data: any,reward: any,id: string,pending: boolean): (boolean,string)
  if Garage.inventoryCount(data)>=Config.InventoryLimit then return false,"Inventory full!"end

@@ -6,7 +6,7 @@ local Returns=require(game.ReplicatedStorage.ThrowTickets.ReturnRules)
 local Migration=require(game.ReplicatedStorage.ThrowTickets.CatalogMigration)
 local Schema={}
 function Schema.default(): any
- return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={},ParkingCapacity=Config.ParkingSlots,Discovered={},Returns=Returns.default()}
+ return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={},ParkingCapacity=Config.ParkingSlots,Discovered={},Returns=Returns.default(),Pity={Catches=0,SinceLegendary=0},IndexClaims={}}
 end
 function Schema.copy(value: any): any
  if typeof(value)~="table"then return value end
@@ -48,7 +48,7 @@ function Schema.prepare(raw: any): (any,string?)
  if raw.Schema<7 then
   local converted={};for id,yes in d.Discovered or {} do if yes==true then local mapped=Migration.id(id);if mapped then converted[mapped]=true end end end;d.Discovered=converted
  end
- local discovered={};for _,b in Config.Biomes do for _,c in b.Cars do if raw.Schema>=5 and d.Discovered[c.Id]==true then discovered[c.Id]=true end end end
+ local discovered={};for _,b in Config.AllBiomes do for _,c in b.Cars do if raw.Schema>=5 and d.Discovered[c.Id]==true then discovered[c.Id]=true end end end
  local cars={};local ids={};local slots={};local count=0;local inventory=0
  for k,c in d.Cars do
   count+=1
@@ -67,6 +67,21 @@ function Schema.prepare(raw: any): (any,string?)
  local returns=if raw.Schema<6 then Returns.migrate({Cars=cars,Discovered=discovered})else d.Returns
  if not Returns.validate(returns)then return nil,"Invalid returns"end
  local clean=Returns.default();for k in clean do clean[k]=returns[k]end
- return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered,Returns=clean}
+ -- Migration 7 -> 8: pity counters and Index claims. Existing players are past the first-session guarantees
+ -- (catch count = discovered cars) and already-earned half-collections are marked claimed, without retro cars.
+ local pity,claims
+ if raw.Schema<8 then
+  local n=0;for _ in discovered do n+=1 end
+  pity={Catches=n,SinceLegendary=0};claims={}
+  for i,b in Config.Biomes do local k=0;for _,c in b.Cars do if discovered[c.Id]then k+=1 end end;if k>=Config.Index.FreeCarAt then claims[tostring(i)]=true end end
+ else
+  pity,claims=d.Pity,d.IndexClaims
+  if typeof(pity)~="table"or not Rules.finiteNumber(pity.Catches)or pity.Catches%1~=0 or pity.Catches<0 or pity.Catches>1e9
+   or not Rules.finiteNumber(pity.SinceLegendary)or pity.SinceLegendary%1~=0 or pity.SinceLegendary<0 or pity.SinceLegendary>=Config.Luck.LegendaryPity then return nil,"Invalid pity"end
+  if typeof(claims)~="table"then return nil,"Invalid index claims"end
+  for k,v in claims do if typeof(k)~="string"or v~=true or not Config.AllBiomes[tonumber(k)or 0]then return nil,"Invalid index claims"end end
+  pity={Catches=pity.Catches,SinceLegendary=pity.SinceLegendary};local copy={};for k in claims do copy[k]=true end;claims=copy
+ end
+ return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered,Returns=clean,Pity=pity,IndexClaims=claims}
 end
 return Schema

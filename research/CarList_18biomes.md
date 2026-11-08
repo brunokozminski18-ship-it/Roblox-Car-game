@@ -1,6 +1,6 @@
 # Lista aut: 18 biomów × 8 aut (08.11.2026)
 
-Status: **PLANNED / NOT FINAL**, czeka na akceptację użytkownika. Zastępuje [[research/CarList_draft]] (zostaje jako historia).
+Status: **NOT FINAL**. Wpisana do `CarCatalog.luau` na gałęzi `claude/progression-18` (08.11.2026); wygląd aut i nazwy do oceny. Zastępuje [[research/CarList_draft]] (zostaje jako historia).
 Zasady: wszystkie auta to własne projekty, bez prawdziwych marek, logo i nazw modeli. Styl: low-poly z kupionej paczki ([[playbook/CAR_PACK_STYLE]]).
 Rzadkość w każdym biomie: **3 Common, 2 Rare, 2 Epic, 1 Legendary** (C / R / E / L). Legendary ma być najzabawniejsze, bo to ono trafia na TikToka.
 Kolumna „Stan”: **gra** = już w `CarCatalog.luau` (iteracja 11), **nowe** = do dodania.
@@ -102,11 +102,11 @@ Bez zmian: po 8 aut, jak w [[research/CarList_draft]] i `CarCatalog.luau` (stan:
 | --- | --- | --- |
 | Wind-Up Car | C | blaszane autko z kluczykiem do nakręcania |
 | Building Block Van | C | van z wielkich klocków |
-| Rubber Duck Boat-Car | C | żółta kaczka na kołach |
+| Rubber Duck Car | C | żółta kaczka na kołach |
 | Toy Train Car | R | wagonik kolejki na kołach |
 | Teddy Truck | R | ciężarówka z pluszowym misiem za kierownicą |
 | RC Monster | E | auto zdalnie sterowane z anteną |
-| Jack-in-the-Box Racer | E | pudełko z wyskakującym klaunem-sprężyną |
+| Spring Box Racer | E | pudełko z wyskakującym klaunem-sprężyną |
 | Toy Box Titan | L | ogromna skrzynia z zabawkami na gąsienicach |
 
 ### 15. Haunted Highway (U3)
@@ -130,8 +130,8 @@ Bez zmian: po 8 aut, jak w [[research/CarList_draft]] i `CarCatalog.luau` (stan:
 | Egg Pod | R | auto w kształcie wielkiego jaja |
 | Amber Coupe | R | auto z bursztynu z owadem w środku |
 | Raptor Racer | E | auto z głową i ogonem raptora |
-| Volcano Dino Truck | E | ciężarówka z dinozaurem na pace |
-| T-Rex Rig | L | ogromna ciężarówka w kształcie T-Rexa |
+| Dino Hauler | E | ciężarówka z dinozaurem na pace |
+| Rex Rig | L | ogromna ciężarówka w kształcie króla dinozaurów |
 
 ### 17. Ocean Floor (U4)
 | Auto | R | Wygląd |
@@ -141,7 +141,7 @@ Bez zmian: po 8 aut, jak w [[research/CarList_draft]] i `CarCatalog.luau` (stan:
 | Diver Van | C | van z hełmem nurka |
 | Submarine Sedan | R | sedan-łódź podwodna z peryskopem |
 | Jellyfish Cruiser | R | świecące auto z mackami |
-| Shark Racer | E | auto z płetwą rekina i zębami |
+| Reef Shark Racer | E | auto z płetwą rekina i zębami |
 | Treasure Chest Truck | E | ciężarówka ze skrzynią skarbów |
 | Kraken Car | L | auto oplecione mackami krakena |
 

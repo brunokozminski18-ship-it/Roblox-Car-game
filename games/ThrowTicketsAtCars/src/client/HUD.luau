@@ -52,7 +52,7 @@ function HUD.mount(parent: Instance): any
    stats.Text=string.format('CASH <font color="#B2FFAD">$%s</font>',short(cash));powerLabel.Text="POWER "..short(power);biomeLabel.Text=b.Name:upper()
    local nextIndex,need=Rules.nextBiome(power)
    if nextIndex then
-    local nextBiome=Config.Biomes[nextIndex];fill.Size=UDim2.fromScale(math.clamp((distance-b.MinPower)/(nextBiome.MinPower-b.MinPower),0,1),1)
+    local nextBiome=Config.Biomes[nextIndex];fill.Size=UDim2.fromScale(math.clamp((distance-b.Start)/(nextBiome.Start-b.Start),0,1),1)
     track:SetAttribute("NextBiome",nextBiome.Name);track:SetAttribute("NeedPower",need)
    else fill.Size=UDim2.fromScale(1,1);track:SetAttribute("NextBiome","MAX");track:SetAttribute("NeedPower",0)end
    train.Text=if training then "STOP"else "TRAIN"

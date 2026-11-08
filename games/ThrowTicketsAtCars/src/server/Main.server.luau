@@ -8,6 +8,7 @@ local SS=game:GetService("ServerStorage")
 local Config=require(RS.ThrowTickets.Config)
 local Rules=require(RS.ThrowTickets.Rules)
 local GarageRules=require(RS.ThrowTickets.GarageRules)
+local IndexRewards=require(RS.ThrowTickets.IndexRewards)
 local World=require(script.Parent.World)
 local Schema=require(script.Parent.ProfileSchema)
 local Profiles=require(script.Parent.Profiles)
@@ -126,6 +127,20 @@ end
 local function phase(p: Player,s: any,value: string)
  s.phase=value;p:SetAttribute("ThrowPhase",value);p:SetAttribute("Throwing",value~="Idle")
 end
+-- Car Index half-collection rewards: one free car per biome, granted when the backpack has room (retried later).
+local function grantIndexRewards(p: Player,s: any)
+ if not mutable(s)then return end
+ local granted=nil
+ for _,biome in IndexRewards.due(s.data)do
+  if GarageRules.inventoryCount(s.data)>=Config.InventoryLimit then result(p,"Index reward waiting! Free a backpack slot.");break end
+  local reward=Rules.rollCar(biome,s.data.Equipped,rng)
+  if reward and GarageRules.add(s.data,reward,Http:GenerateGUID(false),false)then
+   IndexRewards.markClaimed(s.data,biome);granted=reward
+   result(p,"INDEX REWARD! Free "..reward.Name.." for collecting 4 "..Config.Biomes[biome].Name.." cars!")
+  end
+ end
+ if granted then profiles:touch(s.profile);publish(p,s);saveSoon(p,s)end
+end
 local function completeCatch(p: Player,s: any,j: any)
  if states[p]~=s or not mutable(s)or s.job~=j then cleanJob(j);return end
  local record=GarageRules.find(s.data,j.id)
@@ -135,6 +150,7 @@ local function completeCatch(p: Player,s: any,j: any)
  p:SetAttribute("LastCapturedId",j.id);p:SetAttribute("LastDeliverySeconds",workspace:GetServerTimeNow()-j.started)
  p:SetAttribute("Delivered",(p:GetAttribute("Delivered")or 0)+1)
  teleport(p,s,true);publish(p,s);Tools.equip(p,s,j.id);saveSoon(p,s);result(p,if j.discovered then "NEW CAR DISCOVERED!" else "Car caught! Hold E at a free parking spot.")
+ grantIndexRewards(p,s)
 end
 local function runCatch(p: Player,s: any,j: any)
  local ok,err=xpcall(function()
@@ -173,7 +189,8 @@ local function performThrow(p: Player,bonus: number)
  local chosen=selection(s);local distance=J.distance(s.data.Power,chosen,bonus);local biome=Rules.biome(distance)
  s.meter=nil;p:SetAttribute("MeterStart",nil);p:SetAttribute("LastThrowBonus",bonus)
  local humanoid=p.Character and p.Character:FindFirstChildOfClass("Humanoid");if humanoid then humanoid:UnequipTools()end
- local reward=Rules.rollCar(biome,s.data.Equipped,rng,if RunService:IsStudio()then s.nextRoll else nil);s.nextRoll=nil
+ local reward=Rules.rollCar(biome,s.data.Equipped,rng,if RunService:IsStudio()then s.nextRoll else nil,s.data.Pity);s.nextRoll=nil
+ Rules.notePity(s.data.Pity,reward.Rarity)
  local discovered=not s.data.Discovered[reward.CatalogId]
  local best=0;for _,owned in s.data.Cars do best=math.max(best,Rules.savedReward(owned).Income)end
  local id=Http:GenerateGUID(false)
@@ -319,6 +336,7 @@ local function joined(p: Player)
  for key,value in {Throws=0,Delivered=0,InventoryCount=0,Income=0,ParkingUsed=0,ParkedCount=0}do p:SetAttribute(key,value)end
  p:SetAttribute("Location","Road");p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);phase(p,s,"Idle")
  publish(p,s);p:SetAttribute("DataReady",true);p:SetAttribute("SaveStatus","Saved")
+ task.delay(3,grantIndexRewards,p,s)
  local function characterAdded(c: Model)
   p:SetAttribute("Training",false);p:SetAttribute("TrainingActive",false);c:WaitForChild("HumanoidRootPart")
   if states[p]==s and c.Parent then

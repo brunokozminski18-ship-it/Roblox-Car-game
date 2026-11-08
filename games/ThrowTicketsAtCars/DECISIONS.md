@@ -24,3 +24,5 @@
 22. 03.11.2026 — użytkownik usunął rozmiary aut BIG/GIANT, bo nie pasują do gry. Istniejące auta zostają, dochód jest przeliczany bez mnożnika rozmiaru, a Gold/Diamond/Neon pozostają.
 23. 05.11.2026 — USER APPROVED kierunek próbki Welcome Back na telefonie dla pozostałych elementów iteracji 10c; całość nadal wersją testową, wygląd NOT FINAL, bez Rebirth/Robux/publikacji.
 24. 05.11.2026 — USER APPROVED wyłącznie robocza lista10 biomów i74 aut z research/CarList_draft.md jako zakres iteracji11; lista i wygląd NOT FINAL, cztery próbki modeli wymagają osobnej akceptacji przed dopracowaniem pozostałych.
+25. 08.11.2026 — użytkownik zlecił pełną progresję 18 biomów po 8 aut (144) z podziałem na premierę (biomy 1–10, 80 aut) i 4 aktualizacje po 2 biomy; projekt research/Progression18.md, lista research/CarList_18biomes.md. Balans NOT FINAL do testu z ludźmi.
+26. 08.11.2026 — USER APPROVED: gwarancja Legendary najpóźniej co 120 złapań, 3. złapanie min. Rare i 10. min. Epic, limit luck 1,0, nagrody Indexu (4/8 = darmowe auto z biomu, 8/8 = +2% dochodu na stałe).
