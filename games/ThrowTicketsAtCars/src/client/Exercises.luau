@@ -99,6 +99,10 @@ end
 function Exercises.windup(player: Player, seconds: number)
 	Exercises.mount()
 	if seconds <= 0 then return end
+	-- Local player: real throw animation when available (it replicates to everyone); procedural swing as fallback.
+	if player == Players.LocalPlayer and require(script.Parent.CharacterAnims).playTimed("Throw", seconds) then return end
+	-- Other players: their own client plays the uploaded clip and it replicates, so do not layer the swing on top.
+	if player ~= Players.LocalPlayer and (require(game:GetService("ReplicatedStorage").ThrowTickets.Config).Animations or {}).Throw ~= "" then return end
 	local pose = ensure(player)
 	pose.windupStart = os.clock()
 	pose.windupEnd = pose.windupStart + seconds

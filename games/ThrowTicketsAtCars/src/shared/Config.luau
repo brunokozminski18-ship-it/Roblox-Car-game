@@ -62,6 +62,8 @@ local Config={
 	MapEnd=6000, RoadWidth=24, GroundWidth=88, MapPadding=18,
 	-- Map v5 (user layout 08.11.2026, NOT FINAL): plaza with 5 plots in a row, throw tunnel straight ahead of plot 3,
 	-- SHOP left and SELL right against the cliff faces, leaderboards on the left cliff.
+	-- Uploaded animation ids (owner publishes from Studio). Empty = Studio-only preview, procedural fallback live.
+	Animations={Throw=""},
 	Layout={Plots=5,PlotSpacing=36,PlotZ=92,PlazaWidth=300,PlazaDepth=125,CliffHeight=40,CliffWidth=210,ShopX=62,StandZ=9},
 	ThrowOrigin=Vector3.new(0,3.25,0), LandingHeight=3.25,
 	TicketFlightSeconds=2, TicketArcHeight=8, TicketArcFactor=0.16, TicketArcMax=200,
