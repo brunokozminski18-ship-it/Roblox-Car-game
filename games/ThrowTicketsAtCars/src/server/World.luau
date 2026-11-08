@@ -3,6 +3,7 @@ local Config = require(game:GetService("ReplicatedStorage").ThrowTickets.Config)
 local CarBuilder=require(game.ReplicatedStorage.ThrowTickets.CarBuilder)
 local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local Props=require(script.Parent.BiomeProps)
+local Decor=require(script.Parent.MapDecor)
 local World = {}
 function World.part(parent: Instance,name: string,size: Vector3,position: Vector3,color: Color3): Part
 	local p=Instance.new("Part")
@@ -40,7 +41,7 @@ local function stand(root: Instance,name: string,text: string,x: number,color: C
  World.part(m,"Roof",Vector3.new(16,1,8),Vector3.new(x,9,L.StandZ),color)
  for _,dx in {-6.5,6.5}do World.part(m,"Post",Vector3.new(1,5,1),Vector3.new(x+dx,6.5,L.StandZ-2.5),Color3.fromRGB(120,86,56))end
  local pad=World.part(m,"Pad",Vector3.new(10,.2,6),Vector3.new(x,.1,L.StandZ+6),color);pad.Transparency=.35;pad.CanCollide=false
- local label=World.label(base,text,8.5);label.MaxDistance=120;label.Size=UDim2.fromOffset(160,48);label.TextLabel.TextSize=26
+ local label=World.label(base,text,12.5);label.MaxDistance=120;label.Size=UDim2.fromOffset(160,48);label.TextLabel.TextSize=26
  local prompt=Instance.new("ProximityPrompt");prompt.Name=name;prompt.ActionText=if name=="OpenShop"then "Open shop"else "Sell cars";prompt.ObjectText=text
  prompt.HoldDuration=0;prompt.MaxActivationDistance=12;prompt.RequiresLineOfSight=false;prompt.KeyboardKeyCode=Enum.KeyCode.E;prompt.Parent=pad
  m.PrimaryPart=base;m.Parent=root
@@ -128,15 +129,13 @@ function World.build(biomeCount: number?): Folder
 	  World.part(cliffs,"Grass",Vector3.new(L.CliffWidth,1,span),Vector3.new(side*(Config.GroundWidth/2+L.CliffWidth/2),L.CliffHeight-.5,-start-span/2),Color3.fromRGB(96,180,72))
 	 end
 	end
-	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(255,150,40));line.Material=Enum.Material.Neon
-	for _,x in {-Config.GroundWidth/2-1,Config.GroundWidth/2+1}do
-	 World.part(root,"LinePost",Vector3.new(2,7,2),Vector3.new(x,3.5,Config.LaunchCenter.Z),Color3.fromRGB(235,235,235))
-	 World.part(root,"LineLamp",Vector3.new(2.6,1.6,2.6),Vector3.new(x,7.8,Config.LaunchCenter.Z),Color3.fromRGB(255,214,90)).Material=Enum.Material.Neon
-	end
+	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(255,110,20));line.Material=Enum.Material.Neon
+	-- Traffic lights at both ends of the line come from MapDecor.
 	stand(root,"OpenShop","SHOP",-L.ShopX,Color3.fromRGB(226,51,140))
 	stand(root,"OpenSell","SELL",L.ShopX,Color3.fromRGB(35,160,80))
 	local spawn=Instance.new("SpawnLocation");spawn.Name="PrototypeSpawn";spawn.Anchored,spawn.Neutral=true,true
 	spawn.Size,spawn.Position=Config.SpawnSize,Config.SpawnPosition;spawn.Transparency,spawn.CanCollide,spawn.Duration=1,false,0;spawn.Parent=root
+	Decor.world(root)
 	root.Parent=workspace
 	return root
 end
@@ -158,7 +157,7 @@ function World.parking(root: Folder,plot: number,ownerId: number,displayName: st
 	local f=Instance.new("Folder");f.Name=tostring(ownerId);f:SetAttribute("OwnerId",ownerId);f.Parent=root.Parking
 	local origin=World.plotOrigin(plot)
 	-- Lot faces north (the tunnel): front row of slots first, training pad outside the open front fence.
-	World.part(f,"ParkingGround",Vector3.new(30,1,40),origin-Vector3.new(0,0.55,0),Color3.fromRGB(130,130,130))
+	World.part(f,"ParkingGround",Vector3.new(30,1,40),origin-Vector3.new(0,0.49,0),Color3.fromRGB(130,130,130))
 	local wood=Color3.fromRGB(176,128,80)
 	World.part(f,"FenceBack",Vector3.new(30,3,.6),origin+Vector3.new(0,1.5,20),wood)
 	for _,x in {-15,15}do World.part(f,"FenceSide",Vector3.new(.6,3,40),origin+Vector3.new(x,1.5,0),wood)end
@@ -177,6 +176,7 @@ function World.parking(root: Folder,plot: number,ownerId: number,displayName: st
 	local icon=Instance.new("Frame");icon.Name="CarIcon";icon.BorderSizePixel=0;icon.Size=UDim2.fromOffset(22,8);icon.Position=UDim2.fromOffset(38,12);icon.BackgroundColor3=Color3.fromHex("B9D5F7");icon.Parent=label
 	local roof=Instance.new("Frame");roof.BorderSizePixel=0;roof.Size=UDim2.fromOffset(12,5);roof.Position=UDim2.fromOffset(4,-4);roof.BackgroundColor3=icon.BackgroundColor3;roof.Parent=icon
 	for _,x in {3,15}do local wheel=Instance.new("Frame");wheel.BorderSizePixel=0;wheel.Size=UDim2.fromOffset(5,5);wheel.Position=UDim2.fromOffset(x,6);wheel.BackgroundColor3=Color3.fromHex("25344B");wheel.Parent=icon end
+	Decor.plot(f,origin)
 	World.capacity(f,Config.ParkingSlots)
 	World.label(f.Slot1,displayName.."'s parking",7).MaxDistance=45
 	return f,positions
