@@ -47,6 +47,7 @@ p:GetAttributeChangedSignal("Throwing"):Connect(function()if p:GetAttribute("Thr
 require(script.Parent.ThrowMeterUI).mount(Throw)
 require(script.Parent.PowerSelector).mount(remotes:WaitForChild("SelectPower")::RemoteEvent,hud.powerSettings)
 Exercises.mount();require(script.Parent.Traffic).mount(world)
+task.spawn(function()require(script.Parent.Onboarding).mount(world,remotes,hud,Audio.play)end)
 trainButton.Activated:Connect(function()Train:FireServer(not p:GetAttribute("TrainingActive"))end)
 local version=0;local messageDeadline=0
 local bannerVersion=0

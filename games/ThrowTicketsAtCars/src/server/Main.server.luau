@@ -23,6 +23,7 @@ local ReturnRules=require(RS.ThrowTickets.ReturnRules)
 local ReturnClock=require(script.Parent.ReturnClock)
 local ReturnService=require(script.Parent.ReturnService)
 local Leaderboards=require(script.Parent.Leaderboards)
+local Onboarding=require(script.Parent.Onboarding)
 local profiles=Profiles.new(game:GetService("DataStoreService"):GetDataStore(Config.Data.StoreName..(if RunService:IsStudio()then "_STUDIO"else "")))
 local world=World.build()
 local old=RS.ThrowTickets:FindFirstChild("Remotes");if old then old:Destroy()end
@@ -34,6 +35,7 @@ local Juice,SelectPower,ContinueCatch,TrainingBoost,GearVisit=remote("Juice"),re
 local JuiceReady=remote("JuiceReady")
 local ReturnClaim,Social=remote("ReturnClaim"),remote("Social")
 local returnService: any
+local tutorial: any
 local boards: any
 local gearService: any
 local garageService: any
@@ -89,6 +91,8 @@ local function publish(p: Player,s: any)
  end end
  s.income=GarageRules.income(s.data);p:SetAttribute("ParkingUsed",parked);p:SetAttribute("ParkedCount",parked)
  profiles:touch(s.profile);Tools.sync(p,s);mirror(p,s);snapshot(p,s)
+ -- Deferred: tutorial isComplete checks (parked a car, bought an exercise) read the state published here.
+ if tutorial then task.defer(function()if states[p]==s then tutorial:Refresh(p)end end)end
 end
 local function save(p: Player,s: any,release: boolean): string
  local status=profiles:save(s.profile,release)
@@ -150,7 +154,7 @@ local function completeCatch(p: Player,s: any,j: any)
  cleanJob(j);s.job=nil;phase(p,s,"Idle")
  p:SetAttribute("LastCapturedId",j.id);p:SetAttribute("LastDeliverySeconds",workspace:GetServerTimeNow()-j.started)
  p:SetAttribute("Delivered",(p:GetAttribute("Delivered")or 0)+1)
- teleport(p,s,true);publish(p,s);Tools.equip(p,s,j.id);saveSoon(p,s);result(p,if j.discovered then "NEW CAR DISCOVERED!" else "Car caught! Hold E at a free parking spot.")
+ teleport(p,s,true);publish(p,s);Tools.equip(p,s,j.id);saveSoon(p,s);if tutorial then tutorial:Signal(p,"Caught")end;result(p,if j.discovered then "NEW CAR DISCOVERED!" else "Car caught! Hold E at a free parking spot.")
  grantIndexRewards(p,s)
 end
 local function runCatch(p: Player,s: any,j: any)
@@ -221,6 +225,7 @@ local function performThrow(p: Player,bonus: number)
  j.metadata.CatalogId=reward.CatalogId;j.metadata.Variant=reward.Variant;j.metadata.SuperLucky=reward.Rarity==4 or reward.Variant~="Normal"
  Juice:FireClient(p,"ThrowResult",{Perfect=j.metadata.Perfect,BonusPower=j.metadata.BonusPower})
  Ticket:FireAllClients(Config.ThrowOrigin,landing,car,p.UserId,reward.Income,j.metadata)
+ if tutorial then tutorial:Signal(p,"Thrown")end
  task.spawn(runCatch,p,s,j)
 end
 Train.OnServerEvent:Connect(function(p: Player,...: any)
@@ -305,6 +310,7 @@ end)
 gearService=GearService.new({Juice=Juice,result=result,rootOf=rootOf,mutable=mutable})
 returnService=ReturnService.new({profiles=profiles,save=save,publish=publish,result=result,mutable=mutable,social=Social})
 boards=Leaderboards.new(world,states)
+tutorial=Onboarding.new({states=states,mutable=mutable,mirror=mirror,saveSoon=saveSoon,result=result,touch=function(s: any)profiles:touch(s.profile)end,celebrate=function(_p: Player)end})
 ReturnClaim.OnServerEvent:Connect(function(p: Player,...: any)
  if select("#",...)~=1 then return end
  local s=states[p];if s then returnService.claim(p,s,...)end
@@ -373,11 +379,13 @@ task.spawn(function()
    if training then
     local now=workspace:GetServerTimeNow();local boosted=now<(s.boostUntil or 0)
     if s.boostOffer and now>s.boostOffer.ExpiresAt then s.boostOffer=nil end
-    if not boosted and not s.boostOffer and now>=(s.nextBoostOffer or 0)then
+    -- No 2x pop-up while the first-60-seconds tutorial runs (LihFolk: no pop-ups during onboarding).
+    if not boosted and not s.boostOffer and now>=(s.nextBoostOffer or 0)and(tutorial==nil or tutorial:IsDone(p))then
      s.boostOffer={Id=Http:GenerateGUID(false),ExpiresAt=now+Config.Progression.OfferLifetime};s.nextBoostOffer=now+Config.Progression.OfferEvery;Juice:FireClient(p,"BoostOffer",s.boostOffer)
     end
     local amount=Rules.trainingRate(s.data.Power,s.data.Exercise)*Config.Progression.XPPerLevel*Config.TickSeconds*(if boosted then 2 else 1)
     local levels,gain=Progression.addXP(s.data,amount)
+    if levels>0 and tutorial then tutorial:Signal(p,"LevelUp",levels)end
     Juice:FireClient(p,"XP",{Amount=amount,Levels=levels,Gain=gain,Level=s.data.TrainingLevel,XP=s.data.TrainingXP,Needed=Config.Progression.XPPerLevel,Power=s.data.Power,Boosted=boosted})
    end
    returnService.tick(p,s,played)
@@ -425,6 +433,7 @@ if RunService:IsStudio()then
   elseif command=="AdvanceTime"and Rules.finiteNumber(value)and math.abs(value)<=86400*500 then
    SS:SetAttribute("ReturnQAOffset",(SS:GetAttribute("ReturnQAOffset")or 0)+value);returnService.update(p,s);return ReturnClock.now()
   elseif command=="Tutorial"and typeof(value)=="boolean"then s.data.Returns.Tutorial=value;publish(p,s);return true
+  elseif command=="Onboarding"then return if value=="reset"then (tutorial:Reset(p) or true)elseif value=="skip"then tutorial:Skip(p)else {Done=tutorial:IsDone(p),Active=tutorial:GetActive(p),Slice=Schema.copy(s.data.Tutorial)}
   elseif command=="PlaySeconds"and Rules.finiteNumber(value)and value>=0 then s.data.Returns.PlaySeconds=math.floor(value);s.data.Returns.LastLike=0;return true
   elseif command=="Claim"then returnService.claim(p,s,value);return Schema.copy(s.data.Returns)
   elseif command=="Boards"then return boards.qa(value)

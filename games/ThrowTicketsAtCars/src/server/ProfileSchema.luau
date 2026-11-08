@@ -4,9 +4,10 @@ local Rules=require(game.ReplicatedStorage.ThrowTickets.Rules)
 local Progression=require(game.ReplicatedStorage.ThrowTickets.Progression)
 local Returns=require(game.ReplicatedStorage.ThrowTickets.ReturnRules)
 local Migration=require(game.ReplicatedStorage.ThrowTickets.CatalogMigration)
+local Onboarding=require(script.Parent.Onboarding)
 local Schema={}
 function Schema.default(): any
- return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={},ParkingCapacity=Config.ParkingSlots,Discovered={},Returns=Returns.default(),Pity={Catches=0,SinceLegendary=0},IndexClaims={}}
+ return {Cash=0,Power=Config.StartPower,TrainingLevel=1,TrainingXP=0,Owned={paper=true},Equipped="paper",Exercise=1,Cars={},ParkingCapacity=Config.ParkingSlots,Discovered={},Returns=Returns.default(),Pity={Catches=0,SinceLegendary=0},IndexClaims={},Tutorial=Onboarding.default()}
 end
 function Schema.copy(value: any): any
  if typeof(value)~="table"then return value end
@@ -82,6 +83,10 @@ function Schema.prepare(raw: any): (any,string?)
   for k,v in claims do if typeof(k)~="string"or v~=true or not Config.AllBiomes[tonumber(k)or 0]then return nil,"Invalid index claims"end end
   pity={Catches=pity.Catches,SinceLegendary=pity.SinceLegendary};local copy={};for k in claims do copy[k]=true end;claims=copy
  end
- return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered,Returns=clean,Pity=pity,IndexClaims=claims}
+ -- Migration 8 -> 9: first-60-seconds tutorial slice. Players who already saved a profile are past onboarding.
+ local tutorial
+ if raw.Schema<9 then tutorial=Onboarding.finishedSlice()
+ else tutorial=Onboarding.clean(d.Tutorial);if not tutorial then return nil,"Invalid tutorial"end end
+ return {Cash=d.Cash,Power=d.Power,TrainingLevel=d.TrainingLevel,TrainingXP=d.TrainingXP,Owned=owned,Equipped=d.Equipped,Exercise=d.Exercise,Cars=cars,ParkingCapacity=capacity,Discovered=discovered,Returns=clean,Pity=pity,IndexClaims=claims,Tutorial=tutorial}
 end
 return Schema
