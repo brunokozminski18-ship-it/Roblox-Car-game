@@ -45,6 +45,7 @@ function Decor.world(root: Instance)
  local f=Instance.new("Folder");f.Name="Decor";f.Parent=root
  local rng=Random.new(20261108)
  lighting()
+ task.spawn(Decor.tunnel,root) -- cosmetic, builds in the background (one biome per frame)
  -- Plaza checker grass (tiles sit on the plaza collider, no collision of their own).
  -- lihfolk-ignore: findfirstchild-chain (optional type, checked on the next line)
  local plaza=root:FindFirstChild("Plaza")::BasePart?
@@ -56,8 +57,7 @@ function Decor.world(root: Instance)
   -- Sandy walk from the spawn to the throw line.
   block(f,"Walk",Vector3.new(14,.05,34),CFrame.new(0,-.01,21),Color3.fromRGB(232,206,150)).CastShadow=false
  end
- -- Cliffs: dirt blocks on the plaza faces and the first stretch of the tunnel walls, grass lip on top.
- local mouth=160 -- studs of tunnel wall dressed in the sample
+ -- Cliffs: dirt blocks on the plaza faces; tunnel walls are themed per biome in Decor.tunnel.
  local cliffs=root:FindFirstChild("Cliffs")
  if cliffs then for _,c in cliffs:GetChildren()do if c.Name=="Cliff"then (c::BasePart).Color=DIRT_A elseif c.Name=="Grass"then (c::BasePart).Color=LIP end end end
  local cell=8;local rows=math.floor(L.CliffHeight/cell)
@@ -67,18 +67,6 @@ function Decor.world(root: Instance)
   for i=0,math.floor((L.PlazaWidth/2-Config.GroundWidth/2)/cell)-1 do for r=0,rows-1 do if (i+r)%2==0 then
    block(f,"Dirt",Vector3.new(cell,cell,.3),CFrame.new(inner+side*(cell/2+i*cell),cell/2+r*cell-1,.12),DIRT_B).CastShadow=false
   end end end
-  -- Tunnel inner wall near the mouth.
-  for i=0,math.floor(mouth/cell)-1 do for r=0,rows-1 do if (i+r)%2==1 then
-   block(f,"Dirt",Vector3.new(.3,cell,cell),CFrame.new(inner-side*.12,cell/2+r*cell-1,-cell/2-i*cell),DIRT_B).CastShadow=false
-  end end end
-  -- Overhanging grass lip along the tunnel rim and the plaza face.
-  block(f,"Lip",Vector3.new(3,2,mouth),CFrame.new(inner-side*.5,L.CliffHeight-.5,-mouth/2),LIP)
-  block(f,"Lip",Vector3.new(L.PlazaWidth/2-Config.GroundWidth/2+2,2,3),CFrame.new(side*(Config.GroundWidth/2+(L.PlazaWidth/2-Config.GroundWidth/2)/2),L.CliffHeight-.5,.5),LIP)
-  -- Trees on the cliff tops, clustered near the rim so they read from the plaza and the throw line.
-  for k=0,6 do
-   local z=-8-k*rng:NextNumber(18,24);local x=inner+side*rng:NextNumber(8,26)
-   tree(f,Vector3.new(x,L.CliffHeight,z),rng)
-  end
   for k=0,3 do tree(f,Vector3.new(side*(Config.GroundWidth/2+18+k*rng:NextNumber(20,26)),L.CliffHeight,-rng:NextNumber(10,22)),rng)end
   trafficLight(f,Vector3.new(inner+side*2.5,0,Config.LaunchCenter.Z+2))
  end
@@ -114,6 +102,74 @@ function Decor.world(root: Instance)
     block(stand,"Valance",Vector3.new(2,1.6,.4),roof.CFrame*CFrame.new(-7+i*2,-2.3,5),color)
    end
   end
+ end
+end
+
+-- Tunnel walls themed per biome (approved style 08.11.2026). Each theme: wall colours, lip colour, rim dressing.
+local function rgb(r: number,g: number,b: number): Color3 return Color3.fromRGB(r,g,b)end
+local THEMES: {[string]: any}={
+ ["Junkyard"]={a=rgb(128,88,58),b=rgb(110,74,48),lip=LIP,rim="tree"},
+ ["Suburbs"]={a=rgb(132,92,60),b=rgb(114,78,50),lip=rgb(110,200,80),rim="tree"},
+ ["Downtown"]={a=rgb(120,126,140),b=rgb(98,104,118),lip=rgb(140,146,158),rim="tower"},
+ ["Farm Roads"]={a=rgb(140,98,62),b=rgb(122,84,52),lip=rgb(150,200,70),rim="hay"},
+ ["Desert Highway"]={a=rgb(222,170,104),b=rgb(204,150,88),lip=rgb(240,206,140),rim="cactus"},
+ ["Snowy Pass"]={a=rgb(128,138,156),b=rgb(110,120,138),lip=rgb(245,250,255),rim="pine"},
+ ["Sports Track"]={a=rgb(214,64,64),b=rgb(240,240,240),lip=rgb(150,150,160),rim="flag"},
+ ["Millionaire Hills"]={a=rgb(128,96,66),b=rgb(110,82,56),lip=rgb(84,190,96),rim="hedge"},
+ ["Hypercar Island"]={a=rgb(232,200,140),b=rgb(214,182,122),lip=rgb(250,230,170),rim="palm"},
+ ["Future City"]={a=rgb(40,48,82),b=rgb(30,36,64),lip=rgb(60,230,255),rim="neon"},
+}
+local function rimProp(parent: Instance,kind: string,pos: Vector3,rng: Random)
+ if kind=="tree"or kind=="hedge"and rng:NextNumber()<.5 then tree(parent,pos,rng)
+ elseif kind=="hedge"then block(parent,"Hedge",Vector3.new(10,4,5),CFrame.new(pos+Vector3.new(0,2,0)),rgb(60,150,70))
+ elseif kind=="tower"then local h=rng:NextNumber(14,34);local b=block(parent,"Tower",Vector3.new(14,h,14),CFrame.new(pos+Vector3.new(0,h/2,0)),if rng:NextNumber()<.5 then rgb(150,160,178)else rgb(120,132,150))
+  for y=4,h-4,6 do block(parent,"Windows",Vector3.new(14.2,2,10),b.CFrame*CFrame.new(0,-h/2+y,0),rgb(255,230,140))end
+ elseif kind=="hay"then block(parent,"Hay",Vector3.new(5,4,5),CFrame.new(pos+Vector3.new(0,2,0))*CFrame.Angles(0,rng:NextNumber(0,1),0),rgb(236,200,90));if rng:NextNumber()<.5 then tree(parent,pos+Vector3.new(8,0,0),rng)end
+ elseif kind=="cactus"then local h=rng:NextNumber(6,10);local c=rgb(70,160,80)
+  block(parent,"Cactus",Vector3.new(2.4,h,2.4),CFrame.new(pos+Vector3.new(0,h/2,0)),c);block(parent,"Arm",Vector3.new(4,1.6,1.6),CFrame.new(pos+Vector3.new(1.6,h*.55,0)),c);block(parent,"Arm",Vector3.new(1.6,3,1.6),CFrame.new(pos+Vector3.new(3,h*.55+1.5,0)),c)
+ elseif kind=="pine"then local h=rng:NextNumber(3,5)
+  block(parent,"Trunk",Vector3.new(1.6,h,1.6),CFrame.new(pos+Vector3.new(0,h/2,0)),rgb(110,76,50))
+  for i,w in {8,6,4}do block(parent,"Needles",Vector3.new(w,3,w),CFrame.new(pos+Vector3.new(0,h+1.5+(i-1)*2.6,0)),rgb(50,120,80))end
+  block(parent,"Snow",Vector3.new(4.4,1,4.4),CFrame.new(pos+Vector3.new(0,h+7.4,0)),rgb(250,252,255))
+ elseif kind=="flag"then block(parent,"Pole",Vector3.new(.6,12,.6),CFrame.new(pos+Vector3.new(0,6,0)),rgb(230,230,230))
+  local flag=block(parent,"Flag",Vector3.new(.2,3,5),CFrame.new(pos+Vector3.new(0,10.5,2.6)),if rng:NextNumber()<.5 then rgb(30,30,30)else rgb(240,240,240))
+  flag.CastShadow=false
+ elseif kind=="palm"then local h=rng:NextNumber(9,13)
+  for i=0,3 do block(parent,"Trunk",Vector3.new(1.8,h/4,1.8),CFrame.new(pos+Vector3.new(i*.4,h/8+i*h/4,0)),rgb(150,110,70))end
+  for k=0,3 do block(parent,"Frond",Vector3.new(8,.6,2.4),CFrame.new(pos+Vector3.new(1.6,h,0))*CFrame.Angles(0,k*math.pi/4,math.rad(-14)),rgb(70,170,70))end
+ elseif kind=="neon"then local h=rng:NextNumber(10,18)
+  block(parent,"Pylon",Vector3.new(3,h,3),CFrame.new(pos+Vector3.new(0,h/2,0)),rgb(28,32,56))
+  local ring=block(parent,"Glow",Vector3.new(3.4,1,3.4),CFrame.new(pos+Vector3.new(0,h-1,0)),rgb(60,230,255));ring.Material=Enum.Material.Neon;ring.CastShadow=false
+ end
+end
+function Decor.tunnel(root: Instance)
+ local L=Config.Layout
+ local f=Instance.new("Folder");f.Name="TunnelDecor";f.Parent=root
+ local rng=Random.new(1108)
+ local cell=10;local rows=math.floor(L.CliffHeight/cell)
+ for _,b in Config.Biomes do
+  local theme=THEMES[b.Name]or THEMES["Junkyard"]
+  local start,finish=b.Start,math.min(b.Finish,Config.MapEnd)
+  local node=Instance.new("Folder");node.Name=b.Name;node.Parent=f
+  for side=-1,1,2 do
+   local inner=side*Config.GroundWidth/2
+   -- Wall: base colour slab over the cliff, then alternating cells (offset by side so walls do not mirror).
+   block(node,"Wall",Vector3.new(.2,L.CliffHeight,finish-start),CFrame.new(inner-side*.06,L.CliffHeight/2-1,-(start+finish)/2),theme.a).CastShadow=false
+   local first=math.floor(start/cell)
+   for i=first,math.ceil(finish/cell)-1 do for r=0,rows-1 do if (i+r+(if side>0 then 1 else 0))%2==0 then
+    local z0=math.max(i*cell,start);local z1=math.min((i+1)*cell,finish)
+    if z1>z0 then block(node,"Cell",Vector3.new(.3,cell,z1-z0),CFrame.new(inner-side*.12,cell/2+r*cell-1,-(z0+z1)/2),theme.b).CastShadow=false end
+   end end end
+   block(node,"Lip",Vector3.new(3,2,finish-start),CFrame.new(inner-side*.5,L.CliffHeight-.5,-(start+finish)/2),theme.lip)
+   block(node,"Top",Vector3.new(L.CliffWidth,.2,finish-start),CFrame.new(side*(Config.GroundWidth/2+L.CliffWidth/2),L.CliffHeight+.1,-(start+finish)/2),theme.lip).CastShadow=false
+   -- Rim dressing: one prop roughly every 30 studs, near the edge so it reads from the road.
+   local z=start+rng:NextNumber(6,20)
+   while z<finish-6 do
+    rimProp(node,theme.rim,Vector3.new(inner+side*rng:NextNumber(7,24),L.CliffHeight+.2,-z),rng)
+    z+=rng:NextNumber(24,38)
+   end
+  end
+  task.wait()
  end
 end
 -- Plot dressing: wooden posts on the fence, blue front rails, a grass border.

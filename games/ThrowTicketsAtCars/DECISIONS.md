@@ -27,3 +27,4 @@
 25. 08.11.2026 — użytkownik zlecił pełną progresję 18 biomów po 8 aut (144) z podziałem na premierę (biomy 1–10, 80 aut) i 4 aktualizacje po 2 biomy; projekt research/Progression18.md, lista research/CarList_18biomes.md. Balans NOT FINAL do testu z ludźmi.
 26. 08.11.2026 — USER APPROVED: gwarancja Legendary najpóźniej co 120 złapań, 3. złapanie min. Rare i 10. min. Epic, limit luck 1,0, nagrody Indexu (4/8 = darmowe auto z biomu, 8/8 = +2% dochodu na stałe).
 27. 08.11.2026 — USER APPROVED układ mapy v5 (szare klocki): 5 działek w rzędzie na placu, tunel rzutu ze skarpami na wprost działki 3, pomarańczowa linia rzutu na całą szerokość, SHOP po lewej i SELL po prawej przy skarpach, 3 tablice na lewej skarpie, 5 graczy na serwer. Grafika NOT FINAL.
+28. 08.11.2026 — USER APPROVED styl mapy: klockowy, kratkowana trawa, skarpy z ziemi w kratkę z trawą i drzewami, sygnalizatory przy linii rzutu, budki z daszkami w paski (próbka e34e066). Reszta mapy w tym stylu.

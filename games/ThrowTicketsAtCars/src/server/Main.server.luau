@@ -25,7 +25,6 @@ local ReturnService=require(script.Parent.ReturnService)
 local Leaderboards=require(script.Parent.Leaderboards)
 local Onboarding=require(script.Parent.Onboarding)
 local profiles=Profiles.new(game:GetService("DataStoreService"):GetDataStore(Config.Data.StoreName..(if RunService:IsStudio()then "_STUDIO"else "")))
-local world=World.build()
 local old=RS.ThrowTickets:FindFirstChild("Remotes");if old then old:Destroy()end
 local remotes=Instance.new("Folder");remotes.Name,remotes.Parent="Remotes",RS.ThrowTickets
 local function remote(name: string): RemoteEvent local r=Instance.new("RemoteEvent");r.Name,r.Parent=name,remotes;return r end
@@ -34,6 +33,8 @@ local ConfirmSale=remote("ConfirmSale")
 local Juice,SelectPower,ContinueCatch,TrainingBoost,GearVisit=remote("Juice"),remote("SelectPower"),remote("ContinueCatch"),remote("TrainingBoost"),remote("GearVisit")
 local JuiceReady=remote("JuiceReady")
 local ReturnClaim,Social=remote("ReturnClaim"),remote("Social")
+-- Remotes exist before the (slower) dressed map build so clients never wait on them.
+local world=World.build()
 local returnService: any
 local tutorial: any
 local boards: any
