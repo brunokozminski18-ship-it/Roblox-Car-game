@@ -1,0 +1,43 @@
+{
+  "name": "A1v2_giant",
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {
+      "$properties": {
+        "Gravity": 110,
+        "FallenPartsDestroyHeight": -100
+      },
+      "PlayNotice": {
+        "$path": "PlayNotice.model.json"
+      }
+    },
+    "ServerScriptService": {
+      "Prototype": {
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Prototype": {
+          "$path": "src/client"
+        }
+      }
+    },
+    "StarterGui": {
+      "$properties": {
+        "ScreenOrientation": "LandscapeSensor"
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "ClockTime": 14,
+        "Brightness": 2,
+        "Ambient": [
+          0.55,
+          0.55,
+          0.55
+        ]
+      }
+    }
+  }
+}

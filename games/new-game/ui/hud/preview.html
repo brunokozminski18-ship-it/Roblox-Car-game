@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HUD preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito+Sans:wght@600;700&display=swap">
+<style>
+  body { margin: 0; background: #1b1830; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 16px; font-family: "Nunito Sans", sans-serif; color: #D6D0F5; }
+  #stage { position: relative; transform-origin: top left; }
+  .n { position: absolute; box-sizing: border-box; }
+  .t { display: flex; align-items: center; white-space: nowrap; line-height: 1; paint-order: stroke fill; }
+  label { font-size: 14px; }
+</style>
+</head>
+<body>
+<label><input type="checkbox" id="g" checked> safe-area guides</label>
+<div id="wrap"><div id="stage"></div></div>
+<script src="spec.js"></script>
+<script>
+// Builder Sans is Roblox-only; Nunito Sans stands in for the preview.
+const FONT = { display: '"Fredoka One"', bodyBold: '"Nunito Sans"', caption: '"Nunito Sans"' };
+const WEIGHT = { display: 400, bodyBold: 700, caption: 600 };
+function grad(stops) { return "linear-gradient(180deg," + stops.map(([p, c]) => c + " " + p * 100 + "%").join(",") + ")"; }
+function hexA(h, a) { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
+function render(n, parent) {
+  const el = document.createElement("div");
+  el.className = "n"; el.dataset.name = n.name;
+  Object.assign(el.style, { left: n.x + "px", top: n.y + "px", width: n.w + "px", height: n.h + "px" });
+  if (n.type === "box") {
+    if (n.grad) el.style.background = grad(n.grad);
+    else if (n.fill) el.style.background = n.fillOpacity != null ? hexA(n.fill, n.fillOpacity) : n.fill;
+    if (n.radius) el.style.borderRadius = n.radius + "px";
+    if (n.stroke) el.style.border = `${n.stroke[1]}px ${n.dash ? "dashed" : "solid"} ${n.stroke[0]}`;
+    if (n.opacity != null) el.style.opacity = n.opacity;
+    if (n.clip) el.style.overflow = "hidden";
+    (n.children || []).forEach((c) => render(c, el));
+  } else if (n.type === "text") {
+    el.classList.add("t");
+    el.textContent = n.str;
+    Object.assign(el.style, { fontFamily: FONT[n.font], fontWeight: WEIGHT[n.font], fontSize: n.size + "px", color: n.color,
+      justifyContent: n.align === "center" ? "center" : "flex-start" });
+    if (n.stroke) el.style.webkitTextStroke = n.stroke * 2 + "px #160F2B";
+  } else if (n.type === "svg") {
+    el.innerHTML = n.markup.replace('width="64" height="64"', `width="${n.w}" height="${n.h}"`);
+  }
+  parent.appendChild(el);
+  return el;
+}
+const stage = document.getElementById("stage");
+const root = render(buildSpec(), stage);
+root.style.left = "0"; root.style.top = "0";
+const scale = Math.min(2, (innerWidth - 32) / 667);
+stage.style.transform = `scale(${scale})`;
+document.getElementById("wrap").style.cssText = `width:${667 * scale}px;height:${375 * scale}px`;
+document.getElementById("g").onchange = (e) => {
+  stage.querySelector('[data-name="skip_safe_area"]').style.display = e.target.checked ? "" : "none";
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Prototypy A1–A3
+- Prowadzi: Codex, oprawa i wskazówki na zlecenie użytkownika 31.10.2026.
+- Cel: pokazać pomysł A1/A2/A3 przez kolory, postacie i prowadzenie krok po kroku.
+- Zakres: wyłącznie prototypes/, proste części, Rojo; bez Studio, internetu, publikacji i commitów.
+- Status nowych zmian: IMPLEMENTED / NEEDS VERIFICATION; trzy buildy Rojo PASS, XML, tablice przed Play i spakowane źródła sprawdzone offline; nie jest to test rozgrywki.
+- Wcześniej Claude: VERIFIED 31.10.2026 w Studio (Play, PC, 1 gracz, sterowanie skryptem): A1 podnieś/donieś/ryk/schowek/objazd, A2 chwyt/rzut/trafienie w kosz, A3 działka/panele/test; bez błędów w Output. Nowa oprawa, telefon, multiplayer i zabawa: NEEDS VERIFICATION.
+- Poprawki 31.10: A1 — bliski klocek blokował skrót (przesunięty); ściana ryku goniła od tyłu i nigdy nie łapała — teraz idzie od schronu, a w korytarzu skrótu jest boczny schowek.
+- Słabe punkty (projekt, nie błędy): A2 — ścianka „HIT TO KNOCK DOWN” nic nie zmienia; A3 — po postawieniu obu prostych paneli każdy test przechodzi, wygięty panel niepotrzebny.
+- Dodano: stworki A1 i fala dźwiękowa, melon/skrzynia A2, figurka/panele A3; kolory stref, krótkie etykiety, Beam, kroki, reakcje i licznik.
+- Zachowano: kierunek ryku A1 od schronu, schowek, pozycje przeszkód, reguły punktów, lot, round/busy i walidację wejść.
+- Dodatki serwerowe wyłącznie prezentacyjne: GuideText/GuideTarget, Count, Feedback/FeedbackId/Positive, Carrying; bez nowych remote.
+- Następny krok: Studio → telefon poziomo 568×320 i 667×375 → po 5 minut; ocenić czytelność prowadzenia, widoczność detali i czy oprawa nie myli zasięgu kolizji.

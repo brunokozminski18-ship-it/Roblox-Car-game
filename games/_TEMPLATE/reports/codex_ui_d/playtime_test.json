@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"claimed\":true,\"duplicate\":{\"ok\":false,\"data\":{\"elapsed\":76.28200040000957,\"claimed\":{\"Minute1\":true},\"reset\":\"session\"},\"code\":\"AlreadyClaimed\"},\"status\":{\"ok\":true,\"data\":{\"elapsed\":76.23207310005091,\"claimed\":{\"Minute1\":true},\"reset\":\"session\"},\"code\":\"Ok\"},\"invalid\":{\"ok\":false,\"code\":\"Invalid\"},\"early\":{\"ok\":false,\"data\":{\"elapsed\":76.33222680003382,\"claimed\":{\"Minute1\":true},\"reset\":\"session\"},\"code\":\"NotEligible\"},\"cash\":50}"
+    }
+  ],
+  "isError": false
+}

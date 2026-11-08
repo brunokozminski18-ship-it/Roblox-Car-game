@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UI style D variants</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Lilita+One&display=swap">
+<style>
+/* Mockups of one shop window + bottom Power bar, three treatments of reference set D
+   (references/ui/D1-D3). Style only: layout, names and texts are ours. */
+:root{
+ --ink:#121018;
+ --title:"Lilita One","Arial Black",sans-serif;
+ --body:"Fredoka","Arial Rounded MT Bold",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#1d1f2a;font-family:var(--body);color:#fff;padding:24px;display:flex;flex-direction:column;gap:28px;align-items:center}
+h2{font-family:var(--title);font-weight:400;margin:0 0 8px;font-size:30px;letter-spacing:.5px}
+.wrap{width:960px}
+.screen{position:relative;width:960px;height:540px;border-radius:12px;overflow:hidden;
+ background:linear-gradient(180deg,#7fc4ff 0%,#a9dcff 38%,#6fcf6a 38%,#4fae4c 100%)}
+.screen::after{content:"";position:absolute;inset:0;backdrop-filter:blur(3px);background:rgba(20,20,40,.25)}
+.screen > *{z-index:1}
+.prop{position:absolute;z-index:0 !important;border:3px solid rgba(0,0,0,.35)}
+/* outlined text used everywhere */
+.o{color:#fff;text-shadow:
+ -2px -2px 0 var(--ink),2px -2px 0 var(--ink),-2px 2px 0 var(--ink),2px 2px 0 var(--ink),
+ 0 3px 0 var(--ink),0 4px 0 rgba(0,0,0,.35)}
+.o3{text-shadow:-3px -3px 0 var(--ink),3px -3px 0 var(--ink),-3px 3px 0 var(--ink),3px 3px 0 var(--ink),0 4px 0 var(--ink),0 6px 0 rgba(0,0,0,.35)}
+/* stud texture */
+.studs{background-image:radial-gradient(circle at 50% 45%,rgba(255,255,255,.28) 0 3px,rgba(0,0,0,.12) 3.5px 4.5px,transparent 5px);background-size:14px 14px}
+.shine{position:relative;overflow:hidden}
+.shine::before{content:"";position:absolute;left:0;right:0;top:0;height:45%;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0));border-radius:inherit;pointer-events:none}
+
+.win{position:absolute;left:120px;top:22px;width:720px;height:410px;border:4px solid var(--ink);border-radius:14px;background:#2b2f45;display:flex;flex-direction:column;overflow:hidden}
+.head{flex-shrink:0;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px;border-bottom:4px solid var(--ink)}
+.head .t{font-family:var(--title);font-size:36px}
+.x{width:46px;height:46px;border:4px solid var(--ink);border-radius:10px;background:#ff3b46;display:grid;place-items:center;font-family:var(--title);font-size:30px}
+.body{flex:1;display:flex;gap:10px;padding:10px}
+.tabs{width:120px;display:flex;flex-direction:column;gap:8px}
+.tab{height:52px;border:3px solid var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:16px;background:#3a3f5c}
+.tab.on{background:#ff4d4d}
+.tab i{font-style:normal;font-size:22px}
+.main{flex:1;display:flex;flex-direction:column;gap:10px}
+.hero{height:108px;flex-shrink:0;border:4px solid var(--ink);border-radius:12px;display:flex;align-items:center;gap:14px;padding:0 14px;position:relative}
+.ico{width:86px;height:86px;border-radius:16px;display:grid;place-items:center;font-size:54px}
+.hero .name{font-family:var(--title);font-size:32px}
+.hero .lines{font-weight:700;font-size:16px;line-height:1.35}
+.price{margin-left:auto;min-width:110px;height:54px;border:4px solid var(--ink);border-radius:10px;display:grid;place-items:center;font-family:var(--title);font-size:28px}
+.ribbon{position:absolute;top:-8px;right:12px;padding:3px 12px;border:3px solid var(--ink);border-radius:8px;font-family:var(--title);font-size:16px;transform:rotate(4deg);background:#ff3b46}
+.label{font-family:var(--title);font-size:20px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1}
+.card{border:4px solid var(--ink);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:10px 8px 8px;position:relative}
+.card .ci{font-size:46px;line-height:1}
+.card .cn{font-family:var(--title);font-size:22px}
+.card .cd{font-size:13px;font-weight:700;opacity:.95}
+.card .buy{width:100%;height:36px;border:3px solid var(--ink);border-radius:9px;display:grid;place-items:center;font-family:var(--title);font-size:20px}
+.tag{position:absolute;top:-8px;left:8px;padding:2px 9px;border:3px solid var(--ink);border-radius:7px;font-size:12px;font-weight:700;background:#222}
+/* HUD */
+.hud{position:absolute;left:0;right:0;bottom:12px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.chips{display:flex;gap:8px}
+.chip{padding:3px 12px;border:3px solid var(--ink);border-radius:20px;font-weight:700;font-size:15px;background:rgba(20,20,40,.7)}
+.bar{width:440px;height:38px;border:4px solid var(--ink);border-radius:12px;background:#1b2238;position:relative;overflow:hidden}
+.fill{position:absolute;left:0;top:0;bottom:0;width:62%}
+.bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-family:var(--title);font-size:22px}
+.side{position:absolute;left:14px;top:120px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.side .b{display:flex;flex-direction:column;align-items:center;font-family:var(--title);font-size:16px}
+.side .b i{font-style:normal;font-size:42px;line-height:1}
+.robux{display:inline-block;width:18px;height:18px;border:3px solid currentColor;border-radius:5px;transform:rotate(45deg) scale(.8);margin-right:6px;vertical-align:-2px}
+
+/* ---------- Variant D: A + C, see-through window ----------
+   LihFolk Vault V2 (UI Style Directions, Accessibility): Roblox cannot blur
+   behind a Frame, so the window body is only slightly see-through (about
+   0.15-0.2 transparency, no blur in this mockup either) and every card,
+   button and text sits on an opaque surface. In game the panel transparency
+   is multiplied by GuiService.PreferredTransparency. */
+.D .win{background:rgba(34,28,70,.80);border-color:var(--ink)}
+.D .head{background:linear-gradient(180deg,#ffd84d,#ff9a1f)}
+.D .tab{background:rgba(60,52,110,.85)}
+.D .tab.on{background:linear-gradient(180deg,#ff6b6b,#e2263a)}
+.D .hero{background-color:#2fcf5a;background-image:linear-gradient(180deg,rgba(255,255,255,.18),rgba(0,0,0,.12)),radial-gradient(circle at 50% 45%,rgba(255,255,255,.22) 0 3px,rgba(0,0,0,.1) 3.5px 4.5px,transparent 5px);background-size:auto,14px 14px;box-shadow:0 0 16px rgba(92,240,138,.35)}
+.D .price{background:linear-gradient(180deg,#ffe36b,#ffae1f)}
+.D .c1,.D .c2,.D .c3{background-size:auto,14px 14px}
+.D .c1{background-image:linear-gradient(180deg,#5cd7ff,#1f7bff),radial-gradient(circle,transparent 0)}
+.D .c2{background-image:linear-gradient(180deg,#ffe36b,#ff9a1f)}
+.D .c3{background-image:linear-gradient(180deg,#d07bff,#7a2cff)}
+.D .card::after{content:"";position:absolute;inset:0;border-radius:8px;pointer-events:none;background-image:radial-gradient(circle at 50% 45%,rgba(255,255,255,.2) 0 3px,rgba(0,0,0,.1) 3.5px 4.5px,transparent 5px);background-size:14px 14px}
+.D .card > *{position:relative;z-index:1}
+.D .buy{background:linear-gradient(180deg,#6ef08f,#18a849)}
+.D .head,.D .tab.on,.D .buy,.D .price{position:relative}
+.D .head::after,.D .buy::after,.D .price::after,.D .tab.on::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background-image:radial-gradient(circle at 50% 45%,rgba(255,255,255,.25) 0 3px,rgba(0,0,0,.1) 3.5px 4.5px,transparent 5px);background-size:14px 14px}
+.D .bar{background:rgba(27,34,56,.80)}
+.D .fill{background:linear-gradient(90deg,#2f9bff,#9b5cff)}
+.D .chip{background:rgba(34,28,70,.80)}
+
+/* ---------- Variant A: studs (closest to the references) ---------- */
+.A .head{background-color:#ffb627}
+.A .hero{background-color:#3fd15a}
+.A .price{background-color:#ffc93c}
+.A .c1{background-color:#3fd15a}.A .c2{background-color:#ffb627}.A .c3{background-color:#b56cff}
+.A .buy{background-color:#2fbf4a}
+.A .fill{background-color:#2f9bff}
+.A .tab{background-color:#363b57}.A .tab.on{background-color:#ff4d4d}
+.A .price,.A .buy,.A .fill,.A .tab{background-image:radial-gradient(circle at 50% 45%,rgba(255,255,255,.28) 0 3px,rgba(0,0,0,.12) 3.5px 4.5px,transparent 5px);background-size:14px 14px}
+
+/* ---------- Variant B: flat cartoon, no texture, more air ---------- */
+.B .win{background:#f2f4fb;border-radius:20px}
+.B .head{background:#7b5cff;border-bottom:none}
+.B .body{background:#f2f4fb}
+.B .tab{background:#dfe3f2;color:#2a2f45;border-radius:14px}
+.B .tab.on{background:#ff5c7a;color:#fff}
+.B .hero{background:#5ad67d;border-radius:18px}
+.B .price{background:#ffd23f;border-radius:14px}
+.B .label{color:#2a2f45;text-shadow:none}
+.B .card{border-radius:18px}
+.B .c1{background:#5ad67d}.B .c2{background:#5cb8ff}.B .c3{background:#b07cff}
+.B .buy{background:#fff;color:#2a2f45;text-shadow:none;border-radius:12px}
+.B .fill{background:#7b5cff}
+
+/* ---------- Variant C: glossy gradients and glow ---------- */
+.C .win{background:linear-gradient(180deg,#24204a,#15132c)}
+.C .head{background:linear-gradient(180deg,#ff7ad9,#c43bff)}
+.C .tab{background:linear-gradient(180deg,#3d3870,#2a2552)}
+.C .tab.on{background:linear-gradient(180deg,#ffd84d,#ff9a1f)}
+.C .hero{background:linear-gradient(180deg,#5cf08a,#16a34a);box-shadow:0 0 18px rgba(92,240,138,.45)}
+.C .price{background:linear-gradient(180deg,#ffe36b,#ffae1f)}
+.C .c1{background:linear-gradient(180deg,#5cd7ff,#1f7bff)}.C .c2{background:linear-gradient(180deg,#ffe36b,#ff9a1f)}.C .c3{background:linear-gradient(180deg,#d07bff,#7a2cff)}
+.C .buy{background:linear-gradient(180deg,#6ef08f,#18a849)}
+.C .fill{background:linear-gradient(90deg,#ff7ad9,#ffd84d)}
+.note{max-width:960px;color:#c9cbe0;font-size:15px;line-height:1.45}
+</style>
+</head>
+<body>
+
+<script>
+// One template, three treatments: the content is identical so only the style differs.
+const content = `
+ <div class="prop" style="left:250px;top:120px;width:120px;height:200px;background:#e5533d"></div>
+ <div class="prop" style="left:520px;top:90px;width:90px;height:260px;background:#f4c542"></div>
+ <div class="prop" style="left:700px;top:160px;width:160px;height:140px;background:#3d8be5"></div>
+ <div class="side">
+  <div class="b o"><i>🔄</i>Rebirth</div>
+  <div class="b o"><i>🛒</i>Shop</div>
+  <div class="b o"><i>🎁</i>FREE!</div>
+ </div>
+ <div class="win">
+  <div class="head HEADCLS"><div class="t o3">Shop</div><div class="x o">X</div></div>
+  <div class="body">
+   <div class="tabs">
+    <div class="tab on o"><i>🔥</i>Hot</div>
+    <div class="tab o"><i>👑</i>Passes</div>
+    <div class="tab o"><i>⚡</i>Boosts</div>
+    <div class="tab o"><i>🧤</i>Gear</div>
+   </div>
+   <div class="main">
+    <div class="hero HEROCLS">
+     <div class="ribbon o">ONE TIME!</div>
+     <div class="ico">🎁</div>
+     <div><div class="name o3">Starter Pack</div>
+      <div class="lines o">+500 Power &nbsp; +100 Cash<br>x2 Power for 30 min</div></div>
+     <div class="price o3"><span class="robux"></span>49</div>
+    </div>
+    <div class="label o">Top picks</div>
+    <div class="cards">
+     <div class="card c1 CARDCLS"><div class="tag o">FOREVER</div><div class="ci">⚡</div><div class="cn o">x2 Power</div><div class="cd o">Every step counts twice</div><div class="buy g o"><span><span class="robux"></span>99</span></div></div>
+     <div class="card c2 CARDCLS"><div class="tag o">15 MIN</div><div class="ci">📣</div><div class="cn o">Server Boost</div><div class="cd o">x2 Power for everyone</div><div class="buy g o"><span><span class="robux"></span>149</span></div></div>
+     <div class="card c3 CARDCLS"><div class="tag o">FOREVER</div><div class="ci">👑</div><div class="cn o">VIP</div><div class="cd o">+25% Power and Cash</div><div class="buy g o"><span><span class="robux"></span>249</span></div></div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="hud">
+  <div class="chips"><div class="chip o">🧤 Gloves x2</div><div class="chip o">🔄 Rebirth x1.5</div></div>
+  <div class="bar"><div class="fill"></div><span class="o"><b>Level 50</b><b>930 / 1,500</b></span></div>
+ </div>`;
+const variants = [
+ ['D','D · Pomiędzy A i C, prześwitujący (NOWY)','shine','',''],
+ ['A','A · Klocki (najbliżej wzoru)','studs','studs','studs'],
+ ['B','B · Płaski kreskówkowy (więcej powietrza)','','',''],
+ ['C','C · Błyszczący (gradienty i poświata)','shine','shine','shine'],
+];
+for (const [k,title,h,he,c] of variants){
+ const w=document.createElement('div'); w.className='wrap';
+ w.innerHTML=`<h2>${title}</h2><div class="screen ${k}">${content.replace('HEADCLS',h).replace('HEROCLS',he).replaceAll('CARDCLS',c)}</div>`;
+ document.body.appendChild(w);
+}
+const n=document.createElement('p'); n.className='note';
+n.textContent='Makiety jednego okna (sklep) i dolnego paska poziomu. Ikony to zaślepki (emoji) — w grze będą rendery toon z Blendera. Treść ta sama we wszystkich wariantach, różni się tylko styl. Ceny Robux przykładowe.';
+document.body.appendChild(n);
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "GameTemplate",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "LihFolkUI": {
+        "$path": "src/shared/LihFolkUI"
+      },
+      "UIStyle": {
+        "$path": "src/shared/UIStyle"
+      },
+      "LihFolk": {
+        "$path": "src/shared/LihFolk"
+      },
+      "GameConfig": {
+        "$path": "src/shared/GameConfig.luau"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "UI": {
+          "$path": "src/client"
+        }
+      }
+    },
+    "ServerScriptService": {
+      "Server": {
+        "$path": "src/server"
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 633.02002\",\"window\":\"Shop\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 633.02002\",\"window\":\"Inventory\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 633.02002\",\"window\":\"Index\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 633.02002\",\"window\":\"Tasks\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 459.450012\",\"window\":\"Daily\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 469.660004\",\"window\":\"Rebirth\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"small\":[],\"size\":\"980.160034, 633.02002\",\"window\":\"Settings\",\"visible\":true,\"openCount\":1}"
+      }
+    ],
+    "isError": false
+  }
+]

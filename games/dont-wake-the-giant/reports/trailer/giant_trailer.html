@@ -1,0 +1,344 @@
+<title>Don't Wake the Giant</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800&display=swap">
+<style>
+/* Layout: one cinema screen (16:9 canvas) with transport controls and a chapter rail beneath. Single dark look on purpose. */
+:root{
+ --night:#14161f; --panel:#1e2230; --line:#343a4f; --text:#eef0f6; --muted:#a3a9bd;
+ --crumb:#f4b942; --danger:#ff4d5e; --safe:#4fd68b;
+ --display:"Lilita One","Arial Black",system-ui,sans-serif;
+ --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+ color-scheme:dark;
+}
+html,body{background:var(--night);color:var(--text)}
+body{font-family:var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 32px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px);letter-spacing:.5px;margin:0;color:var(--crumb);text-wrap:balance}
+header p{margin:0;color:var(--muted);font-size:15px}
+.screen{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;background:#000;border:2px solid var(--line)}
+canvas{display:block;width:100%;height:100%}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+button{font-family:var(--body);font-weight:800;font-size:14px;color:var(--text);background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+button:hover{border-color:var(--crumb)}
+button:focus-visible{outline:3px solid var(--crumb);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--crumb);color:#231a05;border-color:var(--crumb)}
+.time{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px;min-width:84px}
+input[type=range]{flex:1 1 220px;min-width:0;accent-color:var(--crumb)}
+.chapters{display:flex;flex-wrap:wrap;gap:8px}
+.chapters button{font-size:13px;padding:6px 10px;font-weight:600}
+.chapters button.on{border-color:var(--crumb);color:var(--crumb)}
+.note{color:var(--muted);font-size:14px;max-width:70ch;margin:0}
+</style>
+
+<div class="wrap">
+ <header>
+  <h1>Don't Wake the Giant</h1>
+  <p>Zwiastun koncepcji i przykładowy gameplay. Animacja pokazuje pomysł, a nie nagranie z gry.</p>
+ </header>
+ <div class="screen"><canvas id="c" width="1280" height="720" aria-label="Animated concept trailer"></canvas></div>
+ <div class="controls">
+  <button id="play" type="button">Pauza</button>
+  <button id="restart" type="button">Od początku</button>
+  <button id="subs" type="button" aria-pressed="true">Napisy PL</button>
+  <span class="time" id="time">0:00 / 0:56</span>
+  <input id="seek" type="range" min="0" max="56" step="0.1" value="0" aria-label="Przewiń">
+ </div>
+ <div class="chapters" id="chapters"></div>
+ <p class="note">Wygląd docelowy: kolorowe, kanciaste modele w stylu Robloxa, a nie szare klocki z prototypu. Liczby, ceny i nazwy są robocze.</p>
+</div>
+
+<script>
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+const W=1280,H=720,DUR=56;
+const CH=[[0,'Tytuł'],[5,'Świat'],[10,'Pierwszy ratunek'],[18,'Papuga i kryjówka'],[32,'Skradanie'],[39,'Wpadka'],[45,'Postęp'],[51,'Koniec']];
+let t=0,playing=true,subs=true,last=performance.now();
+
+// ---------- helpers ----------
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,u)=>a+(b-a)*u;
+const ease=u=>u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+const seg=(t,a,b)=>clamp((t-a)/(b-a),0,1);
+function path(t,a,b,pts){ // move along waypoints between times a..b, constant speed
+ const u=seg(t,a,b); let L=0,ls=[];
+ for(let i=1;i<pts.length;i++){const d=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);ls.push(d);L+=d}
+ let target=u*L;
+ for(let i=0;i<ls.length;i++){ if(target<=ls[i]||i===ls.length-1){const v=ls[i]?clamp(target/ls[i],0,1):1;return [lerp(pts[i][0],pts[i+1][0],v),lerp(pts[i][1],pts[i+1][1],v),u>0&&u<1]} target-=ls[i]}
+ return [pts[0][0],pts[0][1],false];
+}
+const HOME={mouse:[6,-14],duck:[-31,-58],parrot:[0,-86]};
+const COL={mouse:'#b9bcc8',duck:'#ffd23f',parrot:'#3fcf6b'};
+
+// ---------- scene script: returns everything to draw at time t ----------
+function frame(t){
+ const S={cam:{x:0,z:-40,k:5.2},hud:false,player:null,carry:null,noise:0,eyes:0,wave:null,shake:0,red:0,pops:[],banner:null,big:null,
+  sub:'',crumbs:0,shelf:0,sneak:false,instr:'',moving:false,hidden:false,cre:{mouse:HOME.mouse,duck:HOME.duck,parrot:HOME.parrot},hi:null,montage:0,end:0,zzz:1};
+ if(t<5){ // title
+  const u=ease(seg(t,0,5)); S.cam={x:0,z:lerp(-78,-74,u),k:13};
+  S.big={l1:"DON'T WAKE",l2:'THE GIANT',a:clamp(t*1.5+.25,0,1),s:1+0.04*Math.sin(t*2)};
+  S.sub='Zwiastun koncepcji: tak mogłaby wyglądać gra „Don\'t Wake the Giant”.';
+ } else if(t<10){ // world
+  const u=ease(seg(t,5,10)); S.cam={x:lerp(0,-4,u),z:lerp(-74,-40,u),k:lerp(13,9.5,u)};
+  S.big={l1:'Tiny creatures are trapped',l2:"in a sleeping giant's kitchen",a:clamp((t-5.4)*2,0,1)*clamp((10-t)*2,0,1),s:.55};
+  S.hi=['mouse','duck','parrot'];
+  S.sub='Małe zwierzaki utknęły w kuchni śpiącego olbrzyma. Twoje zadanie: wynieść je do gniazda (mysiej dziury).';
+ } else if(t<18){ // first rescue
+  S.hud=true;
+  let p,m;
+  if(t<12.6){[p,m]=[path(t,10,12.6,[[0,8],[5,-10]]),true];S.instr='Grab the mouse'}
+  else{[p,m]=[path(t,12.8,15.6,[[5,-10],[1,6]]),t<15.6];S.instr='Bring it to the nest'}
+  S.player=p; S.moving=p[2];
+  if(t>=12.6&&t<15.6){S.carry='mouse';S.noise=clamp((t-12.6)*6,0,16)}
+  else if(t>=15.6){S.noise=clamp(16-(t-15.6)*10,0,16);S.crumbs=1;S.shelf=1;S.cre.mouse=null;S.instr='Next: the duckling'}
+  if(t>=15.6&&t<17.4)S.pops.push({x:1,z:6,y:7,txt:'+1 CRUMBS',c:'#f4b942',a:seg(t,15.6,17.4)});
+  if(t>=12.4&&t<13.2)S.pops.push({x:5,z:-12,y:5,txt:'GRAB',c:'#fff',a:seg(t,12.4,13.2)});
+  S.cam={x:p[0]*.5,z:p[1]-10,k:15};
+  S.sub='Mysz jest cicha i blisko, więc pierwszy ratunek trwa kilka sekund. Nagroda: okruszki (Crumbs). Zwierzak ląduje na półce w gnieździe.';
+ } else if(t<32){ // parrot + hide
+  S.hud=true; S.crumbs=1; S.shelf=1; S.cre.mouse=null;
+  let p;
+  if(t<21.4){p=path(t,18,21.4,[[1,6],[0,-82]]);S.instr='The parrot pays most... if you dare';S.noise=clamp((t-18)*2,0,6)}
+  else if(t<24.6){p=path(t,21.6,24.6,[[0,-82],[0,-52]]);S.carry='parrot';S.cre.parrot=null;S.instr='Bring it home! It squawks';
+   S.noise=clamp((t-21.6)*22+(t>22.3?18:0)+(t>23.5?18:0),0,100);
+   if(t>22.3&&t<23.1)S.pops.push({x:p[0],z:p[1],y:10,txt:'SQUAWK!',c:'#3fcf6b',a:seg(t,22.3,23.1)});
+   if(t>23.5&&t<24.3)S.pops.push({x:p[0],z:p[1],y:10,txt:'SQUAWK!',c:'#3fcf6b',a:seg(t,23.5,24.3)});}
+  else if(t<28){p=path(t,24.7,25.4,[[0,-52],[0,-45]]);S.carry='parrot';S.cre.parrot=null;
+   S.eyes=t<26.9?1:clamp(1-(t-26.9)*2,0,1);S.noise=t<26.9?100:clamp(100-(t-26.9)*40,40,100);
+   S.red=t<26.6?.6+.3*Math.sin(t*20):0; S.hidden=t>25.3;
+   if(t<26.6){S.banner={txt:'HIDE!',c:'#ff4d5e'};S.instr='The giant is waking! Get to a HIDE spot!'}
+   if(t>=26.0&&t<26.7)S.wave=lerp(-95,15,seg(t,26,26.7));
+   if(t>=26.7){S.banner={txt:"Phew! It didn't see you",c:'#4fd68b'};S.instr='Bring it home!'}
+   S.shake=t>26&&t<26.7?6:0;}
+  else{p=path(t,28,30.6,[[0,-45],[1,6]]);S.carry=t<30.6?'parrot':null;S.cre.parrot=null;S.noise=clamp(40+(t-28)*12,0,70);S.instr='Bring it home!';
+   if(t>=30.6){S.noise=clamp(70-(t-30.6)*30,0,70);S.crumbs=9;S.shelf=2;S.pops.push({x:1,z:6,y:7,txt:'+8 CRUMBS',c:'#f4b942',a:seg(t,30.6,32)})}}
+  S.player=p; S.moving=p[2];
+  S.cam={x:0,z:p[1]-12,k:14};
+  S.sub=t<24.6?'Papuga daje najwięcej, ale skrzeczy. Bieg po kafelkach też hałasuje. Pasek hałasu (na dole) rośnie…'
+   : t<28?'Pasek pełny: olbrzym otwiera oczy. Masz 1,5 s, żeby wbiec do kryjówki (pod stół). Ryk przechodzi nad tobą.'
+   :'Hałas opada, papuga bezpiecznie w gnieździe: +8 okruszków.';
+ } else if(t<39){ // sneak with duck
+  S.hud=true; S.crumbs=9; S.shelf=2; S.cre.mouse=null; S.sneak=t>33.2;
+  let p;
+  if(t<33){p=path(t,32,33,[[-31,-50],[-31,-55]]);S.instr='Grab the duckling'}
+  else{p=path(t,33.4,39,[[-31,-55],[-31,-8]]);S.carry='duck';S.cre.duck=null;S.instr='SNEAK on the carpet';
+   const q=(t>34.6?14:0)+(t>36.8?14:0); S.noise=clamp(q-(t>34.6?(t-34.6)*6:0),0,30);
+   for(const s of [34.6,36.8]) if(t>s&&t<s+.8)S.pops.push({x:p[0],z:p[1],y:9,txt:'QUACK!',c:'#ffd23f',a:seg(t,s,s+.8)})}
+  S.player=p; S.moving=p[2];
+  S.cam={x:-24,z:p[1]-10,k:15};
+  S.sub='SNEAK (przycisk po prawej) + cichy dywan = prawie bez hałasu, ale wolniej. Kaczątko i tak kwacze co kilka sekund.';
+ } else if(t<45){ // fail
+  S.hud=true; S.crumbs=9; S.shelf=2; S.cre.mouse=null; S.carry=t<43.2?'duck':null; S.cre.duck=t<43.2?null:HOME.duck;
+  let p;
+  if(t<43.2){p=path(t,39,43.2,[[4,-62],[7,-31],[5,-14]]);S.instr='Run for it!';
+   S.noise=clamp((t-39)*26+(t>40.6?30:0),0,100);
+   if(t>40.6&&t<41.4)S.pops.push({x:8,z:-30,y:6,txt:'CLANG!',c:'#d7dde8',a:seg(t,40.6,41.4)});
+   if(t>41.6){S.eyes=1;S.red=.6+.3*Math.sin(t*20);S.banner={txt:'HIDE!',c:'#ff4d5e'};S.instr='Too far from a hide spot...'}
+   if(t>42.9)S.wave=lerp(-95,15,seg(t,42.9,43.5));}
+  else{p=[0,10,false];S.eyes=clamp(1-(t-43.2)*1.5,0,1);S.banner={txt:'THE GIANT HEARD YOU!',c:'#ff4d5e'};S.noise=0;S.instr='Your saved creatures are safe';
+   S.shake=t<43.7?10:0;}
+  S.player=p; S.moving=p[2];
+  S.cam={x:0,z:clamp(p[1],-60,0)-12,k:14};
+  S.sub=t<43.2?'Tym razem garnek: CLANG! Hałas skacze, a do kryjówki za daleko…':'Złapany: tracisz tylko niesionego zwierzaka i wracasz do gniazda. Uratowane zostają.';
+ } else if(t<51){ // progression montage
+  S.montage=seg(t,45,46); S.crumbs=lerp(9,124,seg(t,45,49))|0; S.shelf=12; S.cre={mouse:null,duck:null,parrot:null};
+  S.cam={x:0,z:2,k:lerp(14,22,ease(seg(t,45,47)))};
+  S.sub='Postęp: kolekcja gatunków (??? to nieodkryte), ciche skarpety, większy kosz i nowe pokoje: salon, sypialnia. Głośniejszy zwierzak = rzadszy i cenniejszy.';
+ } else { // end card
+  S.end=seg(t,51,52); S.eyes=clamp((t-53.5)*1.2,0,1); S.cam={x:0,z:-78,k:13}; S.zzz=t<53.5?1:0;
+  S.sub='Koncepcja, nie gotowa gra. Wygląd, liczby i nazwy do ustalenia. Następny krok: zagrać w prototyp v2.';
+ }
+ return S;
+}
+
+// ---------- world drawing (cabinet projection: x right, z depth, y up) ----------
+let C={x:0,z:-40,k:5};
+const sx=x=>W/2+(x-C.x)*C.k;
+const sy=(z,y)=>H*.64+(z-C.z)*C.k*.55-y*C.k*.82;
+function shade(hex,f){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;
+ const m=v=>clamp(Math.round(f<1?v*f:v+(255-v)*(f-1)),0,255);return `rgb(${m(r)},${m(g)},${m(b)})`}
+function box(x,y,z,w,h,d,col,o={}){
+ const l=sx(x-w/2),r=sx(x+w/2),tb=sy(z-d/2,y+h),tf=sy(z+d/2,y+h),fb=sy(z+d/2,y);
+ ctx.globalAlpha=o.a??1;
+ ctx.fillStyle=shade(col,1.12);ctx.fillRect(l,tb,r-l,tf-tb);
+ ctx.fillStyle=col;ctx.fillRect(l,tf,r-l,fb-tf);
+ ctx.strokeStyle='rgba(10,10,20,.55)';ctx.lineWidth=Math.max(1,C.k*.18);ctx.strokeRect(l,tb,r-l,fb-tb);
+ ctx.globalAlpha=1;
+ return {l,r,top:tf,bot:fb};
+}
+function face(f,u0,v0,u1,v1,col){ctx.fillStyle=col;ctx.fillRect(lerp(f.l,f.r,u0),lerp(f.top,f.bot,v0),(f.r-f.l)*(u1-u0),(f.bot-f.top)*(v1-v0))}
+function text(s,x,y,size,col,stroke=true,font='Lilita One'){
+ ctx.font=`${size}px "${font}","Arial Black",sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+ if(stroke){ctx.lineWidth=size*.18;ctx.strokeStyle='#14161f';ctx.lineJoin='round';ctx.strokeText(s,x,y)}
+ ctx.fillStyle=col;ctx.fillText(s,x,y);
+}
+
+function creature(kind,x,y,z,bob){
+ const s=kind==='parrot'?3:2.6, yy=y+bob;
+ const f=box(x,yy,z,s,s,s,COL[kind]);
+ face(f,.18,.25,.38,.5,'#1b1b28');face(f,.62,.25,.82,.5,'#1b1b28');
+ if(kind==='mouse'){box(x-1,yy+s,z,.8,.8,.4,'#f2a7b8');box(x+1,yy+s,z,.8,.8,.4,'#f2a7b8')}
+ if(kind==='duck')face(f,.36,.56,.64,.74,'#ff8c2a');
+ if(kind==='parrot'){face(f,.36,.55,.64,.8,'#ffb02e');box(x,yy+s,z,1.2,.9,1,'#e8453c')}
+}
+function avatar(x,z,t,moving,sneak){
+ const sw=moving?Math.sin(t*(sneak?9:16))*.5:0, dy=sneak?-.5:0;
+ box(x-.55,0,z+sw*.6,1,2+dy,1,'#2f6fd6');box(x+.55,0,z-sw*.6,1,2+dy,1,'#2f6fd6');
+ box(x,2+dy,z,2.2,2.2,1.1,'#3cc070');
+ box(x-1.55,2.2+dy,z-sw*.4,.9,2,1,'#ffd34d');box(x+1.55,2.2+dy,z+sw*.4,.9,2,1,'#ffd34d');
+ const hd=box(x,4.2+dy,z,1.6,1.6,1.4,'#ffd34d');
+ face(hd,.25,.35,.38,.55,'#1b1b28');face(hd,.62,.35,.75,.55,'#1b1b28');face(hd,.3,.68,.7,.76,'#1b1b28');
+}
+
+function drawWorld(S,t){
+ // floor + walls
+ box(0,-1,-45,100,1,122,'#b98455');
+ ctx.fillStyle='#e9d2a6';ctx.fillRect(sx(-50),sy(-106,32),sx(50)-sx(-50),sy(-106,0)-sy(-106,32));
+ for(let i=0;i<7;i++)for(let j=0;j<25;j++){
+  const x=-12+i*4,z=-2-j*4,l=sx(x-2),r=sx(x+2),a=sy(z-2,0),b=sy(z+2,0);
+  ctx.fillStyle=(i+j)%2?'#a6d3ef':'#f4f4ec';ctx.fillRect(l,a,r-l,b-a);
+ }
+ ctx.fillStyle='#c23b4c';ctx.fillRect(sx(-40),sy(-100,0),sx(-22)-sx(-40),sy(0,0)-sy(-100,0));
+ ctx.fillStyle='#a32f3e';for(let z=-96;z<0;z+=8)ctx.fillRect(sx(-39),sy(z,0),sx(-23)-sx(-39),Math.max(1,C.k*.3));
+ // hide spots
+ for(const h of [[0,-45,20,16],[-46,-68,8,12],[35,-33,10,10]]){
+  ctx.fillStyle=`rgba(79,214,139,${.35+.15*Math.sin(t*4)})`;ctx.fillRect(sx(h[0]-h[2]/2),sy(h[1]-h[3]/2,0),C.k*h[2],sy(h[1]+h[3]/2,0)-sy(h[1]-h[3]/2,0));
+ }
+ const items=[];
+ const add=(z,fn)=>items.push([z,fn]);
+ // giant (back), sorted along with everything else by front edge
+ add(-94,()=>giant(S,t));
+ add(-36,()=>{ // table
+  for(const o of [[-11,-8],[11,-8],[-11,8],[11,8]])box(o[0],0,-45+o[1],2,10,2,'#6e4a2c');
+  box(0,10,-45,26,2,20,'#8a5d37');
+  if(S.hidden&&S.player)text('HIDDEN',sx(S.player[0]),sy(-45,9),C.k*3,'#4fd68b');
+ });
+ add(-61,()=>{box(-49,0,-68,2,14,14,'#8e6440');box(-46,14,-68,8,1,14,'#9b6e47');box(-46,0,-61.5,8,14,1,'#9b6e47');});
+ add(-27.5,()=>{box(29.5,0,-33,1,6,11,'#c9a46a');box(40.5,0,-33,1,6,11,'#c9a46a');box(35,0,-38.5,12,6,1,'#c9a46a');});
+ for(const p of [[-6,-22],[8,-30],[-5,-66],[7,-74],[26,-62]])add(p[1]+1.5,()=>{box(p[0],0,p[1],3,3,3,'#9aa3b2');box(p[0],3,p[1],3.6,.4,3.6,'#7b8494')});
+ // nest + shelf
+ add(14,()=>{box(0,0,8,18,.6,12,'#7fcf6b');box(0,0,14.5,10,8,.4,'#2a1d16');
+  for(let i=0;i<S.shelf;i++){const k=['mouse','parrot','duck','mouse','duck','parrot'][i%6];const f=box(-8.2+i*1.5,.6,12.2,1.2,1.2,1.2,COL[k]);face(f,.2,.3,.4,.5,'#1b1b28');face(f,.6,.3,.8,.5,'#1b1b28')}
+  text('NEST',sx(0),sy(8,4),C.k*2.4,'#ffffff');});
+ // creatures at home
+ for(const k of ['mouse','duck','parrot']){const h=S.cre[k];if(!h)continue;
+  add(h[1]+1.3,()=>{creature(k,h[0],0,h[1],Math.abs(Math.sin(t*3+h[0]))*.6);
+   if(S.hi&&S.hi.includes(k))text(k.toUpperCase(),sx(h[0]),sy(h[1],6.5),C.k*2.2,COL[k]);});}
+ // player
+ if(S.player){const p=S.player;add(p[1]+.6,()=>{avatar(p[0],p[1],t,S.moving,S.sneak);if(S.carry)creature(S.carry,p[0],5.6,p[1],Math.sin(t*10)*.2)});}
+ items.sort((a,b)=>a[0]-b[0]);for(const it of items)it[1]();
+ // roar wave
+ if(S.wave!==null){const z=S.wave;ctx.fillStyle='rgba(255,60,90,.42)';ctx.fillRect(sx(-50),sy(z,16),sx(50)-sx(-50),sy(z,0)-sy(z,16));
+  text('ROAR!',sx(0),sy(z,18),C.k*5,'#ff4d5e');}
+ for(const p of S.pops){text(p.txt,sx(p.x),sy(p.z,p.y)-p.a*30,C.k*2.6,p.c);}
+}
+function giant(S,t){
+ const br=Math.sin(t*1.6)*.6*(1-S.eyes), sh=S.eyes>.5?Math.sin(t*40)*.4:0;
+ box(14,0,-91,8,9,20,'#f0c49a');box(-14,0,-91,8,9,20,'#f0c49a');
+ box(0,0,-99,38,30+br,10,'#5b7fc7');
+ const hd=box(sh,30+br,-97,22,18,16,'#f0c49a');
+ box(sh,46+br,-97,24,4,17,'#5d3b24');
+ face(hd,.42,.5,.58,.68,'#d99d78'); // nose
+ const o=S.eyes;
+ for(const u of [.18,.6]){
+  if(o<.05){face(hd,u,.32,u+.22,.37,'#3a2418')}
+  else{face(hd,u,.32-.12*o,u+.22,.32+.12*o,'#ffffff');face(hd,u+.07,.32-.07*o,u+.15,.32+.07*o,'#e0283b')}
+ }
+ face(hd,.38,.78,.62,o>.5?.9:.82,'#7a3a2c');
+ if(S.zzz&&o<.1){for(let i=0;i<3;i++){const u=((t*.5+i/3)%1);text('Z',sx(10+u*10),sy(-97,52+u*16),C.k*(2+u*2.5),`rgba(220,230,255,${1-u})`,false)}}
+ if(o>.5)text("WHO'S THERE?!",sx(0),sy(-97,58),C.k*3.4,'#ff4d5e');
+}
+
+// ---------- HUD (phone-style overlay) ----------
+function rrect(x,y,w,h,r,fill){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill()}
+function hud(S,t){
+ if(S.instr){ctx.font='26px "Nunito",sans-serif';rrect(W/2-330,16,660,52,10,'rgba(20,24,34,.88)');text(S.instr,W/2,42,26,'#ffffff',false,'Nunito')}
+ rrect(W/2-250,H-70,200,46,10,'rgba(20,24,34,.88)');text('CRUMBS '+S.crumbs,W/2-150,H-47,24,'#f4b942',false);
+ rrect(W/2+10,H-70,240,46,10,'rgba(20,24,34,.88)');
+ const n=S.noise/100,col=n<.5?'#4fd68b':n<.8?'#f4c13c':'#ff4d5e';
+ if(n>0)rrect(W/2+14,H-66,232*n,38,8,col);
+ text(S.sneak?'NOISE (sneaking)':'NOISE',W/2+130,H-47,22,'#ffffff',true,'Nunito');
+ // joystick + buttons
+ ctx.globalAlpha=.75;ctx.beginPath();ctx.arc(120,H-120,62,0,7);ctx.fillStyle='rgba(255,255,255,.18)';ctx.fill();
+ ctx.beginPath();ctx.arc(120+(S.moving?Math.sin(t*2)*14:0),H-120-(S.moving?22:0),28,0,7);ctx.fillStyle='rgba(255,255,255,.55)';ctx.fill();
+ ctx.beginPath();ctx.arc(W-110,H-110,46,0,7);ctx.fillStyle='rgba(255,255,255,.25)';ctx.fill();ctx.globalAlpha=1;
+ text('↑',W-110,H-112,38,'#ffffff',false,'Nunito');
+ ctx.beginPath();ctx.arc(W-230,H-80,44,0,7);ctx.fillStyle=S.sneak?'#f4b942':'#4677dc';ctx.fill();text(S.sneak?'WALK':'SNEAK',W-230,H-80,20,'#ffffff',false);
+ ctx.beginPath();ctx.arc(W-130,H-215,44,0,7);ctx.fillStyle='#c85a3c';ctx.fill();text('DROP',W-130,H-215,20,'#ffffff',false);
+ if(S.red>0){const g=ctx.createRadialGradient(W/2,H/2,H*.35,W/2,H/2,H*.85);g.addColorStop(0,'rgba(255,40,60,0)');g.addColorStop(1,`rgba(255,40,60,${S.red})`);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+ if(S.banner){ctx.font='44px "Lilita One"';const w=ctx.measureText(S.banner.txt).width+60;rrect(W/2-w/2,H*.3-36,w,72,14,S.banner.c);text(S.banner.txt,W/2,H*.3,44,'#ffffff',true)}
+}
+
+function montage(S,t){
+ const a=S.montage;ctx.globalAlpha=a;
+ rrect(40,110,360,470,16,'rgba(20,24,34,.92)');text('COLLECTION',220,150,34,'#f4b942');
+ const names=['Mouse','Duckling','Parrot','???','???','???','???','???','???'];
+ const cols=['#b9bcc8','#ffd23f','#3fcf6b'];
+ names.forEach((n,i)=>{const x=70+(i%3)*110,y=190+Math.floor(i/3)*120;rrect(x,y,96,104,10,i<3?'#2c3347':'#222634');
+  if(i<3){rrect(x+28,y+18,40,40,6,cols[i])}else{rrect(x+28,y+18,40,40,6,'#0d0f16')}
+  text(n,x+48,y+82,18,i<3?'#ffffff':'#7d8399',false,'Nunito')});
+ text('3 / 9',220,555,24,'#ffffff',false);
+ rrect(W-420,110,380,470,16,'rgba(20,24,34,.92)');text('SHOP & ROOMS',W-230,150,34,'#f4b942');
+ const rows=[['Quiet Socks','-30% step noise','25'],['Bigger Basket','carry 2 (louder!)','60'],['Living Room','new creatures','150'],['Bedroom','giant sleeps here','LOCKED']];
+ rows.forEach((r,i)=>{const y=190+i*96;rrect(W-400,y,340,82,10,'#2c3347');
+  ctx.textAlign='left';ctx.font='24px "Lilita One"';ctx.fillStyle='#ffffff';ctx.fillText(r[0],W-385,y+28);
+  ctx.font='18px "Nunito"';ctx.fillStyle='#a3a9bd';ctx.fillText(r[1],W-385,y+58);
+  text(r[2],W-105,y+41,22,r[2]==='LOCKED'?'#ff4d5e':'#f4b942',false)});
+ ctx.globalAlpha=1;
+ text('Collect them all. Unlock new rooms.',W/2,H-60,40,'#ffffff');
+}
+function endCard(S,t){
+ ctx.fillStyle=`rgba(10,11,16,${.55*S.end})`;ctx.fillRect(0,0,W,H);ctx.globalAlpha=S.end;
+ text('LOUDER = RARER',W/2,H*.62,52,'#f4b942');
+ text('How brave are you?',W/2,H*.73,40,'#ffffff');
+ text("DON'T WAKE THE GIANT",W/2,H*.86,64,'#ffffff');ctx.globalAlpha=1;
+}
+function bigTitle(B){
+ ctx.save();ctx.globalAlpha=B.a;ctx.translate(W/2,H*.78);ctx.scale(B.s,B.s);
+ text(B.l1,0,-44,96,'#ffffff');text(B.l2,0,48,110,'#f4b942');ctx.restore();
+}
+function subtitle(s){
+ if(!subs||!s)return;
+ ctx.font='22px "Nunito",sans-serif';const words=s.split(' ');let lines=[''];
+ for(const w of words){const tryL=(lines[lines.length-1]+' '+w).trim();if(ctx.measureText(tryL).width>900){lines.push(w)}else lines[lines.length-1]=tryL}
+ const h=lines.length*30+18,y=H-(frameS.hud?100:24)-h;
+ rrect(W/2-480,y,960,h,10,'rgba(0,0,0,.72)');
+ lines.forEach((l,i)=>text(l,W/2,y+24+i*30,22,'#ffe9a8',false,'Nunito'));
+}
+
+let frameS;
+function render(){
+ const S=frame(t);frameS=S;
+ const k=Math.min(1,.12);C.x+= (S.cam.x-C.x)*k;C.z+=(S.cam.z-C.z)*k;C.k+=(S.cam.k-C.k)*k;
+ ctx.save();ctx.fillStyle='#14161f';ctx.fillRect(0,0,W,H);
+ if(S.shake)ctx.translate(Math.sin(t*90)*S.shake,Math.cos(t*70)*S.shake);
+ drawWorld(S,t);ctx.restore();
+ if(S.big)bigTitle(S.big);
+ if(S.hud)hud(S,t);
+ if(S.montage)montage(S,t);
+ if(S.end)endCard(S,t);
+ subtitle(S.sub);
+}
+function snapCam(){const S=frame(t);C={x:S.cam.x,z:S.cam.z,k:S.cam.k}}
+
+// ---------- transport ----------
+const playB=document.getElementById('play'),seek=document.getElementById('seek'),time=document.getElementById('time'),chap=document.getElementById('chapters');
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+CH.forEach(([s,n])=>{const b=document.createElement('button');b.type='button';b.textContent=n;b.dataset.s=s;b.onclick=()=>{t=s;snapCam();if(!playing)toggle()};chap.appendChild(b)});
+function toggle(){playing=!playing;playB.textContent=playing?'Pauza':'Odtwórz';if(playing&&t>=DUR){t=0;snapCam()}last=performance.now()}
+playB.onclick=toggle;
+document.getElementById('restart').onclick=()=>{t=0;snapCam();if(!playing)toggle()};
+const subB=document.getElementById('subs');subB.onclick=()=>{subs=!subs;subB.setAttribute('aria-pressed',subs)};
+seek.oninput=()=>{t=+seek.value;snapCam()};
+function loop(now){
+ const dt=Math.min(.05,(now-last)/1000);last=now;
+ if(playing){t+=dt;if(t>=DUR){t=DUR-.01;playing=false;playB.textContent='Odtwórz'}}
+ render();seek.value=t;time.textContent=`${fmt(t)} / ${fmt(DUR)}`;
+ const cur=[...CH].reverse().find(c=>t>=c[0]);for(const b of chap.children)b.classList.toggle('on',+b.dataset.s===cur[0]);
+ requestAnimationFrame(loop);
+}
+snapCam();
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){playing=false;playB.textContent='Odtwórz';t=2.5;snapCam()}
+document.fonts&&document.fonts.ready.then(()=>{});
+requestAnimationFrame(loop);
+</script>

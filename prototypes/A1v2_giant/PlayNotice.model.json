@@ -1,0 +1,64 @@
+{
+  "ClassName": "Part",
+  "Properties": {
+    "Name": "PlayNotice",
+    "Anchored": true,
+    "CanCollide": false,
+    "CanQuery": false,
+    "Size": [
+      34,
+      12,
+      1
+    ],
+    "Position": [
+      0,
+      10,
+      -8
+    ],
+    "Color": [
+      0.094,
+      0.133,
+      0.176
+    ]
+  },
+  "Children": [
+    {
+      "ClassName": "SurfaceGui",
+      "Properties": {
+        "Face": "Back",
+        "CanvasSize": [
+          900,
+          300
+        ]
+      },
+      "Children": [
+        {
+          "ClassName": "TextLabel",
+          "Properties": {
+            "Size": {
+              "UDim2": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            },
+            "BackgroundTransparency": 1,
+            "Text": "PRESS PLAY (F5) TO BUILD THE MAP",
+            "TextSize": 42,
+            "TextColor3": [
+              1,
+              1,
+              1
+            ],
+            "TextWrapped": true
+          }
+        }
+      ]
+    }
+  ]
+}

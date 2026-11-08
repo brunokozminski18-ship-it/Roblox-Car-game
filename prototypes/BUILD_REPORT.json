@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-31",
+  "scope": "Presentation update: offline build and source packing only",
+  "results": [
+    {
+      "project": "A1_ratuj",
+      "rojo_build": "PASS",
+      "xml_and_embedded_sources": "PASS",
+      "edit_notice": "PASS",
+      "luau_lines": 301,
+      "status": "IMPLEMENTED / NEEDS VERIFICATION",
+      "runtime": "NOT TESTED AFTER PRESENTATION CHANGES"
+    },
+    {
+      "project": "A2_rzucaj",
+      "rojo_build": "PASS",
+      "xml_and_embedded_sources": "PASS",
+      "edit_notice": "PASS",
+      "luau_lines": 318,
+      "status": "IMPLEMENTED / NEEDS VERIFICATION",
+      "runtime": "NOT TESTED AFTER PRESENTATION CHANGES"
+    },
+    {
+      "project": "A3_oslaniaj",
+      "rojo_build": "PASS",
+      "xml_and_embedded_sources": "PASS",
+      "edit_notice": "PASS",
+      "luau_lines": 275,
+      "status": "IMPLEMENTED / NEEDS VERIFICATION",
+      "runtime": "NOT TESTED AFTER PRESENTATION CHANGES"
+    }
+  ]
+}

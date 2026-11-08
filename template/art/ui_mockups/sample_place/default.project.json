@@ -1,0 +1,7 @@
+{
+  "name": "UISample",
+  "tree": {
+    "$className": "DataModel",
+    "Lighting": { "$properties": { "ClockTime": 14 } }
+  }
+}

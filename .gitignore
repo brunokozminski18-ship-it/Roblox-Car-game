@@ -1,0 +1,16 @@
+# Duże pliki trzymamy poza gitem (modele, nagrania, eksporty)
+*.fbx
+*.fbm/
+*.blend
+*.blend1
+*.mp4
+*.mov
+*.rbxl
+*.rbxlx
+assets/
+exports/
+scratch/
+.obsidian/workspace*.json
+
+# Third-party icon pack (licence: template/art/icons/vendor/*/READ ME); only picked icons live in art/icons/set_d
+template/art/icons/vendor/

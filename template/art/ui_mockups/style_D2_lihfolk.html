@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UI D2 Ink and Candy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@700;800&display=swap">
+<style>
+/* Mockup v2 of variant D following LihFolk Vault V2:
+   "LihFolk UI Design System" (Ink and Candy), "LihFolk UI Spec" (tokens, sizes,
+   roles, motion) and "Accessibility" / "UI Style Directions" (glass panels).
+   All sizes are LihFolk design units drawn at scale 1 (PC) or the touch floor (phone).
+   User additions: see-through canvas (0.15, the LihFolk maximum over gameplay;
+   multiplied by GuiService.PreferredTransparency in game) and a stud pattern tile
+   in place of the candy bands (the spec allows a registered pattern tile). */
+:root{
+ /* 1. Palette */
+ --ink:#160F2B; --dusk:#2D2852; --duskRaised:#3B3566; --duskRaisedHi:#4A437A; --duskSunken:#1F1B3D;
+ --line:rgba(87,80,143,.65); --textHi:#fff; --textMid:#D6D0F5; --textLow:#B0A9DD; --gold:#FFD24A;
+ /* 2. Roles: top, bottom, lip */
+ --go1:#7BF5A6; --go2:#25C773; --goL:#12804A;
+ --pr1:#FFE27A; --pr2:#FFB224; --prL:#B06B00;
+ --ne1:#9C94DB; --ne2:#6E66B3; --neL:#40397A;
+ --da1:#FF7A98; --da2:#EE3D66; --daL:#9A1838;
+ --in1:#7CC8FF; --in2:#3D93F0; --inL:#1D58A8;
+ /* 3. Menu themes */
+ --shop1:#FFB54D; --shop2:#FF7B22; --shopL:#B9480A;
+ --reb1:#CF9BFF; --reb2:#9257F2; --rebL:#5A2AAE;
+ --day1:#FF9ACD; --day2:#F25AA2; --dayL:#A82568;
+ --display:"Fredoka","Arial Rounded MT Bold",sans-serif;
+ --body:"Nunito","Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#12111c;color:#fff;font-family:var(--body);padding:24px;display:flex;flex-direction:column;gap:22px;align-items:center}
+h2{font-family:var(--display);font-weight:700;margin:0 0 6px;font-size:26px}
+.note{max-width:1280px;color:#c9c6e6;font-size:15px;line-height:1.5;margin:0}
+.note b{color:#fff}
+
+/* game backdrop (busy on purpose: tests readability of the see-through panel) */
+.game{position:relative;overflow:hidden;border-radius:10px;background:linear-gradient(180deg,#8fd0ff 0 40%,#6fcf6a 40% 100%)}
+.game .prop{position:absolute;border:3px solid rgba(0,0,0,.3)}
+.dim{position:absolute;inset:0;background:rgba(11,7,24,.45)} /* backdrop #0B0718 at 0.45 */
+
+/* text with ink stroke (UIStroke ~9-10% of size) */
+.s{paint-order:stroke fill;-webkit-text-stroke:var(--sw,2.5px) var(--ink);color:#fff}
+.disp{font-family:var(--display);font-weight:700}
+
+/* ---------- Window 760 x 520 ---------- */
+.window{position:absolute;width:760px;height:520px;transform-origin:top left}
+.panel{position:absolute;inset:0;border:4px solid var(--ink);border-radius:22px;background:rgba(45,40,82,.85);overflow:hidden}
+.studs{position:absolute;inset:0;pointer-events:none;opacity:.10;
+ background-image:radial-gradient(circle at 50% 45%,#fff 0 4px,rgba(0,0,0,.6) 4.5px 6px,transparent 6.5px);background-size:24px 24px}
+.header{position:absolute;left:8px;right:8px;top:8px;height:64px;border-radius:14px;border:3px solid var(--ink);
+ background:linear-gradient(180deg,var(--shop1),color-mix(in srgb,var(--shop1) 45%,var(--shop2)) 45%,var(--shop2));
+ box-shadow:0 6px 0 var(--shopL),0 6px 0 3px var(--ink);display:flex;align-items:center;gap:12px;padding:0 10px}
+.chip{width:46px;height:46px;border-radius:12px;border:3px solid var(--ink);background:linear-gradient(180deg,#fff7e6,#ffd9a3);display:grid;place-items:center;font-size:26px}
+.header .title{font-size:36px;--sw:3.5px;flex:1}
+.close{width:52px;height:52px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center;font-size:28px;
+ background:linear-gradient(180deg,var(--da1),var(--da2));box-shadow:0 5px 0 var(--daL),0 5px 0 3px var(--ink)}
+.bodyArea{position:absolute;left:16px;right:16px;top:92px;bottom:16px;display:flex;gap:12px}
+
+/* tabs: neutral slabs, selected = theme */
+.tabs{width:132px;display:flex;flex-direction:column;gap:10px}
+.tab{height:56px;border-radius:12px;border:3px solid var(--ink);display:flex;align-items:center;gap:8px;padding:0 10px;font-size:20px;
+ background:linear-gradient(180deg,var(--ne1),var(--ne2));box-shadow:0 5px 0 var(--neL),0 5px 0 3px var(--ink)}
+.tab.on{background:linear-gradient(180deg,var(--shop1),var(--shop2));box-shadow:0 5px 0 var(--shopL),0 5px 0 3px var(--ink)}
+.tab i{font-style:normal;font-size:24px}
+.scroll{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;overflow:hidden;position:relative}
+.sect{font-size:26px;--sw:2.5px;display:flex;align-items:center;gap:8px}
+
+/* cards: dusk gradient, ink 3, radius 14; featured = gold 4 + sunburst + pill */
+.card{position:relative;border-radius:14px;border:3px solid var(--ink);background:linear-gradient(180deg,var(--duskRaisedHi),var(--duskRaised));overflow:hidden}
+.card.featured{border:4px solid var(--gold)}
+.sun{position:absolute;width:300px;height:300px;left:-60px;top:-110px;border-radius:50%;opacity:.35;
+ background:repeating-conic-gradient(from 0deg,rgba(255,210,74,.9) 0 10deg,transparent 10deg 20deg);-webkit-mask:radial-gradient(circle,#000 30%,transparent 70%);mask:radial-gradient(circle,#000 30%,transparent 70%)}
+.pill{position:absolute;top:8px;left:136px;z-index:2;padding:3px 12px;border-radius:999px;border:3px solid var(--ink);font-size:18px;--sw:2px;background:linear-gradient(180deg,var(--pr1),var(--pr2))}
+.feat{flex-shrink:0;height:130px;display:flex;align-items:center;gap:16px;padding:0 16px}
+.art{width:108px;height:108px;border-radius:16px;display:grid;place-items:center;font-size:66px;position:relative;z-index:1}
+.feat .name{font-size:30px;--sw:3px}
+.desc{font-family:var(--body);font-weight:800;font-size:18px;color:var(--textMid);line-height:1.3}
+.cards{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.shopcard{height:220px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 10px}
+.shopcard .art{width:92px;height:92px;font-size:54px}
+.shopcard .name{font-size:24px;--sw:2.5px;text-align:center}
+.cap{font-family:var(--body);font-size:15px;font-weight:700;color:var(--textLow);text-align:center}
+.tag{position:absolute;top:8px;left:8px;padding:2px 10px;border-radius:999px;border:3px solid var(--ink);font-size:15px;--sw:2px;background:linear-gradient(180deg,var(--in1),var(--in2))}
+
+/* buttons: slab with lip; ONE go (green) per screen */
+.btn{height:56px;min-width:120px;border-radius:12px;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 16px;font-size:30px;--sw:3px}
+.go{background:linear-gradient(180deg,var(--go1),color-mix(in srgb,var(--go1) 45%,var(--go2)) 45%,var(--go2));box-shadow:0 6px 0 var(--goL),0 6px 0 3px var(--ink)}
+.premium{background:linear-gradient(180deg,var(--pr1),color-mix(in srgb,var(--pr1) 45%,var(--pr2)) 45%,var(--pr2));box-shadow:0 6px 0 var(--prL),0 6px 0 3px var(--ink)}
+.owned{background:linear-gradient(180deg,#ECE9FA,#C4BEE0);box-shadow:0 6px 0 #827BA8,0 6px 0 3px var(--ink);color:#2D2852;-webkit-text-stroke:0;font-size:22px}
+.wide{width:100%}
+.rbx{display:inline-block;width:22px;height:22px;border:3px solid currentColor;border-radius:6px;transform:rotate(45deg) scale(.85)}
+.feat .btn{margin-left:auto;position:relative;z-index:1}
+
+/* ---------- HUD ---------- */
+.launcher{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px}
+.hud{width:64px;height:64px;border-radius:14px;border:3px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:30px;position:relative}
+.hud span{font-size:15px;--sw:2px;margin-top:-4px}
+.hud.shop{background:linear-gradient(180deg,var(--shop1),var(--shop2));box-shadow:0 5px 0 var(--shopL),0 5px 0 3px var(--ink)}
+.hud.reb{background:linear-gradient(180deg,var(--reb1),var(--reb2));box-shadow:0 5px 0 var(--rebL),0 5px 0 3px var(--ink)}
+.hud.day{background:linear-gradient(180deg,var(--day1),var(--day2));box-shadow:0 5px 0 var(--dayL),0 5px 0 3px var(--ink)}
+.badge{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;border:3px solid var(--ink);background:var(--da2);display:grid;place-items:center;font-size:15px;font-family:var(--display)}
+.power{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);width:520px;display:flex;flex-direction:column;gap:6px;align-items:center}
+.goal{padding:4px 16px;border-radius:999px;border:3px solid var(--ink);background:rgba(45,40,82,.85);font-family:var(--body);font-weight:800;font-size:18px;color:var(--textMid)}
+.goal b{color:var(--go1)}
+.bar{position:relative;width:100%;height:30px;border-radius:15px;border:3px solid var(--ink);background:var(--duskSunken);box-shadow:inset 0 4px 0 rgba(0,0,0,.35)}
+.fill{position:absolute;left:4px;top:4px;bottom:4px;width:62%;border-radius:11px;background:linear-gradient(180deg,var(--in1),var(--in2))}
+.fill::after{content:"";position:absolute;left:6px;right:6px;top:2px;height:35%;border-radius:8px;background:rgba(255,255,255,.45)}
+.bar .lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:18px;--sw:2px}
+.big{font-size:30px;--sw:3px}
+</style>
+</head>
+<body>
+
+<div>
+ <h2>D2 · PC 1280 × 720 (skala 1)</h2>
+ <div class="game" id="pc" style="width:1280px;height:720px"></div>
+</div>
+<div>
+ <h2>D2 · Telefon 667 × 375 poziomo (skala 0,846 = minimum dotyku, okno się przewija)</h2>
+ <div class="game" id="phone" style="width:667px;height:375px"></div>
+</div>
+<p class="note">
+ <b>Zasady z LihFolk Vault V2</b> (LihFolk UI Design System, LihFolk UI Spec, Accessibility): ciemnofioletowe płótno okna, czarne obrysy, wszystko co da się nacisnąć ma kolorową „cukierkową” płytę z wargą; nagłówek w kolorze menu (sklep: mandarynkowy) wsunięty 8 px w okno; <b>jeden zielony przycisk na ekranie</b> (zakup polecanego), pozostałe ceny złote, kupione = OWNED; polecany produkt ma złotą ramkę, promienie i pigułkę BEST VALUE; tekst min. 15 jednostek, opisy jasnolawendowe (kontrast 7–9:1), przyciski min. 52 jednostki (44 px na telefonie).
+ <b>Twoje dodatki:</b> okno prześwituje (przezroczystość 0,15 — maksimum wg LihFolk nad grą; w grze mnożone przez ustawienie gracza „Background Transparency”) i faktura klocków zamiast pasów w tle okna.
+ Ikony to zaślepki (emoji); w grze rendery toon. Ceny przykładowe.
+</p>
+
+<script>
+const props = `
+ <div class="prop" style="left:22%;top:18%;width:12%;height:40%;background:#e5533d"></div>
+ <div class="prop" style="left:46%;top:12%;width:8%;height:50%;background:#f4c542"></div>
+ <div class="prop" style="left:66%;top:24%;width:16%;height:30%;background:#3d8be5"></div>`;
+const hud = `
+ <div class="launcher">
+  <div class="hud shop"><div>🛒</div><span class="s disp">Shop</span></div>
+  <div class="hud reb"><div>🔄</div><span class="s disp">Rebirth</span></div>
+  <div class="hud day"><div>📅</div><span class="s disp">Daily</span><div class="badge s">!</div></div>
+ </div>
+ <div class="power">
+  <div class="goal">Next: <b>Boots</b> at the start · x4 Power</div>
+  <div class="bar"><div class="fill"></div><div class="lab"><span class="s disp">Level 50</span><span class="s disp">930 / 1,500 POWER</span></div></div>
+ </div>`;
+const win = `
+ <div class="window">
+  <div class="panel"><div class="studs"></div></div>
+  <div class="header"><div class="chip">🛒</div><div class="title s disp">Shop</div><div class="close s disp">✕</div></div>
+  <div class="bodyArea">
+   <div class="tabs">
+    <div class="tab on s disp"><i>🔥</i>Hot</div>
+    <div class="tab s disp"><i>👑</i>Passes</div>
+    <div class="tab s disp"><i>⚡</i>Boosts</div>
+    <div class="tab s disp"><i>🧤</i>Gear</div>
+   </div>
+   <div class="scroll">
+    <div class="card featured feat">
+     <div class="sun"></div>
+     <div class="pill s disp">BEST VALUE</div>
+     <div class="art">🎁</div>
+     <div style="position:relative;z-index:1;margin-top:22px"><div class="name s disp">Starter Pack</div><div class="desc">+500 Power · +100 Cash<br>x2 Power for 30 min</div></div>
+     <div class="btn go s disp"><span class="rbx"></span>49</div>
+    </div>
+    <div class="sect s disp">⭐ Top picks</div>
+    <div class="cards">
+     <div class="card shopcard"><div class="tag s disp">FOREVER</div><div class="art">⚡</div><div class="name s disp">x2 Power</div><div class="cap">Every step counts twice</div><div class="btn premium wide s disp"><span class="rbx"></span>99</div></div>
+     <div class="card shopcard"><div class="tag s disp">15 MIN</div><div class="art">📣</div><div class="name s disp">Server Boost</div><div class="cap">x2 Power for everyone</div><div class="btn premium wide s disp"><span class="rbx"></span>149</div></div>
+     <div class="card shopcard"><div class="tag s disp">FOREVER</div><div class="art">👑</div><div class="name s disp">VIP</div><div class="cap">+25% Power and Cash</div><div class="btn owned wide disp">OWNED</div></div>
+    </div>
+   </div>
+  </div>
+ </div>`;
+
+function build(id, W, H, scale){
+ const el=document.getElementById(id);
+ el.innerHTML = props + '<div class="dim"></div>' + hud + win;
+ // HUD scale like windows (phone = touch floor)
+ el.querySelector('.launcher').style.transform=`translateY(-50%) scale(${scale})`;
+ el.querySelector('.launcher').style.transformOrigin='left center';
+ const p=el.querySelector('.power'); p.style.transform=`translateX(-50%) scale(${scale})`; p.style.transformOrigin='bottom center';
+ // LihFolk fit: scale = max(min(1, fit), touchFloor); if the floor wins, the slot shrinks and the body scrolls
+ const w=el.querySelector('.window');
+ const availW=W-32, availH=H-32;
+ const fit=Math.min(availW/760, availH/520);
+ const s=Math.max(Math.min(1,fit),scale<1?0.846:0);
+ const slotW=Math.min(760, availW/s), slotH=Math.min(520, availH/s);
+ w.style.width=slotW+'px'; w.style.height=slotH+'px';
+ w.style.transform=`scale(${s})`;
+ w.style.left=((W-slotW*s)/2)+'px'; w.style.top=((H-slotH*s)/2)+'px';
+}
+build('pc',1280,720,1);
+build('phone',667,375,0.846);
+</script>
+</body>
+</html>
