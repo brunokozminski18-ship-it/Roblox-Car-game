@@ -40,6 +40,11 @@ p:GetAttributeChangedSignal("ThrowPhase"):Connect(function()local phase=p:GetAtt
 local inventory=require(script.Parent.InventoryUI).mount(world,remotes:WaitForChild("Garage")::RemoteEvent,remotes:WaitForChild("InventorySnapshot")::RemoteEvent,remotes:WaitForChild("ConfirmSale")::RemoteEvent,hud.cars,indexView)
 require(script.Parent.ReturnUI).mount(remotes,shop,inventory,indexView)
 require(script.Parent.LeaderboardUI).mount(world)
+-- Map v5 stands: SHOP (left) opens the shop, SELL (right) opens My Cars where selling happens.
+game:GetService("ProximityPromptService").PromptTriggered:Connect(function(prompt: ProximityPrompt)
+ if not prompt:IsDescendantOf(world)then return end
+ if prompt.Name=="OpenShop"then shop.openCategory("Exercise")elseif prompt.Name=="OpenSell"then inventory.open(true)end
+end)
 indexView.gui:GetAttributeChangedSignal("Open"):Connect(function()if indexView.isOpen()then inventory.open(false);shop.close()end end)
 inventory.gui:GetAttributeChangedSignal("Open"):Connect(function()if inventory.isOpen()then indexView.close()end end)
 p.PlayerGui.TicketShop:GetAttributeChangedSignal("Open"):Connect(function()if shop.isOpen()then indexView.close();inventory.open(false)end end)

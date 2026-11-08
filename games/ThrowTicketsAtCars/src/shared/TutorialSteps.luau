@@ -7,10 +7,10 @@
 return {
 	{
 		id = "throw",
-		objective = "Walk onto the white THROW pad!",
+		objective = "Walk onto the orange THROW line!",
 		signal = "Thrown",
 		target = { path = { "TicketPrototype", "ThrowLine" } },
-		hint = { any = "Follow the yellow line to the white pad" },
+		hint = { any = "Follow the yellow line to the orange line" },
 		hintAfter = 6,
 	},
 	{
@@ -36,7 +36,7 @@ return {
 		signal = "Caught",
 		requires = { "train" },
 		target = { path = { "TicketPrototype", "ThrowLine" } },
-		hint = { any = "Follow the yellow line back to the pad" },
+		hint = { any = "Follow the yellow line back to the tunnel" },
 		hintAfter = 8,
 		reward = "FirstExerciseCash", -- tops Cash up to exactly the first exercise price
 	},

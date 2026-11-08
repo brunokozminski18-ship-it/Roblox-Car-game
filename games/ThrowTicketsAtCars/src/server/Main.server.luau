@@ -327,9 +327,12 @@ local function joined(p: Player)
  local key=(if typeof(suffix)=="string"and #suffix<=40 then "QA_"..suffix.."_"else "U_")..p.UserId
  local profile,status=profiles:load(key,p.UserId,function()return closing or not p.Parent end);loading-=1
  if not profile then if p.Parent then p:Kick(if status=="locked"then "Progress is saving elsewhere. Rejoin shortly."else "Progress could not load safely. Please rejoin.")end;return end
- local plot=1;while plots[plot]do plot+=1 end;plots[plot]=true
+ -- Centre plot first (straight ahead of the tunnel), then outward; extra players fall back to later rows.
+ local plot=0;for _,candidate in {3,2,4,1,5}do if not plots[candidate]then plot=candidate;break end end
+ if plot==0 then plot=6;while plots[plot]do plot+=1 end end;plots[plot]=true
  local folder,positions=World.parking(world,plot,p.UserId,p.DisplayName)
- local entrance=positions[1]+Vector3.new(0,3,6)
+ -- Beside the training pad, facing the tunnel (not on the pad, so training does not start by itself).
+ local entrance=folder.TrainingPad.Position+Vector3.new(-7,3,0)
  local s={profile=profile,data=profile.Data,plot=plot,folder=folder,positions=positions,entrance=entrance,center=folder.ParkingGround.Position,placed={},tools={},padArmed=true,income=0,phase="Idle",lastThrow=-math.huge,lastRequest=-math.huge,lastTrain=-math.huge,lastShop=-math.huge,lastGarage=-math.huge}
  states[p]=s;s.nextBoostOffer=workspace:GetServerTimeNow()+6
  if not returnService.arrive(p,s)then

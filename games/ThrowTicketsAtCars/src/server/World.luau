@@ -25,11 +25,25 @@ function World.label(parent: BasePart,text: string,offset: number?)
 end
 World.car=CarBuilder.create
 World.ticketOffset=CarBuilder.ticketOffset
+-- Plot centre. Plots 1..5 stand in one row on the plaza, plot 3 straight ahead of the tunnel.
+-- Extra plots (server set above 5 players) get a fallback row behind, so nothing overlaps.
 function World.plotOrigin(plot: number): Vector3
- local group=math.floor((plot-1)/2)
- local side=if plot%2==1 then -1 else 1
- local rows={20,64,-24,108,-68,-112}
- return Vector3.new(side*(54+group%5*32),0,rows[math.floor(group/5)%#rows+1])
+ local L=Config.Layout
+ local index=(plot-1)%L.Plots;local row=math.floor((plot-1)/L.Plots)
+ return Vector3.new((index-(L.Plots-1)/2)*L.PlotSpacing,0,L.PlotZ+row*50)
+end
+-- A walk-up stand against a cliff face; the client opens the matching UI from its prompt.
+local function stand(root: Instance,name: string,text: string,x: number,color: Color3)
+ local L=Config.Layout
+ local m=Instance.new("Model");m.Name=name
+ local base=World.part(m,"Counter",Vector3.new(14,4,6),Vector3.new(x,2,L.StandZ),Color3.fromRGB(150,108,70))
+ World.part(m,"Roof",Vector3.new(16,1,8),Vector3.new(x,9,L.StandZ),color)
+ for _,dx in {-6.5,6.5}do World.part(m,"Post",Vector3.new(1,5,1),Vector3.new(x+dx,6.5,L.StandZ-2.5),Color3.fromRGB(120,86,56))end
+ local pad=World.part(m,"Pad",Vector3.new(10,.2,6),Vector3.new(x,.1,L.StandZ+6),color);pad.Transparency=.35;pad.CanCollide=false
+ local label=World.label(base,text,8.5);label.MaxDistance=120;label.Size=UDim2.fromOffset(160,48);label.TextLabel.TextSize=26
+ local prompt=Instance.new("ProximityPrompt");prompt.Name=name;prompt.ActionText=if name=="OpenShop"then "Open shop"else "Sell cars";prompt.ObjectText=text
+ prompt.HoldDuration=0;prompt.MaxActivationDistance=12;prompt.RequiresLineOfSight=false;prompt.KeyboardKeyCode=Enum.KeyCode.E;prompt.Parent=pad
+ m.PrimaryPart=base;m.Parent=root
 end
 function World.viewPosition(biome: number,slot: number): Vector3
 	local start=Config.Biomes[biome].Start
@@ -102,9 +116,25 @@ function World.build(biomeCount: number?): Folder
 	 local sign=World.part(f,"Sign",Vector3.new(24,6,.8),Vector3.new(0,10,-start+1.5),Color3.fromRGB(46,42,66))
 	 local label=World.label(sign,b.Name.."\nCOMING SOON",4);label.MaxDistance=150;label.AlwaysOnTop=true
 	end
-	World.part(root,"StartApron",Vector3.new(Config.GroundWidth,1,Config.MapPadding),Vector3.new(0,-0.55,Config.MapPadding/2),Config.Biomes[1].Color)
-	World.part(root,"ParkingHubGround",Vector3.new(420,1,300),Vector3.new(0,-.65,0),Config.Biomes[1].Color)
-	World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(225,225,225))
+	local L=Config.Layout
+	World.part(root,"Plaza",Vector3.new(L.PlazaWidth,1,L.PlazaDepth),Vector3.new(0,-.55,L.PlazaDepth/2),Color3.fromRGB(110,190,90))
+	-- Tunnel: cliffs on both sides of the biome road, front faces at z=0 looking at the plaza.
+	local cliffs=Instance.new("Folder");cliffs.Name="Cliffs";cliffs.Parent=root
+	local length=Config.MapEnd+10+#Config.ComingSoon*350
+	for side=-1,1,2 do
+	 for start=0,length-1,1000 do
+	  local span=math.min(1000,length-start)
+	  World.part(cliffs,"Cliff",Vector3.new(L.CliffWidth,L.CliffHeight,span),Vector3.new(side*(Config.GroundWidth/2+L.CliffWidth/2),L.CliffHeight/2-1,-start-span/2),Color3.fromRGB(122,86,58))
+	  World.part(cliffs,"Grass",Vector3.new(L.CliffWidth,1,span),Vector3.new(side*(Config.GroundWidth/2+L.CliffWidth/2),L.CliffHeight-.5,-start-span/2),Color3.fromRGB(96,180,72))
+	 end
+	end
+	local line=World.part(root,"ThrowLine",Config.LaunchSize,Config.LaunchCenter,Color3.fromRGB(255,150,40));line.Material=Enum.Material.Neon
+	for _,x in {-Config.GroundWidth/2-1,Config.GroundWidth/2+1}do
+	 World.part(root,"LinePost",Vector3.new(2,7,2),Vector3.new(x,3.5,Config.LaunchCenter.Z),Color3.fromRGB(235,235,235))
+	 World.part(root,"LineLamp",Vector3.new(2.6,1.6,2.6),Vector3.new(x,7.8,Config.LaunchCenter.Z),Color3.fromRGB(255,214,90)).Material=Enum.Material.Neon
+	end
+	stand(root,"OpenShop","SHOP",-L.ShopX,Color3.fromRGB(226,51,140))
+	stand(root,"OpenSell","SELL",L.ShopX,Color3.fromRGB(35,160,80))
 	local spawn=Instance.new("SpawnLocation");spawn.Name="PrototypeSpawn";spawn.Anchored,spawn.Neutral=true,true
 	spawn.Size,spawn.Position=Config.SpawnSize,Config.SpawnPosition;spawn.Transparency,spawn.CanCollide,spawn.Duration=1,false,0;spawn.Parent=root
 	root.Parent=workspace
@@ -127,17 +157,21 @@ end
 function World.parking(root: Folder,plot: number,ownerId: number,displayName: string): (Folder,{Vector3})
 	local f=Instance.new("Folder");f.Name=tostring(ownerId);f:SetAttribute("OwnerId",ownerId);f.Parent=root.Parking
 	local origin=World.plotOrigin(plot)
-	-- The lot and training pad both fit between adjacent origins (32 by 44 studs).
-	World.part(f,"ParkingGround",Vector3.new(30,1,43),origin-Vector3.new(8.5,0.55,7.2),Color3.fromRGB(130,130,130))
-	local train=World.part(f,"TrainingPad",Config.TrainingSize,origin+Vector3.new(0,.2,10),Color3.fromRGB(120,155,140));train:SetAttribute("OwnerId",ownerId);World.label(train,"TRAINING",1)
+	-- Lot faces north (the tunnel): front row of slots first, training pad outside the open front fence.
+	World.part(f,"ParkingGround",Vector3.new(30,1,40),origin-Vector3.new(0,0.55,0),Color3.fromRGB(130,130,130))
+	local wood=Color3.fromRGB(176,128,80)
+	World.part(f,"FenceBack",Vector3.new(30,3,.6),origin+Vector3.new(0,1.5,20),wood)
+	for _,x in {-15,15}do World.part(f,"FenceSide",Vector3.new(.6,3,40),origin+Vector3.new(x,1.5,0),wood)end
+	for _,x in {-10,10}do World.part(f,"FenceFront",Vector3.new(10,3,.6),origin+Vector3.new(x,1.5,-20),Color3.fromRGB(90,140,220))end
+	local train=World.part(f,"TrainingPad",Config.TrainingSize,origin+Vector3.new(0,.2,-25),Color3.fromRGB(120,155,140));train:SetAttribute("OwnerId",ownerId);World.label(train,"TRAINING",1)
 	local positions={}
 	for i=1,Config.ParkingMax do
-		local pos=origin-Vector3.new((i-1)%4*6.5,0,math.floor((i-1)/4)*8.2)
+		local pos=origin+Vector3.new(-9.75+(i-1)%4*6.5,0,-12.3+math.floor((i-1)/4)*8.2)
 		positions[i]=pos+Vector3.new(0,Config.CarHeight,0)
 		local part=World.part(f,"Slot"..i,Vector3.new(6.2,0.2,7.8),pos,Color3.fromRGB(178,178,178))
 		part:SetAttribute("OwnerId",ownerId);part:SetAttribute("ActiveIncome",0)
 	end
-	local sign=World.part(f,"ParkingUpgradeSign",Vector3.new(5,3,.5),origin+Vector3.new(-10,1.5,8),Color3.fromRGB(47,105,199))
+	local sign=World.part(f,"ParkingUpgradeSign",Vector3.new(5,3,.5),origin+Vector3.new(-11,1.5,-22),Color3.fromRGB(47,105,199))
 	sign.CanCollide=false;sign.CanTouch=false;sign:SetAttribute("OwnerId",ownerId)
 	local label=World.label(sign,"PARKING UPGRADE",2.25);label.Name="UpgradeLabel";label.MaxDistance=35
 	local icon=Instance.new("Frame");icon.Name="CarIcon";icon.BorderSizePixel=0;icon.Size=UDim2.fromOffset(22,8);icon.Position=UDim2.fromOffset(38,12);icon.BackgroundColor3=Color3.fromHex("B9D5F7");icon.Parent=label

@@ -11,9 +11,10 @@ local Boards={}
 local names={"MostCars","TopMoney","LuckiestCatch"}
 function Boards.new(world: Instance,states: any): any
  local folder=Instance.new("Folder");folder.Name="Leaderboards";folder.Parent=world
+ -- On the left cliff face, facing the plaza (map v5).
  for i,name in names do
-  local part=Instance.new("Part");part.Name=name;part.Size=Vector3.new(13,17,.6);part.Position=Vector3.new((i-2)*15,10,32);part.Anchored=true;part.Color=Color3.fromHex("214EAB");part.Parent=folder
-  local post=Instance.new("Part");post.Name=name.."Post";post.Size=Vector3.new(1,2,.8);post.Position=Vector3.new((i-2)*15,1,32);post.Anchored=true;post.Parent=folder
+  local part=Instance.new("Part");part.Name=name;part.Size=Vector3.new(13,17,.6);part.CFrame=CFrame.new(-140+(i-1)*15,14,.8)*CFrame.Angles(0,math.pi,0);part.Anchored=true;part.Color=Color3.fromHex("214EAB");part.Parent=folder
+  local post=Instance.new("Part");post.Name=name.."Post";post.Size=Vector3.new(1,5.5,.8);post.Position=Vector3.new(-140+(i-1)*15,2.75,.8);post.Anchored=true;post.Parent=folder
  end
  local studio=Run:IsStudio();local qaKey=game.ServerStorage:GetAttribute("TestProfileKey")
  local suffix=if studio then "_STUDIO_"..(if typeof(qaKey)=="string"then qaKey else "TEST")else ""
