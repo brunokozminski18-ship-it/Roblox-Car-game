@@ -19,5 +19,12 @@ Moduły gałęzi wgrane tymczasowo do `ServerStorage` w otwartym miejscu gry (be
 - Index: 4/8 daje jedną nagrodę, 8/8 daje ×1,02 dochodu; zapis schema 8 i migracja 7 → 8 działają, zły pity odrzucony.
 - `Main.server` z poprawkami kompiluje się (sprawdzone w Studio, bez uruchamiania gry).
 
+## Test w grze (VERIFIED 08.11.2026, Studio Play, profil QA `c18a`, telefon NIE)
+- Scalone fast-forward do `codex/throw-tickets-prototype`, Rojo zsynchronizowane.
+- Start serwera bez nowych błędów; sklep pokazuje 11 mandatów (blokada wydań działa).
+- 10 prawdziwych rzutów klientem (pad → pasek → rzut → reveal → Continue → laweta): wszystkie dostarczone. 3. złapanie Rare, 10. Epic. Nagroda Indexu przyznana dokładnie raz (10 złapań, 11 aut).
+- `ReleasedBiomes=18` (tymczasowo, przywrócone 10): 18 biomów, 36 tablic bram z progami, MapEnd 12 400, Power 7000 → Moon Base, 60 000+ → Cosmic Highway, brak błędów.
+- UI: licznik „LEGENDARY GUARANTEED IN N” (atrybut `PityLeft`), w Indexie podpowiedź „4/8: FREE CAR” / „NEXT: +2% CASH” / „+2% CASH”.
+
 ## NIE sprawdzone
-- Pełna rozgrywka w Play (rzut, reveal, laweta z nowymi polami), stare testy z `tests/` w nowym katalogu (zmieniono tylko oczekiwanie 74 → 80 w `iteration11.spec`), `ReleasedBiomes=18` na mapie, UI nagród Indexu, telefon.
+- Stare testy z `tests/` w nowym katalogu (zmieniono tylko oczekiwanie 74 → 80 w `iteration11.spec`), `ReleasedBiomes=18` na mapie, UI nagród Indexu, telefon.

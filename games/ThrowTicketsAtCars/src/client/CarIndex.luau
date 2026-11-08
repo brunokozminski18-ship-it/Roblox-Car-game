@@ -154,7 +154,10 @@ function Index.mount(playerGui: Instance, launchButton: GuiButton): any
 			card.root:SetAttribute("Discovered", unlocked)
 		end
 		local size = #section.cards
-		section.progress.Text = string.format("%d / %d", count, size)
+		-- Index rewards (decision 08.11.2026): half the biome = free car, full biome = +2% Cash.
+		local half=require(game.ReplicatedStorage.ThrowTickets.Config).Index.FreeCarAt
+		local hint=if count>=size then "  +2% CASH" elseif count>=half then "  NEXT: +2% CASH" else string.format("  %d/%d: FREE CAR",half,size)
+		section.progress.Text = string.format("%d / %d", count, size)..hint
 		section.fill.Size = UDim2.fromScale(if size > 0 then count / size else 0, 1)
 		return count
 	end

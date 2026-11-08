@@ -70,6 +70,7 @@ local function snapshot(p: Player,s: any)
  Snapshot:FireClient(p,{Cars=cards,InventoryCount=GarageRules.inventoryCount(s.data),Limit=Config.InventoryLimit,ParkingCapacity=s.data.ParkingCapacity,Discovered=s.data.Discovered,NewestId=p:GetAttribute("LastCapturedId")})
 end
 local function publish(p: Player,s: any)
+ p:SetAttribute("PityLeft",Config.Luck.LegendaryPity-s.data.Pity.SinceLegendary)
  for id,model in s.placed do local c=GarageRules.find(s.data,id);if not c or c.Slot==0 then model:Destroy();s.placed[id]=nil end end
  World.capacity(s.folder,s.data.ParkingCapacity)
  for i=1,Config.ParkingMax do local part=s.folder["Slot"..i];part:SetAttribute("CarId",nil);part:SetAttribute("ActiveIncome",0)end
@@ -431,4 +432,4 @@ if RunService:IsStudio()then
   return nil
  end
 end
-print("[ThrowTickets] Iteration 11: ten biomes and 74 draft cars ready (NOT FINAL).")
+print("[ThrowTickets] "..#Config.Biomes.." of "..#Config.AllBiomes.." biomes released (NOT FINAL).")

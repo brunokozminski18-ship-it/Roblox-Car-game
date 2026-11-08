@@ -36,6 +36,9 @@ function HUD.mount(parent: Instance): any
  local statusGui=Instance.new("ScreenGui");statusGui.Name="CarStatus";statusGui.ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets;statusGui.DisplayOrder=45;statusGui.ResetOnSpawn=false;statusGui.Parent=parent
  local banner=S.text(statusGui,"StatusBanner","",17,UDim2.new(.5,0,0,114),UDim2.new(.8,0,0,44));banner.AnchorPoint=Vector2.new(.5,0);banner.TextXAlignment=Enum.TextXAlignment.Center;banner.TextWrapped=true;banner.BackgroundTransparency=.1;banner.Visible=false;S.corner(banner,12)
  local trainingStatus=S.text(gui,"TrainingStatus","",15,UDim2.new(1,-12,0,112),UDim2.fromOffset(300,24))
+-- Legendary pity counter (decision 08.11.2026): honest "guaranteed within N catches".
+ local pityLabel=S.text(gui,"PityCounter","",14,UDim2.fromOffset(12,112),UDim2.fromOffset(240,22))
+ pityLabel.TextXAlignment=Enum.TextXAlignment.Left;pityLabel.TextColor3=Color3.fromHex("FFD24A")
  trainingStatus.AnchorPoint=Vector2.new(1,0);trainingStatus.TextXAlignment=Enum.TextXAlignment.Right;trainingStatus.TextColor3=Color3.fromHex("B2FFAD");trainingStatus.Visible=false
  local message=S.text(gui,"Message","",16,UDim2.new(.5,0,1,-88),UDim2.new(1,-120,0,26))
  message.AnchorPoint=Vector2.new(.5,1);message.TextXAlignment=Enum.TextXAlignment.Center;message.Visible=false
@@ -56,13 +59,15 @@ function HUD.mount(parent: Instance): any
     track:SetAttribute("NextBiome",nextBiome.Name);track:SetAttribute("NeedPower",need)
    else fill.Size=UDim2.fromScale(1,1);track:SetAttribute("NextBiome","MAX");track:SetAttribute("NeedPower",0)end
    train.Text=if training then "STOP"else "TRAIN"
+   local left=game.Players.LocalPlayer:GetAttribute("PityLeft")
+   pityLabel.Text=if typeof(left)=="number"then "LEGENDARY GUARANTEED IN "..left else ""
    trainingStatus.Text="TRAINING +"..Rules.powerText(rate*Config.Progression.XPPerLevel).." XP/s";trainingStatus.Visible=training
    local gradient=train:FindFirstChildOfClass("UIGradient")::UIGradient
    gradient.Color=if training then ColorSequence.new(Color3.fromHex("8CF27C"),Color3.fromHex("22B24A"))else ColorSequence.new(Color3.fromHex("D98BFF"),Color3.fromHex("7B2BE6"))
   end,
   mode=function(location: string,throwing: boolean,phase: string)
    train.Visible,shop.Visible,cars.Visible=not throwing,not throwing,not throwing
-   index.Visible=not throwing
+   index.Visible=not throwing;pityLabel.Visible=not throwing
    train.Active,shop.Active,cars.Active=not throwing,not throwing,not throwing
   end}
 end
